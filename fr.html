@@ -7,22 +7,44 @@
 
   <meta
     name="description"
-    content="Campagne pour lancer une recherche sur le syndrome de Pallister-Killian (PKS) avec des organoïdes cérébraux. Objectif : 500 000 $."
+    content="Aidez à financer la première phase d’une recherche scientifique sur le syndrome de Pallister-Killian (PKS), la maladie génétique rare dont est atteinte Giulia. Objectif : 500 000 USD."
   />
 
-  <!-- Social preview (à remplacer plus tard) -->
-  <meta property="og:title" content="Ensemble pour Giulia | Project PKS" />
-  <meta
-    property="og:description"
-    content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux. Objectif : 500 000 $."
-  />
-  <meta property="og:type" content="website" />
-  <meta
-    property="og:image"
-    content="https://ton-domaine.com/img/human-neurons.jpg"
-  />
-  <meta name="twitter:card" content="summary_large_image" />
+  
+ <meta property="og:title" content="Ensemble pour Giulia | Project PKS" />
+<meta
+  property="og:description"
+  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux. Objectif : 500 000 USD."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://project-pks.org/fr.html" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Ensemble pour Giulia | Project PKS" />
+<meta
+  property="og:image"
+  content="https://project-pks.org/img/human-neurons.jpg"
+/>
+<meta
+  property="og:image:alt"
+  content="Campagne Ensemble pour Giulia pour financer la recherche sur le syndrome de Pallister-Killian"
+/>
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ensemble pour Giulia | Project PKS" />
+<meta
+  name="twitter:description"
+  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux. Objectif : 500 000 USD."
+/>
+<meta
+  name="twitter:image"
+  content="https://project-pks.org/img/human-neurons.jpg"
+/>
+<meta
+  name="twitter:image:alt"
+  content="Campagne pour financer la recherche sur le syndrome de Pallister-Killian"
+/>
+
+<link rel="canonical" href="https://project-pks.org/fr.html" />
  <style>
     :root{
   --bg:#F2FBF7;
@@ -614,7 +636,36 @@ footer{
   font-size:13px;
 }
 .toast b{font-weight:900}
-  </style>
+ /* Protection légère des images */
+img{
+  -webkit-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.photoProtected{
+  position: relative;
+  overflow: hidden;
+}
+
+.photoProtected img{
+  pointer-events: none; /* empêche clic direct sur l'image */
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoProtected::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:transparent;
+  z-index:2;
+}
+
+ </style>
 </head>
 
 <body>
@@ -626,14 +677,14 @@ footer{
     </div>
 
     <nav id="mainNav" aria-label="Navigation" data-open="false">
-      <a href="#inicio">Accueil</a>
+      <a href="#home">Accueil</a>
       <a href="#video">Vidéo</a>
-      <a href="#fotos">Photos</a>
-      <a href="#diagnostico">Diagnostic</a>
-      <a href="#pesquisa">Recherche</a>
-      <a href="#doacoes">Dons</a>
+      <a href="#photos">Photos</a>
+      <a href="#diagnosis">Diagnostic</a>
+      <a href="#research">Recherche</a>
+      <a href="#donations">Dons</a>
       <a href="#association">Association</a>
-      <a href="#familles">Familles</a>
+      <a href="#families">Familles</a>
     </nav>
 
     <div class="headerRight">
@@ -645,11 +696,11 @@ footer{
     <span class="langCaret" aria-hidden="true">▾</span>
   </button>
 
-  <div id="langMenu" class="langMenu" role="menu">
-    <a role="menuitem" href="index.html">PT</a>
-    <a role="menuitem" href="fr.html" aria-current="page">FR</a>
-    <a role="menuitem" href="en.html">EN</a>
-    <a role="menuitem" href="es.html">ES</a>
+  <div id="langMenu" class="langMenu">
+    <a href="index.html">EN</a>
+    <a href="fr.html" aria-current="page">FR</a>
+    <a href="pt.html">PT</a>
+    <a href="es.html">ES</a>
   </div>
 </div>
       <button class="navToggle" type="button"
@@ -663,7 +714,7 @@ footer{
 </header>
   
  <main class="wrap">
-  <section id="inicio" class="heroTop" aria-label="Couverture">
+  <section id="home" class="heroTop" aria-label="Couverture">
     <div class="heroTopInner">
 
       <div class="heroText">
@@ -677,7 +728,7 @@ footer{
           text-align:center;
           letter-spacing:.2px;
         ">
-          Et pour tous les enfants atteints de PKS.
+          Et pour tous les enfants atteints du syndrome de Pallister-Killian.
         </p>
 
         <p class="muted" style="
@@ -716,14 +767,14 @@ footer{
         </div>
 
         <div class="heroCTA" style="margin-top:18px;">
-          <button class="btn btnPrimary" onclick="goTo('doacoes')">Soutenir la recherche</button>
+          <button class="btn btnPrimary" onclick="goTo('donations')">Faire un don</button>
 <button class="btn btnBlue" onclick="goTo('video')">Voir la vidéo</button>
         </div>
       </div>
 
-      <div class="heroPhoto">
-        <img src="img/hero.jpg" alt="Photo de couverture">
-      </div>
+      <div class="heroPhoto photoProtected">
+  <img src="img/hero.jpg" alt="Giulia dans la photo principale de la campagne">
+</div>
 
     </div>
   </section>
@@ -743,21 +794,21 @@ footer{
           <div class="cardInner">
             <h3>Regarder la vidéo</h3>
 
-            <div class="videoWrap">
-              <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID_AQUI"
-                title="Vidéo de la campagne"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
+            
+  <div class="videoWrap">
+  <iframe
+    src="https://www.youtube.com/embed/6I8RimwjgRw?rel=0"
+    title="Vidéo de la campagne Giulia"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
 
-            <p class="muted" style="margin-top:10px;font-size:13px;">
-              Remplacez <b>VIDEO_ID_AQUI</b> par l’ID YouTube réel.
-            </p>
+
 
             <div class="row">
-               <a href="#doacoes" class="btn btnPrimary">Faire un don</a>
+               <a href="#donations" class="btn btnPrimary">Faire un don</a>
               <button class="btn" onclick="shareWhatsApp()">Partager</button>
             </div>
           </div>
@@ -803,8 +854,8 @@ footer{
     </p>
 
     <div class="row" style="margin-top:14px;">
-      <button class="btn btnPrimary" onclick="goTo('doacoes')">Soutenir la recherche</button>
-      <button class="btn" onclick="goTo('diagnostico')">En savoir plus</button>
+      <button class="btn btnPrimary" onclick="goTo('donations')">Soutenir la recherche</button>
+      <button class="btn" onclick="goTo('diagnosis')">En savoir plus</button>
     </div>
   </div>
 </div>
@@ -812,53 +863,53 @@ footer{
       </div>
     </section>
 
-    <section id="fotos">
+    <section id="photos">
       <h2 class="sectionTitle">Photos de Giulia</h2>
       <p class="sectionSub">
         Quelques images pour faire connaissance avec Giulia.
       </p>
 
       <div class="photos" aria-label="Photos">
-        <div class="photoBig">
+      <div class="photoBig photoProtected">
           <img
             src="img/pic0.jpg"
-            alt="Photo principale"
+            alt="Giulia sur la photo principale de la galerie"
           >
         </div>
 
         <div class="photoGrid">
-          <div class="photoSmall">
+          <div class="photoSmall photoProtected">
             <img
               src="img/photo2.jpg"
-              alt="Photo deux"
+              alt="Giulia et son papa"
             >
           </div>
 
-          <div class="photoSmall">
+          <div class="photoSmall photoProtected">
             <img
               src="img/pic3.jpg"
-              alt="Photo trois"
+              alt="Giulia et sa maman"
             >
           </div>
 
-          <div class="photoSmall">
+         <div class="photoSmall photoProtected">
             <img
               src="img/pic1.png"
-              alt="Photo quatre"
+              alt="Giulia portrait robe"
             >
           </div>
 
-          <div class="photoSmall">
+         <div class="photoSmall photoProtected">
             <img
               src="img/pic5.jpg"
-              alt="Photo cinq"
+              alt="Giulia avec lunettes"
             >
           </div>
         </div>
       </div>
     </section>
 
-   <section id="diagnostico">
+   <section id="diagnosis">
   <h2 class="sectionTitle">Diagnostic : Pallister-Killian (PKS)</h2>
   <p class="sectionSub" style="margin-top:18px; max-width:100%;">
   <b>Mieux comprendre le PKS est une étape essentielle pour faire progresser la recherche</b>,
@@ -926,7 +977,7 @@ footer{
 
 
 
-    <section id="pesquisa">
+    <section id="research">
       <h2 class="sectionTitle">Recherche avec des organoïdes cérébraux</h2>
       <p class="sectionSub" style="margin:18px 0 24px; max-width:100%;">
   Les organoïdes sont des modèles du cerveau humain développés à partir de cellules de patients,
@@ -1008,7 +1059,7 @@ footer{
 
       <img
         src="img/roadmap_fr.png"
-        alt="Estrutura do programa de pesquisa em etapas sucessivas"
+        alt="Schéma des étapes successives du programme de recherche"
         style="
           width:100%;
           height:auto;
@@ -1022,94 +1073,97 @@ footer{
 
   </div>
 </div>  <!-- FIN .grid2 -->
-</section> <!-- FIN #pesquisa -->
+</section> <!-- FIN #research -->
 
 
   
 
-    <section id="doacoes">
-      <h2 class="sectionTitle">Dons</h2>
-      <p class="sectionSub">
-        Chaque don contribue directement à accélérer la recherche.<br>
-  Si vous ne pouvez pas donner aujourd’hui, partager fait déjà une grande différence.
-      </p>
+    <section id="donations">
+  <h2 class="sectionTitle">Dons</h2>
+  <p class="sectionSub">
+    Chaque don contribue directement à accélérer la recherche.<br>
+    Si vous ne pouvez pas donner aujourd’hui, partager fait déjà une grande différence.
+  </p>
 
-      <div class="campaigns">
-        <div class="camp">
-  <div class="campTop">
-    <b>🏦 Virement bancaire (IBAN)</b><span class="muted">international</span>
-  </div>
-  <div class="campBody">
-    <div class="muted">IBAN :</div>
-    <div style="font-weight:900;font-size:16px;margin-top:6px;" id="ibanValue">VOTRE_IBAN_ICI</div>
+  <p class="muted" style="margin-top:-2px;margin-bottom:14px;font-size:13.5px;">
+    Les fonds collectés sont destinés au lancement de la phase initiale du programme de recherche présenté sur ce site.
+  </p>
 
-    <div class="muted" style="margin-top:10px;">BIC/SWIFT :</div>
-    <div style="font-weight:900;font-size:16px;margin-top:6px;" id="bicValue">VOTRE_BIC_ICI</div>
-
-    <div class="row">
-      <button class="btn btnPrimary" onclick="copyIban()">Copier IBAN</button>
-      <button class="btn" onclick="copyBic()">Copier BIC</button>
-    </div>
-
-    <div class="muted" style="margin-top:10px;font-size:13px;">
-      
-    </div>
-  </div>
-</div>
-
-
-        <div class="camp">
-          <div class="campTop">
-            <b>🌍 PayPal</b><span class="muted">international</span>
-          </div>
-          <div class="campBody">
-            Don via PayPal.
-            <div class="row">
-              <button class="btn btnPrimary" onclick="openLink(PAYPAL_LINK)">Donner via PayPal</button>
-            </div>
-            <div class="muted" style="margin-top:10px;font-size:13px;">
-              (Lien officiel à ajouter.)
-            </div>
-          </div>
+  <div class="campaigns">
+    <div class="camp">
+      <div class="campTop">
+        <b>💛 GoFundMe</b><span class="muted">international</span>
+      </div>
+      <div class="campBody">
+        Donner via GoFundMe.
+        <div class="row">
+          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Donner via GoFundMe</a>
         </div>
-
-        <div class="camp">
-          <div class="campTop">
-            <b>💛 GoFundMe</b><span class="muted">International</span>
-          </div>
-          <div class="campBody">
-            Donner via GoFundMe.
-            <div class="row">
-              <button class="btn btnPrimary" onclick="openLink(GOFUNDME_LINK)">Donner via GoFundMe</button>
-            </div>
-            <div class="muted" style="margin-top:10px;font-size:13px;">
-              (Lien officiel à ajouter.)
-            </div>
-          </div>
+        <div class="muted" style="margin-top:10px;font-size:13px;">
+          Plateforme simple et rapide pour soutenir la campagne.
         </div>
       </div>
-
-     <div class="card" style="margin-top:16px;">
-  <div class="cardInner">
-    <h3>Vous ne pouvez pas faire un don aujourd’hui ?</h3>
-
-    <p>
-      Suivez-nous sur Instagram et partagez notre combat.<br>
-      Chaque partage peut nous rapprocher d’une solution.
-    </p>
-
-    <div class="row" style="margin-top:12px;">
-      <button class="btn btnBlue" onclick="shareWhatsApp()">Partager sur WhatsApp</button>
-      <button class="btn" onclick="copyLink()">Copier le lien</button>
-      <button class="btn btnPrimary" onclick="openLink(INSTAGRAM_LINK)">Nous suivre sur Instagram</button>
     </div>
 
-    <p class="muted" style="margin-top:10px;font-size:13px;">
-      Votre soutien ne se limite pas au don : partager et suivre le projet fait déjà une vraie différence.
-    </p>
+    <div class="camp">
+      <div class="campTop">
+        <b>🌍 PayPal</b><span class="muted">international</span>
+      </div>
+      <div class="campBody">
+        Donner via PayPal.
+        <div class="row">
+          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Donner via PayPal</a>
+        </div>
+        <div class="muted" style="margin-top:10px;font-size:13px;">
+          (Lien officiel à ajouter.)
+        </div>
+      </div>
+    </div>
+
+    <div class="camp">
+      <div class="campTop">
+        <b>🏦 Virement bancaire (IBAN)</b><span class="muted">international</span>
+      </div>
+      <div class="campBody">
+        <div class="muted">IBAN :</div>
+        <div style="font-weight:900;font-size:16px;margin-top:6px;" id="ibanValue">VOTRE_IBAN_ICI</div>
+
+        <div class="muted" style="margin-top:10px;">BIC/SWIFT :</div>
+        <div style="font-weight:900;font-size:16px;margin-top:6px;" id="bicValue">VOTRE_BIC_ICI</div>
+
+        <div class="row">
+          <button class="btn btnPrimary" onclick="copyIban()">Copier IBAN</button>
+          <button class="btn" onclick="copyBic()">Copier BIC</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-    </section>
+
+  <p class="muted" style="margin-top:12px;font-size:13px;">
+    Project PKS est une association loi 1901 enregistrée en France. Des mises à jour sur l’avancement du projet seront publiées sur les canaux officiels.
+  </p>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="cardInner">
+      <h3>Vous ne pouvez pas faire un don aujourd’hui ?</h3>
+
+      <p>
+        Suivez-nous sur Instagram et partagez notre combat.<br>
+        Chaque partage peut nous rapprocher d’une solution.
+      </p>
+
+      <div class="row" style="margin-top:12px;">
+        <button class="btn btnBlue" onclick="shareWhatsApp()">Partager sur WhatsApp</button>
+        <button class="btn" onclick="copyLink()">Copier le lien</button>
+        <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Nous suivre sur Instagram</a>
+      </div>
+
+      <p class="muted" style="margin-top:10px;font-size:13px;">
+        Votre soutien ne se limite pas au don : partager et suivre le projet fait déjà une vraie différence.
+      </p>
+    </div>
+  </div>
+</section>
    
 <section id="association">
   <h2 class="sectionTitle">Association</h2>
@@ -1149,7 +1203,7 @@ footer{
   </div>
 </section>
    
-<section id="familles">
+<section id="families">
   <h2 class="sectionTitle">Pour les familles concernées par le PKS</h2>
 
   <p class="sectionSub" style="margin:18px 0 24px; max-width:100%;">
@@ -1221,7 +1275,7 @@ nous serions heureux d’entrer en contact avec vous.
         <span style="color:rgba(255,255,255,.78)">Recherche prête à démarrer</span>
       </div>
       <div class="donateBarBtns">
-        <button class="btnBar" onclick="goTo('doacoes')">Faire un don</button>
+        <button class="btnBar" onclick="goTo('donations')">Faire un don</button>
         <button class="btnBarGhost" onclick="copyLink()">Copier le lien</button>
         <button class="btnBarGhost" onclick="shareWhatsApp()">WhatsApp</button>
       </div>
@@ -1229,12 +1283,7 @@ nous serions heureux d’entrer en contact avec vous.
   </div>
 
   <script>
-    const PIX_LINK_QR   = "#";
-    const PAYPAL_LINK   = "#";
-    const GOFUNDME_LINK = "#";
-    const RIFA1_LINK    = "#";
-    const RIFA1_REGRAS  = "#";
-    const ACAO_LINK     = "#";
+   
 
     const SHARE_TEXT = "Pour Giulia — et pour tous les enfants atteints du PKS — soutenez la recherche. Lien :";
 function showToast(msg, ms=2600){
@@ -1292,13 +1341,6 @@ function showToast(msg, ms=2600){
 
 
 
-    function openLink(url){
-  if(!url || url === "#"){
-    showToast("ℹ️ Les liens officiels seront ajoutés après validation du layout.", 3500);
-    return;
-  }
-  window.open(url, "_blank", "noopener,noreferrer");
-}
 
     function copyLink(){
   safeCopyText(location.href, "Lien copié !");
@@ -1329,15 +1371,7 @@ function copyBic(){
   safeCopyText(val, "BIC copié !");
 }
 
-function copyPix(){
-  const keyEl = document.getElementById("pixKey");
-  const key = (keyEl ? keyEl.textContent.trim() : "");
-  if(!key || key === "VOTRE_CLE_PIX_ICI"){
-    showToast("ℹ️ La clé PIX officielle sera ajoutée après validation.", 3500);
-    return;
-  }
-  safeCopyText(key, "Clé PIX copiée !");
-}
+
   // --- Emails anti-bot
 const EMAIL_CONTACT_USER = "contact";
 const EMAIL_FAMILIES_USER = "families";
@@ -1347,11 +1381,7 @@ function buildEmail(user){
   return user + "@" + EMAIL_DOMAIN;
 }
 
-function revealEmail(type){
-  let user = type === "families" ? EMAIL_FAMILIES_USER : EMAIL_CONTACT_USER;
-  const email = buildEmail(user);
-  window.location.href = "mailto:" + email;
-}
+
 function copyEmail(type){
   const user = type === "families" ? EMAIL_FAMILIES_USER : EMAIL_CONTACT_USER;
   const email = buildEmail(user);
@@ -1359,47 +1389,7 @@ function copyEmail(type){
 }
 
 
-// --- Progress bar (fundraising) : barre 0 → 6M + marqueur phase initiale
-const TOTAL_GOAL_USD  = 6000000;   // objectif total estimé
-const PHASE1_GOAL_USD = 500000;    // phase initiale
-const RAISED_USD      = 0;         // <-- mets ici le montant collecté (manuel)
 
-function formatUsd(n){
-  try{
-    return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + " USD";
-  }catch(e){
-    return String(n) + " USD";
-  }
-}
-function clamp(n,a,b){ return Math.max(a, Math.min(b, n)); }
-
-function updateFundraisingUI(){
-  const pct = TOTAL_GOAL_USD > 0 ? (RAISED_USD / TOTAL_GOAL_USD) * 100 : 0;
-  const pctClamped = clamp(pct, 0, 100);
-
-  const fill = document.getElementById("progressFill");
-  const pctLabel = document.getElementById("progressPctLabel");
-  const raisedLabel = document.getElementById("raisedUsdLabel");
-  const goalTotalLabel = document.getElementById("goalTotalLabel");
-  const phaseMarker = document.getElementById("phaseMarker");
-
-  if(fill) fill.style.width = pctClamped.toFixed(1) + "%";
-  if(pctLabel) pctLabel.textContent = pctClamped.toFixed(1) + "%";
-  if(raisedLabel) raisedLabel.textContent = formatUsd(RAISED_USD);
-  if(goalTotalLabel) goalTotalLabel.textContent = formatUsd(TOTAL_GOAL_USD);
-
-  // marqueur phase initiale (500k sur 6M = 8,33%)
-  const phasePct = TOTAL_GOAL_USD > 0 ? (PHASE1_GOAL_USD / TOTAL_GOAL_USD) * 100 : 0;
-  if(phaseMarker) phaseMarker.style.left = phasePct.toFixed(2) + "%";
-
-  // aria (optionnel)
-  const track = fill?.parentElement;
-  if(track && track.setAttribute){
-    track.setAttribute("aria-valuenow", String(pctClamped.toFixed(1)));
-  }
-}
-
-updateFundraisingUI();
 
 function showInfo(type){
   if(type === "accounts"){
@@ -1455,8 +1445,28 @@ document.addEventListener("click", (e) => {
   if(!wrap) return;
   if(!e.target.closest(".langDrop")) toggleLang(false);
 });
+    document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    toggleLang(false);
+    toggleNav(false);
+  }
+});
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    document.addEventListener("contextmenu", function(e){
+  if (e.target.closest("img, .photoProtected")) {
+    e.preventDefault();
+    showToast("📷 La copie directe des photos est désactivée.");
+  }
+});
+
+    document.addEventListener("dragstart", function(e){
+  if (e.target.closest("img, .photoProtected")) {
+    e.preventDefault();
+  }
+});
+
+    
       </script>
 </body>
 </html>
