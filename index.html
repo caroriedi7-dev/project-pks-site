@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Together for Giulia | Project PKS</title>
+
+  <meta
+    name="description"
+    content="Help fund the first phase of scientific research on Pallister-Killian syndrome (PKS), the rare genetic condition affecting Giulia. Goal: 500,000 USD."
+  />
+
+  <meta property="og:title" content="Together for Giulia | Project PKS" />
+  <meta
+    property="og:description"
+    content="Help launch PKS research using brain organoids. Goal: 500,000 USD."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://project-pks.org/index.html" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Together for Giulia | Project PKS" />
+  <meta
+    property="og:image"
+    content="https://project-pks.org/img/human-neurons.jpg"
+  />
+  <meta
+    property="og:image:alt"
+    content="Campaign to fund research on Pallister-Killian syndrome"
+  />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Together for Giulia | Project PKS" />
+  <meta
+    name="twitter:description"
+    content="Help launch PKS research using brain organoids. Goal: 500,000 USD."
+  />
+  <meta
+    name="twitter:image"
+    content="https://project-pks.org/img/human-neurons.jpg"
+  />
+  <meta
+    name="twitter:image:alt"
+    content="Campaign to fund research on Pallister-Killian syndrome"
+  />
+
+  <link rel="canonical" href="https://project-pks.org/index.html" />
+
+  <style>
+    :root{
+      --bg:#F2FBF7;
+      --card:#FFFFFF;
+      --ink:#0F1F26;
+      --muted:#3F565E;
+
+      --blue:#0B2E6B;
+      --blue2:#1E63FF;
+      --green:#19B67A;
+      --gold:#D7AF4A;
+      --line:#D2E6DF;
+
+      --radius:22px;
+      --shadow: 0 18px 60px rgba(11,46,107,.16);
+      --shadow2: 0 12px 28px rgba(11,46,107,.10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink);
+      line-height:1.65;
+      background:
+        radial-gradient(900px 520px at 12% 10%, rgba(30,99,255,.14), transparent 62%),
+        radial-gradient(900px 520px at 88% 12%, rgba(25,182,122,.12), transparent 62%),
+        linear-gradient(180deg, rgba(215,175,74,.06), transparent 30%),
+        var(--bg);
+    }
+
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:18px}
+    .muted{color:var(--muted)}
+
+    /* =========================
+       Header Premium (PC) + Hamburger (Mobile) + Dropdown Lang
+       ========================= */
+
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(242,251,247,.82);
+      backdrop-filter: blur(14px) saturate(180%);
+      border-bottom:1px solid rgba(210,230,223,.95);
+    }
+
+    .topbar{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:14px;
+    }
+
+    /* Brand */
+    .brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+    .brand b{color:var(--blue);font-size:15px;letter-spacing:.25px}
+    .brand small{color:var(--muted);font-weight:900;opacity:.95}
+
+    /* Nav */
+    nav{
+      justify-self:center;
+      display:flex;
+      gap:6px;
+      flex-wrap:nowrap;
+      white-space:nowrap;
+      overflow:auto;
+      scrollbar-width:none;
+      align-items:center;
+    }
+    nav::-webkit-scrollbar{display:none}
+
+    nav a{
+      font-size:13.5px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      text-decoration:none;
+      border:1px solid transparent;
+    }
+    nav a:hover{
+      background:rgba(30,99,255,.08);
+      border-color:rgba(30,99,255,.12);
+      color:var(--blue);
+    }
+
+    /* Right block */
+    .headerRight{
+      justify-self:end;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    /* ===== Lang dropdown ===== */
+    .langDrop{position:relative}
+
+    .langBtn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(210,230,223,.95);
+      background:rgba(255,255,255,.82);
+      box-shadow: 0 10px 22px rgba(11,46,107,.08);
+      cursor:pointer;
+      font-weight:900;
+      color:var(--muted);
+    }
+    .langBtn:hover{opacity:.95}
+    .langBtn:focus-visible{
+      outline:2px solid rgba(30,99,255,.25);
+      outline-offset:2px;
+    }
+    .langCurrent{color:var(--blue)}
+    .langCaret{opacity:.7}
+    .langIcon{opacity:.85}
+
+    .langMenu{
+      position:absolute;
+      right:0;
+      top:calc(100% + 10px);
+      min-width:140px;
+      padding:8px;
+      border-radius:16px;
+      border:1px solid rgba(210,230,223,.95);
+      background:rgba(255,255,255,.96);
+      box-shadow: var(--shadow2);
+      display:none;
+    }
+    .langMenu a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 10px;
+      border-radius:12px;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:900;
+      font-size:13px;
+    }
+    .langMenu a:hover{
+      background:rgba(30,99,255,.08);
+      color:var(--blue);
+    }
+    .langMenu a[aria-current="page"]{
+      color:var(--blue);
+      background:rgba(30,99,255,.08);
+    }
+    .langDrop[data-open="true"] .langMenu{display:block}
+
+    /* Hamburger button */
+    .navToggle{
+      display:none;
+      border:1px solid rgba(210,230,223,.95);
+      background:rgba(255,255,255,.82);
+      color:var(--blue);
+      font-weight:900;
+      border-radius:999px;
+      padding:9px 11px;
+      cursor:pointer;
+      box-shadow: 0 10px 22px rgba(11,46,107,.08);
+    }
+    .navToggle:hover{opacity:.95}
+
+    /* Mobile behavior */
+    @media (max-width:900px){
+      .topbar{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        flex-wrap:wrap;
+      }
+
+      .headerRight{margin-left:auto}
+      .navToggle{display:inline-flex}
+
+      nav{
+        display:none;
+        width:100%;
+        padding-top:10px;
+        overflow:visible;
+        white-space:normal;
+        flex-wrap:wrap;
+      }
+      nav[data-open="true"]{display:flex}
+    }
+
+    /* =========================
+       Buttons
+       ========================= */
+    .btn, a.btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(210,230,223,.95);
+      background:rgba(255,255,255,.90);
+      color:var(--blue);
+      cursor:pointer;
+      font-weight:900;
+      font-size:14px;
+      text-decoration:none;
+      box-shadow: 0 10px 22px rgba(11,46,107,.08);
+      transition: transform .08s ease, opacity .15s ease;
+    }
+    .btn:hover, a.btn:hover{opacity:.96}
+    .btn:active, a.btn:active{transform: translateY(1px)}
+    .btn:focus-visible, a.btn:focus-visible{
+      outline:2px solid rgba(30,99,255,.25);
+      outline-offset:2px;
+    }
+
+    .btnPrimary{
+      border:none;
+      color:#1b1402;
+      background: linear-gradient(135deg, #f3d37f, var(--gold));
+    }
+
+    .btnBlue{
+      border:none;
+      color:#fff;
+      background: linear-gradient(135deg, var(--blue2), var(--green));
+    }
+
+    @media (max-width:600px){
+      .row .btn, .row a.btn{width:100%}
+      .row{gap:10px}
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+    .heroTop{
+      margin-top:16px;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.70);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.92);
+    }
+
+    .heroTopInner{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:16px;
+      padding:18px;
+      align-items:stretch;
+    }
+    @media (max-width:980px){ .heroTopInner{grid-template-columns:1fr} }
+
+    .heroText{
+      background: rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:18px;
+      box-shadow: var(--shadow2);
+    }
+
+    .heroKicker{margin:0 0 8px;color:var(--muted);font-size:13px;font-weight:900}
+
+    .heroTitle{
+      margin:0 0 10px;
+      color:var(--blue);
+      font-size:46px;
+      line-height:1.05;
+      letter-spacing:-.9px;
+      font-weight:900;
+    }
+
+    .heroSub{margin:0 0 12px;color:var(--muted);font-size:16px}
+    .heroSub b{color:var(--blue)}
+    .heroCTA{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+    .pills{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(11,46,107,.14);
+      box-shadow: var(--shadow2);
+      font-size:13px;font-weight:900;color:var(--blue);
+      white-space:nowrap;
+    }
+
+    .heroPhoto{
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      background:#fff;
+      min-height:420px;
+    }
+    .heroPhoto img{
+      width:100%;
+      height:100%;
+      min-height:420px;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* =========================
+       Photos mosaic
+       ========================= */
+    .photos{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+      margin-top:16px;
+    }
+    @media (max-width:980px){ .photos{grid-template-columns:1fr} }
+
+    .photoBig{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      min-height:320px;
+      background:#fff;
+    }
+    .photoBig img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .photoGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    .photoSmall{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      min-height:154px;
+      background:#fff;
+    }
+    .photoSmall img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* =========================
+       Sections + Cards
+       ========================= */
+    section{scroll-margin-top:92px}
+
+    .sectionTitle{
+      margin:24px 0 10px;
+      color:var(--blue);
+      font-size:28px;
+      letter-spacing:-.2px;
+      font-weight:900;
+    }
+
+    .sectionSub{
+      margin:0 0 14px;
+      color:var(--muted);
+      max-width:92ch;
+      font-size:15.5px;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width:980px){ .grid2{grid-template-columns:1fr} }
+
+    .grid2.equal{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:24px;
+    }
+    @media (max-width:980px){
+      .grid2.equal{grid-template-columns:1fr}
+    }
+
+    .card{
+      background: rgba(255,255,255,.93);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:18px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;left:0;top:0;bottom:0;width:6px;
+      background: linear-gradient(180deg, var(--blue2), var(--green));
+      opacity:.9;
+    }
+    .cardInner{position:relative}
+    .card h3,.card h4{margin:0 0 10px;color:var(--blue);font-weight:900}
+    .card p{margin:0;color:var(--muted)}
+    .list{margin:12px 0 0;padding-left:18px;color:var(--muted)}
+    .list li{margin:8px 0}
+
+    /* video */
+    .videoWrap{
+      position:relative;
+      width:100%;
+      padding-top:56.25%;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      background:#000;
+      margin-top:10px;
+    }
+    .videoWrap iframe{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      border:0;
+    }
+
+    /* campaigns / blocks */
+    .campaigns{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:10px;
+    }
+    @media (max-width:980px){ .campaigns{grid-template-columns:1fr} }
+
+    .camp{
+      background: rgba(255,255,255,.93);
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+    .campTop{
+      padding:14px 14px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      background: linear-gradient(135deg, rgba(30,99,255,.14), rgba(25,182,122,.10), rgba(215,175,74,.16));
+      border-bottom:1px solid var(--line);
+    }
+    .campTop b{color:var(--blue);font-weight:900}
+    .campBody{padding:14px;color:var(--muted)}
+
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+    /* footer */
+    footer{
+      margin-top:26px;
+      border-top:1px solid var(--line);
+      padding:18px 0 86px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footerGrid{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    .footerLink{
+      color: var(--blue);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .footerLink:hover{opacity:.85}
+
+    /* bottom bar */
+    .donateBar{
+      position:fixed;left:0;right:0;bottom:0;z-index:60;
+      background:rgba(11,18,32,.94);
+      border-top:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+    }
+    .donateBarInner{
+      max-width:1120px;margin:0 auto;
+      padding:12px 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      color:#fff;
+    }
+    .donateBarInner b{font-weight:900}
+    .donateBarBtns{display:flex;gap:10px;flex-wrap:wrap}
+
+    .btnBar{
+      border:none;
+      padding:10px 12px;border-radius:999px;
+      color:#1b1402;font-weight:900;
+      background: linear-gradient(135deg, #f3d37f, var(--gold));
+      cursor:pointer;
+    }
+    .btnBarGhost{
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+      font-weight:900;
+      padding:10px 12px;border-radius:999px;
+      cursor:pointer;
+    }
+    .btnBar:hover,.btnBarGhost:hover{opacity:.92}
+
+    /* Optional / existing styles kept */
+    .metaGrid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width:980px){ .metaGrid{grid-template-columns:1fr} }
+
+    .kv{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 12px;
+      border:1px dashed rgba(11,46,107,.18);
+      border-radius:16px;
+      background: rgba(255,255,255,.88);
+    }
+    .kv b{color:var(--blue); font-weight:900;}
+    .kv span{color:var(--muted); font-weight:900;}
+
+    .progressBox{
+      margin-top:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.90);
+    }
+    .progressTop{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .progressTop b{color:var(--blue); font-weight:900}
+    .progressTop .muted{font-size:13px}
+
+    .progressTrack{
+      margin-top:10px;
+      height:12px;
+      border-radius:999px;
+      background: rgba(11,46,107,.10);
+      overflow:hidden;
+      border:1px solid rgba(11,46,107,.10);
+    }
+    .progressFill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--blue2), var(--green));
+      transition: width .6s ease;
+    }
+    .progressNums{
+      margin-top:10px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,46,107,.14);
+      background: rgba(255,255,255,.90);
+      box-shadow: var(--shadow2);
+      font-weight:900;
+      color:var(--blue);
+      font-size:13px;
+    }
+
+    /* Toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:84px;
+      transform:translateX(-50%);
+      background:rgba(11,18,32,.92);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow2);
+      z-index:9999;
+      max-width:min(560px, 92vw);
+      font-size:13px;
+    }
+    .toast b{font-weight:900}
+
+    /* Light image protection */
+    img{
+      -webkit-user-drag: none;
+      user-drag: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .photoProtected{
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photoProtected img{
+      pointer-events: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photoProtected::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:transparent;
+      z-index:2;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <b>Together for Giulia</b>
+      <small>Project PKS</small>
+    </div>
+
+    <nav id="mainNav" aria-label="Navigation" data-open="false">
+      <a href="#home">Home</a>
+      <a href="#video">Video</a>
+      <a href="#photos">Photos</a>
+      <a href="#diagnosis">Diagnosis</a>
+      <a href="#research">Research</a>
+      <a href="#donations">Donations</a>
+      <a href="#association">Association</a>
+      <a href="#families">Families</a>
+    </nav>
+
+    <div class="headerRight">
+      <div class="langDrop" aria-label="Language">
+        <button class="langBtn" type="button" onclick="toggleLang()"
+          aria-expanded="false" aria-controls="langMenu">
+          <span class="langIcon" aria-hidden="true">🌐</span>
+          <span class="langCurrent">EN</span>
+          <span class="langCaret" aria-hidden="true">▾</span>
+        </button>
+
+        <div id="langMenu" class="langMenu">
+          <a href="index.html" aria-current="page">EN</a>
+          <a href="fr.html">FR</a>
+          <a href="pt.html">PT</a>
+          <a href="es.html">ES</a>
+        </div>
+      </div>
+
+      <button class="navToggle" type="button"
+        aria-expanded="false"
+        aria-controls="mainNav"
+        onclick="toggleNav()">
+        ☰
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="home" class="heroTop" aria-label="Cover">
+    <div class="heroTopInner">
+
+      <div class="heroText">
+        <p class="heroKicker">A real campaign. A race against time.</p>
+
+        <h1 class="heroTitle">Together for Giulia</h1>
+
+        <p class="muted" style="
+          margin:10px 0 14px;
+          font-size:12.5px;
+          text-align:center;
+          letter-spacing:.2px;
+        ">
+          And for all children affected by Pallister-Killian syndrome.
+        </p>
+
+        <p class="muted" style="
+          margin:0 0 16px;
+          font-size:14px;
+          text-align:center;
+        ">
+          Project PKS — Research on Pallister-Killian syndrome
+        </p>
+
+        <p class="heroSub" style="margin-top:8px;">
+          Our daughter is affected by Pallister-Killian syndrome (PKS), <b>a rare genetic disorder.</b>
+          Today, there is <b>no curative treatment</b> — but there is a real opportunity:
+          to launch <b>scientific research</b> based on <b>human brain cellular models</b>,
+          developed from patient cells, in order to better understand the disease and
+          <b>explore therapeutic strategies</b> in a rigorous and safe way.
+        </p>
+        <br>
+        <p class="heroSub" style="margin-top:10px;">
+          For this <b>scientific opportunity</b> to become <b>concrete research</b>,
+          the <b>initial phase funding</b> must be secured.
+        </p>
+
+        <div class="heroMeta" style="margin-top:16px;">
+          <p class="heroSub" style="margin-bottom:8px;">
+            🎯 <b>Campaign goal: 500,000 USD</b><br>
+            ➡️ Funding for the <b>initial phase</b> of the research program (three children included in this first stage)
+          </p>
+
+          <p class="heroSub" style="margin:0;">
+            The scientific protocol is defined.<br>
+            The partner laboratory is ready.<br>
+            The research can begin.
+          </p>
+        </div>
+
+        <div class="heroCTA" style="margin-top:18px;">
+          <button class="btn btnPrimary" onclick="goTo('donations')">Donate</button>
+          <button class="btn btnBlue" onclick="goTo('video')">Watch the video</button>
+        </div>
+      </div>
+
+      <div class="heroPhoto photoProtected">
+        <img src="img/hero.jpg" alt="Giulia in the main campaign photo">
+      </div>
+
+    </div>
+  </section>
+
+  <section id="video">
+    <h2 class="sectionTitle">Giulia’s fight against PKS</h2>
+    <p class="sectionSub" style="margin-top:18px; max-width:100%;">
+      This video explains our fight and the urgency of launching scientific research dedicated to PKS.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="cardInner">
+          <h3>Watch the video</h3>
+
+          <div class="videoWrap">
+            <iframe
+              src="https://www.youtube.com/embed/6I8RimwjgRw?rel=0"
+              title="Giulia campaign video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="row">
+            <a href="#donations" class="btn btnPrimary">Donate</a>
+            <button class="btn" onclick="shareWhatsApp()">Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardInner">
+          <h3>Why this project exists</h3>
+
+          <p>
+            Rare diseases may seem to affect only a small number of people.
+            In reality, <b>they affect millions of patients worldwide</b>.
+          </p>
+
+          <p style="margin-top:10px;">
+            More than <b>6,000 rare diseases</b> are known today, representing
+            <b>more than 300 million people</b> worldwide.
+            In many cases, they have a major impact on quality of life,
+            with motor, sensory, or intellectual impairments.
+          </p>
+
+          <p style="margin-top:10px;">
+            In recent years, biomedical research has led to
+            <b>important advances</b>.
+            But for many rare diseases, knowledge remains limited
+            and therapeutic options are still insufficient.
+          </p>
+
+          <p style="margin-top:10px;">
+            Advancing research takes time, method,
+            and focused projects capable of transforming
+            individual situations into collective progress.
+          </p>
+
+          <p style="margin-top:10px;">
+            That is the spirit behind this project.
+          </p>
+
+          <p style="margin-top:10px;">
+            For Giulia — and for millions of other children —
+            <b>time matters</b>.
+            Every month without research is a month without answers.
+          </p>
+
+          <div class="row" style="margin-top:14px;">
+            <button class="btn btnPrimary" onclick="goTo('donations')">Support the research</button>
+            <button class="btn" onclick="goTo('diagnosis')">Learn more</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <h2 class="sectionTitle">Photos of Giulia</h2>
+    <p class="sectionSub">
+      A few images to get to know Giulia.
+    </p>
+
+    <div class="photos" aria-label="Photos">
+      <div class="photoBig photoProtected">
+        <img
+          src="img/pic0.jpg"
+          alt="Giulia in the main gallery photo"
+        >
+      </div>
+
+      <div class="photoGrid">
+        <div class="photoSmall photoProtected">
+          <img
+            src="img/photo2.jpg"
+            alt="Giulia with her father"
+          >
+        </div>
+
+        <div class="photoSmall photoProtected">
+          <img
+            src="img/pic3.jpg"
+            alt="Giulia with her mother"
+          >
+        </div>
+
+        <div class="photoSmall photoProtected">
+          <img
+            src="img/pic1.png"
+            alt="Portrait of Giulia wearing a dress"
+          >
+        </div>
+
+        <div class="photoSmall photoProtected">
+          <img
+            src="img/pic5.jpg"
+            alt="Giulia wearing glasses"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="diagnosis">
+    <h2 class="sectionTitle">Diagnosis: Pallister-Killian syndrome (PKS)</h2>
+    <p class="sectionSub" style="margin-top:18px; max-width:100%;">
+      <b>Better understanding PKS is an essential step toward advancing research</b>,
+      opening new perspectives and benefiting all children affected by this condition.
+    </p>
+
+    <div class="grid2 equal">
+      <div class="card">
+        <div class="cardInner" style="line-height:1.75;">
+          <h3>🧬 Diagnosis — Pallister-Killian syndrome (PKS)</h3>
+
+          <p style="margin-top:12px;">
+            Pallister-Killian syndrome (PKS) is a <b>rare genetic disorder</b> caused by a
+            <b>mosaic chromosomal abnormality (tetrasomy 12p)</b>.
+          </p>
+
+          <p style="margin-top:14px;">
+            It appears in <b>mosaic</b> form, meaning that only some cells carry the abnormality.
+            This makes <b>diagnosis more difficult</b> and explains why each child can be affected differently.
+          </p>
+
+          <p style="margin-top:14px;">
+            Giulia presents a <b>global developmental impairment</b>, including motor delays,
+            <b>hypotonia</b>, absence of speech, and difficulties with social interaction.
+          </p>
+
+          <p class="muted" style="margin-top:16px;">
+            In other children, the syndrome may be associated with <b>more complex manifestations</b>,
+            such as congenital malformations and severe neurological disorders.
+            Conversely, some forms may be <b>milder</b>, illustrating the
+            <b>great variability</b> of Pallister-Killian syndrome.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardInner" style="line-height:1.75;">
+          <h3>🧠 Why this research is needed</h3>
+
+          <p style="margin-top:12px;">
+            Although Pallister-Killian syndrome has already been the subject of scientific research,
+            most of it remains descriptive and is rarely focused on evaluating therapeutic strategies.
+          </p>
+
+          <p style="margin-top:14px;">
+            To date, care is essentially based on supportive treatment,
+            without targeted action on the biological mechanisms of the disease.
+          </p>
+
+          <p style="margin-top:14px;">
+            This research aims to fill a scientific gap by developing a functional disease model
+            that makes it possible to study its mechanisms and rigorously explore
+            <b>potential therapeutic approaches</b>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2 class="sectionTitle">Research using brain organoids</h2>
+    <p class="sectionSub" style="margin:18px 0 24px; max-width:100%;">
+      Organoids are human brain models developed from patient cells
+      that faithfully reflect cellular characteristics of the child’s brain,
+      making it possible to study disease mechanisms and evaluate scientific strategies
+      in a rigorous and safe way.
+    </p>
+
+    <div class="grid2 equal">
+      <div class="card">
+        <div class="cardInner" style="line-height:1.75;">
+          <h3>🔬 The research program</h3>
+
+          <p>
+            Developing a scientific approach for a rare genetic condition is a progressive process,
+            structured in successive stages and guided by the scientific results obtained at each phase.
+          </p>
+
+          <p style="margin-top:12px;">
+            The program begins with the creation of <b>brain organoids</b>, human brain models
+            developed from cells taken from three children affected by PKS, <b>including Giulia</b>.
+            These models reproduce the genetic abnormality of the disease and make it possible to study,
+            in the laboratory, how the affected brain cells function.
+          </p>
+
+          <p style="margin-top:12px;">
+            Using these organoids, researchers analyze the <b>biological and neurological mechanisms</b> of PKS
+            in order to understand how cells develop, communicate, and where disease-related alterations appear.
+          </p>
+
+          <p style="margin-top:12px;">
+            <b>Measurable markers</b> are then identified (cell activity, gene expression,
+            neuronal organization), allowing observed effects to be compared scientifically.
+          </p>
+
+          <p style="margin-top:12px;">
+            The program also includes the <b>evaluation of scientific strategies directly on these organoids</b>,
+            including modulation of altered biological processes and the evaluation of substances and approaches
+            already described in science, in order to analyze their biological and functional effects.
+          </p>
+
+          <div class="row" style="margin-top:18px;">
+            <button type="button" class="btn btnBlue" onclick="showInfo('progress')">
+              Scientific program updates
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardInner" style="line-height:1.75;">
+          <h3>💰 Budget and long-term vision</h3>
+
+          <p>
+            The <b>500,000 USD</b> budget corresponds to the <b>initial phase</b> of the research program.
+          </p>
+
+          <p style="margin-top:12px;">
+            It makes it possible to begin the experimental work, generate the first scientific results,
+            and determine the possible next steps of the program.
+          </p>
+
+          <p style="margin-top:12px;">
+            To date, the total estimated cost of taking this program to a potential clinical application
+            is estimated at between <b>5 and 6 million dollars</b>, structured in successive stages depending on the scientific results obtained.
+          </p>
+
+          <p style="margin-top:12px;">
+            The continuation of the program will depend exclusively on the
+            <b>scientific results obtained during the initial phase</b>.
+          </p>
+
+          <div class="roadmapImg" style="margin:12px 0 6px; padding-top:8px; border-top:1px dashed var(--line);">
+            <img
+              src="img/roadmap_en.png"
+              alt="Diagram of the successive stages of the research program"
+              style="
+                width:100%;
+                height:auto;
+                border-radius:16px;
+                border:1px solid var(--line);
+                box-shadow: var(--shadow2);
+                background:#fff;
+              "
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="donations">
+    <h2 class="sectionTitle">Donations</h2>
+    <p class="sectionSub">
+      Every donation contributes directly to accelerating the research.<br>
+      If you cannot donate today, sharing already makes a real difference.
+    </p>
+
+    <p class="muted" style="margin-top:-2px;margin-bottom:14px;font-size:13.5px;">
+      The funds raised are intended for the launch of the initial phase of the research program presented on this site.
+    </p>
+
+    <div class="campaigns">
+      <div class="camp">
+        <div class="campTop">
+          <b>💛 GoFundMe</b><span class="muted">international</span>
+        </div>
+        <div class="campBody">
+          Donate via GoFundMe.
+          <div class="row">
+            <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Donate via GoFundMe</a>
+          </div>
+          <div class="muted" style="margin-top:10px;font-size:13px;">
+            A simple and fast platform to support the campaign.
+          </div>
+        </div>
+      </div>
+
+      <div class="camp">
+        <div class="campTop">
+          <b>🌍 PayPal</b><span class="muted">international</span>
+        </div>
+        <div class="campBody">
+          Donate via PayPal.
+          <div class="row">
+            <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Donate via PayPal</a>
+          </div>
+          <div class="muted" style="margin-top:10px;font-size:13px;">
+            (Official link to be added.)
+          </div>
+        </div>
+      </div>
+
+      <div class="camp">
+        <div class="campTop">
+          <b>🏦 Bank transfer (IBAN)</b><span class="muted">international</span>
+        </div>
+        <div class="campBody">
+          <div class="muted">IBAN:</div>
+          <div style="font-weight:900;font-size:16px;margin-top:6px;" id="ibanValue">YOUR_IBAN_HERE</div>
+
+          <div class="muted" style="margin-top:10px;">BIC/SWIFT:</div>
+          <div style="font-weight:900;font-size:16px;margin-top:6px;" id="bicValue">YOUR_BIC_HERE</div>
+
+          <div class="row">
+            <button class="btn btnPrimary" onclick="copyIban()">Copy IBAN</button>
+            <button class="btn" onclick="copyBic()">Copy BIC</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:12px;font-size:13px;">
+      Project PKS is a nonprofit association registered in France under the 1901 law. Updates on the progress of the project will be published through official channels.
+    </p>
+
+    <div class="card" style="margin-top:16px;">
+      <div class="cardInner">
+        <h3>Can’t donate today?</h3>
+
+        <p>
+          Follow us on Instagram and share our fight.<br>
+          Every share can bring us closer to a solution.
+        </p>
+
+        <div class="row" style="margin-top:12px;">
+          <button class="btn btnBlue" onclick="shareWhatsApp()">Share on WhatsApp</button>
+          <button class="btn" onclick="copyLink()">Copy link</button>
+          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Follow us on Instagram</a>
+        </div>
+
+        <p class="muted" style="margin-top:10px;font-size:13px;">
+          Your support goes beyond donating: sharing and following the project already makes a real difference.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="association">
+    <h2 class="sectionTitle">Association</h2>
+
+    <div class="card" style="margin-top:12px;">
+      <div class="cardInner" style="line-height:1.75;">
+
+        <p><b>Project PKS</b> is a nonprofit association registered in France and governed by the 1901 law.</p>
+
+        <p style="margin-top:12px;">
+          Its mission is to fund, structure, and accelerate scientific research programs
+          dedicated to Pallister-Killian syndrome (PKS),
+          in order to explore potential therapeutic strategies.
+        </p>
+
+        <p style="margin-top:12px;">
+          The association focuses exclusively on funding
+          and organizing scientific projects dedicated to PKS.
+        </p>
+
+        <p class="muted" style="margin-top:14px;">
+          It is not intended to provide medical or social support, nor a networking service. However, we are happy to respond to families affected by PKS who wish to contribute to the project or share information useful for research.
+        </p>
+
+        <div style="margin-top:18px; padding-top:14px; border-top:1px dashed var(--line);">
+          <div><b>RNA:</b> W951008089</div>
+          <div><b>Registered office:</b> 14, Place Eugène Varlin - Taverny - France</div>
+        </div>
+
+        <div class="row" style="margin-top:18px;">
+          <button type="button" class="btn btnBlue" onclick="showInfo('accounts')">
+            Financial information
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="families">
+    <h2 class="sectionTitle">For families affected by PKS</h2>
+
+    <p class="sectionSub" style="margin:18px 0 24px; max-width:100%;">
+      This project aims to advance research on Pallister-Killian syndrome
+      and open new perspectives for all affected children.
+      It was born from a personal story — Giulia’s story —
+      but is part of a collective and scientific effort.
+      If you are a family affected by PKS and would like to participate or contribute,
+      we would be happy to get in touch with you.
+    </p>
+
+    <div class="card">
+      <div class="cardInner" style="line-height:1.75;">
+
+        <p>
+          You can write to us directly:
+        </p>
+
+        <div class="row" style="margin-top:14px;">
+          <button type="button" class="btn btnBlue" onclick="copyEmail('families')">
+            Copy email (PKS families)
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footerGrid">
+      <div class="muted" style="margin-top:18px; max-width:100%">
+        <p>
+          <b>Together for Giulia</b> is a public awareness campaign dedicated to supporting
+          <b>scientific research on Pallister-Killian syndrome (PKS)</b>.
+        </p>
+      </div>
+
+      <div class="muted" style="margin-top:10px;">
+        Contact:
+        <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">
+          Copy contact email
+        </a>
+        · Instagram: <b>@juntospelagiulia</b>
+      </div>
+
+      <div>
+        © <span id="year"></span> Made by a mother and a father, out of love for Giulia.
+      </div>
+    </div>
+  </footer>
+</main>
+
+<div class="donateBar" role="region" aria-label="Donation bar">
+  <div class="donateBarInner">
+    <div>
+      <b>Goal:</b> <span>500,000 $</span> · <b>PKS</b> ·
+      <span style="color:rgba(255,255,255,.78)">Research ready to begin</span>
+    </div>
+    <div class="donateBarBtns">
+      <button class="btnBar" onclick="goTo('donations')">Donate</button>
+      <button class="btnBarGhost" onclick="copyLink()">Copy link</button>
+      <button class="btnBarGhost" onclick="shareWhatsApp()">WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SHARE_TEXT = "For Giulia — and for all children affected by PKS — support the research. Link:";
+
+  function showToast(msg, ms=2600){
+    const t = document.createElement("div");
+    t.className = "toast";
+    t.innerHTML = msg;
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(), ms);
+  }
+
+  async function safeCopyText(text, okMsg="Copied!"){
+    try{
+      if(navigator.clipboard?.writeText){
+        await navigator.clipboard.writeText(text);
+        showToast("✅ <b>"+okMsg+"</b>");
+        return true;
+      }
+    }catch(e){}
+
+    try{
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(ta);
+
+      if(success){
+        showToast("✅ <b>"+okMsg+"</b>");
+        return true;
+      }
+    }catch(e){}
+
+    showToast("📋 Manual copy: <b>" + String(text).replace(/</g,"&lt;") + "</b>", 6000);
+    return false;
+  }
+
+  function goTo(id){
+    const el = document.getElementById(id);
+
+    if(!el){
+      location.hash = "#" + id;
+      return;
+    }
+
+    history.replaceState(null, "", "#" + id);
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function copyLink(){
+    safeCopyText(location.href, "Link copied!");
+  }
+
+  function shareWhatsApp(){
+    const text = SHARE_TEXT + " " + location.href;
+    window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
+  }
+
+  function copyIban(){
+    const el = document.getElementById("ibanValue");
+    const val = (el ? el.textContent.trim() : "");
+    if(!val || val === "YOUR_IBAN_HERE"){
+      showToast("ℹ️ The official IBAN will be added after validation.", 3500);
+      return;
+    }
+    safeCopyText(val, "IBAN copied!");
+  }
+
+  function copyBic(){
+    const el = document.getElementById("bicValue");
+    const val = (el ? el.textContent.trim() : "");
+    if(!val || val === "YOUR_BIC_HERE"){
+      showToast("ℹ️ The official BIC/SWIFT will be added after validation.", 3500);
+      return;
+    }
+    safeCopyText(val, "BIC copied!");
+  }
+
+  const EMAIL_CONTACT_USER = "contact";
+  const EMAIL_FAMILIES_USER = "families";
+  const EMAIL_DOMAIN = "project-pks.org";
+
+  function buildEmail(user){
+    return user + "@" + EMAIL_DOMAIN;
+  }
+
+  function copyEmail(type){
+    const user = type === "families" ? EMAIL_FAMILIES_USER : EMAIL_CONTACT_USER;
+    const email = buildEmail(user);
+    safeCopyText(email, "Email copied!");
+  }
+
+  function showInfo(type){
+    if(type === "accounts"){
+      showToast(
+        "📌 <b>Accounts</b>: the association is recent. No annual financial statement has yet been closed. Accounts will be published annually after the first closing.",
+        6000
+      );
+      return;
+    }
+
+    if(type === "progress"){
+      showToast(
+        "🔬 <b>Updates</b>: the research program will begin as soon as the funding for the initial phase is reached. Official updates will be published here.",
+        6000
+      );
+      return;
+    }
+  }
+
+  function toggleNav(force){
+    const nav = document.getElementById("mainNav");
+    const btn = document.querySelector(".navToggle");
+    if(!nav || !btn) return;
+
+    const isOpen = nav.getAttribute("data-open") === "true";
+    const next = (typeof force === "boolean") ? force : !isOpen;
+
+    nav.setAttribute("data-open", next ? "true" : "false");
+    btn.setAttribute("aria-expanded", next ? "true" : "false");
+  }
+
+  document.addEventListener("click", (e) => {
+    const nav = document.getElementById("mainNav");
+    if(!nav) return;
+    const link = e.target.closest("nav a");
+    if(link) toggleNav(false);
+  });
+
+  function toggleLang(force){
+    const wrap = document.querySelector(".langDrop");
+    const btn  = document.querySelector(".langBtn");
+    if(!wrap || !btn) return;
+
+    const isOpen = wrap.getAttribute("data-open") === "true";
+    const next = (typeof force === "boolean") ? force : !isOpen;
+
+    wrap.setAttribute("data-open", next ? "true" : "false");
+    btn.setAttribute("aria-expanded", next ? "true" : "false");
+  }
+
+  document.addEventListener("click", (e) => {
+    const wrap = document.querySelector(".langDrop");
+    if(!wrap) return;
+    if(!e.target.closest(".langDrop")) toggleLang(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      toggleLang(false);
+      toggleNav(false);
+    }
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.addEventListener("contextmenu", function(e){
+    if (e.target.closest("img, .photoProtected")) {
+      e.preventDefault();
+      showToast("📷 Direct photo copying is disabled.");
+    }
+  });
+
+  document.addEventListener("dragstart", function(e){
+    if (e.target.closest("img, .photoProtected")) {
+      e.preventDefault();
+    }
+  });
+</script>
+</body>
+</html>
