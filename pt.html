@@ -634,7 +634,199 @@ footer{
   font-size:13px;
 }
 .toast b{font-weight:900}
+/* ═══════════════════════════════════════════════
+       STYLES SECTION DONS — VERSION FINALE
+             ═══════════════════════════════════════════════ */
 
+    /* Carte principale */
+    .donCard{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    /* Grille 2 colonnes */
+    .donGrid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr;
+    }
+    @media(max-width:780px){.donGrid{grid-template-columns:1fr}}
+
+    /* ── GAUCHE ── */
+    .donLeft{
+      padding:36px 40px 28px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      border-right:1px solid var(--line);
+    }
+    @media(max-width:780px){.donLeft{border-right:none;border-bottom:1px solid var(--line);}}
+
+    /* Bloc photo + jauge */
+    .donHeroTop{
+      width:100%;
+      background:linear-gradient(160deg,rgba(11,46,107,.92),rgba(11,46,107,.75));
+      border-radius:18px;
+      padding:20px 22px;
+      margin-bottom:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .donHeroTop::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(30,99,255,.18),rgba(25,182,122,.14));
+      pointer-events:none;
+    }
+    .donHeroTopInner{
+      position:relative;z-index:1;
+      display:flex;align-items:center;gap:14px;
+    }
+    .donCircle{
+      width:52px;height:52px;border-radius:50%;
+      border:2.5px solid rgba(255,255,255,.28);
+      overflow:hidden;flex-shrink:0;
+    }
+    .donCircle img{width:100%;height:100%;object-fit:cover;pointer-events:none;}
+    .donHeroText{flex:1;}
+    .donHeroQuote{font-size:14px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:3px;}
+    .donHeroSub{font-size:11px;color:rgba(255,255,255,.65);line-height:1.4;}
+    .donProgBar{
+      height:5px;border-radius:999px;
+      background:rgba(255,255,255,.18);
+      overflow:hidden;margin-top:12px;
+      position:relative;z-index:1;
+    }
+    .donProgFill{
+      height:100%;width:0%;border-radius:999px;
+      background:linear-gradient(90deg,#f3d37f,var(--gold));
+      transition:width 1.2s ease;
+    }
+    .donProgNums{
+      display:flex;justify-content:space-between;
+      font-size:11px;color:rgba(255,255,255,.65);font-weight:900;
+      margin-top:6px;position:relative;z-index:1;
+    }
+    .donProgNums b{color:#fff;}
+
+    /* Tabs */
+    .donTabRow{
+      display:flex;background:rgba(11,46,107,.06);
+      border-radius:999px;padding:3px;
+      margin-bottom:18px;width:100%;
+    }
+    .donTab{
+      flex:1;padding:8px 6px;border-radius:999px;
+      font-size:13px;font-weight:900;color:var(--muted);
+      text-align:center;cursor:pointer;transition:all .15s;
+    }
+    .donTab.active{
+      background:#fff;color:var(--blue);
+      box-shadow:0 3px 10px rgba(11,46,107,.12);
+    }
+
+    /* Montants */
+    .donAmtsRow{display:flex;gap:8px;margin-bottom:12px;width:100%;}
+    .donAmt{
+      flex:1;padding:11px 6px;border-radius:999px;
+      border:1.5px solid #d1d5db;background:#fff;
+      color:var(--ink);font-weight:600;font-size:15px;
+      text-align:center;cursor:pointer;transition:all .12s;
+    }
+    .donAmt:hover{border-color:var(--blue);}
+    .donAmt.active{
+      border:2.5px solid var(--blue);
+      color:var(--blue);font-weight:900;
+    }
+
+    /* Autre montant */
+    .donCustomInput{
+      width:58%;padding:10px 20px;border-radius:999px;
+      border:1.5px solid #d1d5db;background:#f9fafb;
+      color:var(--muted);font-size:14px;text-align:center;
+      outline:none;font-family:inherit;margin-bottom:22px;
+      display:block;
+    }
+    .donCustomInput::placeholder{color:#9ca3af;}
+    .donCustomInput:focus{
+      border-color:var(--blue2);
+      background:#fff;color:var(--ink);
+    }
+
+    /* CTA */
+    .donCtaWrap{width:85%;margin-bottom:12px;}
+    .donCtaBtn{
+      width:100%;padding:16px 32px;border:none;border-radius:999px;
+      font-size:16px;font-weight:900;color:#fff;
+      background:linear-gradient(135deg,var(--blue2) 0%,var(--green) 100%);
+      cursor:pointer;
+      box-shadow:0 8px 24px rgba(30,99,255,.32),inset 0 1px 0 rgba(255,255,255,.15);
+      transition:all .15s;letter-spacing:.1px;
+      position:relative;overflow:hidden;
+    }
+    .donCtaBtn::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,.12) 0%,transparent 55%);
+      border-radius:999px;pointer-events:none;
+    }
+    .donCtaBtn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 32px rgba(30,99,255,.38),inset 0 1px 0 rgba(255,255,255,.15);
+    }
+    .donCtaBtn:active{transform:translateY(0);}
+
+    .donLock{font-size:12px;color:var(--muted);text-align:center;margin:0;}
+
+    /* ── DROITE ── */
+    .donRight{padding:36px 28px 28px;display:flex;flex-direction:column;}
+    .donRightTitle{
+      font-size:19px;font-weight:900;color:var(--blue);
+      margin-bottom:5px;line-height:1.3;
+    }
+    .donRightSub{font-size:13px;color:var(--muted);margin-bottom:18px;}
+
+    .donAltBtn{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 16px;border-radius:14px;
+      border:1px solid var(--line);background:#fff;
+      cursor:pointer;transition:all .12s;margin-bottom:10px;
+      text-decoration:none;
+      box-shadow:0 1px 4px rgba(0,0,0,.05);
+    }
+    .donAltBtn:hover{
+      border-color:var(--blue2);
+      box-shadow:var(--shadow2);
+      transform:translateY(-1px);
+    }
+    .donAltLeft{display:flex;align-items:center;gap:10px;}
+    .donAltArrow{color:#ccc;font-size:15px;transition:transform .2s;}
+
+    /* Accordéon virement */
+    .donVirBox{
+      display:none;margin-top:-4px;margin-bottom:10px;
+      background:rgba(11,46,107,.04);
+      border:1.5px solid var(--line);
+      border-radius:14px;padding:14px 16px;
+    }
+    .donVirBox.open{display:block;}
+    .donVirLbl{font-size:11px;font-weight:900;color:var(--muted);letter-spacing:.3px;margin-bottom:3px;}
+    .donVirVal{font-size:14px;font-weight:900;color:var(--blue);margin-bottom:10px;word-break:break-all;}
+    .donVirNote{font-size:11px;color:var(--muted);line-height:1.5;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);}
+
+    .donAltSecure{
+      display:flex;align-items:center;gap:7px;
+      font-size:12px;color:var(--muted);
+      margin-top:auto;padding-top:10px;
+    }
+
+    /* Footer carte */
+    .donFooter{
+      padding:13px 40px;border-top:1px solid var(--line);
+      text-align:center;font-size:12px;color:#9ca3af;
+      background:rgba(242,251,247,.5);
+    }
 /* Protection légère des images */
 img{
   -webkit-user-drag: none;
@@ -1050,92 +1242,138 @@ img{
     </div>
   </section>
 
-  <section id="doacoes">
+    <section id="doacoes">
     <h2 class="sectionTitle">Doações</h2>
     <p class="sectionSub">
       Cada doação contribui diretamente para acelerar a pesquisa.<br>
       Se você não puder doar agora, compartilhar já faz uma grande diferença.
     </p>
 
-    <p class="muted" style="margin-top:-2px;margin-bottom:14px;font-size:13.5px;">
-      Os fundos arrecadados são destinados ao lançamento da fase inicial do programa de pesquisa apresentado neste site.
-    </p>
+    <div class="donCard">
+      <div class="donGrid">
 
-    <div class="campaigns">
-      <div class="camp">
-        <div class="campTop">
-          <b>🇧🇷 PIX</b><span class="muted">Brasil</span>
+        <!-- ESQUERDA -->
+        <div class="donLeft">
+
+          <div class="donHeroTop">
+            <div class="donHeroTopInner">
+              <div class="donCircle">
+                <img src="img/hero.jpg" alt="Giulia">
+              </div>
+              <div class="donHeroText">
+                <div class="donHeroQuote">Pela Giulia e por todas as crianças com PKS</div>
+                <div class="donHeroSub">O laboratório está pronto. Falta o financiamento.</div>
+              </div>
+            </div>
+            <div class="donProgBar"><div class="donProgFill" id="donProgFill"></div></div>
+            <div class="donProgNums">
+              <span><b id="donAmtDisplay">R$ 0</b> arrecadado</span>
+              <span>Meta <b>US$ 500.000</b></span>
+            </div>
+          </div>
+
+          <div class="donTabRow">
+            <div class="donTab active" id="donTabOnce" onclick="donSwitchTab('once')">Doação única</div>
+            <div class="donTab" id="donTabMonthly" onclick="donSwitchTab('monthly')">Doação mensal</div>
+          </div>
+
+          <div class="donAmtsRow" id="donGridOnce">
+            <div class="donAmt" onclick="donPick(this,50)">R$50</div>
+            <div class="donAmt" onclick="donPick(this,100)">R$100</div>
+            <div class="donAmt active" onclick="donPick(this,250)">R$250</div>
+            <div class="donAmt" onclick="donPick(this,500)">R$500</div>
+          </div>
+
+          <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
+            <div class="donAmt" onclick="donPick(this,50)">R$50</div>
+            <div class="donAmt active" onclick="donPick(this,100)">R$100</div>
+            <div class="donAmt" onclick="donPick(this,250)">R$250</div>
+          </div>
+
+          <input class="donCustomInput" type="number" placeholder="Outro valor" id="donCustomAmt" oninput="donOnCustom()" min="1"/>
+
+          <div class="donCtaWrap">
+            <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Fazer uma doação segura</button>
+          </div>
+          <p class="donLock">🔒 Cartão · Apple Pay · Google Pay · PIX</p>
+
         </div>
-        <div class="campBody">
-          <div class="muted">Chave PIX:</div>
-          <div style="font-weight:900;font-size:16px;margin-top:6px;" id="pixKey">SUA_CHAVE_PIX_AQUI</div>
 
-          <div class="row">
-            <button class="btn btnPrimary" onclick="copyPix()">Copiar chave PIX</button>
-            <button class="btn" onclick="openLink(PIX_LINK_QR)">Abrir QR/Link</button>
+        <!-- DIREITA -->
+        <div class="donRight">
+          <div class="donRightTitle">Outras formas de doar ›</div>
+          <div class="donRightSub">Você também pode doar via:</div>
+
+          <!-- PayPal -->
+          <!-- ⚙️ SUBSTITUIR LIEN_PAYPAL -->
+          <a class="donAltBtn" href="LIEN_PAYPAL" target="_blank" rel="noopener noreferrer">
+            <div class="donAltLeft">
+              <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-150px.png"
+                alt="PayPal" style="height:22px;width:auto;pointer-events:none;">
+              <span style="font-size:14px;font-weight:700;color:#003087;">Doar via PayPal</span>
+            </div>
+            <span class="donAltArrow">›</span>
+          </a>
+
+          <!-- GoFundMe -->
+          <!-- ⚙️ SUBSTITUIR LIEN_GOFUNDME -->
+          <a class="donAltBtn" href="LIEN_GOFUNDME" target="_blank" rel="noopener noreferrer">
+            <div class="donAltLeft">
+              <span style="background:#00b964;color:#fff;font-size:10px;font-weight:900;padding:4px 10px;border-radius:999px;white-space:nowrap;">GoFundMe</span>
+              <span style="font-size:14px;font-weight:700;color:#00b964;">Campanha internacional</span>
+            </div>
+            <span class="donAltArrow">›</span>
+          </a>
+
+          <!-- PIX — accordéon -->
+          <div class="donAltBtn" onclick="donToggleVir()" style="cursor:pointer;">
+            <div class="donAltLeft">
+              <span style="font-size:18px;">🇧🇷</span>
+              <span style="font-size:14px;font-weight:700;color:var(--ink);" id="donVirLabel">PIX</span>
+            </div>
+            <span class="donAltArrow" id="donVirArrow">›</span>
           </div>
 
-          <div class="muted" style="margin-top:10px;font-size:13px;">
-            (Depois colocamos sua chave e seu link.)
+          <div class="donVirBox" id="donVirBox">
+            <div class="donVirLbl">CHAVE PIX</div>
+            <!-- ⚙️ SUBSTITUIR PELA SUA CHAVE PIX -->
+            <div class="donVirVal" id="donIbanVal">SUA_CHAVE_PIX_AQUI</div>
+            <div>
+              <button class="btn" onclick="donCopyVal('iban')" style="font-size:12px;padding:6px 12px;">📋 Copiar chave PIX</button>
+            </div>
+            <div class="donVirNote">Referência: <b>DOAÇÃO PKS + seu nome</b></div>
           </div>
+
+          <div class="donAltSecure">🛡️ Pagamentos seguros &amp; internacionais</div>
+
         </div>
       </div>
 
-      <div class="camp">
-        <div class="campTop">
-          <b>🌍 PayPal</b><span class="muted">internacional</span>
-        </div>
-        <div class="campBody">
-          Doação via PayPal.
-          <div class="row">
-            <button class="btn btnPrimary" onclick="openLink(PAYPAL_LINK)">Doar no PayPal</button>
-          </div>
-          <div class="muted" style="margin-top:10px;font-size:13px;">
-            (Depois colocamos seu link oficial.)
-          </div>
-        </div>
-      </div>
-
-      <div class="camp">
-        <div class="campTop">
-          <b>💛 GoFundMe</b><span class="muted">internacional</span>
-        </div>
-        <div class="campBody">
-          Contribua por meio da campanha no GoFundMe.
-          <div class="row">
-            <button class="btn btnPrimary" onclick="openLink(GOFUNDME_LINK)">Doar no GoFundMe</button>
-          </div>
-          <div class="muted" style="margin-top:10px;font-size:13px;">
-            (Depois colocamos o link oficial.)
-          </div>
-        </div>
+      <div class="donFooter">
+        Associação francesa sem fins lucrativos · Projeto científico validado · Transparência total.
       </div>
     </div>
-
-    <p class="muted" style="margin-top:12px;font-size:13px;">
-      Project PKS é uma associação sem fins lucrativos registrada na França. Atualizações sobre o andamento do projeto serão publicadas nos canais oficiais.
-    </p>
 
     <div class="card" style="margin-top:16px;">
       <div class="cardInner">
         <h3>Você não pode fazer uma doação hoje?</h3>
-
-        <p>
+        <p style="margin-top:8px;">
           Compartilhar já é uma forma de ajudar. Envie este projeto para <b>5 pessoas</b> — é assim que uma campanha ganha força.
         </p>
-
-        <div class="row" style="margin-top:12px;">
+        <div class="row" style="margin-top:14px;">
           <button class="btn btnBlue" onclick="shareWhatsApp()">Compartilhar no WhatsApp</button>
           <button class="btn" onclick="copyLink()">Copiar link</button>
-          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Seguir no Instagram</a>
+          <!-- ⚙️ SUBSTITUIR href="#" PELO SEU LINK DO INSTAGRAM -->
+          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
-
         <p class="muted" style="margin-top:10px;font-size:13px;">
           Seu apoio não se limita à doação: compartilhar e acompanhar o projeto já faz uma diferença real.
         </p>
       </div>
     </div>
+
   </section>
+
 
   <section id="associacao">
     <h2 class="sectionTitle">Associação</h2>
@@ -1248,7 +1486,84 @@ img{
   const GOFUNDME_LINK = "#";
 
   const SHARE_TEXT = "Ajude a salvar a Giulia e iniciar a pesquisa em PKS. Link:";
+const DON_CONFIG = {
+    collected: 0,
+    goal: 500000,
+    donors: 0,
+    stripeLink: 'https://donate.stripe.com/test_14AaEQeRr0ZM11c4v5aZi00',
+    stripeLinkMonthly: 'STRIPE_LINK_MENSAL'
+  };
 
+  let donTab = 'once';
+  let donAmt = 250;
+  let donVirOpen = false;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const pct = Math.min((DON_CONFIG.collected / DON_CONFIG.goal) * 100, 100);
+    setTimeout(() => {
+      const f = document.getElementById('donProgFill');
+      if (f) f.style.width = pct.toFixed(1) + '%';
+    }, 500);
+    const a = document.getElementById('donAmtDisplay');
+    if (a) a.textContent = 'R$ ' + DON_CONFIG.collected.toLocaleString('pt-BR');
+  });
+
+  function donSwitchTab(t) {
+    donTab = t;
+    document.getElementById('donTabOnce').className = 'donTab' + (t === 'once' ? ' active' : '');
+    document.getElementById('donTabMonthly').className = 'donTab' + (t === 'monthly' ? ' active' : '');
+    document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
+    document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
+    donAmt = t === 'once' ? 250 : 100;
+    document.getElementById('donCustomAmt').value = '';
+    const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
+    document.querySelectorAll('#' + g + ' .donAmt')
+      .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
+  }
+
+  function donPick(el, a) {
+    const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
+    document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    donAmt = a;
+    document.getElementById('donCustomAmt').value = '';
+  }
+
+  function donOnCustom() {
+    const v = parseFloat(document.getElementById('donCustomAmt').value);
+    const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
+    document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+    if (v > 0) donAmt = v;
+  }
+
+  function donSubmit() {
+    const link = donTab === 'monthly' ? DON_CONFIG.stripeLinkMonthly : DON_CONFIG.stripeLink;
+    if (!link || link.includes('STRIPE_LINK')) {
+      showToast('⚠️ Link de pagamento não configurado — entre em contato conosco.');
+      return;
+    }
+    const url = link + '?prefilled_amount=' + Math.round(donAmt * 100);
+    window.open(url, '_blank');
+  }
+
+  function donToggleVir() {
+    donVirOpen = !donVirOpen;
+    document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
+    document.getElementById('donVirArrow').textContent = donVirOpen ? '▾' : '›';
+    document.getElementById('donVirLabel').textContent = donVirOpen
+      ? 'Ocultar chave PIX'
+      : 'PIX';
+  }
+
+  function donCopyVal(type) {
+    const el = document.getElementById('donIbanVal');
+    const val = el ? el.textContent.trim() : '';
+    if (!val || val.includes('SUA_CHAVE') || val.includes('AQUI')) {
+      showToast('ℹ️ Chave PIX disponível em breve.');
+      return;
+    }
+    safeCopyText(val, 'Chave PIX copiada!');
+  }
   function showToast(msg, ms=2600){
     const t = document.createElement("div");
     t.className = "toast";
