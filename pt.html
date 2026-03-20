@@ -694,12 +694,12 @@ img{
           <span class="langCaret" aria-hidden="true">▾</span>
         </button>
 
-        <div id="langMenu" class="langMenu">
-          <a href="index.html">EN</a>
-          <a href="fr.html">FR</a>
-          <a href="pt.html" aria-current="page">PT</a>
-          <a href="es.html">ES</a>
-        </div>
+       <div id="langMenu" class="langMenu">
+  <a href="index.html" onclick="sessionStorage.setItem('langChosen','1')">EN</a>
+  <a href="fr.html" onclick="sessionStorage.setItem('langChosen','1')">FR</a>
+  <a href="pt.html" aria-current="page">PT</a>
+  <a href="es.html" onclick="sessionStorage.setItem('langChosen','1')">ES</a>
+</div>
       </div>
 
       <button class="navToggle" type="button"
