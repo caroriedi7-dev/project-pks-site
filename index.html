@@ -667,6 +667,15 @@
 </head>
 
 <body>
+  <script>
+  (function() {
+    if (sessionStorage.getItem('langChosen')) return;
+    const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (lang.startsWith('fr')) { window.location.replace('fr.html'); }
+    else if (lang.startsWith('pt')) { window.location.replace('pt.html'); }
+    else if (lang.startsWith('es')) { window.location.replace('es.html'); }
+  })();
+</script>
 <header>
   <div class="wrap topbar">
     <div class="brand">
