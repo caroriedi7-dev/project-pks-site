@@ -1713,7 +1713,7 @@ function showToast(msg, ms=2600){
 function copyIban(){
   const el = document.getElementById("ibanValue");
   const val = (el ? el.textContent.trim() : "");
-  if(!val || val === "VOTRE_IBAN_ICI"){
+  if(!val || val === "FR93 2004 1000 0147 8532 5W02 082"){
     showToast("ℹ️ L’IBAN officiel sera ajouté après validation.", 3500);
     return;
   }
@@ -1723,7 +1723,7 @@ function copyIban(){
 function copyBic(){
   const el = document.getElementById("bicValue");
   const val = (el ? el.textContent.trim() : "");
-  if(!val || val === "VOTRE_BIC_ICI"){
+  if(!val || val === "PSSTFRPPPAR"){
     showToast("ℹ️ Le BIC/SWIFT officiel sera ajouté après validation.", 3500);
     return;
   }
