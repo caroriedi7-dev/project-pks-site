@@ -1288,16 +1288,16 @@ img{
           </div>
 
          <div class="donAmtsRow" id="donGridOnce">
-  <div class="donAmt" onclick="donPick(this,5)">10€</div>
-  <div class="donAmt" onclick="donPick(this,10)">25€</div>
-  <div class="donAmt active" onclick="donPick(this,25)">50€</div>
-  <div class="donAmt" onclick="donPick(this,50)">100€</div>
+  <div class="donAmt" onclick="donPick(this,10)">10€</div>
+  <div class="donAmt" onclick="donPick(this,25)">25€</div>
+  <div class="donAmt active" onclick="donPick(this,50)">50€</div>
+  <div class="donAmt" onclick="donPick(this,100)">100€</div>
 </div>
 
 <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
-  <div class="donAmt" onclick="donPick(this,5)">10€</div>
-  <div class="donAmt active" onclick="donPick(this,10)">25€</div>
-  <div class="donAmt" onclick="donPick(this,25)">50€</div>
+  <div class="donAmt" onclick="donPick(this,10)">10€</div>
+  <div class="donAmt active" onclick="donPick(this,25)">25€</div>
+  <div class="donAmt" onclick="donPick(this,50)">50€</div>
 </div>
 
           <input class="donCustomInput" type="number" placeholder="Outro valor" id="donCustomAmt" oninput="donOnCustom()" min="1"/>
@@ -1526,7 +1526,7 @@ if (a) a.textContent = '€ ' + DON_CONFIG.collected.toLocaleString('pt-BR');
 
   document.getElementById('donCustomAmt').style.display = t === 'once' ? 'block' : 'none';
 
-  donAmt = t === 'once' ? 25 : 10;
+  donAmt = t === 'once' ? 50 : 25;
   document.getElementById('donCustomAmt').value = '';
 
   const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
