@@ -1570,11 +1570,9 @@ estaremos encantados de ponernos en contacto con usted.
     }, 500);
     const a = document.getElementById('donAmtDisplay');
 if (a) {
-  a.textContent = new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(DON_CONFIG.collected);
+ a.textContent = '$' + new Intl.NumberFormat('en-US', {
+  maximumFractionDigits: 0
+}).format(DON_CONFIG.collected);
 }
   });
 
