@@ -1334,8 +1334,9 @@ img{
             <!-- ⚙️ SUBSTITUIR PELA SUA CHAVE PIX -->
             <div class="donVirVal" id="donPixVal">SUA_CHAVE_PIX_AQUI</div>
             <div>
-              <button class="btn" onclick="donCopyVal('iban')" style="font-size:12px;padding:6px 12px;">📋 Copiar chave PIX</button>
-            </div>
+           <button class="btn" onclick="donCopyVal('pix')" style="font-size:12px;padding:6px 12px;">
+  📋 Copiar chave PIX
+</button>
             <div class="donVirNote">Referência: <b>DOAÇÃO PKS + seu nome</b></div>
           </div>
 
@@ -1592,14 +1593,19 @@ function donToggleVir() {
 }
 
   function donCopyVal(type) {
-    const el = document.getElementById('donIbanVal');
-    const val = el ? el.textContent.trim() : '';
-    if (!val || val.includes('SUA_CHAVE') || val.includes('AQUI')) {
-      showToast('ℹ️ Chave PIX disponível em breve.');
-      return;
-    }
-    safeCopyText(val, 'Chave PIX copiada!');
+  const el = document.getElementById(
+    type === 'pix' ? 'donPixVal' : 'donIbanVal'
+  );
+
+  const val = el ? el.textContent.trim() : '';
+
+  if (!val || val.includes('SUA_CHAVE') || val.includes('AQUI') || val.includes('VOTRE_') || val.includes('ICI')) {
+    showToast('ℹ️ Dados disponíveis em breve.');
+    return;
   }
+
+  safeCopyText(val, type === 'pix' ? 'Chave PIX copiada!' : 'IBAN copiado!');
+}
   function showToast(msg, ms=2600){
     const t = document.createElement("div");
     t.className = "toast";
