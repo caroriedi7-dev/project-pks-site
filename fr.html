@@ -1585,11 +1585,7 @@ nous serions heureux d’entrer en contact avec vous.
     }, 500);
     const a = document.getElementById('donAmtDisplay');
 if (a) {
-  a.textContent = new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(DON_CONFIG.collected);
+  a.textContent = '$' + DON_CONFIG.collected.toLocaleString('fr-FR');
 }
   });
 
