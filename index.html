@@ -742,20 +742,8 @@
       color:var(--blue);font-weight:900;
     }
 
-/* Other amount */
-    .donCustomInput{
-      width:58%;padding:10px 20px;border-radius:999px;
-      border:1.5px solid #d1d5db;background:#f9fafb;
-      color:var(--muted);font-size:14px;text-align:center;
-      outline:none;font-family:inherit;margin-bottom:22px;
-      display:block;
-    }
-    .donCustomInput::placeholder{color:#9ca3af;}
-    .donCustomInput:focus{
-      border-color:var(--blue2);
-      background:#fff;color:var(--ink);
-    }
 
+   
     /* CTA */
     .donCtaWrap{width:85%;margin-bottom:12px;}
     .donCtaBtn{
@@ -1294,15 +1282,16 @@
           </div>
 
           <div class="donTabRow">
-            <div class="donTab active" id="donTabOnce" onclick="donSwitchTab('once')">One-time gift</div>
-            <div class="donTab" id="donTabMonthly" onclick="donSwitchTab('monthly')">Monthly gift</div>
+           <div class="donTab active" id="donTabOnce" onclick="donSwitchTab('once')">One-time gift</div>
+<div class="donTab" id="donTabMonthly" onclick="showToast('Monthly donations coming soon.')">Monthly gift</div>
           </div>
 
-          <div class="donAmtsRow" id="donGridOnce">
+         <div class="donAmtsRow" id="donGridOnce">
   <div class="donAmt" onclick="donPick(this,10)">10€</div>
   <div class="donAmt" onclick="donPick(this,25)">25€</div>
   <div class="donAmt active" onclick="donPick(this,50)">50€</div>
   <div class="donAmt" onclick="donPick(this,100)">100€</div>
+  <div class="donAmt" onclick="donOpenCustom()">Other</div>
 </div>
 
 <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
@@ -1311,8 +1300,7 @@
   <div class="donAmt" onclick="donPick(this,50)">50€</div>
 </div>
 
-          <input class="donCustomInput" type="number" placeholder="Other amount" id="donCustomAmt" oninput="donOnCustom()" min="1"/>
-
+         
           <div class="donCtaWrap">
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Donate securely</button>
           </div>
@@ -1552,17 +1540,14 @@
 }
   });
 
-  function donSwitchTab(t) {
+ function donSwitchTab(t) {
   donTab = t;
   document.getElementById('donTabOnce').className = 'donTab' + (t === 'once' ? ' active' : '');
   document.getElementById('donTabMonthly').className = 'donTab' + (t === 'monthly' ? ' active' : '');
   document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
   document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
 
-  document.getElementById('donCustomAmt').style.display = t === 'once' ? 'block' : 'none';
-
   donAmt = t === 'once' ? 50 : 25;
-  document.getElementById('donCustomAmt').value = '';
 
   const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
   document.querySelectorAll('#' + g + ' .donAmt')
@@ -1570,35 +1555,38 @@
 }
 
   function donPick(el, a) {
-    const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
-    document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-    donAmt = a;
-    document.getElementById('donCustomAmt').value = '';
+  const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
+  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  donAmt = a;
+}
+  function donOpenCustom() {
+  const link = DON_CONFIG.stripe.onceCustom;
+
+  if (!link || link.includes('STRIPE_')) {
+    showToast('⚠️ Payment link not configured.');
+    return;
   }
 
-  function donOnCustom() {
-  if (donTab === 'monthly') return;
+  const pageLang = (document.documentElement.lang || 'en').toLowerCase();
+  let locale = 'en';
 
-  const v = parseFloat(document.getElementById('donCustomAmt').value);
-  const g = 'donGridOnce';
-  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
-  if (v > 0) donAmt = v;
+  if (pageLang.startsWith('fr')) locale = 'fr';
+  else if (pageLang.startsWith('pt')) locale = 'pt';
+  else if (pageLang.startsWith('es')) locale = 'es';
+
+  const sep = link.includes('?') ? '&' : '?';
+  const finalUrl = link + sep + 'locale=' + locale;
+
+  window.open(finalUrl, '_blank', 'noopener');
 }
-
  function donSubmit() {
   let link = '';
 
   if (donTab === 'monthly') {
     link = DON_CONFIG.stripe.monthlyFixed[donAmt] || '';
   } else {
-    const customValue = parseFloat(document.getElementById('donCustomAmt').value);
-
-    if (customValue > 0 && !DON_CONFIG.stripe.onceFixed[customValue]) {
-      link = DON_CONFIG.stripe.onceCustom;
-    } else {
-      link = DON_CONFIG.stripe.onceFixed[donAmt] || DON_CONFIG.stripe.onceCustom;
-    }
+    link = DON_CONFIG.stripe.onceFixed[donAmt] || '';
   }
 
   if (!link || link.includes('STRIPE_')) {
