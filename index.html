@@ -1355,10 +1355,10 @@
           <div class="donVirBox" id="donVirBox">
             <div class="donVirLbl">IBAN</div>
             <!-- ⚙️ REPLACE WITH YOUR IBAN -->
-            <div class="donVirVal" id="donIbanVal">YOUR_IBAN_HERE</div>
+            <div class="donVirVal" id="donIbanVal">FR93 2004 1000 0147 8532 5W02 082</div>
             <div class="donVirLbl">BIC / SWIFT</div>
             <!-- ⚙️ REPLACE WITH YOUR BIC -->
-            <div class="donVirVal" id="donBicVal">YOUR_BIC_HERE</div>
+            <div class="donVirVal" id="donBicVal">PSSTFRPPPAR</div>
             <div>
               <button class="btn" onclick="donCopyVal('iban')" style="font-size:12px;padding:6px 12px;">📋 Copy IBAN</button>
               <button class="btn" onclick="donCopyVal('bic')" style="font-size:12px;padding:6px 12px;margin-left:6px;">📋 Copy BIC</button>
@@ -1586,18 +1586,18 @@
     document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
     document.getElementById('donVirArrow').textContent = donVirOpen ? '▾' : '›';
     document.getElementById('donVirLabel').textContent = donVirOpen
-      ? 'Masquer les coordonnées'
-      : 'Virement bancaire';
+  ? 'Hide bank details'
+  : 'Bank transfer';
   }
 
   function donCopyVal(type) {
     const el = document.getElementById(type === 'iban' ? 'donIbanVal' : 'donBicVal');
     const val = el ? el.textContent.trim() : '';
     if (!val || val.includes('YOUR_') || val.includes('HERE')) {
-      showToast('ℹ️ Coordonnées bancaires disponibles prochainement.');
+      showToast('ℹ️ Bank details will be available soon.');
       return;
     }
-    safeCopyText(val, (type === 'iban' ? 'IBAN' : 'BIC') + ' copié !');
+   safeCopyText(val, (type === 'iban' ? 'IBAN' : 'BIC') + ' copied!');
   }
   function showToast(msg, ms=2600){
     const t = document.createElement("div");
@@ -1658,25 +1658,7 @@
     window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
   }
 
-  function copyIban(){
-    const el = document.getElementById("ibanValue");
-    const val = (el ? el.textContent.trim() : "");
-    if(!val || val === "YOUR_IBAN_HERE"){
-      showToast("ℹ️ The official IBAN will be added after validation.", 3500);
-      return;
-    }
-    safeCopyText(val, "IBAN copied!");
-  }
-
-  function copyBic(){
-    const el = document.getElementById("bicValue");
-    const val = (el ? el.textContent.trim() : "");
-    if(!val || val === "YOUR_BIC_HERE"){
-      showToast("ℹ️ The official BIC/SWIFT will be added after validation.", 3500);
-      return;
-    }
-    safeCopyText(val, "BIC copied!");
-  }
+ 
 
   const EMAIL_CONTACT_USER = "contact";
   const EMAIL_FAMILIES_USER = "families";
