@@ -1299,16 +1299,16 @@
           </div>
 
           <div class="donAmtsRow" id="donGridOnce">
-  <div class="donAmt" onclick="donPick(this,10)">$10</div>
-  <div class="donAmt" onclick="donPick(this,25)">$25</div>
-  <div class="donAmt active" onclick="donPick(this,50)">$50</div>
-  <div class="donAmt" onclick="donPick(this,100)">$100</div>
+  <div class="donAmt" onclick="donPick(this,10)">10€</div>
+  <div class="donAmt" onclick="donPick(this,25)">25€</div>
+  <div class="donAmt active" onclick="donPick(this,50)">50€</div>
+  <div class="donAmt" onclick="donPick(this,100)">100€</div>
 </div>
 
 <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
-  <div class="donAmt" onclick="donPick(this,10)">$10</div>
-  <div class="donAmt active" onclick="donPick(this,25)">$25</div>
-  <div class="donAmt" onclick="donPick(this,50)">$50</div>
+  <div class="donAmt" onclick="donPick(this,10)">10€</div>
+  <div class="donAmt active" onclick="donPick(this,25)">25€</div>
+  <div class="donAmt" onclick="donPick(this,50)">50€</div>
 </div>
 
           <input class="donCustomInput" type="number" placeholder="Other amount" id="donCustomAmt" oninput="donOnCustom()" min="1"/>
@@ -1316,7 +1316,7 @@
           <div class="donCtaWrap">
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Donate securely</button>
           </div>
-          <p class="donLock">🔒 Card · Apple Pay · Google Pay · SEPA</p>
+          <p class="donLock">🔒 Secure payment via Stripe · Card · Apple Pay · Google Pay · SEPA subject to eligibility</p>
 <p class="donLock" style="margin-top:6px;">100% of donations go to research</p>
         </div>
 
@@ -1513,8 +1513,23 @@
   collected: 1300,
   goal: 500000,
   donors: 0,
-  stripeLink: 'https://donate.stripe.com/test_14AaEQeRr0ZM11c4v5aZi00',
-  stripeLinkMonthly: 'STRIPE_LINK_MONTHLY'
+
+  stripe: {
+    onceCustom: 'https://buy.stripe.com/8x2cN78bt87yb2F2xcak001',
+
+    onceFixed: {
+      10: 'https://buy.stripe.com/bJebJ3fDVdrS5Ilgo2ak002',
+      25: 'https://buy.stripe.com/14A7sN2R9drS5Ilb3Iak003',
+      50: 'https://buy.stripe.com/7sY28t2R9gE4eeR3Bgak004',
+      100: 'https://buy.stripe.com/14AcN73Vd3Ri8Ux0p4ak005'
+    },
+
+    monthlyFixed: {
+      10: 'STRIPE_MONTHLY_10',
+      25: 'STRIPE_MONTHLY_25',
+      50: 'STRIPE_MONTHLY_50'
+    }
+  }
 };
 
   let donTab = 'once';
@@ -1571,16 +1586,38 @@
   if (v > 0) donAmt = v;
 }
 
-  function donSubmit() {
-    const link = donTab === 'monthly' ? DON_CONFIG.stripeLinkMonthly : DON_CONFIG.stripeLink;
-    if (!link || link.includes('STRIPE_LINK')) {
-      showToast('⚠️ Payment link not configured — please contact us.');
-      return;
+ function donSubmit() {
+  let link = '';
+
+  if (donTab === 'monthly') {
+    link = DON_CONFIG.stripe.monthlyFixed[donAmt] || '';
+  } else {
+    const customValue = parseFloat(document.getElementById('donCustomAmt').value);
+
+    if (customValue > 0 && !DON_CONFIG.stripe.onceFixed[customValue]) {
+      link = DON_CONFIG.stripe.onceCustom;
+    } else {
+      link = DON_CONFIG.stripe.onceFixed[donAmt] || DON_CONFIG.stripe.onceCustom;
     }
-    const url = link + '?prefilled_amount=' + Math.round(donAmt * 100);
-    window.open(url, '_blank');
   }
 
+  if (!link || link.includes('STRIPE_')) {
+    showToast('⚠️ Payment link not configured.');
+    return;
+  }
+
+  const pageLang = (document.documentElement.lang || 'en').toLowerCase();
+  let locale = 'en';
+
+  if (pageLang.startsWith('fr')) locale = 'fr';
+  else if (pageLang.startsWith('pt')) locale = 'pt';
+  else if (pageLang.startsWith('es')) locale = 'es';
+
+  const sep = link.includes('?') ? '&' : '?';
+  const finalUrl = link + sep + 'locale=' + locale;
+
+  window.open(finalUrl, '_blank', 'noopener');
+}
   function donToggleVir() {
     donVirOpen = !donVirOpen;
     document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
