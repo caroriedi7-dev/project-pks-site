@@ -1560,14 +1560,11 @@ if (a) a.textContent = '$ ' + DON_CONFIG.collected.toLocaleString('pt-BR');
     window.open(url, '_blank');
   }
 
-  function donToggleVir() {
-    donVirOpen = !donVirOpen;
-    document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
-    document.getElementById('donVirArrow').textContent = donVirOpen ? '▾' : '›';
-    = donVirOpen
-      ? 'Ocultar chave PIX'
-      : 'PIX';
-  }
+function donToggleVir() {
+  donVirOpen = !donVirOpen;
+  document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
+  document.getElementById('donVirArrow').textContent = donVirOpen ? '▾' : '›';
+}
 
   function donCopyVal(type) {
     const el = document.getElementById('donIbanVal');
