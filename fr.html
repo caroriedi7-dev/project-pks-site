@@ -1344,7 +1344,7 @@ img{
           <div class="donCtaWrap">
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Faire un don sécurisé</button>
           </div>
-          <p class="donLock">🔒 Carte · Apple Pay · Google Pay · SEPA</p>
+          <p class="donLock">🔒 Paiement sécurisé via Stripe · Carte · Apple Pay · Google Pay · SEPA selon éligibilité</p>
 
         </div>
 
@@ -1566,12 +1566,27 @@ nous serions heureux d’entrer en contact avec vous.
      ═══════════════════════════════════════════════ */
 
   const DON_CONFIG = {
-    collected: 1300,        // ← METTRE À JOUR : montant total collecté en €
-    goal: 500000,
-    donors: 0,           // ← METTRE À JOUR : nombre de donateurs
-    stripeLink: 'https://donate.stripe.com/test_14AaEQeRr0ZM11c4v5aZi00', // ← REMPLACER en production
-    stripeLinkMonthly: 'STRIPE_LINK_MENSUEL'  // ← CRÉER dans Stripe (récurrent)
-  };
+  collected: 1300,
+  goal: 500000,
+  donors: 0,
+
+  stripe: {
+    onceCustom: 'https://buy.stripe.com/8x2cN78bt87yb2F2xcak001',
+
+    onceFixed: {
+      10: 'https://buy.stripe.com/bJebJ3fDVdrS5Ilgo2ak002',
+      25: 'https://buy.stripe.com/14A7sN2R9drS5Ilb3Iak003',
+      50: 'https://buy.stripe.com/7sY28t2R9gE4eeR3Bgak004',
+      100: 'https://buy.stripe.com/14AcN73Vd3Ri8Ux0p4ak005'
+    },
+
+    monthlyFixed: {
+      10: 'STRIPE_MONTHLY_10',
+      25: 'STRIPE_MONTHLY_25',
+      50: 'STRIPE_MONTHLY_50'
+    }
+  }
+};
 
   let donTab = 'once';
   let donAmt = 50;
@@ -1623,15 +1638,37 @@ if (a) {
 }
 
   function donSubmit() {
-    const link = donTab === 'monthly' ? DON_CONFIG.stripeLinkMonthly : DON_CONFIG.stripeLink;
-    if (!link || link.includes('STRIPE_LINK')) {
-      showToast('⚠️ Lien de paiement non configuré — contactez-nous.');
-      return;
+  let link = '';
+
+  if (donTab === 'monthly') {
+    link = DON_CONFIG.stripe.monthlyFixed[donAmt] || '';
+  } else {
+    const customValue = parseFloat(document.getElementById('donCustomAmt').value);
+
+    if (customValue > 0 && !DON_CONFIG.stripe.onceFixed[customValue]) {
+      link = DON_CONFIG.stripe.onceCustom;
+    } else {
+      link = DON_CONFIG.stripe.onceFixed[donAmt] || DON_CONFIG.stripe.onceCustom;
     }
-    const url = link + '?prefilled_amount=' + Math.round(donAmt * 100);
-    window.open(url, '_blank');
   }
 
+  if (!link || link.includes('STRIPE_')) {
+    showToast('⚠️ Lien de paiement non configuré.');
+    return;
+  }
+
+  const pageLang = (document.documentElement.lang || 'en').toLowerCase();
+  let locale = 'en';
+
+  if (pageLang.startsWith('fr')) locale = 'fr';
+  else if (pageLang.startsWith('pt')) locale = 'pt';
+  else if (pageLang.startsWith('es')) locale = 'es';
+
+  const sep = link.includes('?') ? '&' : '?';
+  const finalUrl = link + sep + 'locale=' + locale;
+
+  window.open(finalUrl, '_blank', 'noopener');
+}
   function donToggleVir() {
     donVirOpen = !donVirOpen;
     document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
