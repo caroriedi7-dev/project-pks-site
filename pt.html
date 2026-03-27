@@ -1677,16 +1677,7 @@ function donToggleVir() {
     window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
   }
 
-  function copyPix(){
-    const el = document.getElementById("pixKey");
-    const val = (el ? el.textContent.trim() : "");
-    if(!val || val === "SUA_CHAVE_PIX_AQUI"){
-      showToast("ℹ️ A chave PIX oficial será adicionada depois da validação.", 3500);
-      return;
-    }
-    safeCopyText(val, "Chave PIX copiada!");
-  }
-
+ 
   const EMAIL_CONTACT_USER = "contact";
   const EMAIL_FAMILIES_USER = "families";
   const EMAIL_DOMAIN = "project-pks.org";
