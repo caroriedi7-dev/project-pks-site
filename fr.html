@@ -1313,7 +1313,7 @@ img{
             </div>
             <div class="donProgBar"><div class="donProgFill" id="donProgFill"></div></div>
             <div class="donProgNums">
-              <span><b id="donAmtDisplay">0 €</b> collectés</span>
+              <span><b id="donAmtDisplay">0 $</b> collectés</span>
               <span>Objectif <b>500 000 $</b></span>
             </div>
           </div>
@@ -1324,20 +1324,18 @@ img{
             <div class="donTab" id="donTabMonthly" onclick="donSwitchTab('monthly')">Don mensuel</div>
           </div>
 
-          <!-- Montants unique -->
           <div class="donAmtsRow" id="donGridOnce">
-            <div class="donAmt" onclick="donPick(this,20)">20 €</div>
-            <div class="donAmt" onclick="donPick(this,50)">50 €</div>
-            <div class="donAmt active" onclick="donPick(this,100)">100 €</div>
-            <div class="donAmt" onclick="donPick(this,200)">200 €</div>
-          </div>
+  <div class="donAmt" onclick="donPick(this,10)">10 €</div>
+  <div class="donAmt" onclick="donPick(this,25)">25 €</div>
+  <div class="donAmt active" onclick="donPick(this,50)">50 €</div>
+  <div class="donAmt" onclick="donPick(this,100)">100 €</div>
+</div>
 
-          <!-- Montants mensuel -->
-          <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
-            <div class="donAmt" onclick="donPick(this,20)">20 €</div>
-            <div class="donAmt active" onclick="donPick(this,50)">50 €</div>
-            <div class="donAmt" onclick="donPick(this,100)">100 €</div>
-          </div>
+<div class="donAmtsRow" id="donGridMonthly" style="display:none;">
+  <div class="donAmt" onclick="donPick(this,10)">10 €</div>
+  <div class="donAmt active" onclick="donPick(this,25)">25 €</div>
+  <div class="donAmt" onclick="donPick(this,50)">50 €</div>
+</div>
 
           <!-- Autre montant -->
           <input class="donCustomInput" type="number" placeholder="Autre montant" id="donCustomAmt" oninput="donOnCustom()" min="1"/>
@@ -1576,7 +1574,7 @@ nous serions heureux d’entrer en contact avec vous.
   };
 
   let donTab = 'once';
-  let donAmt = 100;
+  let donAmt = 50;
   let donVirOpen = false;
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -1586,22 +1584,31 @@ nous serions heureux d’entrer en contact avec vous.
       if (f) f.style.width = pct.toFixed(1) + '%';
     }, 500);
     const a = document.getElementById('donAmtDisplay');
-    if (a) a.textContent = DON_CONFIG.collected.toLocaleString('fr-FR') + ' €';
+if (a) {
+  a.textContent = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    maximumFractionDigits: 0
+  }).format(DON_CONFIG.collected);
+}
   });
 
   function donSwitchTab(t) {
-    donTab = t;
-    document.getElementById('donTabOnce').className = 'donTab' + (t === 'once' ? ' active' : '');
-    document.getElementById('donTabMonthly').className = 'donTab' + (t === 'monthly' ? ' active' : '');
-    document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
-    document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
-    donAmt = t === 'once' ? 100 : 50;
-    document.getElementById('donCustomAmt').value = '';
-    const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
-    document.querySelectorAll('#' + g + ' .donAmt')
-      .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
-  }
+  donTab = t;
+  document.getElementById('donTabOnce').className = 'donTab' + (t === 'once' ? ' active' : '');
+  document.getElementById('donTabMonthly').className = 'donTab' + (t === 'monthly' ? ' active' : '');
+  document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
+  document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
 
+  document.getElementById('donCustomAmt').style.display = t === 'once' ? 'block' : 'none';
+
+  donAmt = t === 'once' ? 50 : 25;
+  document.getElementById('donCustomAmt').value = '';
+
+  const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
+  document.querySelectorAll('#' + g + ' .donAmt')
+    .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
+}
   function donPick(el, a) {
     const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
     document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
@@ -1611,11 +1618,13 @@ nous serions heureux d’entrer en contact avec vous.
   }
 
   function donOnCustom() {
-    const v = parseFloat(document.getElementById('donCustomAmt').value);
-    const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
-    document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
-    if (v > 0) donAmt = v;
-  }
+  if (donTab === 'monthly') return;
+
+  const v = parseFloat(document.getElementById('donCustomAmt').value);
+  const g = 'donGridOnce';
+  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+  if (v > 0) donAmt = v;
+}
 
   function donSubmit() {
     const link = donTab === 'monthly' ? DON_CONFIG.stripeLinkMonthly : DON_CONFIG.stripeLink;
