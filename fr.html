@@ -746,19 +746,7 @@ footer{
       color:var(--blue);font-weight:900;
     }
 
-    /* Autre montant */
-    .donCustomInput{
-      width:58%;padding:10px 20px;border-radius:999px;
-      border:1.5px solid #d1d5db;background:#f9fafb;
-      color:var(--muted);font-size:14px;text-align:center;
-      outline:none;font-family:inherit;margin-bottom:22px;
-      display:block;
-    }
-    .donCustomInput::placeholder{color:#9ca3af;}
-    .donCustomInput:focus{
-      border-color:var(--blue2);
-      background:#fff;color:var(--ink);
-    }
+    
 
     /* CTA */
     .donCtaWrap{width:85%;margin-bottom:12px;}
@@ -1324,11 +1312,13 @@ img{
             <div class="donTab" id="donTabMonthly" onclick="donSwitchTab('monthly')">Don mensuel</div>
           </div>
 
-          <div class="donAmtsRow" id="donGridOnce">
+         
+  <div class="donAmtsRow" id="donGridOnce">
   <div class="donAmt" onclick="donPick(this,10)">10 €</div>
   <div class="donAmt" onclick="donPick(this,25)">25 €</div>
   <div class="donAmt active" onclick="donPick(this,50)">50 €</div>
   <div class="donAmt" onclick="donPick(this,100)">100 €</div>
+  <div class="donAmt" onclick="donOpenCustom()">Autre</div>
 </div>
 
 <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
@@ -1337,9 +1327,7 @@ img{
   <div class="donAmt" onclick="donPick(this,50)">50 €</div>
 </div>
 
-          <!-- Autre montant -->
-          <input class="donCustomInput" type="number" placeholder="Autre montant" id="donCustomAmt" oninput="donOnCustom()" min="1"/>
-
+         
           <!-- CTA -->
           <div class="donCtaWrap">
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Faire un don sécurisé</button>
@@ -1611,45 +1599,46 @@ if (a) {
   document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
   document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
 
-  document.getElementById('donCustomAmt').style.display = t === 'once' ? 'block' : 'none';
-
   donAmt = t === 'once' ? 50 : 25;
-  document.getElementById('donCustomAmt').value = '';
 
   const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
   document.querySelectorAll('#' + g + ' .donAmt')
     .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
 }
-  function donPick(el, a) {
-    const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
-    document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-    donAmt = a;
-    document.getElementById('donCustomAmt').value = '';
+ function donPick(el, a) {
+  const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
+  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  donAmt = a;
+}
+function donOpenCustom() {
+  const link = DON_CONFIG.stripe.onceCustom;
+
+  if (!link || link.includes('STRIPE_')) {
+    showToast('⚠️ Lien de paiement non configuré.');
+    return;
   }
 
-  function donOnCustom() {
-  if (donTab === 'monthly') return;
+  const pageLang = (document.documentElement.lang || 'en').toLowerCase();
+  let locale = 'en';
 
-  const v = parseFloat(document.getElementById('donCustomAmt').value);
-  const g = 'donGridOnce';
-  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
-  if (v > 0) donAmt = v;
+  if (pageLang.startsWith('fr')) locale = 'fr';
+  else if (pageLang.startsWith('pt')) locale = 'pt';
+  else if (pageLang.startsWith('es')) locale = 'es';
+
+  const sep = link.includes('?') ? '&' : '?';
+  const finalUrl = link + sep + 'locale=' + locale;
+
+  window.open(finalUrl, '_blank', 'noopener');
 }
-
-  function donSubmit() {
+ 
+function donSubmit() {
   let link = '';
 
   if (donTab === 'monthly') {
     link = DON_CONFIG.stripe.monthlyFixed[donAmt] || '';
   } else {
-    const customValue = parseFloat(document.getElementById('donCustomAmt').value);
-
-    if (customValue > 0 && !DON_CONFIG.stripe.onceFixed[customValue]) {
-      link = DON_CONFIG.stripe.onceCustom;
-    } else {
-      link = DON_CONFIG.stripe.onceFixed[donAmt] || DON_CONFIG.stripe.onceCustom;
-    }
+    link = DON_CONFIG.stripe.onceFixed[donAmt] || '';
   }
 
   if (!link || link.includes('STRIPE_')) {
@@ -1752,25 +1741,6 @@ function showToast(msg, ms=2600){
       const text = SHARE_TEXT + " " + location.href;
       window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
     }
-function copyIban(){
-  const el = document.getElementById("ibanValue");
-  const val = (el ? el.textContent.trim() : "");
-  if(!val || val === "FR93 2004 1000 0147 8532 5W02 082"){
-    showToast("ℹ️ L’IBAN officiel sera ajouté après validation.", 3500);
-    return;
-  }
-  safeCopyText(val, "IBAN copié !");
-}
-
-function copyBic(){
-  const el = document.getElementById("bicValue");
-  const val = (el ? el.textContent.trim() : "");
-  if(!val || val === "PSSTFRPPPAR"){
-    showToast("ℹ️ Le BIC/SWIFT officiel sera ajouté après validation.", 3500);
-    return;
-  }
-  safeCopyText(val, "BIC copié !");
-}
 
 
   // --- Emails anti-bot
