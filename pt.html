@@ -1311,7 +1311,7 @@ img{
             <span class="donAltArrow">›</span>
           </a>
 
-          <!-- GoFundMe -->
+                   <!-- GoFundMe -->
           <!-- ⚙️ SUBSTITUIR LIEN_GOFUNDME -->
           <a class="donAltBtn" href="LIEN_GOFUNDME" target="_blank" rel="noopener noreferrer">
             <div class="donAltLeft">
@@ -1321,31 +1321,57 @@ img{
             <span class="donAltArrow">›</span>
           </a>
 
-         <!-- PIX — accordéon -->
-<div class="donAltBtn" onclick="donToggleVir()" style="cursor:pointer;">
-  <div class="donAltLeft">
-    <img src="img/pix-logo.png" alt="PIX" style="height:22px;width:auto;pointer-events:none;">
-    <span style="font-size:14px;font-weight:700;color:var(--ink);">Doação via PIX</span>
-  </div>
-  <span class="donAltArrow" id="donVirArrow">›</span>
-</div>
+          <!-- Transferência bancária -->
+          <div class="donAltBtn" onclick="donToggleBank()" style="cursor:pointer;">
+            <div class="donAltLeft">
+              <span style="font-size:18px;">🏦</span>
+              <span style="font-size:14px;font-weight:700;color:var(--ink);" id="donBankLabel">Transferência bancária</span>
+            </div>
+            <span class="donAltArrow" id="donBankArrow">›</span>
+          </div>
 
-<div class="donVirBox" id="donVirBox">
-  <div class="donVirLbl">CHAVE PIX</div>
-  <div class="donVirVal" id="donPixVal">SUA_CHAVE_PIX_AQUI</div>
+          <div class="donVirBox" id="donBankBox">
+            <div class="donVirLbl">IBAN</div>
+            <div class="donVirVal" id="donIbanVal">FR93 2004 1000 0147 8532 5W02 082</div>
 
-  <div>
-    <button class="btn" onclick="donCopyVal('pix')" style="font-size:12px;padding:6px 12px;">
-      📋 Copiar chave PIX
-    </button>
-  </div>
+            <div class="donVirLbl">BIC / SWIFT</div>
+            <div class="donVirVal" id="donBicVal">PSSTFRPPPAR</div>
 
-  <div class="donVirNote">
-    Referência: <b>DOAÇÃO PKS + seu nome</b>
-  </div>
-</div>
+            <div>
+              <button class="btn" onclick="donCopyVal('iban')" style="font-size:12px;padding:6px 12px;">📋 Copiar IBAN</button>
+              <button class="btn" onclick="donCopyVal('bic')" style="font-size:12px;padding:6px 12px;margin-left:6px;">📋 Copiar BIC</button>
+            </div>
 
-<div class="donAltSecure">🛡️ Pagamentos seguros &amp; internacionais</div>
+            <div class="donVirNote">
+              Referência: <b>DOAÇÃO PKS + seu nome</b>
+            </div>
+          </div>
+
+          <!-- PIX -->
+          <div class="donAltBtn" onclick="donTogglePix()" style="cursor:pointer;">
+            <div class="donAltLeft">
+              <img src="img/pix-logo.png" alt="PIX" style="height:22px;width:auto;pointer-events:none;">
+              <span style="font-size:14px;font-weight:700;color:var(--ink);" id="donPixLabel">Doação via PIX</span>
+            </div>
+            <span class="donAltArrow" id="donPixArrow">›</span>
+          </div>
+
+          <div class="donVirBox" id="donPixBox">
+            <div class="donVirLbl">CHAVE PIX</div>
+            <div class="donVirVal" id="donPixVal">SUA_CHAVE_PIX_AQUI</div>
+
+            <div>
+              <button class="btn" onclick="donCopyVal('pix')" style="font-size:12px;padding:6px 12px;">
+                📋 Copiar chave PIX
+              </button>
+            </div>
+
+            <div class="donVirNote">
+              Referência: <b>DOAÇÃO PKS + seu nome</b>
+            </div>
+          </div>
+
+          <div class="donAltSecure">🛡️ Pagamentos seguros &amp; internacionais</div>
         </div>
       </div>
 
@@ -1509,9 +1535,10 @@ const DON_CONFIG = {
   }
 };
 
-  let donTab = 'once';
+    let donTab = 'once';
   let donAmt = 50;
-  let donVirOpen = false;
+  let donPixOpen = false;
+  let donBankOpen = false;
 
   document.addEventListener('DOMContentLoaded', function() {
     const pct = Math.min((DON_CONFIG.collected / DON_CONFIG.goal) * 100, 100);
@@ -1590,25 +1617,46 @@ function donOpenCustom() {
 
   window.open(finalUrl, '_blank', 'noopener');
 }
-function donToggleVir() {
-  donVirOpen = !donVirOpen;
-  document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
-  document.getElementById('donVirArrow').textContent = donVirOpen ? '▾' : '›';
+function donToggleBank() {
+  donBankOpen = !donBankOpen;
+  document.getElementById('donBankBox').className = 'donVirBox' + (donBankOpen ? ' open' : '');
+  document.getElementById('donBankArrow').textContent = donBankOpen ? '▾' : '›';
+}
+
+function donTogglePix() {
+  donPixOpen = !donPixOpen;
+  document.getElementById('donPixBox').className = 'donVirBox' + (donPixOpen ? ' open' : '');
+  document.getElementById('donPixArrow').textContent = donPixOpen ? '▾' : '›';
 }
 
   function donCopyVal(type) {
   const el = document.getElementById(
-    type === 'pix' ? 'donPixVal' : 'donIbanVal'
+    type === 'pix' ? 'donPixVal' :
+    type === 'bic' ? 'donBicVal' :
+    'donIbanVal'
   );
 
   const val = el ? el.textContent.trim() : '';
 
-  if (!val || val.includes('SUA_CHAVE') || val.includes('AQUI') || val.includes('VOTRE_') || val.includes('ICI')) {
+  if (
+    !val ||
+    val.includes('SUA_CHAVE') ||
+    val.includes('AQUI') ||
+    val.includes('SEU_IBAN') ||
+    val.includes('SEU_BIC') ||
+    val.includes('VOTRE_') ||
+    val.includes('ICI')
+  ) {
     showToast('ℹ️ Dados disponíveis em breve.');
     return;
   }
 
-  safeCopyText(val, type === 'pix' ? 'Chave PIX copiada!' : 'IBAN copiado!');
+  safeCopyText(
+    val,
+    type === 'pix' ? 'Chave PIX copiada!' :
+    type === 'bic' ? 'BIC copiado!' :
+    'IBAN copiado!'
+  );
 }
   function showToast(msg, ms=2600){
     const t = document.createElement("div");
