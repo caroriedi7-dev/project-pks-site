@@ -1299,17 +1299,17 @@
           </div>
 
           <div class="donAmtsRow" id="donGridOnce">
-            <div class="donAmt" onclick="donPick(this,20)">$20</div>
-            <div class="donAmt" onclick="donPick(this,50)">$50</div>
-            <div class="donAmt active" onclick="donPick(this,100)">$100</div>
-            <div class="donAmt" onclick="donPick(this,200)">$200</div>
-          </div>
+  <div class="donAmt" onclick="donPick(this,10)">$10</div>
+  <div class="donAmt" onclick="donPick(this,25)">$25</div>
+  <div class="donAmt active" onclick="donPick(this,50)">$50</div>
+  <div class="donAmt" onclick="donPick(this,100)">$100</div>
+</div>
 
-          <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
-            <div class="donAmt" onclick="donPick(this,20)">$20</div>
-            <div class="donAmt active" onclick="donPick(this,50)">$50</div>
-            <div class="donAmt" onclick="donPick(this,100)">$100</div>
-          </div>
+<div class="donAmtsRow" id="donGridMonthly" style="display:none;">
+  <div class="donAmt" onclick="donPick(this,10)">$10</div>
+  <div class="donAmt active" onclick="donPick(this,25)">$25</div>
+  <div class="donAmt" onclick="donPick(this,50)">$50</div>
+</div>
 
           <input class="donCustomInput" type="number" placeholder="Other amount" id="donCustomAmt" oninput="donOnCustom()" min="1"/>
 
@@ -1317,7 +1317,7 @@
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Donate securely</button>
           </div>
           <p class="donLock">🔒 Card · Apple Pay · Google Pay · SEPA</p>
-
+<p class="donLock" style="margin-top:6px;">100% of donations go to research</p>
         </div>
 
         <!-- RIGHT -->
@@ -1510,15 +1510,15 @@
          ═══════════════════════════════════════════════ */
 
   const DON_CONFIG = {
-    collected: 0,        // ← METTRE À JOUR : montant total collecté en €
-    goal: 500000,
-    donors: 0,           // ← METTRE À JOUR : nombre de donateurs
-    stripeLink: 'https://donate.stripe.com/test_14AaEQeRr0ZM11c4v5aZi00', // ← REMPLACER en production
-    stripeLinkMonthly: 'STRIPE_LINK_MENSUEL'  // ← CRÉER dans Stripe (récurrent)
-  };
+  collected: 1300,
+  goal: 500000,
+  donors: 0,
+  stripeLink: 'https://donate.stripe.com/test_14AaEQeRr0ZM11c4v5aZi00',
+  stripeLinkMonthly: 'STRIPE_LINK_MENSUEL'
+};
 
   let donTab = 'once';
-  let donAmt = 100;
+  let donAmt = 50;
   let donVirOpen = false;
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -1528,21 +1528,31 @@
       if (f) f.style.width = pct.toFixed(1) + '%';
     }, 500);
     const a = document.getElementById('donAmtDisplay');
-    if (a) a.textContent = DON_CONFIG.collected.toLocaleString('fr-FR') + ' €';
+   if (a) {
+  a.textContent = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0
+  }).format(DON_CONFIG.collected);
+}
   });
 
   function donSwitchTab(t) {
-    donTab = t;
-    document.getElementById('donTabOnce').className = 'donTab' + (t === 'once' ? ' active' : '');
-    document.getElementById('donTabMonthly').className = 'donTab' + (t === 'monthly' ? ' active' : '');
-    document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
-    document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
-    donAmt = t === 'once' ? 100 : 50;
-    document.getElementById('donCustomAmt').value = '';
-    const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
-    document.querySelectorAll('#' + g + ' .donAmt')
-      .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
-  }
+  donTab = t;
+  document.getElementById('donTabOnce').className = 'donTab' + (t === 'once' ? ' active' : '');
+  document.getElementById('donTabMonthly').className = 'donTab' + (t === 'monthly' ? ' active' : '');
+  document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
+  document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
+
+  document.getElementById('donCustomAmt').style.display = t === 'once' ? 'block' : 'none';
+
+  donAmt = t === 'once' ? 50 : 25;
+  document.getElementById('donCustomAmt').value = '';
+
+  const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
+  document.querySelectorAll('#' + g + ' .donAmt')
+    .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
+}
 
   function donPick(el, a) {
     const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
@@ -1553,16 +1563,18 @@
   }
 
   function donOnCustom() {
-    const v = parseFloat(document.getElementById('donCustomAmt').value);
-    const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
-    document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
-    if (v > 0) donAmt = v;
-  }
+  if (donTab === 'monthly') return;
+
+  const v = parseFloat(document.getElementById('donCustomAmt').value);
+  const g = 'donGridOnce';
+  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+  if (v > 0) donAmt = v;
+}
 
   function donSubmit() {
     const link = donTab === 'monthly' ? DON_CONFIG.stripeLinkMonthly : DON_CONFIG.stripeLink;
     if (!link || link.includes('STRIPE_LINK')) {
-      showToast('⚠️ Lien de paiement non configuré — contactez-nous.');
+      showToast('⚠️ Payment link not configured — please contact us.');
       return;
     }
     const url = link + '?prefilled_amount=' + Math.round(donAmt * 100);
@@ -1581,7 +1593,7 @@
   function donCopyVal(type) {
     const el = document.getElementById(type === 'iban' ? 'donIbanVal' : 'donBicVal');
     const val = el ? el.textContent.trim() : '';
-    if (!val || val.includes('VOTRE_') || val.includes('ICI')) {
+    if (!val || val.includes('YOUR_') || val.includes('HERE')) {
       showToast('ℹ️ Coordonnées bancaires disponibles prochainement.');
       return;
     }
