@@ -1321,19 +1321,31 @@ img{
             <span class="donAltArrow">›</span>
           </a>
 
-          <!-- PIX — accordéon -->
-          <div class="donAltBtn" onclick="donToggleVir()" style="cursor:pointer;">
-            <div class="donAltLeft">
-  <img src="img/pix-logo.png" alt="PIX" style="height:22px;width:auto;pointer-events:none;">
-            </div>
-            <span class="donAltArrow" id="donVirArrow">›</span>
-          </div>
+         <!-- PIX — accordéon -->
+<div class="donAltBtn" onclick="donToggleVir()" style="cursor:pointer;">
+  <div class="donAltLeft">
+    <img src="img/pix-logo.png" alt="PIX" style="height:22px;width:auto;pointer-events:none;">
+    <span style="font-size:14px;font-weight:700;color:var(--ink);">Doação via PIX</span>
+  </div>
+  <span class="donAltArrow" id="donVirArrow">›</span>
+</div>
 
-         <div class="donVirBox" id="donVirBox">
+<div class="donVirBox" id="donVirBox">
+  <div class="donVirLbl">CHAVE PIX</div>
+  <div class="donVirVal" id="donPixVal">SUA_CHAVE_PIX_AQUI</div>
 
-          <div class="donAltSecure">🛡️ Pagamentos seguros &amp; internacionais</div>
+  <div>
+    <button class="btn" onclick="donCopyVal('pix')" style="font-size:12px;padding:6px 12px;">
+      📋 Copiar chave PIX
+    </button>
+  </div>
 
-        </div>
+  <div class="donVirNote">
+    Referência: <b>DOAÇÃO PKS + seu nome</b>
+  </div>
+</div>
+
+<div class="donAltSecure">🛡️ Pagamentos seguros &amp; internacionais</div>
       </div>
 
       <div class="donFooter">
