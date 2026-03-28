@@ -1,0 +1,14 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+  <!-- Upper left arm (solid) -->
+  <rect x="4" y="2" width="5" height="11" rx="2.5" fill="#0B2E6B"/>
+  <!-- Upper right arm (faded) -->
+  <rect x="11" y="2" width="5" height="11" rx="2.5" fill="#0B2E6B" opacity=".3"/>
+  <!-- Centromere ring -->
+  <rect x="2" y="12" width="16" height="8" rx="4" fill="none" stroke="#0B2E6B" stroke-width="1.5"/>
+  <!-- Centromere inner (hollow) -->
+  <rect x="3" y="13" width="14" height="6" rx="3" fill="white"/>
+  <!-- Lower left arm (faded) -->
+  <rect x="4" y="19" width="5" height="11" rx="2.5" fill="#0B2E6B" opacity=".3"/>
+  <!-- Lower right arm (solid) -->
+  <rect x="11" y="19" width="5" height="11" rx="2.5" fill="#0B2E6B"/>
+</svg>
