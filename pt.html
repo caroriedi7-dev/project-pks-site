@@ -1577,6 +1577,7 @@ function donPickCustom(el) {
   document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   donCustomSelected = true;
+  donAmt = 0;
 }
  function donSubmit() {
   let link = '';
