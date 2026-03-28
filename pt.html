@@ -1280,7 +1280,7 @@ img{
   <div class="donAmt" onclick="donPick(this,25)">25€</div>
   <div class="donAmt active" onclick="donPick(this,50)">50€</div>
   <div class="donAmt" onclick="donPick(this,100)">100€</div>
-  <div class="donAmt" onclick="donOpenCustom()">Outro</div>
+  <div class="donAmt" onclick="donPickCustom(this)">Outro</div>
 </div>
 
 <div class="donAmtsRow" id="donGridMonthly" style="display:none;">
@@ -1535,10 +1535,11 @@ const DON_CONFIG = {
   }
 };
 
-    let donTab = 'once';
-  let donAmt = 50;
-  let donPixOpen = false;
-  let donBankOpen = false;
+   let donTab = 'once';
+let donAmt = 50;
+let donCustomSelected = false;
+let donPixOpen = false;
+let donBankOpen = false;
 
   document.addEventListener('DOMContentLoaded', function() {
     const pct = Math.min((DON_CONFIG.collected / DON_CONFIG.goal) * 100, 100);
@@ -1558,47 +1559,37 @@ if (a) a.textContent = '$ ' + DON_CONFIG.collected.toLocaleString('pt-BR');
   document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
 
   donAmt = t === 'once' ? 50 : 25;
-
+donCustomSelected = false;
   const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
   document.querySelectorAll('#' + g + ' .donAmt')
     .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
 }
- function donPick(el, a) {
+function donPick(el, a) {
   const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
   document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   donAmt = a;
+  donCustomSelected = false;
 }
 
- 
-function donOpenCustom() {
-  const link = DON_CONFIG.stripe.onceCustom;
-
-  if (!link || link.includes('STRIPE_')) {
-    showToast('⚠️ Link de pagamento não configurado.');
-    return;
-  }
-
-  const pageLang = (document.documentElement.lang || 'en').toLowerCase();
-  let locale = 'en';
-
-  if (pageLang.startsWith('fr')) locale = 'fr';
-  else if (pageLang.startsWith('pt')) locale = 'pt';
-  else if (pageLang.startsWith('es')) locale = 'es';
-
-  const sep = link.includes('?') ? '&' : '?';
-  const finalUrl = link + sep + 'locale=' + locale;
-
-  window.open(finalUrl, '_blank', 'noopener');
+function donPickCustom(el) {
+  const g = 'donGridOnce';
+  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  donCustomSelected = true;
 }
  function donSubmit() {
   let link = '';
 
-  if (donTab === 'monthly') {
-    link = DON_CONFIG.stripe.monthlyFixed[donAmt] || '';
+if (donTab === 'monthly') {
+  link = DON_CONFIG.stripe.monthlyFixed[donAmt] || '';
+} else {
+  if (donCustomSelected) {
+    link = DON_CONFIG.stripe.onceCustom || '';
   } else {
     link = DON_CONFIG.stripe.onceFixed[donAmt] || '';
   }
+}
 
   if (!link || link.includes('STRIPE_')) {
     showToast('⚠️ Link de pagamento não configurado.');
