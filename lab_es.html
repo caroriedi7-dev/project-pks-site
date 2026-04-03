@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="/pks_favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/pks_favicon.svg">
+  <title>Laboratorio asociado · Dr. Alysson Muotri | Project PKS</title>
+  <meta name="description" content="Conozca el Muotri Lab de UC San Diego, laboratorio asociado de Project PKS — dirigido por el Dr. Alysson R. Muotri, pionero mundial en la investigación con organoides cerebrales para enfermedades neurológicas raras." />
+  <meta property="og:title" content="Laboratorio asociado · Dr. Alysson Muotri | Project PKS" />
+  <meta property="og:description" content="El Muotri Lab (UC San Diego) es el laboratorio asociado de Project PKS para la investigación con organoides cerebrales aplicada al síndrome de Pallister-Killian." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://project-pks.org/lab_es.html" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:image" content="https://project-pks.org/img/pks-og-image.jpg" />
+  <link rel="canonical" href="https://project-pks.org/lab_es.html" />
+  <style>
+    :root{--bg:#F2FBF7;--card:#FFFFFF;--ink:#0F1F26;--muted:#3F565E;--blue:#0B2E6B;--blue2:#1E63FF;--green:#19B67A;--gold:#D7AF4A;--line:#D2E6DF;--shadow:0 18px 60px rgba(11,46,107,.16);--shadow2:0 12px 28px rgba(11,46,107,.10);}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);line-height:1.65;background:radial-gradient(900px 520px at 12% 10%,rgba(30,99,255,.14),transparent 62%),radial-gradient(900px 520px at 88% 12%,rgba(25,182,122,.12),transparent 62%),linear-gradient(180deg,rgba(215,175,74,.06),transparent 30%),var(--bg);}
+    a{color:inherit}.wrap{max-width:1120px;margin:0 auto;padding:18px}.muted{color:var(--muted)}
+    header{position:sticky;top:0;z-index:50;background:rgba(242,251,247,.82);backdrop-filter:blur(14px) saturate(180%);border-bottom:1px solid rgba(210,230,223,.95);}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+    .langDrop{position:relative}
+    .langBtn{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;border:1px solid rgba(210,230,223,.95);background:rgba(255,255,255,.82);box-shadow:0 10px 22px rgba(11,46,107,.08);cursor:pointer;font-weight:900;color:var(--muted);}
+    .langCurrent{color:var(--blue)}
+    .langMenu{position:absolute;right:0;top:calc(100% + 10px);min-width:140px;padding:8px;border-radius:16px;border:1px solid rgba(210,230,223,.95);background:rgba(255,255,255,.96);box-shadow:var(--shadow2);display:none;}
+    .langMenu a{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:12px;text-decoration:none;color:var(--muted);font-weight:900;font-size:13px;}
+    .langMenu a:hover{background:rgba(30,99,255,.08);color:var(--blue);}
+    .langMenu a[aria-current="page"]{color:var(--blue);background:rgba(30,99,255,.08);}
+    .langDrop[data-open="true"] .langMenu{display:block}
+    .btn,a.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(210,230,223,.95);background:rgba(255,255,255,.90);color:var(--blue);cursor:pointer;font-weight:900;font-size:14px;text-decoration:none;box-shadow:0 10px 22px rgba(11,46,107,.08);transition:transform .08s ease,opacity .15s ease;}
+    .btn:hover{opacity:.96}.btn:active{transform:translateY(1px)}
+    .btnPrimary{border:none;color:#1b1402;background:linear-gradient(135deg,#f3d37f,var(--gold));}
+    .btnBlue{border:none;color:#fff;background:linear-gradient(135deg,var(--blue2),var(--green));}
+    .card{background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:var(--shadow2);position:relative;overflow:hidden;}
+    .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--blue2),var(--green));opacity:.9;}
+    .cardInner{position:relative}.card h3{margin:0 0 10px;color:var(--blue);font-weight:900}.card p{margin:0;color:var(--muted)}
+    .sectionTitle{margin:28px 0 10px;color:var(--blue);font-size:28px;letter-spacing:-.2px;font-weight:900;}
+    .sectionSub{margin:0 0 16px;color:var(--muted);max-width:92ch;font-size:15.5px;}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    @media(max-width:600px){.row .btn,.row a.btn{width:100%}}
+    .labHeroBanner{margin-top:16px;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.60);box-shadow:var(--shadow);background:linear-gradient(135deg,#0B2E6B 0%,#163d8a 45%,#19B67A 100%);padding:40px 40px 32px;position:relative;}
+    .labHeroBanner::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 85% 40%,rgba(215,175,74,.15),transparent 55%);pointer-events:none;}
+    .labBadge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);font-size:12px;font-weight:900;letter-spacing:.5px;margin-bottom:20px;}
+    .labHeroGrid{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;position:relative;z-index:1;}
+    @media(max-width:700px){.labHeroGrid{grid-template-columns:1fr}}
+    .labPhoto{width:120px;height:120px;border-radius:50%;border:3px solid rgba(255,255,255,.35);box-shadow:0 8px 32px rgba(0,0,0,.3);object-fit:cover;display:block;flex-shrink:0;}
+    .labPhotoFallback{width:120px;height:120px;border-radius:50%;border:3px solid rgba(255,255,255,.35);box-shadow:0 8px 32px rgba(0,0,0,.3);background:linear-gradient(135deg,rgba(30,99,255,.5),rgba(25,182,122,.5));display:none;align-items:center;justify-content:center;color:#fff;font-size:36px;font-weight:900;flex-shrink:0;}
+    .labHeroName{color:#fff;font-size:28px;font-weight:900;margin:0 0 5px;letter-spacing:-.3px;}
+    @media(max-width:600px){.labHeroName{font-size:20px}}
+    .labHeroTitle{color:rgba(255,255,255,.72);font-size:13px;margin:0 0 3px;}
+    .labHeroInstitut{color:rgba(255,255,255,.9);font-size:13px;font-weight:700;margin:0 0 14px;}
+    .labHeroPills{display:flex;gap:8px;flex-wrap:wrap;}
+    .labPill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12px;font-weight:900;}
+    .profCard{background:linear-gradient(160deg,rgba(11,46,107,.04),rgba(25,182,122,.04));border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:var(--shadow2);}
+    .diseaseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;}
+    @media(max-width:900px){.diseaseGrid{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.diseaseGrid{grid-template-columns:1fr}}
+    .diseaseCard{border-radius:18px;padding:18px;border:1px solid var(--line);background:rgba(255,255,255,.93);box-shadow:var(--shadow2);}
+    .diseaseEmoji{font-size:22px;margin-bottom:7px;}
+    .diseaseName{font-weight:900;color:var(--blue);font-size:14px;margin-bottom:5px;}
+    .diseaseStatus{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:900;margin-bottom:8px;}
+    .statusClinical{background:rgba(25,182,122,.12);color:#0d7a51;}
+    .statusFDA{background:rgba(30,99,255,.10);color:var(--blue2);}
+    .statusResearch{background:rgba(215,175,74,.15);color:#8a6a00;}
+    .statusNext{background:rgba(11,46,107,.08);color:var(--blue);}
+    .diseaseDesc{font-size:13px;color:var(--muted);line-height:1.6;}
+    .pksHighlight{background:linear-gradient(135deg,rgba(11,46,107,.06),rgba(25,182,122,.06));border:2px solid rgba(30,99,255,.2);border-radius:22px;padding:22px 26px;margin-top:16px;}
+    .pksHighlightTitle{color:var(--blue);font-weight:900;font-size:17px;margin:0 0 10px;}
+    .timeline{margin:0;padding:0;list-style:none;}
+    .timeline li{position:relative;padding:0 0 20px 30px;border-left:2px solid var(--line);margin-left:10px;}
+    .timeline li:last-child{border-left:2px solid transparent;padding-bottom:0;}
+    .timeline li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--blue2),var(--green));}
+    .tYear{font-size:11px;font-weight:900;color:var(--blue2);letter-spacing:.5px;margin-bottom:2px;}
+    .tText{font-size:14px;color:var(--muted);line-height:1.6;}.tText b{color:var(--ink);}
+    .awardsGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+    .awardBox{padding:14px;border-radius:16px;border:1px dashed rgba(11,46,107,.18);background:rgba(255,255,255,.88);}
+    .awardIcon{font-size:20px;margin-bottom:6px;}.awardName{font-weight:900;color:var(--blue);font-size:13px;}.awardOrg{color:var(--muted);font-size:12px;margin-top:2px;}
+    .labImgGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;}
+    @media(max-width:600px){.labImgGrid{grid-template-columns:1fr}}
+    .labImg{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow2);background:linear-gradient(135deg,rgba(11,46,107,.06),rgba(25,182,122,.06));aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;}
+    .labImg img{width:100%;height:100%;object-fit:cover;display:block;}
+    footer{margin-top:30px;border-top:1px solid var(--line);padding:18px 0 40px;color:var(--muted);font-size:13px;}
+    .footerGrid{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;">
+      <svg width="160" height="42" viewBox="0 0 140 90" style="display:block;">
+        <rect x="12" y="8" width="10" height="26" rx="5" fill="#0B2E6B"/><rect x="26" y="8" width="10" height="26" rx="5" fill="#0B2E6B" opacity=".3"/><rect x="8" y="33" width="32" height="18" rx="9" fill="none" stroke="#0B2E6B" stroke-width="1.5"/><rect x="9.5" y="34.5" width="29" height="15" rx="7.5" fill="#fff"/><rect x="12" y="50" width="10" height="26" rx="5" fill="#0B2E6B" opacity=".3"/><rect x="26" y="50" width="10" height="26" rx="5" fill="#0B2E6B"/>
+        <text x="52" y="38" font-size="22" font-weight="700" fill="#0B2E6B" font-family="ui-sans-serif,sans-serif" letter-spacing="-0.5">PKS</text>
+        <line x1="52" y1="44" x2="132" y2="44" stroke="#0B2E6B" stroke-width="1.5" stroke-linecap="round" opacity=".3"/>
+        <text x="52" y="56" font-size="8.5" font-weight="400" fill="#0B2E6B" font-family="ui-sans-serif,sans-serif" letter-spacing="2.5">PROJECT</text>
+      </svg>
+      <small style="color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.2px;padding-left:2px;">Juntos por Giulia</small>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="langDrop">
+        <button class="langBtn" type="button" onclick="toggleLang()"><span>🌐</span><span class="langCurrent">ES</span><span>▾</span></button>
+        <div class="langMenu">
+          <a href="lab_en.html">EN</a>
+          <a href="lab_fr.html">FR</a>
+          <a href="lab_pt.html">PT</a>
+          <a href="lab_es.html" aria-current="page">ES</a>
+        </div>
+      </div>
+      <a href="es.html" class="btn">← Volver al sitio</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="labHeroBanner">
+    <div class="labBadge">🔬 Laboratorio asociado · Project PKS</div>
+    <div class="labHeroGrid">
+      <img src="img/muotri.jpg" alt="Dr. Alysson R. Muotri, UC San Diego" class="labPhoto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="labPhotoFallback">AM</div>
+      <div>
+        <p class="labHeroName">Dr. Alysson R. Muotri, Ph.D.</p>
+        <p class="labHeroTitle">Profesor — Pediatría &amp; Medicina Celular y Molecular</p>
+        <p class="labHeroInstitut">UC San Diego School of Medicine · Sanford Stem Cell Institute · La Jolla, California</p>
+        <div class="labHeroPills">
+          <span class="labPill">🧬 Organoides cerebrales</span>
+          <span class="labPill">🏛️ UC San Diego</span>
+          <span class="labPill">🚀 Misiones ISS</span>
+          <span class="labPill">✅ Enfermedades raras</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sectionTitle">Un investigador dedicado a las enfermedades raras del cerebro</h2>
+  <p class="sectionSub">El Dr. Muotri dirige uno de los laboratorios más avanzados del mundo en la creación de organoides cerebrales — modelos del cerebro humano desarrollados a partir de las propias células de los pacientes. Su misión durante más de quince años: dar esperanza a las familias afectadas por enfermedades raras para las cuales todavía no existe tratamiento.</p>
+
+  <div class="profCard">
+    <p style="color:var(--muted);font-size:15px;line-height:1.8;margin:0;"><b style="color:var(--ink);">"A veces solo hay un puñado de laboratorios trabajando en una enfermedad rara — cuando los hay. Me gusta dar esperanza a estos pacientes, mostrarles que hay personas que quieren estudiar su enfermedad, que no están solos."</b></p>
+    <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-top:14px;">Al transformar células de piel de pacientes en mini-cerebros funcionales en el laboratorio, su equipo puede estudiar directamente enfermedades que no se reproducen fielmente en modelos animales — y probar estrategias terapéuticas en tejido humano real.</p>
+    <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-top:12px;">Este enfoque ya ha <b style="color:var(--ink);">contribuido al primer tratamiento aprobado por la FDA para el síndrome de Rett</b>, y llevó al <b style="color:var(--ink);">primer ensayo clínico de terapia génica para el síndrome de Pitt-Hopkins</b>, lanzado en 2026. Para el PKS, esta investigación aún está por construirse — y eso es exactamente lo que Project PKS quiere financiar.</p>
+  </div>
+
+  <h2 class="sectionTitle">Enfermedades raras estudiadas por el Muotri Lab</h2>
+  <p class="sectionSub">Estos resultados concretos — del organoide al ensayo clínico — ilustran la capacidad del laboratorio para transformar la investigación fundamental en esperanza real para los pacientes.</p>
+
+  <div class="diseaseGrid">
+    <div class="diseaseCard"><div class="diseaseEmoji">🧬</div><div class="diseaseName">Síndrome de Rett</div><div class="diseaseStatus statusFDA">✅ Medicamento aprobado por la FDA</div><p class="diseaseDesc">El trabajo del laboratorio con organoides de Rett contribuyó al desarrollo del <b>Daybue (trofinetida)</b> — primer tratamiento aprobado por la FDA para este síndrome. Un segundo ensayo clínico, basado en antivirales probados en organoides, está actualmente en curso.</p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">🔬</div><div class="diseaseName">Síndrome de Pitt-Hopkins</div><div class="diseaseStatus statusClinical">🟢 Ensayo clínico · 2026</div><p class="diseaseDesc">En organoides de pacientes, el laboratorio demostró que una terapia génica corregía las alteraciones neuronales. La FDA aprobó el ensayo clínico lanzado por <b>Mahzi Therapeutics</b> en 2026 — <b>primera terapia génica desarrollada a partir de organoides</b> en entrar en ensayo clínico para una enfermedad rara.</p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">⚡</div><div class="diseaseName">Deficiencia de CDKL5 (CDD)</div><div class="diseaseStatus statusResearch">🔶 Investigación activa</div><p class="diseaseDesc">El laboratorio estudió en organoides corticales las disfunciones neuronales vinculadas a las mutaciones del gen CDKL5, contribuyendo a identificar dianas terapéuticas para este síndrome raro asociado a una epilepsia grave de inicio temprano.</p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">🧠</div><div class="diseaseName">Autismo (TEA)</div><div class="diseaseStatus statusResearch">🔶 Investigación activa</div><p class="diseaseDesc">Organoides creados a partir de células de niños autistas revelaron que la gravedad de los síntomas está ligada a una <b>sobreproducción neuronal desde la etapa embrionaria</b> — organoides sobreactivados que producen demasiadas neuronas mal conectadas. Un hallazgo que abre camino para biomarcadores tempranos y dianas terapéuticas.</p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">🦠</div><div class="diseaseName">Zika &amp; microcefalia</div><div class="diseaseStatus statusFDA">📄 Publicado en Nature · 2016</div><p class="diseaseDesc">En 2016, el laboratorio aportó la primera prueba experimental directa de que el virus Zika causa microcefalia — publicada en Nature. El laboratorio fue más lejos: medicamentos antivirales fueron probados directamente en los organoides infectados y demostraron protección contra el daño neurológico. <b>De la prueba de causalidad a la prueba de tratamiento — en el mismo modelo.</b></p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">🧬</div><div class="diseaseName">Síndrome de Williams</div><div class="diseaseStatus statusResearch">🔶 Investigación activa</div><p class="diseaseDesc">El síndrome de Williams está causado por una deleción cromosómica rara (7q11.23) que produce trastornos cognitivos y neurológicos específicos. El Muotri Lab creó un modelo celular dedicado, permitiendo por primera vez el estudio de las bases moleculares y celulares de esta anomalía directamente en tejido humano.</p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">🧩</div><div class="diseaseName">Síndrome 8p (inv/dup/del)</div><div class="diseaseStatus statusResearch">🔶 Programa en curso</div><p class="diseaseDesc">El síndrome 8p es una anomalía cromosómica rara sin tratamiento. El Muotri Lab creó organoides cerebrales a partir de las células de los pacientes e identificó alteraciones neuronales específicas — invisibles de otro modo — directamente en los mini-cerebros. <b>Una anomalía cromosómica compleja, modelada, analizada, y pistas biológicas concretas emergiendo.</b></p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">🧠</div><div class="diseaseName">Enfermedad de Alzheimer</div><div class="diseaseStatus statusResearch">🔶 Investigación activa</div><p class="diseaseDesc">Los organoides enviados a la ISS sufren un envejecimiento celular acelerado, reproduciendo mecanismos hasta ahora inaccesibles en laboratorio. El Muotri Lab aprovecha este fenómeno para modelar el Alzheimer y probar tratamientos en organoides con signos de neurodegeneración — <b>un enfoque pionero a escala mundial.</b></p></div>
+
+    <div class="diseaseCard"><div class="diseaseEmoji">🎯</div><div class="diseaseName">Síndrome de Pallister-Killian</div><div class="diseaseStatus statusNext">▶ Próximo programa</div><p class="diseaseDesc">No existe todavía ninguna investigación con organoides para el PKS — en ninguna parte del mundo. A partir de las células de Giulia y de otros dos niños afectados, el laboratorio creará mini-cerebros portando la anomalía cromosómica real. Objetivo: comprender los mecanismos biológicos del PKS y probar medicamentos y moléculas capaces de corregir las alteraciones observadas. <b>Este es el primer paso hacia un tratamiento.</b></p></div>
+  </div>
+
+  <div class="pksHighlight">
+    <p class="pksHighlightTitle">🎯 Por qué el Muotri Lab es particularmente adecuado para el PKS</p>
+    <p style="color:var(--muted);font-size:15px;line-height:1.8;margin:0;">El síndrome de Pallister-Killian es una anomalía cromosómica en mosaico — solo ciertas células están afectadas. Este es exactamente el perfil que los organoides pueden reproducir fielmente: desarrollados a partir de las propias células del paciente, preservan la anomalía real y permiten observar su impacto en el desarrollo neuronal. Ningún modelo animal puede reproducir esto de forma fidedigna.</p>
+    <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-top:10px;">La trayectoria del laboratorio está ahora establecida — de la investigación fundamental con organoides al ensayo clínico real. Este es el camino que Project PKS quiere abrir para los niños con síndrome de Pallister-Killian.</p>
+  </div>
+
+  <h2 class="sectionTitle">Trayectoria científica</h2>
+  <div class="card">
+    <div class="cardInner">
+      <ul class="timeline">
+        <li><div class="tYear">SALK INSTITUTE · 2002–2007</div><div class="tText">Postdoctorado en el laboratorio de Fred Gage (Salk Institute, La Jolla). <b>Dos publicaciones destacadas en 2005:</b> demuestra que neuronas humanas derivadas de células madre se integran funcionalmente en un cerebro quimérico (PNAS, 2005) — y revela que el cerebro está compuesto por un mosaico de genomas neuronales causado por "genes saltadores" (L1) (Nature, 2005), derribando un dogma fundamental de la biología.</div></li>
+        <li><div class="tYear">UC SAN DIEGO · 2008</div><div class="tText">Se incorpora a la Escuela de Medicina como profesor. Se convierte en director del programa de células madre del <b>Sanford Stem Cell Institute</b> y director del centro <b>ISSCOR</b> (Integrated Space Stem Cell Orbital Research).</div></li>
+        <li><div class="tYear">2010 — PRIMER MODELO HUMANO DE ENFERMEDAD NEUROLÓGICA</div><div class="tText">Crea el primer modelo humano de trastorno del neurodesarrollo a partir de células madre de pacientes — y demuestra por primera vez que las alteraciones neuronales graves pueden ser <b>revertidas en laboratorio</b>. Estos métodos son hoy utilizados por miles de laboratorios en todo el mundo.</div></li>
+        <li><div class="tYear">2016 — VIRUS ZIKA</div><div class="tText">Primera prueba experimental directa de que el virus Zika causa microcefalia — publicada en <b>Nature</b>. Demostración realizada en organoides cerebrales humanos. El laboratorio fue más lejos, probando medicamentos antivirales directamente en estos organoides.</div></li>
+        <li><div class="tYear">2019–2024 — ESTACIÓN ESPACIAL INTERNACIONAL</div><div class="tText">Primer investigador en enviar organoides cerebrales humanos al espacio (SpaceX / NASA), para estudiar su comportamiento en microgravedad y los mecanismos de envejecimiento acelerado. <b>Seleccionado entre las 10 historias científicas del año</b> por Discover Magazine (2019). Misiones repetidas en 2020, 2021 y 2024.</div></li>
+        <li><div class="tYear">2020 — RETT · DOS MEDICAMENTOS CANDIDATOS</div><div class="tText">En organoides, identifica dos medicamentos candidatos que restauran casi por completo la actividad neuronal de los mini-cerebros de Rett. Sus investigaciones contribuyen al desarrollo del <b>Daybue</b>, primer tratamiento aprobado por la FDA para el síndrome de Rett.</div></li>
+        <li><div class="tYear">2022 — PITT-HOPKINS · NATURE COMMUNICATIONS</div><div class="tText">Demuestra en organoides que una terapia génica corrige las alteraciones neuronales del síndrome de Pitt-Hopkins a escala molecular, celular y electrofisiológica. <b>Publicado en Nature Communications.</b></div></li>
+        <li><div class="tYear">2024 — NATURE PROTOCOLS</div><div class="tText">Publicación de un protocolo de referencia mundial para la creación de organoides corticales con <b>oscilaciones neurales complejas</b> — ahora accesible a todos los laboratorios.</div></li>
+        <li><div class="tYear">2026 — PITT-HOPKINS: ENSAYO CLÍNICO HISTÓRICO</div><div class="tText">La FDA aprueba el primer ensayo clínico de terapia génica para el síndrome de Pitt-Hopkins, desarrollado por <b>Mahzi Therapeutics</b> a partir de las investigaciones del Muotri Lab. <b>Primer tratamiento desarrollado en organoides en entrar en ensayo clínico para una enfermedad rara.</b></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sectionTitle">El laboratorio</h2>
+  <p class="sectionSub">El Muotri Lab está ubicado en el Sanford Consortium for Regenerative Medicine, en La Jolla, California — uno de los campus de investigación biomédica más reconocidos del mundo.</p>
+  <div class="labImgGrid">
+    <div class="labImg"><img src="img/lab1.jpg" alt="Muotri Lab — organoides cerebrales" onerror="this.style.display='none';" /></div>
+    <div class="labImg"><img src="img/lab2.jpg" alt="Muotri Lab — UC San Diego" onerror="this.style.display='none';" /></div>
+  </div>
+  <p class="muted" style="font-size:12px;margin-top:8px;text-align:right;">Fotos: Muotri Lab / UC San Diego Health Sciences · Utilizadas con permiso</p>
+
+  <h2 class="sectionTitle">🎬 El Dr. Alysson Muotri y el programa PKS</h2>
+  <p class="sectionSub">El trabajo del Dr. Muotri con organoides cerebrales abre perspectivas prometedoras para el estudio de enfermedades raras, incluido el síndrome de Pallister-Killian.</p>
+  <div style="border-radius:22px;border:1.5px dashed rgba(11,46,107,.2);background:rgba(255,255,255,.85);box-shadow:var(--shadow2);padding:40px 24px;text-align:center;color:var(--muted);">
+    <div style="font-size:36px;margin-bottom:12px;">🎬</div>
+    <div style="font-weight:900;color:var(--blue);font-size:17px;margin-bottom:8px;">Vídeo próximamente</div>
+    <div style="font-size:14px;max-width:52ch;margin:0 auto;line-height:1.7;">El Dr. Muotri ha expresado su intención de compartir próximamente una presentación. La publicaremos aquí en cuanto esté disponible.</div>
+  </div>
+  <!-- IFRAME A ACTIVAR — eliminar el bloque anterior y descomentar:
+  <div style="position:relative;width:100%;padding-top:56.25%;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow2);background:#000;">
+    <iframe src="https://www.youtube.com/embed/REEMPLAZAR_CON_ID_VIDEO" title="Dr. Alysson Muotri — Programa de investigación PKS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+  </div>
+  -->
+
+  <h2 class="sectionTitle">Premios &amp; reconocimientos</h2>
+  <p class="sectionSub">El Dr. Alysson Muotri es un neurocientífico internacionalmente reconocido, galardonado por numerosas instituciones importantes por su trabajo en neurociencias y células madre.</p>
+  <div class="card">
+    <div class="cardInner">
+      <div class="awardsGrid">
+        <div class="awardBox"><div class="awardIcon">🏆</div><div class="awardName">NIH Director's New Innovator Award</div><div class="awardOrg">National Institutes of Health</div></div>
+        <div class="awardBox"><div class="awardIcon">🌟</div><div class="awardName">NARSAD Young Investigator Grant</div><div class="awardOrg">Brain &amp; Behavior Research Foundation</div></div>
+        <div class="awardBox"><div class="awardIcon">🧪</div><div class="awardName">NIH EUREKA Award</div><div class="awardOrg">National Institutes of Health</div></div>
+        <div class="awardBox"><div class="awardIcon">🏅</div><div class="awardName">Emerald Foundation Young Investigator Award</div><div class="awardOrg">Emerald Foundation</div></div>
+        <div class="awardBox"><div class="awardIcon">🇯🇵</div><div class="awardName">Surugadai Award</div><div class="awardOrg">Universidad de Tokio</div></div>
+        <div class="awardBox"><div class="awardIcon">🚀</div><div class="awardName">Rock Star of Innovation</div><div class="awardOrg">CONNECT San Diego</div></div>
+        <div class="awardBox"><div class="awardIcon">🧬</div><div class="awardName">CIRM Research Grants</div><div class="awardOrg">California Institute for Regenerative Medicine</div></div>
+        <div class="awardBox"><div class="awardIcon">📡</div><div class="awardName">Misiones ISS · 2019, 2020, 2021, 2024</div><div class="awardOrg">NASA / SpaceX / UC San Diego</div></div>
+        <div class="awardBox"><div class="awardIcon">📰</div><div class="awardName">Nature Protocols · 2024</div><div class="awardOrg">Protocolo de referencia mundial</div></div>
+        <div class="awardBox"><div class="awardIcon">🎬</div><div class="awardName">Telly Awards ×2</div><div class="awardOrg">Excelencia en comunicación científica</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:30px;padding:26px;border-radius:26px;background:rgba(255,255,255,.93);border:1px solid var(--line);box-shadow:var(--shadow2);text-align:center;">
+    <p style="color:var(--blue);font-weight:900;font-size:19px;margin:0 0 6px;">La investigación sobre el PKS puede comenzar.</p>
+    <p style="color:var(--muted);font-size:15px;margin:0 0 20px;max-width:52ch;margin-left:auto;margin-right:auto;">El laboratorio está listo. El protocolo está definido. Solo falta la financiación de la fase inicial.</p>
+    <div class="row" style="justify-content:center;">
+      <a href="es.html#donations" class="btn btnPrimary">Hacer una donación</a>
+      <a href="es.html#research" class="btn btnBlue">Ver el programa de investigación</a>
+      <a href="es.html" class="btn">← Volver al sitio</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footerGrid">
+      <div class="muted"><b>Project PKS</b> · Asociación francesa sin ánimo de lucro · RNA W951008089</div>
+      <div>© <span id="year"></span> Hecho por una madre y un padre, por amor a Giulia.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  function toggleLang(){const w=document.querySelector(".langDrop");if(!w)return;w.setAttribute("data-open",w.getAttribute("data-open")==="true"?"false":"true");}
+  document.addEventListener("click",(e)=>{const w=document.querySelector(".langDrop");if(w&&!e.target.closest(".langDrop"))w.setAttribute("data-open","false");});
+  document.addEventListener("keydown",(e)=>{if(e.key==="Escape")document.querySelector(".langDrop")?.setAttribute("data-open","false");});
+</script>
+</body>
+</html>
