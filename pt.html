@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="Campanha para financiar a pesquisa sobre a Síndrome de Pallister-Killian" />
 
 <link rel="canonical" href="https://www.project-pks.org/pt.html" />
-
+<script src="config.js"></script>
   <style>
     :root{
   --bg:#F2FBF7;
@@ -1506,9 +1506,8 @@ img{
   
   const SHARE_TEXT = "Ajude a salvar a Giulia e iniciar a pesquisa em PKS. Link:";
 const DON_CONFIG = {
-  collected: 1300,
-  goal: 500000,
-  donors: 0,
+  collected: DON_SHARED.collected,
+  goal: DON_SHARED.goal,
 
   stripe: {
     onceCustom: 'https://buy.stripe.com/4gM00l63l73uc6Jc7Mak00g',
