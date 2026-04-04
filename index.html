@@ -1529,8 +1529,10 @@
      JS SECTION DONS — VERSION FINALE
          ═══════════════════════════════════════════════ */
 
- collected: DON_SHARED.collected,
+const DON_CONFIG = {
+  collected: DON_SHARED.collected,
   goal: DON_SHARED.goal,
+  donors: 0,
 
   stripe: {
     onceCustom: 'https://buy.stripe.com/8x2cN78bt87yb2F2xcak001',
