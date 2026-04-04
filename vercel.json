@@ -1,15 +1,15 @@
 {
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/(.*\\.html)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
         {
           "key": "Accept-Ranges",
           "value": "none"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
         }
       ]
     }
