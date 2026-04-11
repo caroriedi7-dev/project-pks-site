@@ -1,4 +1,4 @@
 const DON_SHARED = {
-  collected: 2610,
+  collected: 2710,
   goal: 500000
 };
