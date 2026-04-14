@@ -132,7 +132,7 @@
 <script>
 function btn(cls, href, icon, title, sub, onclick) {
   if (onclick) {
-    return '<button class="btn ' + cls + '" onclick="' + onclick + '"><div class="btn-left"><span class="btn-icon">' + icon + '</span><div class="btn-text"><span class="btn-title">' + title + '</span><span class="btn-sub">' + sub + '</span></div></div><span class="btn-arrow">📋</span></button><div class="pix-copied" id="pixCopied">✅ Chave PIX copiada!</div>';
+    return '<button class="btn ' + cls + '" onclick="' + onclick + '"><div class="btn-left"><span class="btn-icon">' + icon + '</span><div class="btn-text"><span class="btn-title">' + title + '</span><span class="btn-sub">' + sub + '</span></div></div><span class="btn-arrow">📋</span></button><div class="pix-copied" id="pixCopied">✅ Chave PIX copiada!<br><span style="font-size:13px;font-weight:600;letter-spacing:0.3px;">juntospelagiulia@gmail.com</span></div>';
   }
   return '<a class="btn ' + cls + '" href="' + href + '" target="_blank" rel="noopener"><div class="btn-left"><span class="btn-icon">' + icon + '</span><div class="btn-text"><span class="btn-title">' + title + '</span><span class="btn-sub">' + sub + '</span></div></div><span class="btn-arrow">›</span></a>';
 }
@@ -142,7 +142,7 @@ function copyPix() {
   if (navigator.clipboard?.writeText) navigator.clipboard.writeText(key);
   else { const t=document.createElement('textarea');t.value=key;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t); }
   const el = document.getElementById('pixCopied');
-  if(el){el.style.display='block';setTimeout(()=>el.style.display='none',3000);}
+  if(el){el.style.display='block';setTimeout(()=>el.style.display='none',5000);}
 }
 
 function getRegion() {
@@ -172,7 +172,7 @@ const content = {
     footer: 'Project PKS · Associação sem fins lucrativos · França',
     donate: [
       btn('btn-vakinha','https://www.vakinha.com.br/6050754','💙','Vakinha','Doação direta em reais'),
-      btn('btn-pix','pix:juntospelagiulia@gmail.com','📱','PIX','Abre seu app bancário direto'),
+      btn('btn-pix','','📱','PIX','juntospelagiulia@gmail.com','copyPix()'),
       btn('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campanha internacional'),
     ],
     rifa: [btn('btn-rifa','https://vakinhadasorte.com.br/uma-chance-de-tratamento-para-a-giulia','🎁','Rifa Solidária','Concorra a prêmios e ajude a pesquisa')]
