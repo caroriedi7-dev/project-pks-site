@@ -463,22 +463,22 @@
               </div>
 
               <div>
-                <label>Prénom de l'enfant (ou pseudonyme)</label>
-                <input type="text" name="Prénom de l'enfant">
+                <label>Prénom de l'enfant (ou pseudonyme) <span class="required-star">*</span></label>
+                <input type="text" name="Prénom de l'enfant" required>
               </div>
             </div>
 
             <div class="grid2">
               <div>
-                <label>Date de naissance</label>
-                <input type="date" name="Date de naissance">
+                <label>Date de naissance <span class="required-star">*</span></label>
+                <input type="date" name="Date de naissance" required>
               </div>
 
               <div>
-                <label>Sexe</label>
+                <label>Sexe <span class="required-star">*</span></label>
                 <div class="inlineChoices">
                   <div class="checkItem">
-                    <input type="radio" name="Sexe" value="Fille" id="sexe-f">
+                    <input type="radio" name="Sexe" value="Fille" required id="sexe-f">
                     <label for="sexe-f">Fille</label>
                   </div>
                   <div class="checkItem">
@@ -658,7 +658,7 @@
               <!-- NOVO: Engatinha -->
               <div class="card" style="margin-top:0;">
                 <div class="cardInner">
-                  <h3 style="margin:0 0 10px;">À quatre pattes (engatinha)</h3>
+                  <h3 style="margin:0 0 10px;" data-t="crawls">À quatre pattes (engatinha)</h3>
                   <label>Statut</label>
                   <select name="À quatre pattes - statut">
                     <option value="">Choisir</option>
@@ -847,6 +847,9 @@
           <div class="formBlock">
             <div class="formSectionTitle" data-t="s14">14. Contact</div>
 
+            <label data-t="parentName">Nom du parent / responsable légal <span class="required-star">*</span></label>
+            <input type="text" name="Nom du parent" data-t-ph="parentNamePh" required>
+
             <label>Email du parent <span class="required-star">*</span></label>
             <input type="email" name="Email du parent" required>
           </div>
@@ -954,6 +957,8 @@ const T = {
     travelQ: "Dans certains cas, la participation au projet de recherche pourrait nécessiter un déplacement au laboratoire aux États-Unis afin de réaliser un prélèvement de peau pour les analyses scientifiques. Seriez-vous potentiellement disposé à voyager aux États-Unis pour participer à cette étape du projet ?",
     travelYes: "Oui", travelMaybe: "Peut-être", travelNo: "Non",
     s14: "14. Contact",
+    parentName: "Nom du parent / responsable légal <span class='required-star'>*</span>",
+    parentNamePh: "Ex. Jean Dupont",
     email: "Email du parent",
     consentText: "J'accepte que les informations fournies dans ce questionnaire soient utilisées par l'association Project PKS à des fins de sélection scientifique. Ces données ne seront pas partagées avec des tiers sans mon accord préalable et ne seront pas utilisées à des fins commerciales.",
     sending: "Envoi en cours…",
@@ -1033,6 +1038,8 @@ const T = {
     travelQ: "Em alguns casos, a participação no projeto de investigação pode exigir uma deslocação ao laboratório nos Estados Unidos para realizar uma biopsia de pele para análises científicas. Estaria potencialmente disposto a viajar para os EUA para participar nesta etapa do projeto?",
     travelYes: "Sim", travelMaybe: "Talvez", travelNo: "Não",
     s14: "14. Contacto",
+    parentName: "Nome do pai/mãe ou responsável legal <span class='required-star'>*</span>",
+    parentNamePh: "Ex. João Silva",
     email: "Email do pai/mãe",
     consentText: "Aceito que as informações fornecidas neste questionário sejam utilizadas pela associação Project PKS para fins de seleção científica. Estes dados não serão partilhados com terceiros sem o meu acordo prévio e não serão utilizados para fins comerciais.",
     sending: "A enviar…",
@@ -1112,6 +1119,8 @@ const T = {
     travelQ: "In some cases, participation in the research project may require travel to the laboratory in the United States to perform a skin biopsy for scientific analysis. Would you potentially be willing to travel to the US to participate in this step?",
     travelYes: "Yes", travelMaybe: "Maybe", travelNo: "No",
     s14: "14. Contact",
+    parentName: "Parent / legal guardian name <span class='required-star'>*</span>",
+    parentNamePh: "E.g. John Smith",
     email: "Parent's email",
     consentText: "I agree that the information provided in this questionnaire may be used by the Project PKS association for scientific selection purposes. This data will not be shared with third parties without my prior consent and will not be used for commercial purposes.",
     sending: "Sending…",
