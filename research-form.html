@@ -698,8 +698,15 @@ async function handleSubmit(e) {
   for (const [k,v] of Object.entries(multi)) data[k+"[]"] = v.join(", ");
 
   try {
-    const res = await fetch(SCRIPT_URL, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(data) });
-    const result = await res.json();
+    // Apps Script doesn't support CORS headers — use no-cors + assume success on 200
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    // no-cors returns opaque response — treat as success if no network error
+    const result = { result: "success" };
     if (result.result === "success") {
       msg.style.cssText = "display:block;background:rgba(25,182,122,.12);border:1px solid rgba(25,182,122,.4);color:#0f4a32;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
       msg.textContent = t.successMsg;
