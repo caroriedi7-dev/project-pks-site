@@ -854,11 +854,23 @@
             <input type="email" name="Email du parent" required>
           </div>
 
-          <!-- Consentement -->
+          <!-- Consentements -->
           <div class="consentBlock">
             <input type="checkbox" name="Consentement" id="consent" value="Oui" required>
             <label for="consent">
               <span data-t="consentText">J'accepte que les informations fournies dans ce questionnaire soient utilisées par l'association Project PKS à des fins de sélection scientifique. Ces données ne seront pas partagées avec des tiers sans mon accord préalable et ne seront pas utilisées à des fins commerciales.</span>
+            </label>
+          </div>
+          <div class="consentBlock">
+            <input type="checkbox" name="Consentement contact" id="consent2" value="Oui">
+            <label for="consent2">
+              <span data-t="consentContact">J'autorise l'utilisation de mes coordonnées pour recevoir des informations sur l'avancement du projet de recherche.</span>
+            </label>
+          </div>
+          <div class="consentBlock">
+            <input type="checkbox" name="Déclaration de véracité" id="consent3" value="Oui" required>
+            <label for="consent3">
+              <span data-t="consentTruth">Je certifie que les informations fournies dans ce questionnaire sont exactes et correspondent à la situation actuelle de l'enfant.</span>
             </label>
           </div>
 
@@ -961,6 +973,8 @@ const T = {
     parentNamePh: "Ex. Jean Dupont",
     email: "Email du parent",
     consentText: "J'accepte que les informations fournies dans ce questionnaire soient utilisées par l'association Project PKS à des fins de sélection scientifique. Ces données ne seront pas partagées avec des tiers sans mon accord préalable et ne seront pas utilisées à des fins commerciales.",
+    consentContact: "J'autorise l'utilisation de mes coordonnées pour recevoir des informations sur l'avancement du projet de recherche.",
+    consentTruth: "Je certifie que les informations fournies dans ce questionnaire sont exactes et correspondent à la situation actuelle de l'enfant.",
     sending: "Envoi en cours…",
     successMsg: "✅ Questionnaire envoyé avec succès. Merci pour votre participation !",
     errorMsg: "❌ Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.",
@@ -973,7 +987,7 @@ const T = {
     kicker: "Pesquisa sobre a síndrome de Pallister-Killian",
     heroTitle: "Participar no questionário",
     heroSub1: "Estamos a trabalhar com investigadores para lançar um projeto científico que visa compreender melhor a síndrome de Pallister-Killian e explorar possíveis tratamentos.",
-    heroSub2: "As informações recolhidas servirão apenas para <b>pré-selecionar perfis para a investigação</b>. Se o seu filho corresponder aos critérios científicos procurados, a nossa associação poderá recontactá-lo para eventualmente colocá-lo em contacto com a equipa de investigação.",
+    heroSub2: "As informações recolhidas servirão apenas para <b>pré-selecionar perfis para a investigação</b>. Se o seu filho atender aos critérios científicos, nossa associação entrará em contato para apresentá-lo à equipe de pesquisa.",
     formTitle: "Questionário – Crianças com síndrome de Pallister-Killian",
     formSub: "Por favor preencha este questionário com as informações que conhece. Pode deixar em branco o que não sabe. Os campos marcados com <span class='required-star'>*</span> são obrigatórios.",
     navHome: "Início", navVideo: "Vídeo", navResearch: "Pesquisa", navDonate: "Doações", navFamilies: "Famílias",
@@ -1042,6 +1056,8 @@ const T = {
     parentNamePh: "Ex. João Silva",
     email: "Email do pai/mãe",
     consentText: "Aceito que as informações fornecidas neste questionário sejam utilizadas pela associação Project PKS para fins de seleção científica. Estes dados não serão partilhados com terceiros sem o meu acordo prévio e não serão utilizados para fins comerciais.",
+    consentContact: "Autorizo que meus dados de contato sejam utilizados para receber informações sobre o andamento do projeto de pesquisa.",
+    consentTruth: "Declaro que as informações fornecidas neste questionário são verdadeiras e correspondem à situação atual da criança.",
     sending: "A enviar…",
     successMsg: "✅ Questionário enviado com sucesso. Obrigado pela sua participação!",
     errorMsg: "❌ Ocorreu um erro. Por favor tente novamente ou contacte-nos diretamente.",
@@ -1123,6 +1139,8 @@ const T = {
     parentNamePh: "E.g. John Smith",
     email: "Parent's email",
     consentText: "I agree that the information provided in this questionnaire may be used by the Project PKS association for scientific selection purposes. This data will not be shared with third parties without my prior consent and will not be used for commercial purposes.",
+    consentContact: "I authorize the use of my contact details to receive updates on the progress of the research project.",
+    consentTruth: "I certify that the information provided in this questionnaire is accurate and reflects the current situation of the child.",
     sending: "Sending…",
     successMsg: "✅ Questionnaire submitted successfully. Thank you for your participation!",
     errorMsg: "❌ An error occurred. Please try again or contact us directly.",
