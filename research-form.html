@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Participer à la recherche | Ensemble pour Giulia</title>
+
+  <meta
+    name="description"
+    content="Questionnaire de recherche pour les familles concernées par le syndrome de Pallister-Killian."
+  />
+
+  <style>
+    :root{
+      --bg:#F2FBF7;
+      --card:#FFFFFF;
+      --ink:#0F1F26;
+      --muted:#3F565E;
+
+      --blue:#0B2E6B;
+      --blue2:#1E63FF;
+      --green:#19B67A;
+      --gold:#D7AF4A;
+      --line:#D2E6DF;
+
+      --radius:22px;
+      --shadow: 0 18px 60px rgba(11,46,107,.16);
+      --shadow2: 0 12px 28px rgba(11,46,107,.10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink);
+      line-height:1.65;
+      background:
+        radial-gradient(900px 520px at 12% 10%, rgba(30,99,255,.14), transparent 62%),
+        radial-gradient(900px 520px at 88% 12%, rgba(25,182,122,.12), transparent 62%),
+        linear-gradient(180deg, rgba(215,175,74,.06), transparent 30%),
+        var(--bg);
+    }
+
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:18px}
+    .muted{color:var(--muted)}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(242,251,247,.82);
+      backdrop-filter: blur(14px) saturate(180%);
+      border-bottom:1px solid rgba(210,230,223,.95);
+    }
+
+    .topbar{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+    .brand b{color:var(--blue);font-size:15px;letter-spacing:.25px}
+    .brand small{color:var(--muted);font-weight:900;opacity:.95}
+
+    nav{
+      justify-self:center;
+      display:flex;
+      gap:6px;
+      flex-wrap:nowrap;
+      white-space:nowrap;
+      overflow:auto;
+      scrollbar-width:none;
+      align-items:center;
+    }
+    nav::-webkit-scrollbar{display:none}
+
+    nav a{
+      font-size:13.5px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      text-decoration:none;
+      border:1px solid transparent;
+    }
+    nav a:hover{
+      background:rgba(30,99,255,.08);
+      border-color:rgba(30,99,255,.12);
+      color:var(--blue);
+    }
+
+    .headerRight{
+      justify-self:end;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn, a.btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(210,230,223,.95);
+      background:rgba(255,255,255,.90);
+      color:var(--blue);
+      cursor:pointer;
+      font-weight:900;
+      font-size:14px;
+      text-decoration:none;
+      box-shadow: 0 10px 22px rgba(11,46,107,.08);
+      transition: transform .08s ease, opacity .15s ease;
+    }
+    .btn:hover, a.btn:hover{opacity:.96}
+    .btn:active, a.btn:active{transform: translateY(1px)}
+
+    .btnPrimary{
+      border:none;
+      color:#1b1402;
+      background: linear-gradient(135deg, #f3d37f, var(--gold));
+    }
+
+    .navToggle{
+      display:none;
+      border:1px solid rgba(210,230,223,.95);
+      background:rgba(255,255,255,.82);
+      color:var(--blue);
+      font-weight:900;
+      border-radius:999px;
+      padding:9px 11px;
+      cursor:pointer;
+      box-shadow: 0 10px 22px rgba(11,46,107,.08);
+    }
+
+    @media (max-width:900px){
+      .topbar{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        flex-wrap:wrap;
+      }
+
+      .headerRight{margin-left:auto}
+      .navToggle{display:inline-flex}
+
+      nav{
+        display:none;
+        width:100%;
+        padding-top:10px;
+        overflow:visible;
+        white-space:normal;
+        flex-wrap:wrap;
+      }
+      nav[data-open="true"]{display:flex}
+    }
+
+    .sectionTitle{
+      margin:24px 0 10px;
+      color:var(--blue);
+      font-size:28px;
+      letter-spacing:-.2px;
+      font-weight:900;
+    }
+
+    .sectionSub{
+      margin:0 0 14px;
+      color:var(--muted);
+      max-width:92ch;
+      font-size:15.5px;
+    }
+
+    .heroTop{
+      margin-top:16px;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.70);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.92);
+    }
+
+    .heroTopInner{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      padding:18px;
+      align-items:stretch;
+    }
+
+    .heroText{
+      background: rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:22px;
+      box-shadow: var(--shadow2);
+    }
+
+    .heroKicker{margin:0 0 8px;color:var(--muted);font-size:13px;font-weight:900}
+
+    .heroTitle{
+      margin:0 0 10px;
+      color:var(--blue);
+      font-size:42px;
+      line-height:1.05;
+      letter-spacing:-.9px;
+      font-weight:900;
+    }
+
+    .heroSub{margin:0 0 12px;color:var(--muted);font-size:16px}
+
+    .card{
+      background: rgba(255,255,255,.93);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:18px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+      margin-top:18px;
+    }
+    .card::before{
+      content:"";
+      position:absolute;left:0;top:0;bottom:0;width:6px;
+      background: linear-gradient(180deg, var(--blue2), var(--green));
+      opacity:.9;
+    }
+    .cardInner{position:relative}
+    .card h3{margin:0 0 10px;color:var(--blue);font-weight:900}
+
+    .formSectionTitle{
+      color:var(--blue);
+      font-size:22px;
+      font-weight:900;
+      margin:0 0 10px;
+    }
+
+    .formBlock{
+      border-top:1px solid var(--line);
+      padding-top:18px;
+      margin-top:18px;
+    }
+
+    label{
+      display:block;
+      font-weight:800;
+      color:var(--blue);
+      margin:14px 0 6px;
+      font-size:14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea,
+    select{
+      width:100%;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      color:var(--ink);
+      font-size:14px;
+      outline:none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus{
+      border-color:rgba(30,99,255,.4);
+      box-shadow:0 0 0 4px rgba(30,99,255,.08);
+    }
+
+    textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .options-group{
+      display:grid;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .inlineChoices{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:8px;
+    }
+
+    .inlineChoices.inline3{
+      grid-template-columns:repeat(3, minmax(0,1fr));
+    }
+
+    .inlineChoices.inline4{
+      grid-template-columns:repeat(4, minmax(0,1fr));
+    }
+
+    .checkItem{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.9);
+      min-height:52px;
+    }
+
+    .checkItem label{
+      margin:0;
+      font-weight:700;
+      color:var(--ink);
+      font-size:14px;
+      flex:1;
+    }
+
+    .checkItem input{
+      margin-top:3px;
+      flex:0 0 auto;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    @media (max-width:980px){
+      .grid2,.grid3{
+        grid-template-columns:1fr;
+      }
+      .heroTitle{font-size:34px}
+    }
+
+    @media (max-width:480px){
+      .inlineChoices.inline3,.inlineChoices.inline4{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+    }
+
+    .note{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .submitWrap{
+      margin-top:28px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .consentBlock{
+      background: rgba(215,175,74,.08);
+      border:1px solid rgba(215,175,74,.35);
+      border-radius:16px;
+      padding:16px 18px;
+      margin-top:18px;
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .consentBlock input[type="checkbox"]{
+      margin-top:3px;
+      flex:0 0 auto;
+      width:18px;
+      height:18px;
+    }
+    .consentBlock label{
+      margin:0;
+      font-size:13.5px;
+      color:var(--ink);
+      font-weight:600;
+    }
+
+    .required-star{color:#c0392b;margin-left:3px}
+
+    footer{
+      margin-top:26px;
+      border-top:1px solid var(--line);
+      padding:18px 0 40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .footerGrid{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <b data-t="brand">Ensemble pour Giulia</b>
+      <small>Project PKS</small>
+    </div>
+
+    <nav id="mainNav" aria-label="Navigation" data-open="false">
+      <a href="fr.html#inicio" data-t="navHome">Accueil</a>
+      <a href="fr.html#video" data-t="navVideo">Vidéo</a>
+      <a href="fr.html#pesquisa" data-t="navResearch">Recherche</a>
+      <a href="fr.html#doacoes" data-t="navDonate">Dons</a>
+      <a href="fr.html#familles" data-t="navFamilies">Familles</a>
+    </nav>
+
+    <div class="headerRight">
+      <a class="btn" href="fr.html" data-t="btnBack">Retour au site</a>
+      <button class="navToggle" type="button"
+        aria-expanded="false"
+        aria-controls="mainNav"
+        onclick="toggleNav()">
+        ☰
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="heroTop" aria-label="Questionnaire de recherche">
+    <div class="heroTopInner">
+      <div class="heroText">
+        <p class="heroKicker" data-t="kicker">Recherche sur le syndrome de Pallister-Killian</p>
+        <h1 class="heroTitle" data-t="heroTitle">Participer au questionnaire</h1>
+        <p class="heroSub">
+          Nous travaillons actuellement avec des chercheurs afin de lancer un projet scientifique visant à mieux comprendre le syndrome de Pallister-Killian et à explorer des pistes de traitement.
+        </p>
+        <p class="heroSub">
+          Les informations collectées serviront uniquement à <b>pré-sélectionner des profils pour la recherche</b>.
+          Si votre enfant correspond aux critères scientifiques recherchés, notre association pourra vous recontacter afin d'éventuellement vous mettre en relation avec l'équipe de recherche.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <div class="cardInner">
+        <h2 class="sectionTitle" style="margin-top:0;" data-t="formTitle">Questionnaire – Enfants atteints du syndrome de Pallister-Killian</h2>
+        <p class="sectionSub">Merci de remplir ce questionnaire avec les informations que vous connaissez. Vous pouvez laisser vide ce que vous ne savez pas. Les champs marqués <span class="required-star">*</span> sont obligatoires.</p>
+
+        <form id="pksForm">
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s1">1. Informations générales</div>
+
+            <div class="grid2">
+              <div>
+                <label>Pays de résidence <span class="required-star">*</span></label>
+                <input type="text" name="Pays de résidence" required>
+              </div>
+
+              <div>
+                <label>Prénom de l'enfant (ou pseudonyme)</label>
+                <input type="text" name="Prénom de l'enfant">
+              </div>
+            </div>
+
+            <div class="grid2">
+              <div>
+                <label>Date de naissance</label>
+                <input type="date" name="Date de naissance">
+              </div>
+
+              <div>
+                <label>Sexe</label>
+                <div class="inlineChoices">
+                  <div class="checkItem">
+                    <input type="radio" name="Sexe" value="Fille" id="sexe-f">
+                    <label for="sexe-f">Fille</label>
+                  </div>
+                  <div class="checkItem">
+                    <input type="radio" name="Sexe" value="Garçon" id="sexe-g">
+                    <label for="sexe-g">Garçon</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s2">2. Diagnostic génétique</div>
+
+            <label>Le syndrome de Pallister-Killian est-il confirmé génétiquement ? <span class="required-star">*</span></label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="radio" name="Diagnostic confirmé" value="Oui" id="diag1" required><label for="diag1">Oui</label></div>
+              <div class="checkItem"><input type="radio" name="Diagnostic confirmé" value="Suspecté mais pas confirmé" id="diag2"><label for="diag2">Suspecté mais pas confirmé</label></div>
+              <div class="checkItem"><input type="radio" name="Diagnostic confirmé" value="Je ne sais pas" id="diag3"><label for="diag3">Je ne sais pas</label></div>
+            </div>
+
+            <label>Test génétique ayant permis le diagnostic</label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="radio" name="Test génétique" value="FISH" id="test1"><label for="test1">FISH</label></div>
+              <div class="checkItem"><input type="radio" name="Test génétique" value="Microarray / CGH array" id="test2"><label for="test2">Microarray / CGH array</label></div>
+              <div class="checkItem"><input type="radio" name="Test génétique" value="Caryotype" id="test3"><label for="test3">Caryotype</label></div>
+              <div class="checkItem"><input type="radio" name="Test génétique" value="Autre test génétique" id="test4"><label for="test4">Autre test génétique</label></div>
+              <div class="checkItem"><input type="radio" name="Test génétique" value="Je ne sais pas" id="test5"><label for="test5">Je ne sais pas</label></div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s3">3. Échantillon utilisé pour le diagnostic</div>
+            <p class="note">
+              Indiquez les informations si elles apparaissent dans le rapport génétique. Vous pouvez laisser vide si vous ne les connaissez pas.
+            </p>
+
+            <div class="grid3">
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">Frottis buccal</h3>
+                  <label>Pourcentage de mosaïcisme (si connu)</label>
+                  <input type="text" name="Frottis buccal - mosaïcisme" placeholder="Ex. 30%, 50%, inconnu">
+                  <label>Date du test / diagnostic</label>
+                  <input type="date" name="Frottis buccal - date">
+                </div>
+              </div>
+
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">Peau (fibroblastes)</h3>
+                  <label>Pourcentage de mosaïcisme (si connu)</label>
+                  <input type="text" name="Peau - mosaïcisme" placeholder="Ex. 30%, 50%, inconnu">
+                  <label>Date du test / diagnostic</label>
+                  <input type="date" name="Peau - date">
+                </div>
+              </div>
+
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">Sang</h3>
+                  <label>Pourcentage de mosaïcisme (si connu)</label>
+                  <input type="text" name="Sang - mosaïcisme" placeholder="Ex. 30%, 50%, inconnu">
+                  <label>Date du test / diagnostic</label>
+                  <input type="date" name="Sang - date">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s4">4. Examens médicaux disponibles</div>
+            <p class="note">Indiquez le résultat si vous le connaissez.</p>
+
+            <div class="grid2">
+              <div>
+                <label>Rapport génétique</label>
+                <select name="Rapport génétique">
+                  <option value="">Choisir</option>
+                  <option value="Confirmé PKS">Confirmé PKS</option>
+                  <option value="Je ne sais pas">Je ne sais pas</option>
+                </select>
+              </div>
+
+              <div>
+                <label>IRM cérébrale</label>
+                <select name="IRM cérébrale">
+                  <option value="">Choisir</option>
+                  <option value="Normale">Normale</option>
+                  <option value="Anormale">Anormale</option>
+                  <option value="Pas réalisée">Pas réalisée</option>
+                  <option value="Je ne sais pas">Je ne sais pas</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Électroencéphalogramme (EEG)</label>
+                <select name="Électroencéphalogramme (EEG)">
+                  <option value="">Choisir</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Anormal">Anormal</option>
+                  <option value="Pas réalisé">Pas réalisé</option>
+                  <option value="Je ne sais pas">Je ne sais pas</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Bilans métaboliques</label>
+                <select name="Bilans métaboliques">
+                  <option value="">Choisir</option>
+                  <option value="Normaux">Normaux</option>
+                  <option value="Anormaux">Anormaux</option>
+                  <option value="Pas réalisés">Pas réalisés</option>
+                  <option value="Je ne sais pas">Je ne sais pas</option>
+                </select>
+              </div>
+            </div>
+
+            <label>Autres examens importants (facultatif)</label>
+            <textarea name="Autres examens importants"></textarea>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s5">5. Âge d'apparition des premiers signes</div>
+
+            <label>À quel âge les premiers signes ont-ils été remarqués ?</label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="radio" name="Âge premiers signes" value="À la naissance" id="aps1"><label for="aps1">À la naissance</label></div>
+              <div class="checkItem"><input type="radio" name="Âge premiers signes" value="Avant 3 mois" id="aps2"><label for="aps2">Avant 3 mois</label></div>
+              <div class="checkItem"><input type="radio" name="Âge premiers signes" value="Entre 3 et 6 mois" id="aps3"><label for="aps3">Entre 3 et 6 mois</label></div>
+              <div class="checkItem"><input type="radio" name="Âge premiers signes" value="Entre 6 et 12 mois" id="aps4"><label for="aps4">Entre 6 et 12 mois</label></div>
+              <div class="checkItem"><input type="radio" name="Âge premiers signes" value="Après 1 an" id="aps5"><label for="aps5">Après 1 an</label></div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s6">6. Développement moteur</div>
+
+            <label>Tonus musculaire actuel</label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="radio" name="Tonus musculaire actuel" value="Normal" id="ton1"><label for="ton1">Normal</label></div>
+              <div class="checkItem"><input type="radio" name="Tonus musculaire actuel" value="Hypotonie légère" id="ton2"><label for="ton2">Hypotonie légère</label></div>
+              <div class="checkItem"><input type="radio" name="Tonus musculaire actuel" value="Hypotonie modérée" id="ton3"><label for="ton3">Hypotonie modérée</label></div>
+              <div class="checkItem"><input type="radio" name="Tonus musculaire actuel" value="Hypotonie sévère" id="ton4"><label for="ton4">Hypotonie sévère</label></div>
+              <div class="checkItem"><input type="radio" name="Tonus musculaire actuel" value="Je ne sais pas" id="ton5"><label for="ton5">Je ne sais pas</label></div>
+            </div>
+
+            <div class="grid2">
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">Tenue de tête</h3>
+                  <label>Statut</label>
+                  <select name="Tenue de tête - statut">
+                    <option value="">Choisir</option>
+                    <option>Acquise</option>
+                    <option>Non acquise</option>
+                  </select>
+                  <label>Âge d'acquisition (si connu)</label>
+                  <input type="text" name="Tenue de tête - âge" placeholder="Ex. 6 mois">
+                </div>
+              </div>
+
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">Se retourne</h3>
+                  <label>Statut</label>
+                  <select name="Se retourne - statut">
+                    <option value="">Choisir</option>
+                    <option>Acquis</option>
+                    <option>Non acquis</option>
+                  </select>
+                  <label>Âge d'acquisition (si connu)</label>
+                  <input type="text" name="Se retourne - âge" placeholder="Ex. 8 mois">
+                </div>
+              </div>
+
+              <!-- NOVO: Engatinha -->
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">À quatre pattes (engatinha)</h3>
+                  <label>Statut</label>
+                  <select name="À quatre pattes - statut">
+                    <option value="">Choisir</option>
+                    <option>Acquis</option>
+                    <option>Non acquis</option>
+                  </select>
+                  <label>Âge d'acquisition (si connu)</label>
+                  <input type="text" name="À quatre pattes - âge" placeholder="Ex. 14 mois">
+                </div>
+              </div>
+
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">S'assoit</h3>
+                  <label>Statut</label>
+                  <select name="S'assoit - statut">
+                    <option value="">Choisir</option>
+                    <option>Acquis</option>
+                    <option>Non acquis</option>
+                  </select>
+                  <label>Âge d'acquisition (si connu)</label>
+                  <input type="text" name="S'assoit - âge" placeholder="Ex. 12 mois">
+                </div>
+              </div>
+
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">Marche avec aide</h3>
+                  <label>Statut</label>
+                  <select name="Marche avec aide - statut">
+                    <option value="">Choisir</option>
+                    <option>Acquis</option>
+                    <option>Non acquis</option>
+                  </select>
+                  <label>Âge d'acquisition (si connu)</label>
+                  <input type="text" name="Marche avec aide - âge" placeholder="Ex. 2 ans">
+                </div>
+              </div>
+
+              <div class="card" style="margin-top:0;">
+                <div class="cardInner">
+                  <h3 style="margin:0 0 10px;">Marche seule</h3>
+                  <label>Statut</label>
+                  <select name="Marche seule - statut">
+                    <option value="">Choisir</option>
+                    <option>Acquis</option>
+                    <option>Non acquis</option>
+                  </select>
+                  <label>Âge d'acquisition (si connu)</label>
+                  <input type="text" name="Marche seule - âge" placeholder="Ex. 3 ans">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 7: Communication (anciennement première moitié de la section 7) -->
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s7">7. Communication et langage</div>
+
+            <label>Votre enfant présente-t-il :</label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="checkbox" name="Communication[]" value="Absence de langage" id="com1"><label for="com1">Absence de langage</label></div>
+              <div class="checkItem"><input type="checkbox" name="Communication[]" value="Retard de langage" id="com2"><label for="com2">Retard de langage</label></div>
+              <div class="checkItem"><input type="checkbox" name="Communication[]" value="Problème d'audition" id="com3"><label for="com3">Problème d'audition</label></div>
+              <div class="checkItem"><input type="checkbox" name="Communication[]" value="Communication alternative ou augmentative (PECS, pictogrammes, etc.)" id="com4"><label for="com4">Communication alternative / augmentative (PECS, pictogrammes…)</label></div>
+            </div>
+          </div>
+
+          <!-- Section 8: Interaction sociale (anciennement deuxième moitié de la section 7) -->
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s8">8. Interaction sociale et développement</div>
+
+            <label>Votre enfant :</label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="checkbox" name="Interaction sociale[]" value="Suit les objets du regard" id="int1"><label for="int1">Suit les objets du regard</label></div>
+              <div class="checkItem"><input type="checkbox" name="Interaction sociale[]" value="Attrape les objets" id="int2"><label for="int2">Attrape les objets</label></div>
+              <div class="checkItem"><input type="checkbox" name="Interaction sociale[]" value="Interagit avec les autres" id="int3"><label for="int3">Interagit avec les autres</label></div>
+              <div class="checkItem"><input type="checkbox" name="Interaction sociale[]" value="Répond à son prénom" id="int4"><label for="int4">Répond à son prénom</label></div>
+              <div class="checkItem"><input type="checkbox" name="Interaction sociale[]" value="Initie le contact visuel" id="int5"><label for="int5">Initie le contact visuel</label></div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s9">9. Problèmes oculaires</div>
+
+            <div class="inlineChoices inline4">
+              <div class="checkItem"><input type="checkbox" name="Problèmes oculaires[]" value="Strabisme" id="oc1"><label for="oc1">Strabisme</label></div>
+              <div class="checkItem"><input type="checkbox" name="Problèmes oculaires[]" value="Problèmes de vision" id="oc2"><label for="oc2">Problèmes de vision</label></div>
+              <div class="checkItem"><input type="checkbox" name="Problèmes oculaires[]" value="Aucun problème oculaire connu" id="oc3"><label for="oc3">Aucun problème oculaire connu</label></div>
+              <div class="checkItem"><input type="checkbox" name="Problèmes oculaires[]" value="Je ne sais pas" id="oc4"><label for="oc4">Je ne sais pas</label></div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s10">10. Autres signes médicaux</div>
+
+            <label>Votre enfant présente-t-il :</label>
+            <div class="inlineChoices inline4">
+              <div class="checkItem"><input type="checkbox" name="Autres signes médicaux[]" value="Troubles digestifs / reflux" id="sm1"><label for="sm1">Troubles digestifs / reflux</label></div>
+              <div class="checkItem"><input type="checkbox" name="Autres signes médicaux[]" value="Difficultés alimentaires" id="sm2"><label for="sm2">Difficultés alimentaires</label></div>
+              <div class="checkItem"><input type="checkbox" name="Autres signes médicaux[]" value="Troubles respiratoires" id="sm3"><label for="sm3">Troubles respiratoires</label></div>
+              <div class="checkItem"><input type="checkbox" name="Autres signes médicaux[]" value="Crises d'épilepsie" id="sm4"><label for="sm4">Crises d'épilepsie</label></div>
+              <!-- NOVO: Macroglossia -->
+              <div class="checkItem"><input type="checkbox" name="Autres signes médicaux[]" value="Macroglossia (langue anormalement grande)" id="sm5"><label for="sm5">Macroglossia (langue anormalement grande)</label></div>
+            </div>
+
+            <label>Malformations ou atteintes d'organes (si connues)</label>
+            <div class="inlineChoices inline4">
+              <div class="checkItem"><input type="checkbox" name="Atteintes d'organes[]" value="Problème cardiaque" id="org1"><label for="org1">Problème cardiaque (malformation ou autre atteinte du cœur)</label></div>
+              <div class="checkItem"><input type="checkbox" name="Atteintes d'organes[]" value="Problème anal" id="org2"><label for="org2">Problème anal / malformation de l'anus</label></div>
+              <div class="checkItem"><input type="checkbox" name="Atteintes d'organes[]" value="Problème intestinal ou digestif important" id="org3"><label for="org3">Problème intestinal ou digestif important</label></div>
+              <div class="checkItem"><input type="checkbox" name="Atteintes d'organes[]" value="Hernie diaphragmatique" id="org4"><label for="org4">Hernie diaphragmatique</label></div>
+              <div class="checkItem"><input type="checkbox" name="Atteintes d'organes[]" value="Aucun de ceux-ci" id="org5"><label for="org5">Aucun de ceux-ci</label></div>
+            </div>
+
+            <label>Autres signes médicaux (facultatif)</label>
+            <textarea name="Autres signes médicaux - détails"></textarea>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s11">11. Informations supplémentaires</div>
+
+            <div class="grid2">
+              <div>
+                <label>Périmètre crânien (si connu)</label>
+                <input type="text" name="Périmètre crânien">
+              </div>
+              <div>
+                <label>Âge de l'enfant au moment de cette mesure</label>
+                <input type="text" name="Âge au moment du périmètre crânien">
+              </div>
+            </div>
+
+            <label>Le médecin a-t-il mentionné :</label>
+            <div class="inlineChoices inline4">
+              <div class="checkItem"><input type="radio" name="Taille du périmètre crânien" value="Normal pour l'âge" id="pc1"><label for="pc1">Normal pour l'âge</label></div>
+              <div class="checkItem"><input type="radio" name="Taille du périmètre crânien" value="Microcéphalie" id="pc2"><label for="pc2">Microcéphalie</label></div>
+              <div class="checkItem"><input type="radio" name="Taille du périmètre crânien" value="Macrocéphalie" id="pc3"><label for="pc3">Macrocéphalie</label></div>
+              <div class="checkItem"><input type="radio" name="Taille du périmètre crânien" value="Je ne sais pas" id="pc4"><label for="pc4">Je ne sais pas</label></div>
+            </div>
+
+            <label>Mode d'alimentation actuel</label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="radio" name="Mode d'alimentation" value="Alimentation orale" id="ali1"><label for="ali1">Alimentation orale</label></div>
+              <div class="checkItem"><input type="radio" name="Mode d'alimentation" value="Alimentation orale avec difficultés (fatigue, reflux, difficultés à avaler, etc.)" id="ali2"><label for="ali2">Alimentation orale avec difficultés (fatigue, reflux, difficultés à avaler, etc.)</label></div>
+              <div class="checkItem"><input type="radio" name="Mode d'alimentation" value="Alimentation orale + sonde" id="ali3"><label for="ali3">Alimentation orale + sonde</label></div>
+              <div class="checkItem"><input type="radio" name="Mode d'alimentation" value="Sonde nasogastrique" id="ali4"><label for="ali4">Sonde nasogastrique</label></div>
+              <div class="checkItem"><input type="radio" name="Mode d'alimentation" value="Gastrostomie" id="ali5"><label for="ali5">Gastrostomie</label></div>
+              <div class="checkItem"><input type="radio" name="Mode d'alimentation" value="Je ne sais pas" id="ali6"><label for="ali6">Je ne sais pas</label></div>
+            </div>
+
+            <label>Hospitalisations importantes liées à la maladie</label>
+            <div class="inlineChoices">
+              <div class="checkItem"><input type="radio" name="Hospitalisations importantes" value="Oui" id="hos1"><label for="hos1">Oui</label></div>
+              <div class="checkItem"><input type="radio" name="Hospitalisations importantes" value="Non" id="hos2"><label for="hos2">Non</label></div>
+            </div>
+
+            <label>Si oui : âge approximatif et raison principale</label>
+            <textarea name="Hospitalisations - détails"></textarea>
+
+            <label>Autres informations que vous jugez pertinentes (facultatif)</label>
+            <textarea name="Autres informations pertinentes"></textarea>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s12">12. Participation potentielle à la recherche</div>
+
+            <label>Acceptez-vous d'être recontacté par notre association si votre enfant correspond aux critères scientifiques recherchés ?</label>
+            <div class="inlineChoices">
+              <div class="checkItem"><input type="radio" name="Recontact" value="Oui" id="rec1"><label for="rec1">Oui</label></div>
+              <div class="checkItem"><input type="radio" name="Recontact" value="Non" id="rec2"><label for="rec2">Non</label></div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s13">13. Déplacement éventuel pour la recherche</div>
+
+            <label>Dans certains cas, la participation au projet de recherche pourrait nécessiter un déplacement au laboratoire aux États-Unis afin de réaliser un prélèvement de peau pour les analyses scientifiques. Seriez-vous potentiellement disposé à voyager aux États-Unis pour participer à cette étape du projet ?</label>
+            <div class="inlineChoices inline3">
+              <div class="checkItem"><input type="radio" name="Voyage aux États-Unis" value="Oui" id="usa1"><label for="usa1">Oui</label></div>
+              <div class="checkItem"><input type="radio" name="Voyage aux États-Unis" value="Peut-être" id="usa2"><label for="usa2">Peut-être</label></div>
+              <div class="checkItem"><input type="radio" name="Voyage aux États-Unis" value="Non" id="usa3"><label for="usa3">Non</label></div>
+            </div>
+          </div>
+
+          <div class="formBlock">
+            <div class="formSectionTitle" data-t="s14">14. Contact</div>
+
+            <label>Email du parent <span class="required-star">*</span></label>
+            <input type="email" name="Email du parent" required>
+          </div>
+
+          <!-- Consentement -->
+          <div class="consentBlock">
+            <input type="checkbox" name="Consentement" id="consent" value="Oui" required>
+            <label for="consent">
+              <span data-t="consentText">J'accepte que les informations fournies dans ce questionnaire soient utilisées par l'association Project PKS à des fins de sélection scientifique. Ces données ne seront pas partagées avec des tiers sans mon accord préalable et ne seront pas utilisées à des fins commerciales.</span>
+            </label>
+          </div>
+
+          <div class="submitWrap">
+            <button class="btn btnPrimary" type="submit" id="submitBtn" data-t="btnSubmit">Envoyer le questionnaire</button>
+            <a class="btn" href="fr.html">Retour au site</a>
+          </div>
+          <div id="formMsg" style="display:none;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footerGrid">
+      <div>
+        © <span id="year"></span> <span data-t="footer">Fait par une mère et un père, par amour pour Giulia.</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzoFke4d9jK02Zoj6VidE0ptC1rrons8wFUyjmSaeH5c0OY2l2ROANH_qnxPqA_ra-3rw/exec";
+
+// ─── TRANSLATIONS ────────────────────────────────────────────────────────────
+const T = {
+  fr: {
+    pageTitle: "Participer à la recherche | Ensemble pour Giulia",
+    metaDesc: "Questionnaire de recherche pour les familles concernées par le syndrome de Pallister-Killian.",
+    kicker: "Recherche sur le syndrome de Pallister-Killian",
+    heroTitle: "Participer au questionnaire",
+    heroSub1: "Nous travaillons actuellement avec des chercheurs afin de lancer un projet scientifique visant à mieux comprendre le syndrome de Pallister-Killian et à explorer des pistes de traitement.",
+    heroSub2: "Les informations collectées serviront uniquement à <b>pré-sélectionner des profils pour la recherche</b>. Si votre enfant correspond aux critères scientifiques recherchés, notre association pourra vous recontacter afin d'éventuellement vous mettre en relation avec l'équipe de recherche.",
+    formTitle: "Questionnaire – Enfants atteints du syndrome de Pallister-Killian",
+    formSub: "Merci de remplir ce questionnaire avec les informations que vous connaissez. Vous pouvez laisser vide ce que vous ne savez pas. Les champs marqués <span class='required-star'>*</span> sont obligatoires.",
+    navHome: "Accueil", navVideo: "Vidéo", navResearch: "Recherche", navDonate: "Dons", navFamilies: "Familles",
+    btnBack: "Retour au site", btnSubmit: "Envoyer le questionnaire",
+    s1: "1. Informations générales",
+    country: "Pays de résidence", firstname: "Prénom de l'enfant (ou pseudonyme)", dob: "Date de naissance", sex: "Sexe", girl: "Fille", boy: "Garçon",
+    s2: "2. Diagnostic génétique",
+    diagQ: "Le syndrome de Pallister-Killian est-il confirmé génétiquement ?",
+    diagYes: "Oui", diagSuspect: "Suspecté mais pas confirmé", diagDontKnow: "Je ne sais pas",
+    testQ: "Test génétique ayant permis le diagnostic",
+    testFISH: "FISH", testMicroarray: "Microarray / CGH array", testKaryo: "Caryotype", testOther: "Autre test génétique", testDK: "Je ne sais pas",
+    s3: "3. Échantillon utilisé pour le diagnostic",
+    s3note: "Indiquez les informations si elles apparaissent dans le rapport génétique. Vous pouvez laisser vide si vous ne les connaissez pas.",
+    mosaicism: "Pourcentage de mosaïcisme (si connu)", testDate: "Date du test / diagnostic",
+    buccal: "Frottis buccal", skin: "Peau (fibroblastes)", blood: "Sang",
+    mosaicPlaceholder: "Ex. 30%, 50%, inconnu",
+    s4: "4. Examens médicaux disponibles",
+    s4note: "Indiquez le résultat si vous le connaissez.",
+    genReport: "Rapport génétique", mri: "IRM cérébrale", eeg: "Électroencéphalogramme (EEG)", metabolic: "Bilans métaboliques",
+    choose: "Choisir", confirmedPKS: "Confirmé PKS", normal: "Normale", abnormal: "Anormale", notDone: "Pas réalisée", dk: "Je ne sais pas",
+    normalM: "Normal", abnormalM: "Anormal", notDoneM: "Pas réalisé",
+    normaux: "Normaux", anormaux: "Anormaux", notDonePl: "Pas réalisés",
+    otherExams: "Autres examens importants (facultatif)",
+    s5: "5. Âge d'apparition des premiers signes",
+    firstSignsQ: "À quel âge les premiers signes ont-ils été remarqués ?",
+    atBirth: "À la naissance", before3m: "Avant 3 mois", b3to6: "Entre 3 et 6 mois", b6to12: "Entre 6 et 12 mois", after1y: "Après 1 an",
+    s6: "6. Développement moteur",
+    toneQ: "Tonus musculaire actuel",
+    toneNormal: "Normal", toneLight: "Hypotonie légère", toneMod: "Hypotonie modérée", toneSevere: "Hypotonie sévère", toneDK: "Je ne sais pas",
+    statusL: "Statut", ageL: "Âge d'acquisition (si connu)",
+    acquired: "Acquise", notAcquired: "Non acquise", acquiredM: "Acquis", notAcquiredM: "Non acquis",
+    headControl: "Tenue de tête", rolls: "Se retourne", crawls: "À quatre pattes (engatinha)", sits: "S'assoit", walksHelp: "Marche avec aide", walksAlone: "Marche seule",
+    headPh: "Ex. 6 mois", rollsPh: "Ex. 8 mois", crawlsPh: "Ex. 14 mois", sitsPh: "Ex. 12 mois", walksHelpPh: "Ex. 2 ans", walksAlonePh: "Ex. 3 ans",
+    s7: "7. Communication et langage",
+    comQ: "Votre enfant présente-t-il :",
+    noSpeech: "Absence de langage", speechDelay: "Retard de langage", hearing: "Problème d'audition", aac: "Communication alternative / augmentative (PECS, pictogrammes…)",
+    s8: "8. Interaction sociale et développement",
+    socQ: "Votre enfant :",
+    tracksObjects: "Suit les objets du regard", grabs: "Attrape les objets", interacts: "Interagit avec les autres", respondsName: "Répond à son prénom", eyeContact: "Initie le contact visuel",
+    s9: "9. Problèmes oculaires",
+    strabismus: "Strabisme", visionProb: "Problèmes de vision", noEye: "Aucun problème oculaire connu", eyeDK: "Je ne sais pas",
+    s10: "10. Autres signes médicaux",
+    signsQ: "Votre enfant présente-t-il :",
+    digestive: "Troubles digestifs / reflux", feeding: "Difficultés alimentaires", respiratory: "Troubles respiratoires", seizures: "Crises d'épilepsie", macroglossia: "Macroglossia (langue anormalement grande)",
+    organsQ: "Malformations ou atteintes d'organes (si connues)",
+    heart: "Problème cardiaque (malformation ou autre atteinte du cœur)", anal: "Problème anal / malformation de l'anus", intestinal: "Problème intestinal ou digestif important", hernia: "Hernie diaphragmatique", noneOrgan: "Aucun de ceux-ci",
+    otherSigns: "Autres signes médicaux (facultatif)",
+    s11: "11. Informations supplémentaires",
+    headCirc: "Périmètre crânien (si connu)", headCircAge: "Âge de l'enfant au moment de cette mesure",
+    headCircQ: "Le médecin a-t-il mentionné :",
+    headNormal: "Normal pour l'âge", micro: "Microcéphalie", macro: "Macrocéphalie", headDK: "Je ne sais pas",
+    feedingQ: "Mode d'alimentation actuel",
+    oral: "Alimentation orale", oralDiff: "Alimentation orale avec difficultés (fatigue, reflux, difficultés à avaler, etc.)", oralTube: "Alimentation orale + sonde", naso: "Sonde nasogastrique", gastro: "Gastrostomie", feedDK: "Je ne sais pas",
+    hospQ: "Hospitalisations importantes liées à la maladie",
+    hospYes: "Oui", hospNo: "Non",
+    hospDetail: "Si oui : âge approximatif et raison principale",
+    otherInfo: "Autres informations que vous jugez pertinentes (facultatif)",
+    s12: "12. Participation potentielle à la recherche",
+    recontactQ: "Acceptez-vous d'être recontacté par notre association si votre enfant correspond aux critères scientifiques recherchés ?",
+    recontactYes: "Oui", recontactNo: "Non",
+    s13: "13. Déplacement éventuel pour la recherche",
+    travelQ: "Dans certains cas, la participation au projet de recherche pourrait nécessiter un déplacement au laboratoire aux États-Unis afin de réaliser un prélèvement de peau pour les analyses scientifiques. Seriez-vous potentiellement disposé à voyager aux États-Unis pour participer à cette étape du projet ?",
+    travelYes: "Oui", travelMaybe: "Peut-être", travelNo: "Non",
+    s14: "14. Contact",
+    email: "Email du parent",
+    consentText: "J'accepte que les informations fournies dans ce questionnaire soient utilisées par l'association Project PKS à des fins de sélection scientifique. Ces données ne seront pas partagées avec des tiers sans mon accord préalable et ne seront pas utilisées à des fins commerciales.",
+    sending: "Envoi en cours…",
+    successMsg: "✅ Questionnaire envoyé avec succès. Merci pour votre participation !",
+    errorMsg: "❌ Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.",
+    footer: "Fait par une mère et un père, par amour pour Giulia.",
+    brand: "Ensemble pour Giulia",
+  },
+  pt: {
+    pageTitle: "Participar na pesquisa | Juntos pela Giulia",
+    metaDesc: "Questionário de pesquisa para famílias afetadas pela síndrome de Pallister-Killian.",
+    kicker: "Pesquisa sobre a síndrome de Pallister-Killian",
+    heroTitle: "Participar no questionário",
+    heroSub1: "Estamos a trabalhar com investigadores para lançar um projeto científico que visa compreender melhor a síndrome de Pallister-Killian e explorar possíveis tratamentos.",
+    heroSub2: "As informações recolhidas servirão apenas para <b>pré-selecionar perfis para a investigação</b>. Se o seu filho corresponder aos critérios científicos procurados, a nossa associação poderá recontactá-lo para eventualmente colocá-lo em contacto com a equipa de investigação.",
+    formTitle: "Questionário – Crianças com síndrome de Pallister-Killian",
+    formSub: "Por favor preencha este questionário com as informações que conhece. Pode deixar em branco o que não sabe. Os campos marcados com <span class='required-star'>*</span> são obrigatórios.",
+    navHome: "Início", navVideo: "Vídeo", navResearch: "Pesquisa", navDonate: "Doações", navFamilies: "Famílias",
+    btnBack: "Voltar ao site", btnSubmit: "Enviar questionário",
+    s1: "1. Informações gerais",
+    country: "País de residência", firstname: "Nome da criança (ou pseudónimo)", dob: "Data de nascimento", sex: "Sexo", girl: "Menina", boy: "Menino",
+    s2: "2. Diagnóstico genético",
+    diagQ: "A síndrome de Pallister-Killian está confirmada geneticamente?",
+    diagYes: "Sim", diagSuspect: "Suspeitado mas não confirmado", diagDontKnow: "Não sei",
+    testQ: "Teste genético que permitiu o diagnóstico",
+    testFISH: "FISH", testMicroarray: "Microarray / CGH array", testKaryo: "Cariótipo", testOther: "Outro teste genético", testDK: "Não sei",
+    s3: "3. Amostra utilizada para o diagnóstico",
+    s3note: "Indique as informações se aparecerem no relatório genético. Pode deixar em branco se não as conhecer.",
+    mosaicism: "Percentagem de mosaicismo (se conhecido)", testDate: "Data do teste / diagnóstico",
+    buccal: "Esfregaço bucal", skin: "Pele (fibroblastos)", blood: "Sangue",
+    mosaicPlaceholder: "Ex. 30%, 50%, desconhecido",
+    s4: "4. Exames médicos disponíveis",
+    s4note: "Indique o resultado se o conhecer.",
+    genReport: "Relatório genético", mri: "Ressonância magnética cerebral", eeg: "Eletroencefalograma (EEG)", metabolic: "Análises metabólicas",
+    choose: "Escolher", confirmedPKS: "Confirmado PKS", normal: "Normal", abnormal: "Anormal", notDone: "Não realizado", dk: "Não sei",
+    normalM: "Normal", abnormalM: "Anormal", notDoneM: "Não realizado",
+    normaux: "Normais", anormaux: "Anormais", notDonePl: "Não realizadas",
+    otherExams: "Outros exames importantes (facultativo)",
+    s5: "5. Idade de aparecimento dos primeiros sinais",
+    firstSignsQ: "Com que idade foram notados os primeiros sinais?",
+    atBirth: "Ao nascimento", before3m: "Antes dos 3 meses", b3to6: "Entre 3 e 6 meses", b6to12: "Entre 6 e 12 meses", after1y: "Após 1 ano",
+    s6: "6. Desenvolvimento motor",
+    toneQ: "Tônus muscular atual",
+    toneNormal: "Normal", toneLight: "Hipotonia leve", toneMod: "Hipotonia moderada", toneSevere: "Hipotonia grave", toneDK: "Não sei",
+    statusL: "Estado", ageL: "Idade de aquisição (se conhecida)",
+    acquired: "Adquirido", notAcquired: "Não adquirido", acquiredM: "Adquirido", notAcquiredM: "Não adquirido",
+    headControl: "Controlo da cabeça", rolls: "Rola", crawls: "Engatinha", sits: "Senta", walksHelp: "Anda com ajuda", walksAlone: "Anda sozinho",
+    headPh: "Ex. 6 meses", rollsPh: "Ex. 8 meses", crawlsPh: "Ex. 14 meses", sitsPh: "Ex. 12 meses", walksHelpPh: "Ex. 2 anos", walksAlonePh: "Ex. 3 anos",
+    s7: "7. Comunicação e linguagem",
+    comQ: "A sua criança apresenta:",
+    noSpeech: "Ausência de linguagem", speechDelay: "Atraso de linguagem", hearing: "Problema de audição", aac: "Comunicação alternativa / aumentativa (PECS, pictogramas…)",
+    s8: "8. Interação social e desenvolvimento",
+    socQ: "A sua criança:",
+    tracksObjects: "Segue objetos com o olhar", grabs: "Agarra objetos", interacts: "Interage com os outros", respondsName: "Responde ao próprio nome", eyeContact: "Inicia contacto visual",
+    s9: "9. Problemas oculares",
+    strabismus: "Estrabismo", visionProb: "Problemas de visão", noEye: "Nenhum problema ocular conhecido", eyeDK: "Não sei",
+    s10: "10. Outros sinais médicos",
+    signsQ: "A sua criança apresenta:",
+    digestive: "Problemas digestivos / refluxo", feeding: "Dificuldades alimentares", respiratory: "Problemas respiratórios", seizures: "Crises epiléticas", macroglossia: "Macroglossia (língua anormalmente grande)",
+    organsQ: "Malformações ou lesões de órgãos (se conhecidas)",
+    heart: "Problema cardíaco (malformação ou outra lesão do coração)", anal: "Problema anal / malformação do ânus", intestinal: "Problema intestinal ou digestivo importante", hernia: "Hérnia diafragmática", noneOrgan: "Nenhum destes",
+    otherSigns: "Outros sinais médicos (facultativo)",
+    s11: "11. Informações adicionais",
+    headCirc: "Perímetro craniano (se conhecido)", headCircAge: "Idade da criança no momento desta medição",
+    headCircQ: "O médico mencionou:",
+    headNormal: "Normal para a idade", micro: "Microcefalia", macro: "Macrocefalia", headDK: "Não sei",
+    feedingQ: "Modo de alimentação atual",
+    oral: "Alimentação oral", oralDiff: "Alimentação oral com dificuldades (fadiga, refluxo, dificuldade em engolir, etc.)", oralTube: "Alimentação oral + sonda", naso: "Sonda nasogástrica", gastro: "Gastrostomia", feedDK: "Não sei",
+    hospQ: "Hospitalizações importantes relacionadas com a doença",
+    hospYes: "Sim", hospNo: "Não",
+    hospDetail: "Se sim: idade aproximada e razão principal",
+    otherInfo: "Outras informações que considera pertinentes (facultativo)",
+    s12: "12. Participação potencial na investigação",
+    recontactQ: "Aceita ser recontactado pela nossa associação se o seu filho corresponder aos critérios científicos procurados?",
+    recontactYes: "Sim", recontactNo: "Não",
+    s13: "13. Deslocação eventual para a investigação",
+    travelQ: "Em alguns casos, a participação no projeto de investigação pode exigir uma deslocação ao laboratório nos Estados Unidos para realizar uma biopsia de pele para análises científicas. Estaria potencialmente disposto a viajar para os EUA para participar nesta etapa do projeto?",
+    travelYes: "Sim", travelMaybe: "Talvez", travelNo: "Não",
+    s14: "14. Contacto",
+    email: "Email do pai/mãe",
+    consentText: "Aceito que as informações fornecidas neste questionário sejam utilizadas pela associação Project PKS para fins de seleção científica. Estes dados não serão partilhados com terceiros sem o meu acordo prévio e não serão utilizados para fins comerciais.",
+    sending: "A enviar…",
+    successMsg: "✅ Questionário enviado com sucesso. Obrigado pela sua participação!",
+    errorMsg: "❌ Ocorreu um erro. Por favor tente novamente ou contacte-nos diretamente.",
+    footer: "Feito por uma mãe e um pai, por amor à Giulia.",
+    brand: "Juntos pela Giulia",
+  },
+  en: {
+    pageTitle: "Participate in research | Together for Giulia",
+    metaDesc: "Research questionnaire for families affected by Pallister-Killian syndrome.",
+    kicker: "Research on Pallister-Killian Syndrome",
+    heroTitle: "Participate in the questionnaire",
+    heroSub1: "We are currently working with researchers to launch a scientific project aimed at better understanding Pallister-Killian syndrome and exploring treatment options.",
+    heroSub2: "The information collected will be used solely to <b>pre-select profiles for research</b>. If your child meets the scientific criteria, our association may contact you to connect you with the research team.",
+    formTitle: "Questionnaire – Children with Pallister-Killian Syndrome",
+    formSub: "Please fill in this questionnaire with the information you know. You may leave blank what you do not know. Fields marked <span class='required-star'>*</span> are required.",
+    navHome: "Home", navVideo: "Video", navResearch: "Research", navDonate: "Donate", navFamilies: "Families",
+    btnBack: "Back to site", btnSubmit: "Submit questionnaire",
+    s1: "1. General information",
+    country: "Country of residence", firstname: "Child's first name (or pseudonym)", dob: "Date of birth", sex: "Sex", girl: "Girl", boy: "Boy",
+    s2: "2. Genetic diagnosis",
+    diagQ: "Has Pallister-Killian syndrome been genetically confirmed?",
+    diagYes: "Yes", diagSuspect: "Suspected but not confirmed", diagDontKnow: "I don't know",
+    testQ: "Genetic test used for diagnosis",
+    testFISH: "FISH", testMicroarray: "Microarray / CGH array", testKaryo: "Karyotype", testOther: "Other genetic test", testDK: "I don't know",
+    s3: "3. Sample used for diagnosis",
+    s3note: "Provide information if it appears in the genetic report. You may leave blank what you do not know.",
+    mosaicism: "Percentage of mosaicism (if known)", testDate: "Test / diagnosis date",
+    buccal: "Buccal swab", skin: "Skin (fibroblasts)", blood: "Blood",
+    mosaicPlaceholder: "E.g. 30%, 50%, unknown",
+    s4: "4. Available medical examinations",
+    s4note: "Indicate the result if you know it.",
+    genReport: "Genetic report", mri: "Brain MRI", eeg: "Electroencephalogram (EEG)", metabolic: "Metabolic tests",
+    choose: "Choose", confirmedPKS: "Confirmed PKS", normal: "Normal", abnormal: "Abnormal", notDone: "Not performed", dk: "I don't know",
+    normalM: "Normal", abnormalM: "Abnormal", notDoneM: "Not performed",
+    normaux: "Normal", anormaux: "Abnormal", notDonePl: "Not performed",
+    otherExams: "Other important examinations (optional)",
+    s5: "5. Age of first signs",
+    firstSignsQ: "At what age were the first signs noticed?",
+    atBirth: "At birth", before3m: "Before 3 months", b3to6: "Between 3 and 6 months", b6to12: "Between 6 and 12 months", after1y: "After 1 year",
+    s6: "6. Motor development",
+    toneQ: "Current muscle tone",
+    toneNormal: "Normal", toneLight: "Mild hypotonia", toneMod: "Moderate hypotonia", toneSevere: "Severe hypotonia", toneDK: "I don't know",
+    statusL: "Status", ageL: "Age of acquisition (if known)",
+    acquired: "Achieved", notAcquired: "Not achieved", acquiredM: "Achieved", notAcquiredM: "Not achieved",
+    headControl: "Head control", rolls: "Rolls over", crawls: "Crawls", sits: "Sits", walksHelp: "Walks with support", walksAlone: "Walks independently",
+    headPh: "E.g. 6 months", rollsPh: "E.g. 8 months", crawlsPh: "E.g. 14 months", sitsPh: "E.g. 12 months", walksHelpPh: "E.g. 2 years", walksAlonePh: "E.g. 3 years",
+    s7: "7. Communication and language",
+    comQ: "Does your child present:",
+    noSpeech: "No speech", speechDelay: "Speech delay", hearing: "Hearing problem", aac: "Alternative / augmentative communication (PECS, pictograms…)",
+    s8: "8. Social interaction and development",
+    socQ: "Does your child:",
+    tracksObjects: "Track objects visually", grabs: "Grab objects", interacts: "Interact with others", respondsName: "Respond to their name", eyeContact: "Initiate eye contact",
+    s9: "9. Eye problems",
+    strabismus: "Strabismus", visionProb: "Vision problems", noEye: "No known eye problems", eyeDK: "I don't know",
+    s10: "10. Other medical signs",
+    signsQ: "Does your child present:",
+    digestive: "Digestive issues / reflux", feeding: "Feeding difficulties", respiratory: "Respiratory problems", seizures: "Seizures", macroglossia: "Macroglossia (abnormally large tongue)",
+    organsQ: "Organ malformations or involvement (if known)",
+    heart: "Heart problem (malformation or other cardiac involvement)", anal: "Anal problem / anal malformation", intestinal: "Significant intestinal or digestive problem", hernia: "Diaphragmatic hernia", noneOrgan: "None of these",
+    otherSigns: "Other medical signs (optional)",
+    s11: "11. Additional information",
+    headCirc: "Head circumference (if known)", headCircAge: "Child's age at the time of this measurement",
+    headCircQ: "Has the doctor mentioned:",
+    headNormal: "Normal for age", micro: "Microcephaly", macro: "Macrocephaly", headDK: "I don't know",
+    feedingQ: "Current feeding method",
+    oral: "Oral feeding", oralDiff: "Oral feeding with difficulties (fatigue, reflux, swallowing difficulties, etc.)", oralTube: "Oral feeding + tube", naso: "Nasogastric tube", gastro: "Gastrostomy", feedDK: "I don't know",
+    hospQ: "Significant hospitalizations related to the condition",
+    hospYes: "Yes", hospNo: "No",
+    hospDetail: "If yes: approximate age and main reason",
+    otherInfo: "Other information you consider relevant (optional)",
+    s12: "12. Potential participation in research",
+    recontactQ: "Do you agree to be contacted by our association if your child meets the scientific criteria?",
+    recontactYes: "Yes", recontactNo: "No",
+    s13: "13. Possible travel for research",
+    travelQ: "In some cases, participation in the research project may require travel to the laboratory in the United States to perform a skin biopsy for scientific analysis. Would you potentially be willing to travel to the US to participate in this step?",
+    travelYes: "Yes", travelMaybe: "Maybe", travelNo: "No",
+    s14: "14. Contact",
+    email: "Parent's email",
+    consentText: "I agree that the information provided in this questionnaire may be used by the Project PKS association for scientific selection purposes. This data will not be shared with third parties without my prior consent and will not be used for commercial purposes.",
+    sending: "Sending…",
+    successMsg: "✅ Questionnaire submitted successfully. Thank you for your participation!",
+    errorMsg: "❌ An error occurred. Please try again or contact us directly.",
+    footer: "Made by a mother and a father, out of love for Giulia.",
+    brand: "Together for Giulia",
+  }
+};
+T.pt_BR = T.pt; // Portuguese Brazil = same as PT
+
+// ─── LANGUAGE DETECTION ──────────────────────────────────────────────────────
+function detectLang() {
+  const lang = (navigator.language || navigator.userLanguage || "fr").toLowerCase();
+  if (lang.startsWith("pt")) return "pt";
+  if (lang.startsWith("fr")) return "fr";
+  return "en";
+}
+
+// ─── APPLY TRANSLATIONS ──────────────────────────────────────────────────────
+function applyLang(l) {
+  const t = T[l] || T.fr;
+  document.querySelectorAll("[data-t]").forEach(el => {
+    const key = el.getAttribute("data-t");
+    if (key && t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll("[data-t-ph]").forEach(el => {
+    const key = el.getAttribute("data-t-ph");
+    if (key && t[key] !== undefined) el.placeholder = t[key];
+  });
+  document.title = t.pageTitle;
+}
+
+// ─── NAV TOGGLE ──────────────────────────────────────────────────────────────
+function toggleNav(){
+  const nav = document.getElementById("mainNav");
+  const btn = document.querySelector(".navToggle");
+  if(!nav || !btn) return;
+  const isOpen = nav.getAttribute("data-open") === "true";
+  nav.setAttribute("data-open", isOpen ? "false" : "true");
+  btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+}
+
+// ─── FORM SUBMISSION ─────────────────────────────────────────────────────────
+document.getElementById("pksForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const lang = detectLang();
+  const t = T[lang] || T.fr;
+  const btn = document.getElementById("submitBtn");
+  const msg = document.getElementById("formMsg");
+
+  btn.disabled = true;
+  btn.textContent = t.sending;
+  msg.style.display = "none";
+
+  // Collect all form data
+  const data = {};
+  const formData = new FormData(this);
+
+  // Handle checkboxes / multi-values
+  const multiFields = {};
+  for (const [key, val] of formData.entries()) {
+    if (key.endsWith("[]")) {
+      const cleanKey = key.slice(0, -2);
+      if (!multiFields[cleanKey]) multiFields[cleanKey] = [];
+      multiFields[cleanKey].push(val);
+    } else {
+      data[key] = val;
+    }
+  }
+  // Merge multi fields as comma-separated strings
+  for (const [key, vals] of Object.entries(multiFields)) {
+    data[key + "[]"] = vals.join(", ");
+  }
+
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbzoFke4d9jK02Zoj6VidE0ptC1rrons8wFUyjmSaeH5c0OY2l2ROANH_qnxPqA_ra-3rw/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (result.result === "success") {
+      msg.style.background = "rgba(25,182,122,.12)";
+      msg.style.border = "1px solid rgba(25,182,122,.4)";
+      msg.style.color = "#0f4a32";
+      msg.textContent = t.successMsg;
+      msg.style.display = "block";
+      this.reset();
+      btn.textContent = t.btnSubmit;
+      btn.disabled = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      throw new Error(result.message || "unknown error");
+    }
+  } catch(err) {
+    msg.style.background = "rgba(192,57,43,.08)";
+    msg.style.border = "1px solid rgba(192,57,43,.3)";
+    msg.style.color = "#7b1a1a";
+    msg.textContent = t.errorMsg;
+    msg.style.display = "block";
+    btn.textContent = t.btnSubmit;
+    btn.disabled = false;
+  }
+});
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  const lang = detectLang();
+  applyLang(lang);
+  document.getElementById("year").textContent = new Date().getFullYear();
+});
+</script>
+</body>
+</html>
