@@ -137,7 +137,7 @@
 </main>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby8vrT5VtRwZTPtBVlbVy1HaGARcna54oWjCNwET1si61vRwf7WL8bGJs9P6nLDA2g47g/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxAKtvmk5tmZ3MjQvv4SRFEF6JSsaLHqgY0agZ4fEBiabd88HYX0SxTjzbdvr5XJslzxA/exec";
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 const T = {
@@ -712,6 +712,7 @@ async function handleSubmit(e) {
     }
   }
   for (const [k,v] of Object.entries(multi)) data[k+"[]"] = v.join(", ");
+  data["lang"] = detectLang();
 
   // ── Validation côté client ─────────────────────────────────────────
   const requiredFields = [
