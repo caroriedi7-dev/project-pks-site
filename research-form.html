@@ -126,7 +126,7 @@
 </main>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvKZbWXB8TpeBTfrGniI-KGkdcEM_DD3NtT70FfAwIHZcKj3ysC3pCmQiAyuuCQlwb6g/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwc1QRpsuO6hzdvZ-XCByrM8n1y6xxd3ZhjU8wHA0H_MXaR6zp9dF5ZdUoEzlcNhZAyOQ/exec";
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 const T = {
@@ -703,10 +703,16 @@ async function handleSubmit(e) {
     // Using text/plain avoids CORS preflight — Apps Script still receives JSON body
     const res = await fetch(SCRIPT_URL, {
       method: "POST",
+      redirect: "follow",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(data)
     });
-    const result = await res.json();
+    let result;
+    try {
+      result = await res.json();
+    } catch {
+      throw new Error("Script returned non-JSON response (status " + res.status + ")");
+    }
     if (result.result === "success") {
       msg.style.cssText = "display:block;background:rgba(25,182,122,.12);border:1px solid rgba(25,182,122,.4);color:#0f4a32;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
       msg.textContent = t.successMsg;
@@ -716,7 +722,8 @@ async function handleSubmit(e) {
       window.scrollTo({top:0,behavior:"smooth"});
       return;
     } else { throw new Error(); }
-  } catch {
+  } catch(err) {
+    console.error("Submit error:", err);
     msg.style.cssText = "display:block;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#7b1a1a;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
     msg.textContent = t.errorMsg;
   }
