@@ -80,10 +80,20 @@
     footer{margin-top:26px;border-top:1px solid var(--line);padding:18px 0 40px;color:var(--muted);font-size:13px}
     .sectionTitle{margin:24px 0 10px;color:var(--blue);font-size:28px;letter-spacing:-.2px;font-weight:900}
     .sectionSub{margin:0 0 14px;color:var(--muted);max-width:92ch;font-size:15.5px}
+
+    .toast{
+      position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);
+      background:#19B67A;color:#fff;font-weight:800;font-size:15px;
+      padding:16px 28px;border-radius:999px;box-shadow:0 8px 32px rgba(25,182,122,.4);
+      opacity:0;transition:opacity .3s ease,transform .3s ease;
+      z-index:9999;white-space:nowrap;pointer-events:none;text-align:center;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   </style>
 </head>
 <body>
 
+<div id="toast" class="toast"></div>
 <header>
   <div class="wrap topbar">
     <div class="brand"><b>Project PKS</b></div>
@@ -713,11 +723,14 @@ async function handleSubmit(e) {
     });
     // With no-cors we can't read the response — assume success if fetch didn't throw
     if (true) {
-      // Hide form, show big success message
-      this.style.display = "none";
-      msg.style.cssText = "display:block;background:rgba(25,182,122,.12);border:2px solid rgba(25,182,122,.5);color:#0f4a32;padding:32px 24px;border-radius:20px;font-size:18px;line-height:1.7;text-align:center;margin-top:16px;";
-      msg.innerHTML = "<div style='font-size:48px;margin-bottom:12px;'>✅</div><div style='font-weight:900;font-size:22px;margin-bottom:10px;'>" + t.successMsg + "</div>";
-      msg.scrollIntoView({behavior:"smooth", block:"center"});
+      // Show toast notification
+      const toast = document.getElementById("toast");
+      toast.textContent = t.successMsg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 8000);
+      // Reset and scroll to top
+      this.reset();
+      window.scrollTo({top:0,behavior:"smooth"});
       btn.textContent = t.btnSubmit;
       btn.disabled = false;
       return;
