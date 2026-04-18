@@ -712,6 +712,35 @@ async function handleSubmit(e) {
   }
   for (const [k,v] of Object.entries(multi)) data[k+"[]"] = v.join(", ");
 
+  // ── Validation côté client ─────────────────────────────────────────
+  const requiredFields = [
+    { key: "country", label: t.country },
+    { key: "child_name", label: t.firstname },
+    { key: "date_of_birth", label: t.dob },
+    { key: "sex", label: t.sex },
+    { key: "diagnosis_confirmed", label: t.diagQ },
+    { key: "parent_name", label: t.parentName },
+    { key: "parent_email", label: t.email },
+  ];
+  for (const f of requiredFields) {
+    if (!data[f.key] || data[f.key].trim() === "") {
+      msg.style.cssText = "display:block;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#7b1a1a;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
+      msg.textContent = "⚠️ " + f.label + " est obligatoire.";
+      msg.scrollIntoView({behavior:"smooth", block:"center"});
+      btn.textContent = t.btnSubmit;
+      btn.disabled = false;
+      return;
+    }
+  }
+  if (!data["consent_data"] || !data["declaration_truth"]) {
+    msg.style.cssText = "display:block;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#7b1a1a;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
+    msg.textContent = "⚠️ Veuillez cocher les cases obligatoires en bas du formulaire.";
+    msg.scrollIntoView({behavior:"smooth", block:"center"});
+    btn.textContent = t.btnSubmit;
+    btn.disabled = false;
+    return;
+  }
+
   try {
     // Using text/plain avoids CORS preflight — Apps Script still receives JSON body
     // no-cors avoids CORS block — data reaches Apps Script even without response
