@@ -154,7 +154,7 @@ const T = {
     s12:"12. Participation potentielle à la recherche", s13:"13. Déplacement éventuel pour la recherche",
     s14:"14. Contact",
     // Fields
-    country:"Pays de résidence", firstname:"Prénom de l'enfant (ou pseudonyme)", dob:"Date de naissance", sex:"Sexe",
+    country:"Pays de résidence", countryPh:"Ex. France, Brésil...", firstname:"Prénom de l'enfant (ou pseudonyme)", dob:"Date de naissance", sex:"Sexe",
     girl:"Fille", boy:"Garçon",
     diagQ:"Le syndrome de Pallister-Killian est-il confirmé génétiquement ?",
     diagYes: "Oui", diagSuspect: "Suspecté mais pas confirmé", diagDK: "Je ne sais pas",
@@ -176,7 +176,7 @@ const T = {
     statusL:"Statut", ageL:"Âge d'acquisition (si connu)",
     acquired: "Acquise", notAcquired: "Non acquise", acquiredM: "Acquis", notAcquiredM: "Non acquis",
     headControl:"Tenue de tête", headPh:"Ex. 6 mois",
-    rolls:"Se retourne", rollsPh:"Ex. 8 mois",
+    rolls:"Se retourne (dos ↔ ventre)", rollsPh:"Ex. 8 mois",
     crawls:"À quatre pattes", crawlsPh:"Ex. 14 mois",
     sits:"S'assoit", sitsPh:"Ex. 12 mois",
     walksHelp:"Marche avec aide", walksHelpPh:"Ex. 2 ans",
@@ -236,7 +236,7 @@ const T = {
     s9:"9. Problemas oculares", s10:"10. Outros sinais médicos", s11:"11. Informações adicionais",
     s12:"12. Participação potencial na pesquisa", s13:"13. Deslocamento eventual para a pesquisa",
     s14:"14. Contato",
-    country:"País de residência", firstname:"Nome da criança (ou pseudônimo)", dob:"Data de nascimento", sex:"Sexo",
+    country:"País de residência", countryPh:"Ex. Brasil, França...", firstname:"Nome da criança (ou pseudônimo)", dob:"Data de nascimento", sex:"Sexo",
     girl:"Feminino", boy:"Masculino",
     diagQ:"A síndrome de Pallister-Killian foi confirmada geneticamente?",
     diagYes:"Sim", diagSuspect:"Suspeito, mas não confirmado", diagDK:"Não sei",
@@ -258,7 +258,7 @@ const T = {
     statusL:"Status", ageL:"Idade de aquisição (se souber)",
     acquired:"Adquirido", notAcquired:"Não adquirido", acquiredM:"Adquirido", notAcquiredM:"Não adquirido",
     headControl:"Sustenta a cabeça", headPh:"Ex. 6 meses",
-    rolls:"Rola de um lado para o outro", rollsPh:"Ex. 8 meses",
+    rolls:"Rola (costas ↔ barriga)", rollsPh:"Ex. 8 meses",
     crawls:"Engatinha", crawlsPh:"Ex. 14 meses",
     sits:"Senta sem apoio", sitsPh:"Ex. 12 meses",
     walksHelp:"Anda com apoio", walksHelpPh:"Ex. 2 anos",
@@ -318,7 +318,7 @@ const T = {
     s9:"9. Eye problems", s10:"10. Other medical signs", s11:"11. Additional information",
     s12:"12. Potential participation in research", s13:"13. Possible travel for research",
     s14:"14. Contact",
-    country:"Country of residence", firstname:"Child's first name (or pseudonym)", dob:"Date of birth", sex:"Sex",
+    country:"Country of residence", countryPh:"E.g. France, Brazil...", firstname:"Child's first name (or pseudonym)", dob:"Date of birth", sex:"Sex",
     girl:"Female", boy:"Male",
     diagQ:"Has Pallister-Killian syndrome been genetically confirmed?",
     diagYes:"Yes", diagSuspect:"Suspected but not confirmed", diagDK:"I don't know",
@@ -340,7 +340,7 @@ const T = {
     statusL:"Status", ageL:"Age when achieved (if known)",
     acquired:"Achieved", notAcquired:"Not achieved", acquiredM:"Achieved", notAcquiredM:"Not achieved",
     headControl:"Head control", headPh:"E.g. 6 months",
-    rolls:"Rolls over", rollsPh:"E.g. 8 months",
+    rolls:"Rolls over (back to tummy and back)", rollsPh:"E.g. 8 months",
     crawls:"Crawls", crawlsPh:"E.g. 14 months",
     sits:"Sits independently", sitsPh:"E.g. 12 months",
     walksHelp:"Walks with support", walksHelpPh:"E.g. 2 years",
@@ -456,11 +456,15 @@ function buildForm(lang) {
   // S1
   html += block(1, s('s1'), `
     <div class="grid2">
-      <div><label>${s('country')}${star()}</label><input type="text" name="country" required></div>
+      <div>
+        <label>${s('country')}${star()}</label>
+        <input type="text" name="country" id="countryInput" required autocomplete="off" list="countryList" placeholder="${s('countryPh')}">
+        <datalist id="countryList"></datalist>
+      </div>
       <div><label>${s('firstname')}${star()}</label><input type="text" name="child_name" required></div>
     </div>
     <div class="grid2">
-      <div><label>${s('dob')}${star()}</label><input type="date" name="date_of_birth" required></div>
+      <div><label>${s('dob')}${star()}</label><input type="date" name="date_of_birth" required placeholder="JJ/MM/AAAA" max="${new Date().toISOString().split('T')[0]}"></div>
       <div><label>${s('sex')}${star()}</label>
         <div class="inlineChoices">
           ${radio("sex","female",s('girl'),"sexe-f")}
@@ -737,8 +741,24 @@ function toggleNav() {
   btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
 }
 
+// ─── COUNTRY SUGGESTIONS ──────────────────────────────────────────────────────
+const COUNTRIES = {
+  fr: ["Afghanistan","Afrique du Sud","Albanie","Algérie","Allemagne","Angola","Arabie Saoudite","Argentine","Arménie","Australie","Autriche","Azerbaïdjan","Bahreïn","Bangladesh","Belgique","Bénin","Biélorussie","Bolivie","Bosnie-Herzégovine","Brésil","Bulgarie","Burkina Faso","Cambodge","Cameroun","Canada","Chili","Chine","Chypre","Colombie","Congo","Corée du Sud","Costa Rica","Côte d'Ivoire","Croatie","Cuba","Danemark","Égypte","Émirats arabes unis","Équateur","Espagne","Estonie","États-Unis","Éthiopie","Finlande","France","Géorgie","Ghana","Grèce","Guatemala","Guinée","Haïti","Hongrie","Inde","Indonésie","Irak","Iran","Irlande","Islande","Israël","Italie","Japon","Jordanie","Kazakhstan","Kenya","Koweït","Lettonie","Liban","Libye","Lituanie","Luxembourg","Macédoine","Madagascar","Malaisie","Mali","Maroc","Maurice","Mexique","Moldova","Mongolie","Mozambique","Namibie","Népal","Nicaragua","Niger","Nigéria","Norvège","Nouvelle-Zélande","Ouganda","Ouzbékistan","Pakistan","Panama","Paraguay","Pays-Bas","Pérou","Philippines","Pologne","Portugal","Qatar","République tchèque","Roumanie","Royaume-Uni","Russie","Rwanda","Sénégal","Serbie","Sierra Leone","Singapour","Slovaquie","Slovénie","Somalie","Soudan","Sri Lanka","Suède","Suisse","Syrie","Taïwan","Tanzanie","Thaïlande","Togo","Tunisie","Turquie","Ukraine","Uruguay","Venezuela","Vietnam","Yémen","Zambie","Zimbabwe"],
+  pt: ["Afeganistão","África do Sul","Albânia","Alemanha","Angola","Arábia Saudita","Argentina","Armênia","Austrália","Áustria","Azerbaijão","Bangladesh","Bélgica","Benin","Bielorrússia","Bolívia","Bósnia e Herzegovina","Brasil","Bulgária","Burkina Faso","Camboja","Camarões","Canadá","Chile","China","Chipre","Colômbia","Congo","Coreia do Sul","Costa Rica","Costa do Marfim","Croácia","Cuba","Dinamarca","Egito","Emirados Árabes Unidos","Equador","Espanha","Estônia","Estados Unidos","Etiópia","Finlândia","França","Geórgia","Gana","Grécia","Guatemala","Guiné","Haiti","Hungria","Índia","Indonésia","Iraque","Irã","Irlanda","Islândia","Israel","Itália","Japão","Jordânia","Cazaquistão","Quênia","Kuwait","Letônia","Líbano","Líbia","Lituânia","Luxemburgo","Macedônia","Madagascar","Malásia","Mali","Marrocos","Maurício","México","Moldávia","Mongólia","Moçambique","Namíbia","Nepal","Nicarágua","Níger","Nigéria","Noruega","Nova Zelândia","Uganda","Uzbequistão","Paquistão","Panamá","Paraguai","Países Baixos","Peru","Filipinas","Polônia","Portugal","Catar","República Tcheca","Romênia","Reino Unido","Rússia","Ruanda","Senegal","Sérvia","Serra Leoa","Cingapura","Eslováquia","Eslovênia","Somália","Sudão","Sri Lanka","Suécia","Suíça","Síria","Taiwan","Tanzânia","Tailândia","Togo","Tunísia","Turquia","Ucrânia","Uruguai","Venezuela","Vietnã","Iêmen","Zâmbia","Zimbábue"],
+  en: ["Afghanistan","Albania","Algeria","Angola","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahrain","Bangladesh","Belgium","Benin","Belarus","Bolivia","Bosnia and Herzegovina","Brazil","Bulgaria","Burkina Faso","Cambodia","Cameroon","Canada","Chile","China","Cyprus","Colombia","Congo","South Korea","Costa Rica","Ivory Coast","Croatia","Cuba","Denmark","Egypt","United Arab Emirates","Ecuador","Spain","Estonia","United States","Ethiopia","Finland","France","Georgia","Ghana","Greece","Guatemala","Guinea","Haiti","Hungary","India","Indonesia","Iraq","Iran","Ireland","Iceland","Israel","Italy","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Latvia","Lebanon","Libya","Lithuania","Luxembourg","Macedonia","Madagascar","Malaysia","Mali","Morocco","Mauritius","Mexico","Moldova","Mongolia","Mozambique","Namibia","Nepal","Nicaragua","Niger","Nigeria","Norway","New Zealand","Uganda","Uzbekistan","Pakistan","Panama","Paraguay","Netherlands","Peru","Philippines","Poland","Portugal","Qatar","Czech Republic","Romania","United Kingdom","Russia","Rwanda","Senegal","Serbia","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","Sudan","Sri Lanka","Sweden","Switzerland","Syria","Taiwan","Tanzania","Thailand","Togo","Tunisia","Turkey","Ukraine","Uruguay","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe","South Africa"]
+};
+
+function fillCountryList(lang) {
+  const dl = document.getElementById("countryList");
+  if (!dl) return;
+  const list = COUNTRIES[lang] || COUNTRIES.en;
+  dl.innerHTML = list.map(c => `<option value="${c}">`).join("");
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
-buildForm(detectLang());
+const currentLang = detectLang();
+buildForm(currentLang);
+fillCountryList(currentLang);
 </script>
 </body>
 </html>
