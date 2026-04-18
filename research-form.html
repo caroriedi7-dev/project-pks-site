@@ -113,7 +113,7 @@
       <div class="cardInner">
         <h2 class="sectionTitle" style="margin-top:0;" id="formTitle"></h2>
         <p class="sectionSub" id="formSub"></p>
-        <form id="pksForm"></form>
+        <form id="pksForm" action="javascript:void(0)"></form>
       </div>
     </div>
   </section>
@@ -674,10 +674,9 @@ function buildForm(lang) {
     </div>
     <div id="formMsg"></div>`;
 
-  document.getElementById("pksForm").innerHTML = html;
-
-  // Re-attach submit handler
-  document.getElementById("pksForm").addEventListener("submit", handleSubmit);
+  const form = document.getElementById("pksForm");
+  form.innerHTML = html;
+  form.onsubmit = function(e) { handleSubmit.call(this, e); return false; };
 }
 
 // ─── SUBMIT ───────────────────────────────────────────────────────────────────
