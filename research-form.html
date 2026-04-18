@@ -137,7 +137,7 @@
 </main>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwOUILvtpfYxYRdgK7TLCk0eWbs1ueIcfP30_sLlBG7pA8ppKqnQ_8rojrVuRDb9-mhIw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzf8KIFhU7kWerNOqu6RzM9QVgxsgbsFceeqGnzRhV_wz69dkCZACNuTe490AxkuB1X-A/exec";
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 const T = {
@@ -205,7 +205,7 @@ const T = {
     heart:"Problème cardiaque (malformation ou autre atteinte du cœur)", anal:"Problème anal / malformation de l'anus",
     intestinal:"Problème intestinal ou digestif important", hernia: "Hernie diaphragmatique", noneOrgan: "Aucun de ceux-ci",
     otherSigns:"Autres signes médicaux (facultatif)",
-    headCirc:"Périmètre crânien (si connu)", headCircAge:"Âge de l'enfant au moment de cette mesure",
+    headCircBirth:"Périmètre crânien à la naissance", headCircBirthPh:"Ex. 32 cm", headCirc:"Périmètre crânien actuel (si connu)", headCircAge:"Âge de l'enfant au moment de cette mesure",
     headCircQ:"Le médecin a-t-il mentionné :",
     headNormal: "Normal pour l'âge", micro: "Microcéphalie", macro: "Macrocéphalie", headDK: "Je ne sais pas",
     feedingQ:"Mode d'alimentation actuel",
@@ -288,7 +288,7 @@ const T = {
     heart:"Problema cardíaco (malformação ou outra alteração cardíaca)", anal:"Problema anal / malformação do ânus",
     intestinal:"Problema intestinal ou digestivo importante", hernia:"Hérnia diafragmática", noneOrgan:"Nenhum destes",
     otherSigns:"Outros sinais médicos (opcional)",
-    headCirc:"Perímetro cefálico (se conhecido)", headCircAge:"Idade da criança na época da medição",
+    headCircBirth:"Perímetro cefálico ao nascer", headCircBirthPh:"Ex. 32 cm", headCirc:"Perímetro cefálico atual (se conhecido)", headCircAge:"Idade da criança na época da medição",
     headCircQ:"O médico mencionou:",
     headNormal:"Normal para a idade", micro:"Microcefalia", macro:"Macrocefalia", headDK:"Não sei",
     feedingQ:"Forma de alimentação atual",
@@ -371,7 +371,7 @@ const T = {
     heart:"Heart problem (malformation or other cardiac involvement)", anal:"Anal anomaly / anorectal malformation",
     intestinal:"Significant intestinal or digestive problem", hernia:"Diaphragmatic hernia", noneOrgan:"None of these",
     otherSigns:"Other medical signs (optional)",
-    headCirc:"Head circumference (if known)", headCircAge:"Child's age at the time of measurement",
+    headCircBirth:"Head circumference at birth", headCircBirthPh:"E.g. 32 cm", headCirc:"Current head circumference (if known)", headCircAge:"Child's age at the time of measurement",
     headCircQ:"Has the doctor mentioned:",
     headNormal:"Normal for age", micro:"Microcephaly", macro:"Macrocephaly", headDK:"I don't know",
     feedingQ:"Current feeding method",
@@ -619,6 +619,7 @@ function buildForm(lang) {
   // S11
   html += block(11, s('s11'), `
     <div class="grid2">
+      <div><label>${s('headCircBirth')}</label><input type="text" name="head_circumference_birth" placeholder="${s('headCircBirthPh')}"></div>
       <div><label>${s('headCirc')}</label><input type="text" name="head_circumference"></div>
       <div><label>${s('headCircAge')}</label><input type="text" name="head_circumference_age"></div>
     </div>
