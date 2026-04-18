@@ -137,6 +137,813 @@
 </main>
 
 <script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbqa2j7cDqyauap5a52KFuKaGjU34SPZVrFB3NGNppn_zchQFaEqAabNexgEBNyDtsMw/exec";
+
+// ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
+const T = {
+  fr: {
+    lang: "fr",
+    pageTitle: "Participer à la recherche | Project PKS",
+    kicker: "Recherche sur le syndrome de Pallister-Killian",
+    heroTitle: "Participer au questionnaire",
+    heroSub1: "Nous travaillons actuellement avec des chercheurs afin de lancer un projet scientifique visant à mieux comprendre le syndrome de Pallister-Killian et à explorer des pistes de traitement.",
+    heroSub3: "Ce questionnaire s'inscrit dans un projet scientifique réel. Les informations que vous partagez peuvent contribuer directement au développement de la recherche sur le syndrome de Pallister-Killian.",
+    heroSub2: "Les informations collectées serviront uniquement à <b>pré-sélectionner des profils pour la recherche</b>. Si votre enfant correspond aux critères scientifiques recherchés, notre association pourra vous recontacter pour vous mettre en relation avec l'équipe de recherche, si cela est pertinent.",
+    formTitle: "Questionnaire – Enfants atteints du syndrome de Pallister-Killian",
+    formSub: "Merci de remplir ce questionnaire avec les informations que vous connaissez. Vous pouvez laisser vide ce que vous ne savez pas.",
+    navHome:"Accueil", navVideo:"Vidéo", navResearch:"Recherche", navDonate:"Dons", navFamilies:"Familles",
+    btnBack:"Retour au site", btnSubmit:"Envoyer le questionnaire", sending:"Envoi en cours…",
+    successMsg:"✅ Questionnaire envoyé avec succès. Merci pour votre participation !",
+    errorMsg:"❌ Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.",
+    footer:"Fait par une mère et un père, par amour pour Giulia.",
+    required:"* champ obligatoire",
+    // Section titles
+    s1:"1. Informations générales", s2:"2. Diagnostic génétique", s3:"3. Échantillon utilisé pour le diagnostic",
+    s4:"4. Examens médicaux disponibles", s5:"5. Âge d'apparition des premiers signes",
+    s6:"6. Développement moteur", s7:"7. Communication et langage", s8:"8. Interaction sociale et développement",
+    s9:"9. Problèmes oculaires", s10:"10. Autres signes médicaux", s11:"11. Informations supplémentaires",
+    s12:"12. Participation potentielle à la recherche", s13:"13. Déplacement éventuel pour la recherche",
+    s14:"14. Contact",
+    // Fields
+    country:"Pays de résidence", countryPh:"Ex. France, Brésil...", firstname:"Prénom de l'enfant (ou pseudonyme)", dob:"Date de naissance", sex:"Sexe",
+    girl:"Fille", boy:"Garçon",
+    diagQ:"Le syndrome de Pallister-Killian est-il confirmé génétiquement ?",
+    diagYes: "Oui", diagSuspect: "Suspecté mais pas confirmé", diagDK: "Je ne sais pas",
+    testQ:"Test génétique ayant permis le diagnostic",
+    testFISH:"FISH", testMicro: "Microarray / CGH array", testKaryo: "Caryotype", testOther: "Autre test génétique", testDK: "Je ne sais pas",
+    s3note:"Indiquez les informations si elles apparaissent dans le rapport génétique. Vous pouvez laisser vide si vous ne les connaissez pas.",
+    mosaicism:"Pourcentage de mosaïcisme (si connu)", testDate:"Date du test / diagnostic",
+    mosaicPh:"Ex. 30%, 50%, inconnu",
+    buccal:"Frottis buccal", skin:"Peau (fibroblastes)", blood:"Sang",
+    s4note:"Indiquez le résultat si vous le connaissez.",
+    genReport:"Rapport génétique", mri:"IRM cérébrale", eeg:"Électroencéphalogramme (EEG)", metabolic:"Bilans métaboliques",
+    choose:"Choisir", confirmedPKS: "Confirmé PKS", normal: "Normale", abnormal: "Anormale", notDone: "Pas réalisée", dk: "Je ne sais pas",
+    normalM: "Normal", abnormalM: "Anormal", notDoneM: "Pas réalisé", normaux: "Normaux", anormaux: "Anormaux", notDonePl: "Pas réalisés",
+    otherExams:"Autres examens importants (facultatif)",
+    firstSignsQ:"À quel âge les premiers signes ont-ils été remarqués ?",
+    atBirth: "À la naissance", before3m: "Avant 3 mois", b3to6: "Entre 3 et 6 mois", b6to12: "Entre 6 et 12 mois", after1y: "Après 1 an",
+    toneQ:"Tonus musculaire actuel",
+    toneNormal: "Normal", toneLight: "Hypotonie légère", toneMod: "Hypotonie modérée", toneSevere: "Hypotonie sévère", toneDK: "Je ne sais pas",
+    statusL:"Statut", ageL:"Âge d'acquisition (si connu)",
+    acquired: "Acquise", notAcquired: "Non acquise", acquiredM: "Acquis", notAcquiredM: "Non acquis",
+    headControl:"Tenue de tête", headPh:"Ex. 6 mois",
+    rolls:"Se retourne (dos ↔ ventre)", rollsPh:"Ex. 8 mois",
+    crawls:"À quatre pattes", crawlsPh:"Ex. 14 mois",
+    sits:"S'assoit", sitsPh:"Ex. 12 mois",
+    walksHelp:"Marche avec aide", walksHelpPh:"Ex. 2 ans",
+    walksAlone:"Marche seule", walksAlonePh:"Ex. 3 ans",
+    comQ:"Votre enfant présente-t-il :",
+    noSpeech: "Absence de langage", speechDelay: "Retard de langage", hearing: "Problème d'audition", aac:"Communication alternative / augmentative (PECS, pictogrammes…)",
+    socQ:"Votre enfant :",
+    tracksObjects: "Suit les objets du regard", grabs: "Attrape les objets", interacts: "Interagit avec les autres",
+    respondsName: "Répond à son prénom", eyeContact:"Établit un contact visuel",
+    strabismus: "Strabisme", visionProb: "Problèmes de vision", noEye: "Aucun problème oculaire connu", eyeDK: "Je ne sais pas",
+    signsQ:"Votre enfant présente-t-il :",
+    digestive: "Troubles digestifs / reflux", feeding: "Difficultés alimentaires", respiratory: "Troubles respiratoires",
+    seizures: "Crises d'épilepsie", macroglossia:"Macroglossie (langue anormalement grande)",
+    organsQ:"Malformations ou atteintes d'organes (si connues)",
+    heart:"Problème cardiaque (malformation ou autre atteinte du cœur)", anal:"Problème anal / malformation de l'anus",
+    intestinal:"Problème intestinal ou digestif important", hernia: "Hernie diaphragmatique", noneOrgan: "Aucun de ceux-ci",
+    otherSigns:"Autres signes médicaux (facultatif)",
+    headCirc:"Périmètre crânien (si connu)", headCircAge:"Âge de l'enfant au moment de cette mesure",
+    headCircQ:"Le médecin a-t-il mentionné :",
+    headNormal: "Normal pour l'âge", micro: "Microcéphalie", macro: "Macrocéphalie", headDK: "Je ne sais pas",
+    feedingQ:"Mode d'alimentation actuel",
+    oral: "Alimentation orale", oralDiff:"Alimentation orale avec difficultés (fatigue, reflux, difficultés à avaler, etc.)",
+    oralTube: "Alimentation orale + sonde", naso: "Sonde nasogastrique", gastro: "Gastrostomie", feedDK: "Je ne sais pas",
+    hospQ:"Hospitalisations importantes liées à la maladie",
+    hospYes: "Oui", hospNo: "Non",
+    hospDetail:"Si oui : âge approximatif et raison principale",
+    otherInfo:"Autres informations que vous jugez pertinentes (facultatif)",
+    recontactQ:"Acceptez-vous d'être recontacté par notre association si votre enfant correspond aux critères scientifiques recherchés ?",
+    recontactYes: "Oui", recontactNo: "Non",
+    travelQ:"Dans certains cas, la participation au projet de recherche pourrait nécessiter un déplacement au laboratoire aux États-Unis afin de réaliser un prélèvement de peau pour les analyses scientifiques. Seriez-vous potentiellement disposé à voyager aux États-Unis pour participer à cette étape du projet ?",
+    travelYes: "Oui", travelMaybe: "Peut-être", travelNo: "Non",
+    parentName:"Nom du parent / responsable légal", email:"Email du parent",
+    consentMain:"J'accepte que les informations fournies dans ce questionnaire soient utilisées par l'association Project PKS à des fins de sélection scientifique. Ces données ne seront pas partagées avec des tiers sans mon accord préalable et ne seront pas utilisées à des fins commerciales.",
+    consentContact:"J'autorise l'utilisation de mes coordonnées pour recevoir des informations sur l'avancement du projet de recherche.",
+    consentTruth:"Je certifie que les informations fournies dans ce questionnaire sont exactes et correspondent à la situation actuelle de l'enfant.",
+  },
+
+  pt: {
+    lang: "pt",
+    pageTitle: "Participar da pesquisa | Project PKS",
+    kicker: "Pesquisa sobre a síndrome de Pallister-Killian",
+    heroTitle: "Participar do questionário",
+    heroSub1: "Estamos trabalhando com pesquisadores para lançar um projeto científico que busca compreender melhor a síndrome de Pallister-Killian e explorar possíveis tratamentos.",
+    heroSub3: "Este questionário faz parte de um projeto científico real. As informações que você compartilhar podem contribuir diretamente para o avanço da pesquisa sobre a síndrome de Pallister-Killian.",
+    heroSub2: "As informações coletadas servirão apenas para <b>pré-selecionar perfis para a pesquisa</b>. Se o seu filho atender aos critérios científicos, nossa associação poderá entrar em contato para apresentá-lo à equipe de pesquisa.",
+    formTitle: "Questionário – Crianças com síndrome de Pallister-Killian",
+    formSub: "Por favor, preencha com as informações que você conhece. Pode deixar em branco o que não souber.",
+    navHome:"Início", navVideo:"Vídeo", navResearch:"Pesquisa", navDonate:"Doações", navFamilies:"Famílias",
+    btnBack:"Voltar ao site", btnSubmit:"Enviar questionário", sending:"Enviando…",
+    successMsg:"✅ Questionário enviado com sucesso. Agradecemos a sua participação!",
+    errorMsg:"❌ Ocorreu um erro. Por favor, tente novamente ou entre em contato conosco.",
+    footer:"Feito por uma mãe e um pai, por amor à Giulia.",
+    required:"* campo obrigatório",
+    s1:"1. Informações gerais", s2:"2. Diagnóstico genético", s3:"3. Amostra utilizada para o diagnóstico",
+    s4:"4. Exames médicos disponíveis", s5:"5. Idade de aparecimento dos primeiros sinais",
+    s6:"6. Desenvolvimento motor", s7:"7. Comunicação e linguagem", s8:"8. Interação social e desenvolvimento",
+    s9:"9. Problemas oculares", s10:"10. Outros sinais médicos", s11:"11. Informações adicionais",
+    s12:"12. Participação potencial na pesquisa", s13:"13. Deslocamento eventual para a pesquisa",
+    s14:"14. Contato",
+    country:"País de residência", countryPh:"Ex. Brasil, França...", firstname:"Nome da criança (ou pseudônimo)", dob:"Data de nascimento", sex:"Sexo",
+    girl:"Feminino", boy:"Masculino",
+    diagQ:"A síndrome de Pallister-Killian foi confirmada geneticamente?",
+    diagYes:"Sim", diagSuspect:"Suspeito, mas não confirmado", diagDK:"Não sei",
+    testQ:"Teste genético que permitiu o diagnóstico",
+    testFISH:"FISH", testMicro: "Microarray / CGH array", testKaryo:"Cariótipo", testOther:"Outro teste genético", testDK:"Não sei",
+    s3note:"Preencha apenas se esta informação constar no laudo genético. Pode deixar em branco o que não souber.",
+    mosaicism:"Porcentagem de mosaicismo (se conhecida)", testDate:"Data do exame",
+    mosaicPh:"Ex. 30%, 50%, desconhecido",
+    buccal:"Swab bucal", skin:"Pele (fibroblastos)", blood:"Sangue",
+    s4note:"Indique o resultado se souber.",
+    genReport:"Laudo genético", mri:"Ressonância magnética (RM) de crânio", eeg:"Eletroencefalograma (EEG)", metabolic:"Exames metabólicos",
+    choose:"Selecionar", confirmedPKS:"Confirmado PKS", normal: "Normal", abnormal:"Alterada", notDone:"Não realizada", dk:"Não sei",
+    normalM: "Normal", abnormalM:"Alterado", notDoneM:"Não realizado", normaux:"Normais", anormaux:"Alterados", notDonePl:"Não realizados",
+    otherExams:"Outros exames relevantes (opcional)",
+    firstSignsQ:"Com que idade os primeiros sinais foram percebidos?",
+    atBirth:"Ao nascer", before3m:"Antes dos 3 meses", b3to6:"Entre 3 e 6 meses", b6to12:"Entre 6 e 12 meses", after1y:"Após 1 ano",
+    toneQ:"Tônus muscular atual",
+    toneNormal: "Normal", toneLight:"Hipotonia leve", toneMod:"Hipotonia moderada", toneSevere:"Hipotonia grave", toneDK:"Não sei",
+    statusL:"Status", ageL:"Idade de aquisição (se souber)",
+    acquired:"Adquirido", notAcquired:"Não adquirido", acquiredM:"Adquirido", notAcquiredM:"Não adquirido",
+    headControl:"Sustenta a cabeça", headPh:"Ex. 6 meses",
+    rolls:"Rola (costas ↔ barriga)", rollsPh:"Ex. 8 meses",
+    crawls:"Engatinha", crawlsPh:"Ex. 14 meses",
+    sits:"Senta sem apoio", sitsPh:"Ex. 12 meses",
+    walksHelp:"Anda com apoio", walksHelpPh:"Ex. 2 anos",
+    walksAlone:"Anda sem apoio", walksAlonePh:"Ex. 3 anos",
+    comQ:"Seu filho apresenta:",
+    noSpeech:"Ausência de fala", speechDelay:"Atraso na fala", hearing:"Problemas auditivos", aac:"Comunicação alternativa e aumentativa (PECS, pictogramas…)",
+    socQ:"Seu filho:",
+    tracksObjects:"Acompanha objetos com o olhar", grabs:"Pega objetos", interacts:"Interage com outras pessoas",
+    respondsName:"Responde ao próprio nome", eyeContact:"Inicia contato visual",
+    strabismus:"Estrabismo", visionProb:"Problemas de visão", noEye:"Nenhum problema ocular conhecido", eyeDK:"Não sei",
+    signsQ:"Seu filho apresenta:",
+    digestive:"Problemas digestivos / refluxo", feeding:"Dificuldades alimentares", respiratory:"Problemas respiratórios",
+    seizures:"Crises epilépticas", macroglossia:"Macroglossia (língua anormalmente grande)",
+    organsQ:"Malformações ou comprometimento de órgãos (se souber)",
+    heart:"Problema cardíaco (malformação ou outra alteração cardíaca)", anal:"Problema anal / malformação do ânus",
+    intestinal:"Problema intestinal ou digestivo importante", hernia:"Hérnia diafragmática", noneOrgan:"Nenhum destes",
+    otherSigns:"Outros sinais médicos (opcional)",
+    headCirc:"Perímetro cefálico (se conhecido)", headCircAge:"Idade da criança na época da medição",
+    headCircQ:"O médico mencionou:",
+    headNormal:"Normal para a idade", micro:"Microcefalia", macro:"Macrocefalia", headDK:"Não sei",
+    feedingQ:"Forma de alimentação atual",
+    oral:"Via oral", oralDiff:"Via oral com dificuldades (cansaço, refluxo, engasgos, etc.)",
+    oralTube:"Via oral + sonda", naso:"Sonda nasogástrica", gastro:"Gastrostomia", feedDK:"Não sei",
+    hospQ:"Internações importantes relacionadas à doença",
+    hospYes:"Sim", hospNo:"Não",
+    hospDetail:"Se sim: idade aproximada e motivo principal",
+    otherInfo:"Outras informações que considerar relevantes (opcional)",
+    recontactQ:"Você aceita ser contatado pela nossa associação caso seu filho atenda aos critérios científicos buscados?",
+    recontactYes:"Sim", recontactNo:"Não",
+    travelQ:"Em alguns casos, a participação no projeto de pesquisa poderá exigir um deslocamento ao laboratório nos Estados Unidos para a realização de uma biópsia de pele para análises científicas. Você estaria disposto(a) a viajar para os EUA para participar desta etapa?",
+    travelYes:"Sim", travelMaybe:"Talvez", travelNo:"Não",
+    parentName:"Nome do pai/mãe ou responsável legal", email:"E-mail do responsável",
+    consentMain:"Autorizo que as informações fornecidas neste questionário sejam utilizadas pela associação Project PKS para fins de seleção científica. Estes dados não serão compartilhados com terceiros sem meu consentimento prévio e não serão utilizados para fins comerciais.",
+    consentContact:"Autorizo que meus dados de contato sejam utilizados para receber informações sobre o andamento do projeto de pesquisa.",
+    consentTruth:"Declaro que as informações fornecidas neste questionário são verdadeiras e correspondem à situação atual da criança.",
+  },
+
+  en: {
+    lang: "en",
+    pageTitle: "Research questionnaire | Project PKS",
+    kicker: "Research on Pallister-Killian Syndrome",
+    heroTitle: "Complete the questionnaire",
+    heroSub1: "We are currently working with researchers to launch a scientific project aimed at better understanding Pallister-Killian syndrome and exploring treatment options.",
+    heroSub3: "This questionnaire is part of a real scientific project. The information you share may directly contribute to the advancement of research on Pallister-Killian syndrome.",
+    heroSub2: "The information collected will be used solely to <b>pre-select profiles for research</b>. If your child meets the scientific criteria, our association may contact you to connect you with the research team.",
+    formTitle: "Questionnaire – Children with Pallister-Killian Syndrome",
+    formSub: "Please fill in this questionnaire with the information you know. You may leave blank what you do not know.",
+    navHome:"Home", navVideo:"Video", navResearch:"Research", navDonate:"Donate", navFamilies:"Families",
+    btnBack:"Back to site", btnSubmit:"Submit questionnaire", sending:"Sending…",
+    successMsg:"✅ Questionnaire submitted successfully. Thank you for your participation!",
+    errorMsg:"❌ An error occurred. Please try again or contact us directly.",
+    footer:"Made by a mother and a father, out of love for Giulia.",
+    required:"* required field",
+    s1:"1. General information", s2:"2. Genetic diagnosis", s3:"3. Sample used for diagnosis",
+    s4:"4. Available medical examinations", s5:"5. Age of first signs",
+    s6:"6. Motor development", s7:"7. Communication and language", s8:"8. Social interaction and development",
+    s9:"9. Eye problems", s10:"10. Other medical signs", s11:"11. Additional information",
+    s12:"12. Potential participation in research", s13:"13. Possible travel for research",
+    s14:"14. Contact",
+    country:"Country of residence", countryPh:"E.g. France, Brazil...", firstname:"Child's first name (or pseudonym)", dob:"Date of birth", sex:"Sex",
+    girl:"Female", boy:"Male",
+    diagQ:"Has Pallister-Killian syndrome been genetically confirmed?",
+    diagYes:"Yes", diagSuspect:"Suspected but not confirmed", diagDK:"I don't know",
+    testQ:"Genetic test used for diagnosis",
+    testFISH:"FISH", testMicro: "Microarray / CGH array", testKaryo:"Karyotype", testOther:"Other genetic test", testDK:"I don't know",
+    s3note:"Provide information only if it appears in the genetic report. You may leave blank what you do not know.",
+    mosaicism:"Percentage of mosaicism (if known)", testDate:"Test / diagnosis date",
+    mosaicPh:"E.g. 30%, 50%, unknown",
+    buccal:"Buccal swab", skin:"Skin (fibroblasts)", blood:"Blood",
+    s4note:"Indicate the result if you know it.",
+    genReport:"Genetic report", mri:"Brain MRI", eeg:"Electroencephalogram (EEG)", metabolic:"Metabolic tests",
+    choose: "Choose", confirmedPKS:"Confirmed PKS", normal: "Normal", abnormal:"Abnormal", notDone:"Not performed", dk:"I don't know",
+    normalM: "Normal", abnormalM:"Abnormal", notDoneM:"Not performed", normaux: "Normal", anormaux:"Abnormal", notDonePl:"Not performed",
+    otherExams:"Other important examinations (optional)",
+    firstSignsQ:"At what age were the first signs noticed?",
+    atBirth:"At birth", before3m:"Before 3 months", b3to6:"Between 3 and 6 months", b6to12:"Between 6 and 12 months", after1y:"After 1 year",
+    toneQ:"Current muscle tone",
+    toneNormal: "Normal", toneLight:"Mild hypotonia", toneMod:"Moderate hypotonia", toneSevere:"Severe hypotonia", toneDK:"I don't know",
+    statusL:"Status", ageL:"Age when achieved (if known)",
+    acquired:"Achieved", notAcquired:"Not achieved", acquiredM:"Achieved", notAcquiredM:"Not achieved",
+    headControl:"Head control", headPh:"E.g. 6 months",
+    rolls:"Rolls over (back to tummy and back)", rollsPh:"E.g. 8 months",
+    crawls:"Crawls", crawlsPh:"E.g. 14 months",
+    sits:"Sits independently", sitsPh:"E.g. 12 months",
+    walksHelp:"Walks with support", walksHelpPh:"E.g. 2 years",
+    walksAlone:"Walks independently", walksAlonePh:"E.g. 3 years",
+    comQ:"Does your child have:",
+    noSpeech:"No speech", speechDelay:"Speech delay", hearing:"Hearing problem", aac:"Alternative and augmentative communication (PECS, pictograms…)",
+    socQ:"Does your child:",
+    tracksObjects:"Track objects with their eyes", grabs:"Reach for and grab objects", interacts:"Interact with others",
+    respondsName:"Respond to their name", eyeContact:"Establish eye contact",
+    strabismus:"Strabismus", visionProb:"Vision problems", noEye:"No known eye problems", eyeDK:"I don't know",
+    signsQ:"Does your child show any of the following:",
+    digestive:"Digestive issues / reflux", feeding:"Feeding difficulties", respiratory:"Respiratory problems",
+    seizures:"Seizures / epilepsy", macroglossia:"Macroglossia (abnormally large tongue)",
+    organsQ:"Organ malformations or involvement (if known)",
+    heart:"Heart problem (malformation or other cardiac involvement)", anal:"Anal anomaly / anorectal malformation",
+    intestinal:"Significant intestinal or digestive problem", hernia:"Diaphragmatic hernia", noneOrgan:"None of these",
+    otherSigns:"Other medical signs (optional)",
+    headCirc:"Head circumference (if known)", headCircAge:"Child's age at the time of measurement",
+    headCircQ:"Has the doctor mentioned:",
+    headNormal:"Normal for age", micro:"Microcephaly", macro:"Macrocephaly", headDK:"I don't know",
+    feedingQ:"Current feeding method",
+    oral:"Oral feeding", oralDiff:"Oral feeding with difficulties (fatigue, reflux, swallowing difficulties, etc.)",
+    oralTube:"Oral feeding + tube", naso:"Nasogastric tube", gastro:"Gastrostomy", feedDK:"I don't know",
+    hospQ:"Significant hospitalizations related to the condition",
+    hospYes:"Yes", hospNo:"No",
+    hospDetail:"If yes: approximate age and main reason",
+    otherInfo:"Other information you consider relevant (optional)",
+    recontactQ:"Do you agree to be contacted by our association if your child meets the scientific criteria?",
+    recontactYes:"Yes", recontactNo:"No",
+    travelQ:"In some cases, participation in the research project may require travel to the laboratory in the United States to perform a skin biopsy for scientific analysis. Would you be willing to travel to the US to participate in this step?",
+    travelYes:"Yes", travelMaybe:"Maybe", travelNo:"No",
+    parentName:"Parent / legal guardian name", email:"Parent's email",
+    consentMain:"I agree that the information provided in this questionnaire may be used by the Project PKS association for scientific selection purposes. This data will not be shared with third parties without my prior consent and will not be used for commercial purposes.",
+    consentContact:"I authorize the use of my contact details to receive updates on the progress of the research project.",
+    consentTruth:"I certify that the information provided in this questionnaire is accurate and reflects the current situation of the child.",
+  }
+};
+
+// ─── LANGUAGE DETECTION ───────────────────────────────────────────────────────
+function detectLang() {
+  const lang = (navigator.language || "fr").toLowerCase();
+  if (lang.startsWith("pt")) return "pt";
+  if (lang.startsWith("fr")) return "fr";
+  return "en";
+}
+
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+function star() { return ' <span class="required-star">*</span>'; }
+
+function radio(name, value, labelText, id) {
+  return `<div class="checkItem"><input type="radio" name="${name}" value="${value}" id="${id}"><label for="${id}">${labelText}</label></div>`;
+}
+
+function checkbox(name, value, labelText, id) {
+  return `<div class="checkItem"><input type="checkbox" name="${name}[]" value="${value}" id="${id}"><label for="${id}">${labelText}</label></div>`;
+}
+
+function motorCard(title, namePfx, statusAcq, statusNotAcq, agePh) {
+  return `<div class="card" style="margin-top:0;"><div class="cardInner">
+    <h3 style="margin:0 0 10px;">${title}</h3>
+    <label>${t.statusL}</label>
+    <select name="${namePfx}_status">
+      <option value="">${t.choose}</option>
+      <option value="achieved">${statusAcq}</option>
+      <option value="not_achieved">${statusNotAcq}</option>
+    </select>
+    <label>${t.ageL}</label>
+    <input type="text" name="${namePfx}_age" placeholder="${agePh}">
+  </div></div>`;
+}
+
+function block(num, title, inner) {
+  return `<div class="formBlock"><div class="formSectionTitle">${title}</div>${inner}</div>`;
+}
+
+function selectField(name, labelText, options) {
+  const opts = options.map(([v,l]) => `<option value="${v}">${l}</option>`).join('');
+  return `<div><label>${labelText}</label><select name="${name}"><option value="">${t.choose}</option>${opts}</select></div>`;
+}
+
+// ─── BUILD FORM ───────────────────────────────────────────────────────────────
+let t;
+
+function buildForm(lang) {
+  t = T[lang] || T.fr;
+
+  // Update static elements
+  document.title = t.pageTitle;
+  document.getElementById("kicker").textContent = t.kicker;
+  document.getElementById("heroTitle").textContent = t.heroTitle;
+  document.getElementById("heroSub1").textContent = t.heroSub1;
+  document.getElementById("heroSub2").innerHTML = t.heroSub2;
+  document.getElementById("heroSub3").textContent = t.heroSub3;
+  document.getElementById("formTitle").textContent = t.formTitle;
+  document.getElementById("formSub").innerHTML = t.formSub + ` <span style="color:var(--muted);font-size:13px;">${t.required}</span>`;
+  document.getElementById("footerText").textContent = `© ${new Date().getFullYear()} ${t.footer}`;
+  document.getElementById("btnBack").textContent = t.btnBack;
+
+  // Nav
+  const homeFile = lang === "pt" ? "pt.html" : lang === "en" ? "en.html" : "fr.html";
+  document.getElementById("mainNav").innerHTML = `
+    <a href="${homeFile}#inicio">${t.navHome}</a>
+    <a href="${homeFile}#video">${t.navVideo}</a>
+    <a href="${homeFile}#pesquisa">${t.navResearch}</a>
+    <a href="${homeFile}#doacoes">${t.navDonate}</a>
+    <a href="${homeFile}#familles">${t.navFamilies}</a>`;
+  document.getElementById("btnBack").href = homeFile;
+
+  const s = (key) => t[key] || key;
+
+  let html = '';
+
+  // S1
+  html += block(1, s('s1'), `
+    <div class="grid2">
+      <div>
+        <label>${s('country')}${star()}</label>
+        <input type="text" name="country" id="countryInput" required autocomplete="off" list="countryList" placeholder="${s('countryPh')}">
+        <datalist id="countryList"></datalist>
+      </div>
+      <div><label>${s('firstname')}${star()}</label><input type="text" name="child_name" required></div>
+    </div>
+    <div class="grid2">
+      <div><label>${s('dob')}${star()}</label><input type="date" name="date_of_birth" required placeholder="JJ/MM/AAAA" max="${new Date().toISOString().split('T')[0]}"></div>
+      <div><label>${s('sex')}${star()}</label>
+        <div class="inlineChoices">
+          ${radio("sex","female",s('girl'),"sexe-f")}
+          ${radio("sex","male",s('boy'),"sexe-g")}
+        </div>
+      </div>
+    </div>`);
+
+  // S2
+  html += block(2, s('s2'), `
+    <label>${s('diagQ')}${star()}</label>
+    <div class="inlineChoices inline3">
+      ${radio("diagnosis_confirmed","yes",s('diagYes'),"diag1")}
+      ${radio("diagnosis_confirmed","suspected",s('diagSuspect'),"diag2")}
+      ${radio("diagnosis_confirmed","unknown",s('diagDK'),"diag3")}
+    </div>
+    <label>${s('testQ')}</label>
+    <div class="inlineChoices inline3">
+      ${radio("genetic_test","FISH",s('testFISH'),"test1")}
+      ${radio("genetic_test","microarray",s('testMicro'),"test2")}
+      ${radio("genetic_test","karyotype",s('testKaryo'),"test3")}
+      ${radio("genetic_test","other_genetic",s('testOther'),"test4")}
+      ${radio("genetic_test","unknown",s('testDK'),"test5")}
+    </div>`);
+
+  // S3
+  html += block(3, s('s3'), `
+    <p class="note">${s('s3note')}</p>
+    <div class="grid3">
+      <div class="card" style="margin-top:0;"><div class="cardInner">
+        <h3 style="margin:0 0 10px;">${s('buccal')}</h3>
+        <label>${s('mosaicism')}</label><input type="text" name="buccal_mosaicism" placeholder="${s('mosaicPh')}">
+        <label>${s('testDate')}</label><input type="date" name="buccal_date">
+      </div></div>
+      <div class="card" style="margin-top:0;"><div class="cardInner">
+        <h3 style="margin:0 0 10px;">${s('skin')}</h3>
+        <label>${s('mosaicism')}</label><input type="text" name="skin_mosaicism" placeholder="${s('mosaicPh')}">
+        <label>${s('testDate')}</label><input type="date" name="skin_date">
+      </div></div>
+      <div class="card" style="margin-top:0;"><div class="cardInner">
+        <h3 style="margin:0 0 10px;">${s('blood')}</h3>
+        <label>${s('mosaicism')}</label><input type="text" name="blood_mosaicism" placeholder="${s('mosaicPh')}">
+        <label>${s('testDate')}</label><input type="date" name="blood_date">
+      </div></div>
+    </div>`);
+
+  // S4
+  html += block(4, s('s4'), `
+    <p class="note">${s('s4note')}</p>
+    <div class="grid2">
+      ${selectField("genetic_report", s('genReport'), [["confirmed_pks",s('confirmedPKS')],["unknown",s('dk')]])}
+      ${selectField("mri", s('mri'), [["normal",s('normal')],["abnormal",s('abnormal')],["not_done",s('notDone')],["unknown",s('dk')]])}
+      ${selectField("eeg", s('eeg'), [["normal",s('normalM')],["abnormal",s('abnormalM')],["not_done",s('notDoneM')],["unknown",s('dk')]])}
+      ${selectField("metabolic_tests", s('metabolic'), [["normal",s('normaux')],["abnormal",s('anormaux')],["not_done",s('notDonePl')],["unknown",s('dk')]])}
+    </div>
+    <label>${s('otherExams')}</label><textarea name="other_exams"></textarea>`);
+
+  // S5
+  html += block(5, s('s5'), `
+    <label>${s('firstSignsQ')}</label>
+    <div class="inlineChoices inline3">
+      ${radio("age_first_signs","at_birth",s('atBirth'),"aps1")}
+      ${radio("age_first_signs","before_3m",s('before3m'),"aps2")}
+      ${radio("age_first_signs","3_to_6m",s('b3to6'),"aps3")}
+      ${radio("age_first_signs","6_to_12m",s('b6to12'),"aps4")}
+      ${radio("age_first_signs","after_1y",s('after1y'),"aps5")}
+    </div>`);
+
+  // S6
+  html += block(6, s('s6'), `
+    <label>${s('toneQ')}</label>
+    <div class="inlineChoices inline3">
+      ${radio("muscle_tone","normal",s('toneNormal'),"ton1")}
+      ${radio("muscle_tone","mild_hypotonia",s('toneLight'),"ton2")}
+      ${radio("muscle_tone","moderate_hypotonia",s('toneMod'),"ton3")}
+      ${radio("muscle_tone","severe_hypotonia",s('toneSevere'),"ton4")}
+      ${radio("muscle_tone","unknown",s('toneDK'),"ton5")}
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+      ${motorCard(s('headControl'),"head_control",s('acquired'),s('notAcquired'),s('headPh'))}
+      ${motorCard(s('rolls'),"rolls",s('acquiredM'),s('notAcquiredM'),s('rollsPh'))}
+      ${motorCard(s('crawls'),"crawls",s('acquiredM'),s('notAcquiredM'),s('crawlsPh'))}
+      ${motorCard(s('sits'),"sits",s('acquiredM'),s('notAcquiredM'),s('sitsPh'))}
+      ${motorCard(s('walksHelp'),"walks_support",s('acquiredM'),s('notAcquiredM'),s('walksHelpPh'))}
+      ${motorCard(s('walksAlone'),"walks_alone",s('acquiredM'),s('notAcquiredM'),s('walksAlonePh'))}
+    </div>`);
+
+  // S7
+  html += block(7, s('s7'), `
+    <label>${s('comQ')}</label>
+    <div class="inlineChoices inline3">
+      ${checkbox("communication[]","no_speech",s('noSpeech'),"com1")}
+      ${checkbox("communication[]","speech_delay",s('speechDelay'),"com2")}
+      ${checkbox("communication[]","hearing_problem",s('hearing'),"com3")}
+      ${checkbox("communication[]","aac",s('aac'),"com4")}
+    </div>`);
+
+  // S8
+  html += block(8, s('s8'), `
+    <label>${s('socQ')}</label>
+    <div class="inlineChoices inline3">
+      ${checkbox("social_interaction[]","tracks_objects",s('tracksObjects'),"int1")}
+      ${checkbox("social_interaction[]","grabs_objects",s('grabs'),"int2")}
+      ${checkbox("social_interaction[]","interacts",s('interacts'),"int3")}
+      ${checkbox("social_interaction[]","responds_name",s('respondsName'),"int4")}
+      ${checkbox("social_interaction[]","eye_contact",s('eyeContact'),"int5")}
+    </div>`);
+
+  // S9
+  html += block(9, s('s9'), `
+    <div class="inlineChoices inline4">
+      ${checkbox("eye_problems[]","strabismus",s('strabismus'),"oc1")}
+      ${checkbox("eye_problems[]","vision_problems",s('visionProb'),"oc2")}
+      ${checkbox("eye_problems[]","none",s('noEye'),"oc3")}
+      ${checkbox("eye_problems[]","unknown",s('eyeDK'),"oc4")}
+    </div>`);
+
+  // S10
+  html += block(10, s('s10'), `
+    <label>${s('signsQ')}</label>
+    <div class="inlineChoices inline4">
+      ${checkbox("medical_signs[]","digestive_reflux",s('digestive'),"sm1")}
+      ${checkbox("medical_signs[]","feeding_difficulties",s('feeding'),"sm2")}
+      ${checkbox("medical_signs[]","respiratory",s('respiratory'),"sm3")}
+      ${checkbox("medical_signs[]","seizures",s('seizures'),"sm4")}
+      ${checkbox("medical_signs[]","macroglossia",s('macroglossia'),"sm5")}
+    </div>
+    <label>${s('organsQ')}</label>
+    <div class="inlineChoices inline4">
+      ${checkbox("organ_involvement[]","heart",s('heart'),"org1")}
+      ${checkbox("organ_involvement[]","anal",s('anal'),"org2")}
+      ${checkbox("organ_involvement[]","intestinal",s('intestinal'),"org3")}
+      ${checkbox("organ_involvement[]","diaphragmatic_hernia",s('hernia'),"org4")}
+      ${checkbox("organ_involvement[]","none",s('noneOrgan'),"org5")}
+    </div>
+    <label>${s('otherSigns')}</label><textarea name="medical_signs_details"></textarea>`);
+
+  // S11
+  html += block(11, s('s11'), `
+    <div class="grid2">
+      <div><label>${s('headCirc')}</label><input type="text" name="head_circumference"></div>
+      <div><label>${s('headCircAge')}</label><input type="text" name="head_circumference_age"></div>
+    </div>
+    <label>${s('headCircQ')}</label>
+    <div class="inlineChoices inline4">
+      ${radio("head_circumference_eval","normal_for_age",s('headNormal'),"pc1")}
+      ${radio("head_circumference_eval","microcephaly",s('micro'),"pc2")}
+      ${radio("head_circumference_eval","macrocephaly",s('macro'),"pc3")}
+      ${radio("head_circumference_eval","unknown",s('headDK'),"pc4")}
+    </div>
+    <label>${s('feedingQ')}</label>
+    <div class="inlineChoices inline3">
+      ${radio("feeding_method","oral",s('oral'),"ali1")}
+      ${radio("feeding_method","oral_difficulties",s('oralDiff'),"ali2")}
+      ${radio("feeding_method","oral_tube",s('oralTube'),"ali3")}
+      ${radio("feeding_method","ng_tube",s('naso'),"ali4")}
+      ${radio("feeding_method","gastrostomy",s('gastro'),"ali5")}
+      ${radio("feeding_method","unknown",s('feedDK'),"ali6")}
+    </div>
+    <label>${s('hospQ')}</label>
+    <div class="inlineChoices">
+      ${radio("hospitalizations","yes",s('hospYes'),"hos1")}
+      ${radio("hospitalizations","no",s('hospNo'),"hos2")}
+    </div>
+    <label>${s('hospDetail')}</label><textarea name="hospitalizations_details"></textarea>
+    <label>${s('otherInfo')}</label><textarea name="other_info"></textarea>`);
+
+  // S12
+  html += block(12, s('s12'), `
+    <label>${s('recontactQ')}</label>
+    <div class="inlineChoices">
+      ${radio("recontact","yes",s('recontactYes'),"rec1")}
+      ${radio("recontact","no",s('recontactNo'),"rec2")}
+    </div>`);
+
+  // S13
+  html += block(13, s('s13'), `
+    <label>${s('travelQ')}</label>
+    <div class="inlineChoices inline3">
+      ${radio("travel_us","yes",s('travelYes'),"usa1")}
+      ${radio("travel_us","maybe",s('travelMaybe'),"usa2")}
+      ${radio("travel_us","no",s('travelNo'),"usa3")}
+    </div>`);
+
+  // S14
+  html += block(14, s('s14'), `
+    <label>${s('parentName')}${star()}</label><input type="text" name="parent_name" required>
+    <label>${s('email')}${star()}</label><input type="email" name="parent_email" required>`);
+
+  // Consents
+  html += `
+    <div class="consentBlock">
+      <input type="checkbox" name="consent_data" id="consent1" value="yes" required>
+      <label for="consent1">${s('consentMain')}</label>
+    </div>
+    <div class="consentBlock">
+      <input type="checkbox" name="consent_contact" id="consent2" value="yes">
+      <label for="consent2">${s('consentContact')}</label>
+    </div>
+    <div class="consentBlock">
+      <input type="checkbox" name="declaration_truth" id="consent3" value="yes" required>
+      <label for="consent3">${s('consentTruth')}</label>
+    </div>
+    <div class="submitWrap">
+      <button class="btn btnPrimary" type="submit" id="submitBtn">${s('btnSubmit')}</button>
+      <a class="btn" href="fr.html">${s('btnBack')}</a>
+    </div>
+    <div id="formMsg"></div>`;
+
+  const form = document.getElementById("pksForm");
+  form.innerHTML = html;
+  form.onsubmit = function(e) { handleSubmit.call(this, e); return false; };
+}
+
+// ─── SUBMIT ───────────────────────────────────────────────────────────────────
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById("submitBtn");
+  const msg = document.getElementById("formMsg");
+  btn.disabled = true;
+  btn.textContent = t.sending;
+  msg.style.display = "none";
+
+  const data = {};
+  const fd = new FormData(this);
+  const multi = {};
+  for (const [key, val] of fd.entries()) {
+    if (key.endsWith("[]")) {
+      const k = key.slice(0,-2);
+      if (!multi[k]) multi[k] = [];
+      multi[k].push(val);
+    } else {
+      data[key] = val;
+    }
+  }
+  for (const [k,v] of Object.entries(multi)) data[k+"[]"] = v.join(", ");
+  data["lang"] = detectLang();
+
+  // ── Validation côté client ─────────────────────────────────────────
+  const requiredFields = [
+    { key: "country", label: t.country },
+    { key: "child_name", label: t.firstname },
+    { key: "date_of_birth", label: t.dob },
+    { key: "sex", label: t.sex },
+    { key: "diagnosis_confirmed", label: t.diagQ },
+    { key: "parent_name", label: t.parentName },
+    { key: "parent_email", label: t.email },
+  ];
+  for (const f of requiredFields) {
+    if (!data[f.key] || data[f.key].trim() === "") {
+      msg.style.cssText = "display:block;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#7b1a1a;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
+      msg.textContent = "⚠️ " + f.label + " est obligatoire.";
+      msg.scrollIntoView({behavior:"smooth", block:"center"});
+      btn.textContent = t.btnSubmit;
+      btn.disabled = false;
+      return;
+    }
+  }
+  if (!data["consent_data"] || !data["declaration_truth"]) {
+    msg.style.cssText = "display:block;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#7b1a1a;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
+    msg.textContent = "⚠️ Veuillez cocher les cases obligatoires en bas du formulaire.";
+    msg.scrollIntoView({behavior:"smooth", block:"center"});
+    btn.textContent = t.btnSubmit;
+    btn.disabled = false;
+    return;
+  }
+
+  try {
+    // Using text/plain avoids CORS preflight — Apps Script still receives JSON body
+    // no-cors avoids CORS block — data reaches Apps Script even without response
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(data)
+    });
+    // With no-cors we can't read the response — assume success if fetch didn't throw
+    if (true) {
+      // Show toast notification
+      const toast = document.getElementById("toast");
+      toast.textContent = t.successMsg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 8000);
+      // Reset and scroll to top
+      this.reset();
+      window.scrollTo({top:0,behavior:"smooth"});
+      btn.textContent = t.btnSubmit;
+      btn.disabled = false;
+      return;
+    } else { throw new Error(); }
+  } catch(err) {
+    console.error("Submit error:", err);
+    msg.style.cssText = "display:block;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#7b1a1a;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px;";
+    msg.textContent = t.errorMsg;
+  }
+  btn.textContent = t.btnSubmit;
+  btn.disabled = false;
+}
+
+// ─── NAV TOGGLE ───────────────────────────────────────────────────────────────
+function toggleNav() {
+  const nav = document.getElementById("mainNav");
+  const btn = document.querySelector(".navToggle");
+  if (!nav || !btn) return;
+  const isOpen = nav.getAttribute("data-open") === "true";
+  nav.setAttribute("data-open", isOpen ? "false" : "true");
+  btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+}
+
+// ─── COUNTRY SUGGESTIONS ──────────────────────────────────────────────────────
+const COUNTRIES = {
+  fr: ["Afghanistan","Afrique du Sud","Albanie","Algérie","Allemagne","Angola","Arabie Saoudite","Argentine","Arménie","Australie","Autriche","Azerbaïdjan","Bahreïn","Bangladesh","Belgique","Bénin","Biélorussie","Bolivie","Bosnie-Herzégovine","Brésil","Bulgarie","Burkina Faso","Cambodge","Cameroun","Canada","Chili","Chine","Chypre","Colombie","Congo","Corée du Sud","Costa Rica","Côte d'Ivoire","Croatie","Cuba","Danemark","Égypte","Émirats arabes unis","Équateur","Espagne","Estonie","États-Unis","Éthiopie","Finlande","France","Géorgie","Ghana","Grèce","Guatemala","Guinée","Haïti","Hongrie","Inde","Indonésie","Irak","Iran","Irlande","Islande","Israël","Italie","Japon","Jordanie","Kazakhstan","Kenya","Koweït","Lettonie","Liban","Libye","Lituanie","Luxembourg","Macédoine","Madagascar","Malaisie","Mali","Maroc","Maurice","Mexique","Moldova","Mongolie","Mozambique","Namibie","Népal","Nicaragua","Niger","Nigéria","Norvège","Nouvelle-Zélande","Ouganda","Ouzbékistan","Pakistan","Panama","Paraguay","Pays-Bas","Pérou","Philippines","Pologne","Portugal","Qatar","République tchèque","Roumanie","Royaume-Uni","Russie","Rwanda","Sénégal","Serbie","Sierra Leone","Singapour","Slovaquie","Slovénie","Somalie","Soudan","Sri Lanka","Suède","Suisse","Syrie","Taïwan","Tanzanie","Thaïlande","Togo","Tunisie","Turquie","Ukraine","Uruguay","Venezuela","Vietnam","Yémen","Zambie","Zimbabwe"],
+  pt: ["Afeganistão","África do Sul","Albânia","Alemanha","Angola","Arábia Saudita","Argentina","Armênia","Austrália","Áustria","Azerbaijão","Bangladesh","Bélgica","Benin","Bielorrússia","Bolívia","Bósnia e Herzegovina","Brasil","Bulgária","Burkina Faso","Camboja","Camarões","Canadá","Chile","China","Chipre","Colômbia","Congo","Coreia do Sul","Costa Rica","Costa do Marfim","Croácia","Cuba","Dinamarca","Egito","Emirados Árabes Unidos","Equador","Espanha","Estônia","Estados Unidos","Etiópia","Finlândia","França","Geórgia","Gana","Grécia","Guatemala","Guiné","Haiti","Hungria","Índia","Indonésia","Iraque","Irã","Irlanda","Islândia","Israel","Itália","Japão","Jordânia","Cazaquistão","Quênia","Kuwait","Letônia","Líbano","Líbia","Lituânia","Luxemburgo","Macedônia","Madagascar","Malásia","Mali","Marrocos","Maurício","México","Moldávia","Mongólia","Moçambique","Namíbia","Nepal","Nicarágua","Níger","Nigéria","Noruega","Nova Zelândia","Uganda","Uzbequistão","Paquistão","Panamá","Paraguai","Países Baixos","Peru","Filipinas","Polônia","Portugal","Catar","República Tcheca","Romênia","Reino Unido","Rússia","Ruanda","Senegal","Sérvia","Serra Leoa","Cingapura","Eslováquia","Eslovênia","Somália","Sudão","Sri Lanka","Suécia","Suíça","Síria","Taiwan","Tanzânia","Tailândia","Togo","Tunísia","Turquia","Ucrânia","Uruguai","Venezuela","Vietnã","Iêmen","Zâmbia","Zimbábue"],
+  en: ["Afghanistan","Albania","Algeria","Angola","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahrain","Bangladesh","Belgium","Benin","Belarus","Bolivia","Bosnia and Herzegovina","Brazil","Bulgaria","Burkina Faso","Cambodia","Cameroon","Canada","Chile","China","Cyprus","Colombia","Congo","South Korea","Costa Rica","Ivory Coast","Croatia","Cuba","Denmark","Egypt","United Arab Emirates","Ecuador","Spain","Estonia","United States","Ethiopia","Finland","France","Georgia","Ghana","Greece","Guatemala","Guinea","Haiti","Hungary","India","Indonesia","Iraq","Iran","Ireland","Iceland","Israel","Italy","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Latvia","Lebanon","Libya","Lithuania","Luxembourg","Macedonia","Madagascar","Malaysia","Mali","Morocco","Mauritius","Mexico","Moldova","Mongolia","Mozambique","Namibia","Nepal","Nicaragua","Niger","Nigeria","Norway","New Zealand","Uganda","Uzbekistan","Pakistan","Panama","Paraguay","Netherlands","Peru","Philippines","Poland","Portugal","Qatar","Czech Republic","Romania","United Kingdom","Russia","Rwanda","Senegal","Serbia","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","Sudan","Sri Lanka","Sweden","Switzerland","Syria","Taiwan","Tanzania","Thailand","Togo","Tunisia","Turkey","Ukraine","Uruguay","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe","South Africa"]
+};
+
+function fillCountryList(lang) {
+  const dl = document.getElementById("countryList");
+  if (!dl) return;
+  const list = COUNTRIES[lang] || COUNTRIES.en;
+  dl.innerHTML = list.map(c => `<option value="${c}">`).join("");
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+const currentLang = detectLang();
+buildForm(currentLang);
+fillCountryList(currentLang);
+</script>
+</body>
+</html><!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Participer à la recherche | Project PKS</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0B2E6B">
+  <meta name="description" content="Questionnaire de recherche pour les familles concernées par le syndrome de Pallister-Killian." />
+
+  <style>
+    :root{
+      --bg:#F2FBF7;--card:#FFFFFF;--ink:#0F1F26;--muted:#3F565E;
+      --blue:#0B2E6B;--blue2:#1E63FF;--green:#19B67A;--gold:#D7AF4A;--line:#D2E6DF;
+      --shadow:0 18px 60px rgba(11,46,107,.16);--shadow2:0 12px 28px rgba(11,46,107,.10);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);line-height:1.65;background:radial-gradient(900px 520px at 12% 10%,rgba(30,99,255,.14),transparent 62%),radial-gradient(900px 520px at 88% 12%,rgba(25,182,122,.12),transparent 62%),linear-gradient(180deg,rgba(215,175,74,.06),transparent 30%),var(--bg)}
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:18px}
+    header{position:sticky;top:0;z-index:50;background:rgba(242,251,247,.82);backdrop-filter:blur(14px) saturate(180%);border-bottom:1px solid rgba(210,230,223,.95)}
+    .topbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px}
+    .brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+    .brand b{color:var(--blue);font-size:15px;letter-spacing:.25px}
+    nav{justify-self:center;display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap;overflow:auto;scrollbar-width:none;align-items:center}
+    nav::-webkit-scrollbar{display:none}
+    nav a{font-size:13.5px;color:var(--muted);padding:8px 10px;border-radius:999px;text-decoration:none;border:1px solid transparent}
+    nav a:hover{background:rgba(30,99,255,.08);border-color:rgba(30,99,255,.12);color:var(--blue)}
+    .headerRight{justify-self:end;display:flex;align-items:center;gap:10px}
+    .btn,a.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(210,230,223,.95);background:rgba(255,255,255,.90);color:var(--blue);cursor:pointer;font-weight:900;font-size:14px;text-decoration:none;box-shadow:0 10px 22px rgba(11,46,107,.08);transition:transform .08s ease,opacity .15s ease}
+    .btn:hover,a.btn:hover{opacity:.96}
+    .btn:active,a.btn:active{transform:translateY(1px)}
+    .btnPrimary{border:none;color:#1b1402;background:linear-gradient(135deg,#f3d37f,var(--gold))}
+    .navToggle{display:none;border:1px solid rgba(210,230,223,.95);background:rgba(255,255,255,.82);color:var(--blue);font-weight:900;border-radius:999px;padding:9px 11px;cursor:pointer;box-shadow:0 10px 22px rgba(11,46,107,.08)}
+    @media(max-width:900px){
+      .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+      .headerRight{margin-left:auto}
+      .navToggle{display:inline-flex}
+      nav{display:none;width:100%;padding-top:10px;overflow:visible;white-space:normal;flex-wrap:wrap}
+      nav[data-open="true"]{display:flex}
+    }
+    .heroTop{margin-top:16px;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.70);box-shadow:var(--shadow);background:rgba(255,255,255,.92)}
+    .heroTopInner{padding:18px}
+    .heroText{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:var(--shadow2)}
+    .heroKicker{margin:0 0 8px;color:var(--muted);font-size:13px;font-weight:900}
+    .heroTitle{margin:0 0 10px;color:var(--blue);font-size:42px;line-height:1.05;letter-spacing:-.9px;font-weight:900}
+    .heroSub{margin:0 0 12px;color:var(--muted);font-size:16px}
+    .card{background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:var(--shadow2);position:relative;overflow:hidden;margin-top:18px}
+    .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--blue2),var(--green));opacity:.9}
+    .cardInner{position:relative}
+    .card h3{margin:0 0 10px;color:var(--blue);font-weight:900}
+    .formSectionTitle{color:var(--blue);font-size:22px;font-weight:900;margin:0 0 10px}
+    .formBlock{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+    label{display:block;font-weight:800;color:var(--blue);margin:14px 0 6px;font-size:14px}
+    input[type="text"],input[type="email"],input[type="date"],textarea,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-size:14px;outline:none}
+    input:focus,textarea:focus,select:focus{border-color:rgba(30,99,255,.4);box-shadow:0 0 0 4px rgba(30,99,255,.08)}
+    textarea{min-height:110px;resize:vertical}
+    .inlineChoices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:8px}
+    .inlineChoices.inline3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .inlineChoices.inline4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .checkItem{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.9);min-height:52px}
+    .checkItem label{margin:0;font-weight:700;color:var(--ink);font-size:14px;flex:1}
+    .checkItem input{margin-top:3px;flex:0 0 auto}
+    .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    @media(max-width:980px){
+      .grid2,.grid3{grid-template-columns:1fr}
+      .heroTitle{font-size:34px}
+    }
+    @media(max-width:480px){
+      .inlineChoices.inline3,.inlineChoices.inline4{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    .note{font-size:13px;color:var(--muted);margin-top:4px}
+    .submitWrap{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .consentBlock{background:rgba(215,175,74,.08);border:1px solid rgba(215,175,74,.35);border-radius:16px;padding:16px 18px;margin-top:14px;display:flex;align-items:flex-start;gap:12px}
+    .consentBlock input[type="checkbox"]{margin-top:3px;flex:0 0 auto;width:18px;height:18px}
+    .consentBlock label{margin:0;font-size:13.5px;color:var(--ink);font-weight:600}
+    .required-star{color:#c0392b;margin-left:3px}
+    #formMsg{display:none;margin-top:16px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:14px}
+    footer{margin-top:26px;border-top:1px solid var(--line);padding:18px 0 40px;color:var(--muted);font-size:13px}
+    .sectionTitle{margin:24px 0 10px;color:var(--blue);font-size:28px;letter-spacing:-.2px;font-weight:900}
+    .sectionSub{margin:0 0 14px;color:var(--muted);max-width:92ch;font-size:15.5px}
+
+    .toast{
+      position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);
+      background:#19B67A;color:#fff;font-weight:800;font-size:15px;
+      padding:16px 28px;border-radius:999px;box-shadow:0 8px 32px rgba(25,182,122,.4);
+      opacity:0;transition:opacity .3s ease,transform .3s ease;
+      z-index:9999;white-space:nowrap;pointer-events:none;text-align:center;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+<header>
+  <div class="wrap topbar">
+    <div class="brand"><b>Project PKS</b></div>
+    <nav id="mainNav" aria-label="Navigation" data-open="false"></nav>
+    <div class="headerRight">
+      <a class="btn" id="btnBack" href="fr.html">—</a>
+      <button class="navToggle" type="button" aria-expanded="false" aria-controls="mainNav" onclick="toggleNav()">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="heroTop">
+    <div class="heroTopInner">
+      <div class="heroText">
+        <p class="heroKicker" id="kicker"></p>
+        <h1 class="heroTitle" id="heroTitle"></h1>
+        <p class="heroSub" id="heroSub1"></p>
+        <p class="heroSub" id="heroSub2"></p>
+        <p class="heroSub" id="heroSub3" style="font-weight:700;color:var(--blue);font-size:15px;margin-top:10px;"></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <div class="cardInner">
+        <h2 class="sectionTitle" style="margin-top:0;" id="formTitle"></h2>
+        <p class="sectionSub" id="formSub"></p>
+        <form id="pksForm" action="javascript:void(0)"></form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div id="footerText"></div>
+    </div>
+  </footer>
+</main>
+
+<script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxAKtvmk5tmZ3MjQvv4SRFEF6JSsaLHqgY0agZ4fEBiabd88HYX0SxTjzbdvr5XJslzxA/exec";
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
