@@ -3,269 +3,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juntos pela Giulia | Project PKS — Preview</title>
+<title>Juntos pela Giulia | Project PKS — Preview Brasil</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'DM Sans',sans-serif;
-  background:#f0ede8;
-  min-height:100vh;
-  display:flex; flex-direction:column; align-items:center;
-  padding:24px 0 48px;
-}
-.debug-bar {
-  width:100%; max-width:480px;
-  background:#1a1410; color:#fff;
-  font-size:11px; font-weight:500; letter-spacing:0.5px;
-  padding:8px 16px;
-  display:flex; align-items:center; justify-content:space-between; gap:8px;
-  border-radius:8px 8px 0 0;
-}
-.region-badge {
-  background:#19B67A; color:#fff;
-  padding:2px 8px; border-radius:20px;
-  font-size:10px; font-weight:600; letter-spacing:1px;
-}
-.debug-switch { display:flex; gap:6px; }
-.debug-switch button {
-  background:rgba(255,255,255,0.12); border:none;
-  color:rgba(255,255,255,0.7); font-size:10px;
-  padding:3px 8px; border-radius:4px;
-  cursor:pointer; font-family:inherit;
-}
-.debug-switch button.active { background:#0B2E6B; color:#fff; }
-.page {
-  width:100%; max-width:480px;
-  display:flex; flex-direction:column; align-items:center;
-  background:#faf8f5;
-  border-radius:0 0 16px 16px;
-  overflow:hidden;
-  box-shadow:0 8px 40px rgba(0,0,0,0.18);
-}
-.hero { width:100%; aspect-ratio:1; overflow:hidden; position:relative; background:#0B2E6B; }
-.hero img { width:100%; height:100%; object-fit:cover; display:block; }
-.hero-overlay {
-  position:absolute; bottom:0; left:0; right:0;
-  padding:32px 24px 24px;
-  background:linear-gradient(transparent,rgba(10,20,40,0.78));
-}
-.hero-name {
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:38px; color:#fff; line-height:1.1; margin-bottom:6px;
-}
-.hero-tag { font-size:13px; color:rgba(255,255,255,0.75); font-weight:300; letter-spacing:0.3px; }
-.content { width:100%; padding:28px 20px 0; display:flex; flex-direction:column; gap:12px; }
-.intro { text-align:center; padding:0 4px 8px; }
-.intro p { font-size:15px; color:#4a4540; line-height:1.65; font-weight:300; }
-.intro strong { color:#1a1410; font-weight:500; }
-.section-label {
-  font-size:11px; font-weight:500; letter-spacing:1.5px;
-  text-transform:uppercase; color:#b09a7a; text-align:center; margin-top:4px;
-}
-.btn {
-  display:flex; align-items:center; justify-content:space-between;
-  width:100%; padding:16px 20px; border-radius:14px;
-  text-decoration:none; font-size:15px; font-weight:500;
-  transition:transform 0.12s, box-shadow 0.12s;
-  cursor:pointer; border:none; font-family:inherit;
-}
-.btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.14); }
-.btn:active { transform:scale(0.99); }
-.btn-left { display:flex; align-items:center; gap:12px; }
-.btn-icon { font-size:20px; }
-.btn-text { display:flex; flex-direction:column; text-align:left; }
-.btn-title { font-size:15px; font-weight:500; line-height:1.2; }
-.btn-sub { font-size:12px; font-weight:300; opacity:0.75; margin-top:2px; }
-.btn-arrow { font-size:18px; opacity:0.45; }
-.btn-vakinha  { background:#0066cc; color:#fff; }
-.btn-pix      { background:#32bcad; color:#fff; }
-.btn-gofundme { background:#00b964; color:#fff; }
-.btn-rifa     { background:#f5a623; color:#1a1410; }
-.btn-paypal   { background:#003087; color:#fff; }
-.pix-feedback {
-  display:none; text-align:center;
-  font-size:12px; font-weight:500;
-  padding:8px 14px; border-radius:8px;
-  margin-top:-4px;
-}
-.pix-feedback.ok  { display:block; background:#e6faf7; color:#0f9480; }
-.pix-feedback.err { display:block; background:#fff8e6; color:#a06800; }
-#pixHidden {
-  position:fixed; top:-100px; left:0;
-  width:200px; height:30px;
-  font-size:14px; border:none; padding:4px;
-  opacity:0; pointer-events:none;
-}
-.divider { width:40px; height:1px; background:#e0d8ce; margin:4px auto; }
-.footer-links { display:flex; gap:20px; justify-content:center; margin-top:8px; padding-top:8px; }
-.footer-links a { font-size:13px; color:#8a7a6a; text-decoration:none; }
-.footer-links a:hover { color:#1a1410; }
-.footer-note { text-align:center; font-size:12px; color:#b0a090; margin:20px 0; font-weight:300; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f0ede8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0 48px;
+  }
+
+  /* ── DEBUG BAR ── */
+  .debug-bar {
+    width: 100%;
+    max-width: 480px;
+    background: #1a1410;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px 8px 0 0;
+    gap: 8px;
+  }
+  .debug-bar .region-badge {
+    background: #19B67A;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .debug-switch {
+    display: flex;
+    gap: 6px;
+  }
+  .debug-switch button {
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .debug-switch button:hover { background: rgba(255,255,255,0.22); }
+  .debug-switch button.active {
+    background: #0B2E6B;
+    color: #fff;
+  }
+
+  /* ── PAGE CARD ── */
+  .page {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #faf8f5;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  }
+  .hero {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .hero-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 32px 24px 24px;
+    background: linear-gradient(transparent, rgba(10,20,40,0.75));
+  }
+  .hero-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 38px; color: #fff; line-height: 1.1; margin-bottom: 6px;
+  }
+  .hero-tag {
+    font-size: 13px; color: rgba(255,255,255,0.75);
+    font-weight: 300; letter-spacing: 0.3px;
+  }
+  .content {
+    width: 100%; padding: 28px 20px 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .intro { text-align: center; padding: 0 4px 8px; }
+  .intro p { font-size: 15px; color: #4a4540; line-height: 1.65; font-weight: 300; }
+  .intro strong { color: #1a1410; font-weight: 500; }
+  .section-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: #b09a7a; text-align: center; margin-top: 4px;
+  }
+  .btn {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 16px 20px; border-radius: 14px;
+    text-decoration: none; font-size: 15px; font-weight: 500;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    cursor: pointer; border: none; font-family: inherit;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+  .btn:active { transform: translateY(0) scale(0.99); filter: brightness(0.96); }
+  .btn-left { display: flex; align-items: center; gap: 12px; }
+  .btn-icon { font-size: 20px; }
+  .btn-text { display: flex; flex-direction: column; text-align: left; }
+  .btn-title { font-size: 15px; font-weight: 500; line-height: 1.2; }
+  .btn-sub { font-size: 12px; font-weight: 300; opacity: 0.75; margin-top: 2px; }
+  .btn-arrow { font-size: 18px; opacity: 0.45; }
+  .btn-gofundme { background: #00b964; color: #fff; }
+  .btn-vakinha  { background: #0066cc; color: #fff; }
+  .btn-rifa     { background: #f5a623; color: #1a1410; }
+  .btn-paypal   { background: #003087; color: #fff; }
+  .btn-pix      { background: #32bcad; color: #fff; }
+
+  .pix-copied {
+    display: none; font-size: 12px; color: #32bcad;
+    text-align: center; margin-top: -6px; font-weight: 500;
+    padding: 6px 12px; background: #e8faf8; border-radius: 8px;
+  }
+  .pix-copied.show { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .divider { width: 40px; height: 1px; background: #e0d8ce; margin: 4px auto; }
+  .footer-links {
+    display: flex; gap: 20px; justify-content: center;
+    margin-top: 8px; padding-top: 8px;
+  }
+  .footer-links a {
+    font-size: 13px; color: #8a7a6a;
+    text-decoration: none; font-weight: 400;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: #1a1410; }
+  .footer-note {
+    text-align: center; font-size: 12px;
+    color: #b0a090; margin: 20px 0; font-weight: 300;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #1a1410; color: #fff; padding: 10px 20px;
+    border-radius: 24px; font-size: 13px; font-weight: 400;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s;
+    white-space: nowrap;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; }
 </style>
 </head>
 <body>
 
-<textarea id="pixHidden" readonly>juntospelagiulia@gmail.com</textarea>
-
+<!-- DEBUG BAR -->
 <div class="debug-bar">
-  <span>Preview regiao:</span>
-  <span class="region-badge" id="currentRegion">BR BRASIL</span>
+  <span>Preview região:</span>
+  <span class="region-badge" id="currentRegion">🇧🇷 BRASIL</span>
   <div class="debug-switch">
-    <button onclick="setRegion('br')" class="active" id="btn-br">BR</button>
-    <button onclick="setRegion('fr')" id="btn-fr">FR</button>
-    <button onclick="setRegion('en')" id="btn-en">EN</button>
+    <button onclick="setRegion('br')" class="active" id="btn-br">🇧🇷 BR</button>
+    <button onclick="setRegion('fr')" id="btn-fr">🇫🇷 FR</button>
+    <button onclick="setRegion('en')" id="btn-en">🌍 EN</button>
   </div>
 </div>
 
 <div class="page">
   <div class="hero">
-    <img id="heroImg"
-      src="https://project-pks.org/links.html"
-      onerror="this.style.background='linear-gradient(160deg,#1a2a4a,#0B2E6B)';this.style.display='block';this.removeAttribute('src')"
-      alt="Giulia">
+<img id="heroImg" src="giulia.jpg" alt="Giulia">
     <div class="hero-overlay">
-      <div class="hero-name">Giulia</div>
-      <div class="hero-tag" id="heroTag">23 meses - Sindrome de Pallister-Killian - Project PKS</div>
+      <div class="hero-name" id="heroName">Giulia</div>
+      <div class="hero-tag" id="heroTag">23 meses · Síndrome de Pallister-Killian · Project PKS</div>
     </div>
   </div>
 
   <div class="content">
     <div class="intro">
-      <p id="introText">Uma doenca genetica extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real - uma pesquisa cientifica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da California em San Diego. O que falta e financiamento.</p>
+      <p id="introText">Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — uma pesquisa científica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da Califórnia em San Diego. O que falta é financiamento.</p>
     </div>
 
     <div class="section-label" id="labelDonate">Doe agora</div>
     <div id="btnsDonate"></div>
-    <div class="pix-feedback" id="pixFeedback"></div>
 
     <div class="divider" id="dividerRifa" style="display:none"></div>
     <div class="section-label" id="labelRifa" style="display:none"></div>
     <div id="btnsRifa"></div>
 
+    <div class="pix-copied" id="pixCopied">✅ Chave PIX copiada! &nbsp;<strong>juntospelagiulia@gmail.com</strong></div>
+
     <div class="divider"></div>
     <div class="footer-links">
-      <a href="https://www.instagram.com/juntospelagiulia/" target="_blank">@juntospelagiulia</a>
-      <a href="https://www.project-pks.org" target="_blank">project-pks.org</a>
+      <a href="https://www.instagram.com/juntospelagiulia/" target="_blank" onclick="toast('Abrindo Instagram...')">📲 @juntospelagiulia</a>
+      <a href="https://www.project-pks.org" target="_blank" onclick="toast('Abrindo project-pks.org...')">🌐 project-pks.org</a>
     </div>
-    <div class="footer-note" id="footerNote">Project PKS - Associacao sem fins lucrativos - Franca</div>
+    <div class="footer-note" id="footerNote">Project PKS · Associação sem fins lucrativos · França</div>
   </div>
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
+function toast(msg, dur) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), dur || 2200);
+}
+
 function copyPix() {
   var key = 'juntospelagiulia@gmail.com';
-  var fb = document.getElementById('pixFeedback');
-  var copied = false;
-
-  // Tenta clipboard API moderna (funciona em HTTPS)
   if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(key).then(function() {
-      showFeedback(true);
-    }).catch(function() { syncCopy(key); });
+    navigator.clipboard.writeText(key).then(function(){ showPixCopied(); }).catch(function(){ syncCopy(key); });
     return;
   }
   syncCopy(key);
 }
-
 function syncCopy(key) {
-  // Move o textarea para posicao visivel antes de selecionar
-  var el = document.getElementById('pixHidden');
-  el.style.top = '10px';
-  el.style.opacity = '1';
-  el.style.pointerEvents = 'auto';
+  var el = document.createElement('textarea');
   el.value = key;
-  el.focus();
-  el.select();
-  el.setSelectionRange(0, 99999);
-  var ok = false;
-  try { ok = document.execCommand('copy'); } catch(e) {}
-  el.style.top = '-100px';
-  el.style.opacity = '0';
-  el.style.pointerEvents = 'none';
-  el.blur();
-  showFeedback(ok);
+  el.style.cssText = 'position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;box-shadow:none;background:transparent;font-size:12px;opacity:0.01;';
+  document.body.appendChild(el);
+  el.focus(); el.select(); el.setSelectionRange(0, 99999);
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(el);
+  showPixCopied();
+}
+function showPixCopied() {
+  var el = document.getElementById('pixCopied');
+  if (el) {
+    el.classList.add('show');
+    toast('📋 Chave PIX copiada para a área de transferência!', 3000);
+    clearTimeout(el._t);
+    el._t = setTimeout(function(){ el.classList.remove('show'); }, 4000);
+  }
 }
 
-function showFeedback(ok) {
-  var fb = document.getElementById('pixFeedback');
-  fb.className = 'pix-feedback ' + (ok ? 'ok' : 'err');
-  fb.textContent = ok
-    ? 'Chave PIX copiada! Cole no seu app de pagamento.'
-    : 'Copie manualmente: juntospelagiulia@gmail.com';
-  clearTimeout(fb._t);
-  fb._t = setTimeout(function(){ fb.className = 'pix-feedback'; }, 6000);
+function makeBtn(cls, href, icon, title, sub, onclick) {
+  if (onclick) {
+    return `<button class="btn ${cls}" onclick="${onclick}">
+      <div class="btn-left"><span class="btn-icon">${icon}</span>
+        <div class="btn-text"><span class="btn-title">${title}</span><span class="btn-sub">${sub}</span></div>
+      </div><span class="btn-arrow">📋</span></button>`;
+  }
+  const click = `toast('Abrindo ${title}...');`;
+  return `<a class="btn ${cls}" href="${href}" target="_blank" rel="noopener" onclick="${click}">
+    <div class="btn-left"><span class="btn-icon">${icon}</span>
+      <div class="btn-text"><span class="btn-title">${title}</span><span class="btn-sub">${sub}</span></div>
+    </div><span class="btn-arrow">›</span></a>`;
 }
 
-function lnk(cls, href, icon, title, sub) {
-  return '<a class="btn '+cls+'" href="'+href+'" target="_blank" rel="noopener">'
-    +'<div class="btn-left"><span class="btn-icon">'+icon+'</span>'
-    +'<div class="btn-text"><span class="btn-title">'+title+'</span>'
-    +'<span class="btn-sub">'+sub+'</span></div></div>'
-    +'<span class="btn-arrow">></span></a>';
-}
-
-function pixBtn() {
-  return '<button class="btn btn-pix" onclick="copyPix()">'
-    +'<div class="btn-left"><span class="btn-icon">📱</span>'
-    +'<div class="btn-text"><span class="btn-title">PIX</span>'
-    +'<span class="btn-sub">juntospelagiulia@gmail.com</span></div></div>'
-    +'<span class="btn-arrow">📋</span></button>';
-}
-
-var C = {
+const content = {
   br: {
-    region:'🇧🇷 BRASIL', tag:'23 meses · Sindrome de Pallister-Killian · Project PKS',
-    intro:'Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — pesquisa com o <strong>Dr. Alysson Muotri</strong> (UCSD). O que falta é financiamento.',
-    ld:'Doe agora', lr:'Concorra e ajude',
-    footer:'Project PKS · Associação sem fins lucrativos · França',
-    donate:[
-      lnk('btn-vakinha','https://www.vakinha.com.br/6050754','💙','Vakinha','Doação direta em reais'),
-      pixBtn(),
-      lnk('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campanha internacional')
+    region: '🇧🇷 BRASIL',
+    tag: '23 meses · Síndrome de Pallister-Killian · Project PKS',
+    intro: 'Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — uma pesquisa científica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da Califórnia em San Diego. O que falta é financiamento.',
+    labelDonate: 'Doe agora',
+    labelRifa: 'Concorra e ajude',
+    footer: 'Project PKS · Associação sem fins lucrativos · França',
+    donate: [
+      makeBtn('btn-vakinha','https://www.vakinha.com.br/6050754','💙','Vakinha','Doação direta em reais',''),
+      makeBtn('btn-pix','','📱','PIX','juntospelagiulia@gmail.com','copyPix()'),
+      makeBtn('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campanha internacional',''),
     ],
-    rifa:[lnk('btn-rifa','https://vakinhadasorte.com.br/uma-chance-de-tratamento-para-a-giulia','🎁','Rifa Solidária','Concorra a prêmios e ajude a pesquisa')]
+    rifa: [makeBtn('btn-rifa','https://vakinhadasorte.com.br/uma-chance-de-tratamento-para-a-giulia','🎁','Rifa Solidária','Concorra a prêmios e ajude a pesquisa','')]
   },
   fr: {
-    region:'🇫🇷 FRANCE', tag:'23 mois · Syndrome de Pallister-Killian · Project PKS',
-    intro:"Une maladie génétique extrêmement rare. <strong>Sans traitement.</strong> Mais avec une chance réelle — recherche avec le <strong>Dr. Alysson Muotri</strong> (UCSD). Il manque le financement.",
-    ld:'Faire un don', lr:'',
-    footer:'Project PKS · Association à but non lucratif · France',
-    donate:[
-      lnk('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campagne internationale'),
-      lnk('btn-paypal','https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC','💳','PayPal','Don sécurisé')
+    region: '🇫🇷 FRANCE',
+    tag: '23 mois · Syndrome de Pallister-Killian · Project PKS',
+    intro: 'Une maladie génétique extrêmement rare. <strong>Sans traitement.</strong> Mais avec une chance réelle — une recherche scientifique avec le <strong>Dr. Alysson Muotri</strong>, à l\'Université de Californie San Diego. Il manque le financement.',
+    labelDonate: 'Faire un don',
+    labelRifa: '',
+    footer: 'Project PKS · Association à but non lucratif · France',
+    donate: [
+      makeBtn('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campagne internationale',''),
+      makeBtn('btn-paypal','https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC','💳','PayPal','Don sécurisé',''),
     ],
-    rifa:[]
+    rifa: []
   },
   en: {
-    region:'🌍 INTERNATIONAL', tag:'23 months · Pallister-Killian Syndrome · Project PKS',
-    intro:"An extremely rare genetic disease. <strong>No treatment exists.</strong> But there is a real chance — research with <strong>Dr. Alysson Muotri</strong> at UC San Diego. Funding is what's missing.",
-    ld:'Donate now', lr:'',
-    footer:'Project PKS · Nonprofit association · France',
-    donate:[
-      lnk('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','International campaign'),
-      lnk('btn-paypal','https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC','💳','PayPal','Secure donation')
+    region: '🌍 INTERNATIONAL',
+    tag: '23 months · Pallister-Killian Syndrome · Project PKS',
+    intro: 'An extremely rare genetic disease. <strong>No treatment exists.</strong> But there is a real chance — scientific research with <strong>Dr. Alysson Muotri</strong> at UC San Diego. Funding is what\'s missing.',
+    labelDonate: 'Donate now',
+    labelRifa: '',
+    footer: 'Project PKS · Nonprofit association · France',
+    donate: [
+      makeBtn('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','International campaign',''),
+      makeBtn('btn-paypal','https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC','💳','PayPal','Secure donation',''),
     ],
-    rifa:[]
+    rifa: []
   }
 };
 
 function setRegion(r) {
-  var c = C[r];
+  const c = content[r];
   document.getElementById('currentRegion').textContent = c.region;
   document.getElementById('heroTag').textContent = c.tag;
   document.getElementById('introText').innerHTML = c.intro;
-  document.getElementById('labelDonate').textContent = c.ld;
+  document.getElementById('labelDonate').textContent = c.labelDonate;
   document.getElementById('footerNote').textContent = c.footer;
   document.getElementById('btnsDonate').innerHTML = c.donate.join('');
-  document.getElementById('pixFeedback').className = 'pix-feedback';
-  var hasRifa = c.rifa && c.rifa.length > 0;
-  document.getElementById('dividerRifa').style.display = hasRifa ? 'block' : 'none';
-  document.getElementById('labelRifa').style.display = hasRifa ? 'block' : 'none';
-  document.getElementById('labelRifa').textContent = c.lr;
-  document.getElementById('btnsRifa').innerHTML = hasRifa ? c.rifa.join('') : '';
-  document.querySelectorAll('.debug-switch button').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('btn-'+r).classList.add('active');
+
+  const rifa = c.rifa || [];
+  if (rifa.length > 0) {
+    document.getElementById('dividerRifa').style.display = 'block';
+    document.getElementById('labelRifa').style.display = 'block';
+    document.getElementById('labelRifa').textContent = c.labelRifa;
+    document.getElementById('btnsRifa').innerHTML = rifa.join('');
+  } else {
+    document.getElementById('dividerRifa').style.display = 'none';
+    document.getElementById('labelRifa').style.display = 'none';
+    document.getElementById('btnsRifa').innerHTML = '';
+  }
+
+  document.querySelectorAll('.debug-switch button').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + r).classList.add('active');
+  document.documentElement.lang = r === 'fr' ? 'fr' : r === 'en' ? 'en' : 'pt-BR';
+
+  document.getElementById('pixCopied').classList.remove('show');
 }
 
 setRegion('br');
