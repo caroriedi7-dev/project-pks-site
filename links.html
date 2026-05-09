@@ -91,11 +91,11 @@ body {
 }
 .pix-feedback.ok  { display:block; background:#e6faf7; color:#0f9480; }
 .pix-feedback.err { display:block; background:#fff8e6; color:#a06800; }
-/* invisible textarea used for execCommand copy */
 #pixHidden {
-  position:fixed; left:-9999px; top:0;
-  width:2px; height:2px; border:none; padding:0;
-  font-size:12px; opacity:0;
+  position:fixed; top:-100px; left:0;
+  width:200px; height:30px;
+  font-size:14px; border:none; padding:4px;
+  opacity:0; pointer-events:none;
 }
 .divider { width:40px; height:1px; background:#e0d8ce; margin:4px auto; }
 .footer-links { display:flex; gap:20px; justify-content:center; margin-top:8px; padding-top:8px; }
@@ -106,31 +106,33 @@ body {
 </head>
 <body>
 
-<!-- textarea fora do fluxo, usado pelo execCommand -->
-<textarea id="pixHidden">juntospelagiulia@gmail.com</textarea>
+<textarea id="pixHidden" readonly>juntospelagiulia@gmail.com</textarea>
 
 <div class="debug-bar">
-  <span>Preview região:</span>
-  <span class="region-badge" id="currentRegion">🇧🇷 BRASIL</span>
+  <span>Preview regiao:</span>
+  <span class="region-badge" id="currentRegion">BR BRASIL</span>
   <div class="debug-switch">
-    <button onclick="setRegion('br')" class="active" id="btn-br">🇧🇷 BR</button>
-    <button onclick="setRegion('fr')" id="btn-fr">🇫🇷 FR</button>
-    <button onclick="setRegion('en')" id="btn-en">🌍 EN</button>
+    <button onclick="setRegion('br')" class="active" id="btn-br">BR</button>
+    <button onclick="setRegion('fr')" id="btn-fr">FR</button>
+    <button onclick="setRegion('en')" id="btn-en">EN</button>
   </div>
 </div>
 
 <div class="page">
   <div class="hero">
-    <img src="https://project-pks.org/img/giulia.jpg" onerror="this.style.display='none'" alt="Giulia">
+    <img id="heroImg"
+      src="https://project-pks.org/links.html"
+      onerror="this.style.background='linear-gradient(160deg,#1a2a4a,#0B2E6B)';this.style.display='block';this.removeAttribute('src')"
+      alt="Giulia">
     <div class="hero-overlay">
       <div class="hero-name">Giulia</div>
-      <div class="hero-tag" id="heroTag">23 meses · Síndrome de Pallister-Killian · Project PKS</div>
+      <div class="hero-tag" id="heroTag">23 meses - Sindrome de Pallister-Killian - Project PKS</div>
     </div>
   </div>
 
   <div class="content">
     <div class="intro">
-      <p id="introText">Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — uma pesquisa científica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da Califórnia em San Diego. O que falta é financiamento.</p>
+      <p id="introText">Uma doenca genetica extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real - uma pesquisa cientifica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da California em San Diego. O que falta e financiamento.</p>
     </div>
 
     <div class="section-label" id="labelDonate">Doe agora</div>
@@ -143,141 +145,127 @@ body {
 
     <div class="divider"></div>
     <div class="footer-links">
-      <a href="https://www.instagram.com/juntospelagiulia/" target="_blank">📲 @juntospelagiulia</a>
-      <a href="https://www.project-pks.org" target="_blank">🌐 project-pks.org</a>
+      <a href="https://www.instagram.com/juntospelagiulia/" target="_blank">@juntospelagiulia</a>
+      <a href="https://www.project-pks.org" target="_blank">project-pks.org</a>
     </div>
-    <div class="footer-note" id="footerNote">Project PKS · Associação sem fins lucrativos · França</div>
+    <div class="footer-note" id="footerNote">Project PKS - Associacao sem fins lucrativos - Franca</div>
   </div>
 </div>
 
 <script>
-// ── PIX COPY ──────────────────────────────────────────────────────────────────
-// Estratégia robusta: tenta clipboard API (funciona em HTTPS),
-// depois cai para execCommand (funciona em file://).
-// execCommand precisa ser chamado de forma SÍNCRONA dentro do evento de clique.
-
 function copyPix() {
   var key = 'juntospelagiulia@gmail.com';
+  var fb = document.getElementById('pixFeedback');
+  var copied = false;
 
-  // Tenta clipboard API primeiro (funciona quando o arquivo é servido via HTTPS)
+  // Tenta clipboard API moderna (funciona em HTTPS)
   if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(key)
-      .then(function() { showPixFeedback(true); })
-      .catch(function() { syncCopy(key); });
+    navigator.clipboard.writeText(key).then(function() {
+      showFeedback(true);
+    }).catch(function() { syncCopy(key); });
     return;
   }
-
-  // Fallback síncrono com execCommand — funciona em file:// e HTTP
   syncCopy(key);
 }
 
 function syncCopy(key) {
+  // Move o textarea para posicao visivel antes de selecionar
   var el = document.getElementById('pixHidden');
+  el.style.top = '10px';
+  el.style.opacity = '1';
+  el.style.pointerEvents = 'auto';
   el.value = key;
-  el.style.position = 'fixed';
-  el.style.left = '0';
-  el.style.top = '0';
-  el.style.opacity = '0.01';
   el.focus();
   el.select();
-  el.setSelectionRange(0, key.length); // iOS Safari
+  el.setSelectionRange(0, 99999);
   var ok = false;
-  try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
-  el.style.left = '-9999px';
+  try { ok = document.execCommand('copy'); } catch(e) {}
+  el.style.top = '-100px';
   el.style.opacity = '0';
+  el.style.pointerEvents = 'none';
   el.blur();
-  showPixFeedback(ok);
+  showFeedback(ok);
 }
 
-function showPixFeedback(success) {
+function showFeedback(ok) {
   var fb = document.getElementById('pixFeedback');
-  if (success) {
-    fb.className = 'pix-feedback ok';
-    fb.textContent = '✅ Chave PIX copiada! Cole no seu app de pagamento.';
-  } else {
-    fb.className = 'pix-feedback err';
-    fb.textContent = '⚠ Copie manualmente: juntospelagiulia@gmail.com';
-  }
+  fb.className = 'pix-feedback ' + (ok ? 'ok' : 'err');
+  fb.textContent = ok
+    ? 'Chave PIX copiada! Cole no seu app de pagamento.'
+    : 'Copie manualmente: juntospelagiulia@gmail.com';
   clearTimeout(fb._t);
-  fb._t = setTimeout(function() { fb.className = 'pix-feedback'; }, 6000);
+  fb._t = setTimeout(function(){ fb.className = 'pix-feedback'; }, 6000);
 }
 
-// ── CONTEÚDO POR REGIÃO ───────────────────────────────────────────────────────
 function lnk(cls, href, icon, title, sub) {
-  return '<a class="btn ' + cls + '" href="' + href + '" target="_blank" rel="noopener">'
-    + '<div class="btn-left"><span class="btn-icon">' + icon + '</span>'
-    + '<div class="btn-text"><span class="btn-title">' + title + '</span>'
-    + '<span class="btn-sub">' + sub + '</span></div></div>'
-    + '<span class="btn-arrow">›</span></a>';
+  return '<a class="btn '+cls+'" href="'+href+'" target="_blank" rel="noopener">'
+    +'<div class="btn-left"><span class="btn-icon">'+icon+'</span>'
+    +'<div class="btn-text"><span class="btn-title">'+title+'</span>'
+    +'<span class="btn-sub">'+sub+'</span></div></div>'
+    +'<span class="btn-arrow">></span></a>';
 }
 
 function pixBtn() {
   return '<button class="btn btn-pix" onclick="copyPix()">'
-    + '<div class="btn-left"><span class="btn-icon">📱</span>'
-    + '<div class="btn-text"><span class="btn-title">PIX</span>'
-    + '<span class="btn-sub">juntospelagiulia@gmail.com</span></div></div>'
-    + '<span class="btn-arrow">📋</span></button>';
+    +'<div class="btn-left"><span class="btn-icon">📱</span>'
+    +'<div class="btn-text"><span class="btn-title">PIX</span>'
+    +'<span class="btn-sub">juntospelagiulia@gmail.com</span></div></div>'
+    +'<span class="btn-arrow">📋</span></button>';
 }
 
 var C = {
   br: {
-    region: '🇧🇷 BRASIL',
-    tag:    '23 meses · Síndrome de Pallister-Killian · Project PKS',
-    intro:  'Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — uma pesquisa científica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da Califórnia em San Diego. O que falta é financiamento.',
-    ld: 'Doe agora', lr: 'Concorra e ajude',
-    footer: 'Project PKS · Associação sem fins lucrativos · França',
-    donate: [
-      lnk('btn-vakinha',  'https://www.vakinha.com.br/6050754',   '💙', 'Vakinha',   'Doação direta em reais'),
+    region:'🇧🇷 BRASIL', tag:'23 meses · Sindrome de Pallister-Killian · Project PKS',
+    intro:'Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — pesquisa com o <strong>Dr. Alysson Muotri</strong> (UCSD). O que falta é financiamento.',
+    ld:'Doe agora', lr:'Concorra e ajude',
+    footer:'Project PKS · Associação sem fins lucrativos · França',
+    donate:[
+      lnk('btn-vakinha','https://www.vakinha.com.br/6050754','💙','Vakinha','Doação direta em reais'),
       pixBtn(),
-      lnk('btn-gofundme', 'https://gofund.me/9a7b3dc14',          '💚', 'GoFundMe',  'Campanha internacional'),
+      lnk('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campanha internacional')
     ],
-    rifa: [ lnk('btn-rifa', 'https://vakinhadasorte.com.br/uma-chance-de-tratamento-para-a-giulia', '🎁', 'Rifa Solidária', 'Concorra a prêmios e ajude a pesquisa') ]
+    rifa:[lnk('btn-rifa','https://vakinhadasorte.com.br/uma-chance-de-tratamento-para-a-giulia','🎁','Rifa Solidária','Concorra a prêmios e ajude a pesquisa')]
   },
   fr: {
-    region: '🇫🇷 FRANCE',
-    tag:    '23 mois · Syndrome de Pallister-Killian · Project PKS',
-    intro:  "Une maladie génétique extrêmement rare. <strong>Sans traitement.</strong> Mais avec une chance réelle — une recherche scientifique avec le <strong>Dr. Alysson Muotri</strong>, à l'Université de Californie San Diego. Il manque le financement.",
-    ld: 'Faire un don', lr: '',
-    footer: 'Project PKS · Association à but non lucratif · France',
-    donate: [
-      lnk('btn-gofundme', 'https://gofund.me/9a7b3dc14',                                    '💚', 'GoFundMe', 'Campagne internationale'),
-      lnk('btn-paypal',   'https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC',  '💳', 'PayPal',   'Don sécurisé'),
+    region:'🇫🇷 FRANCE', tag:'23 mois · Syndrome de Pallister-Killian · Project PKS',
+    intro:"Une maladie génétique extrêmement rare. <strong>Sans traitement.</strong> Mais avec une chance réelle — recherche avec le <strong>Dr. Alysson Muotri</strong> (UCSD). Il manque le financement.",
+    ld:'Faire un don', lr:'',
+    footer:'Project PKS · Association à but non lucratif · France',
+    donate:[
+      lnk('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campagne internationale'),
+      lnk('btn-paypal','https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC','💳','PayPal','Don sécurisé')
     ],
-    rifa: []
+    rifa:[]
   },
   en: {
-    region: '🌍 INTERNATIONAL',
-    tag:    '23 months · Pallister-Killian Syndrome · Project PKS',
-    intro:  "An extremely rare genetic disease. <strong>No treatment exists.</strong> But there is a real chance — scientific research with <strong>Dr. Alysson Muotri</strong> at UC San Diego. Funding is what's missing.",
-    ld: 'Donate now', lr: '',
-    footer: 'Project PKS · Nonprofit association · France',
-    donate: [
-      lnk('btn-gofundme', 'https://gofund.me/9a7b3dc14',                                    '💚', 'GoFundMe', 'International campaign'),
-      lnk('btn-paypal',   'https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC',  '💳', 'PayPal',   'Secure donation'),
+    region:'🌍 INTERNATIONAL', tag:'23 months · Pallister-Killian Syndrome · Project PKS',
+    intro:"An extremely rare genetic disease. <strong>No treatment exists.</strong> But there is a real chance — research with <strong>Dr. Alysson Muotri</strong> at UC San Diego. Funding is what's missing.",
+    ld:'Donate now', lr:'',
+    footer:'Project PKS · Nonprofit association · France',
+    donate:[
+      lnk('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','International campaign'),
+      lnk('btn-paypal','https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC','💳','PayPal','Secure donation')
     ],
-    rifa: []
+    rifa:[]
   }
 };
 
 function setRegion(r) {
-  var c = content = C[r];
+  var c = C[r];
   document.getElementById('currentRegion').textContent = c.region;
-  document.getElementById('heroTag').textContent       = c.tag;
-  document.getElementById('introText').innerHTML       = c.intro;
-  document.getElementById('labelDonate').textContent   = c.ld;
-  document.getElementById('footerNote').textContent    = c.footer;
-  document.getElementById('btnsDonate').innerHTML      = c.donate.join('');
-  document.getElementById('pixFeedback').className     = 'pix-feedback';
-
+  document.getElementById('heroTag').textContent = c.tag;
+  document.getElementById('introText').innerHTML = c.intro;
+  document.getElementById('labelDonate').textContent = c.ld;
+  document.getElementById('footerNote').textContent = c.footer;
+  document.getElementById('btnsDonate').innerHTML = c.donate.join('');
+  document.getElementById('pixFeedback').className = 'pix-feedback';
   var hasRifa = c.rifa && c.rifa.length > 0;
   document.getElementById('dividerRifa').style.display = hasRifa ? 'block' : 'none';
-  document.getElementById('labelRifa').style.display   = hasRifa ? 'block' : 'none';
-  document.getElementById('labelRifa').textContent     = c.lr;
-  document.getElementById('btnsRifa').innerHTML        = hasRifa ? c.rifa.join('') : '';
-
+  document.getElementById('labelRifa').style.display = hasRifa ? 'block' : 'none';
+  document.getElementById('labelRifa').textContent = c.lr;
+  document.getElementById('btnsRifa').innerHTML = hasRifa ? c.rifa.join('') : '';
   document.querySelectorAll('.debug-switch button').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('btn-' + r).classList.add('active');
-  document.documentElement.lang = r === 'fr' ? 'fr' : r === 'en' ? 'en' : 'pt-BR';
+  document.getElementById('btn-'+r).classList.add('active');
 }
 
 setRegion('br');
