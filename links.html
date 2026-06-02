@@ -176,9 +176,9 @@
   <span>Preview região:</span>
   <span class="region-badge" id="currentRegion">🇧🇷 BRASIL</span>
   <div class="debug-switch">
-    <button onclick="setRegion('br')" class="active" id="btn-br">🇧🇷 BR</button>
-    <button onclick="setRegion('fr')" id="btn-fr">🇫🇷 FR</button>
-    <button onclick="setRegion('en')" id="btn-en">🌍 EN</button>
+    <button onclick="setRegion('br')" id="btn-br">🇧🇷 BR</button>
+<button onclick="setRegion('fr')" id="btn-fr">🇫🇷 FR</button>
+<button onclick="setRegion('en')" class="active" id="btn-en">🌍 EN</button>
   </div>
 </div>
 
@@ -187,7 +187,7 @@
 <img id="heroImg" src="img/fotocarol_giu.jpg" alt="Giulia">
     <div class="hero-overlay">
       <div class="hero-name" id="heroName">Giulia</div>
-      <div class="hero-tag" id="heroTag">23 meses · Síndrome de Pallister-Killian · Project PKS</div>
+      <div class="hero-tag" id="heroTag">2 anos · Síndrome de Pallister-Killian · Project PKS</div>
     </div>
   </div>
 
@@ -270,7 +270,7 @@ function makeBtn(cls, href, icon, title, sub, onclick) {
 const content = {
   br: {
     region: '🇧🇷 BRASIL',
-    tag: '23 meses · Síndrome de Pallister-Killian · Project PKS',
+    tag: '2 anos · Síndrome de Pallister-Killian · Project PKS',
     intro: 'Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — uma pesquisa científica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da Califórnia em San Diego. O que falta é financiamento.',
     labelDonate: 'Doe agora',
     labelRifa: 'Concorra e ajude',
@@ -284,7 +284,7 @@ const content = {
   },
   fr: {
     region: '🇫🇷 FRANCE',
-    tag: '23 mois · Syndrome de Pallister-Killian · Project PKS',
+    tag: '2 ans · Syndrome de Pallister-Killian · Project PKS',
     intro: 'Une maladie génétique extrêmement rare. <strong>Sans traitement.</strong> Mais avec une chance réelle — une recherche scientifique avec le <strong>Dr. Alysson Muotri</strong>, à l\'Université de Californie San Diego. Il manque le financement.',
     labelDonate: 'Faire un don',
     labelRifa: '',
@@ -297,7 +297,7 @@ const content = {
   },
   en: {
     region: '🌍 INTERNATIONAL',
-    tag: '23 months · Pallister-Killian Syndrome · Project PKS',
+    tag: '2 years old · Pallister-Killian Syndrome · Project PKS',
     intro: 'An extremely rare genetic disease. <strong>No treatment exists.</strong> But there is a real chance — scientific research with <strong>Dr. Alysson Muotri</strong> at UC San Diego. Funding is what\'s missing.',
     labelDonate: 'Donate now',
     labelRifa: '',
@@ -338,7 +338,7 @@ function setRegion(r) {
   document.getElementById('pixCopied').classList.remove('show');
 }
 
-setRegion('br');
+setRegion('en');
 </script>
 </body>
 </html>
