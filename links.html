@@ -337,7 +337,10 @@ function setRegion(r) {
   document.getElementById('pixCopied').classList.remove('show');
 }
 
-setRegion('en');
+const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+if (lang.startsWith('pt')) setRegion('br');
+else if (lang.startsWith('fr')) setRegion('fr');
+else setRegion('en');
 </script>
 </body>
 </html>
