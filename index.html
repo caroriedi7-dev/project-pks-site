@@ -89,10 +89,6 @@
     .wrap{max-width:1120px;margin:0 auto;padding:18px}
     .muted{color:var(--muted)}
 
-    /* =========================
-       Header Premium (PC) + Hamburger (Mobile) + Dropdown Lang
-       ========================= */
-
     header{
       position:sticky; top:0; z-index:50;
       background:rgba(242,251,247,.82);
@@ -107,12 +103,10 @@
       gap:14px;
     }
 
-    /* Brand */
     .brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
     .brand b{color:var(--blue);font-size:15px;letter-spacing:.25px}
     .brand small{color:var(--muted);font-weight:900;opacity:.95}
 
-    /* Nav */
     nav{
       justify-self:center;
       display:flex;
@@ -139,7 +133,6 @@
       color:var(--blue);
     }
 
-    /* Right block */
     .headerRight{
       justify-self:end;
       display:flex;
@@ -147,7 +140,6 @@
       gap:10px;
     }
 
-    /* ===== Lang dropdown ===== */
     .langDrop{position:relative}
 
     .langBtn{
@@ -205,7 +197,6 @@
     }
     .langDrop[data-open="true"] .langMenu{display:block}
 
-    /* Hamburger button */
     .navToggle{
       display:none;
       border:1px solid rgba(210,230,223,.95);
@@ -219,7 +210,6 @@
     }
     .navToggle:hover{opacity:.95}
 
-    /* Mobile behavior */
     @media (max-width:900px){
       .topbar{
         display:flex;
@@ -243,9 +233,6 @@
       nav[data-open="true"]{display:flex}
     }
 
-    /* =========================
-       Buttons
-       ========================= */
     .btn, a.btn{
       display:inline-flex;
       align-items:center;
@@ -287,9 +274,6 @@
       .row{gap:10px}
     }
 
-    /* =========================
-       HERO
-       ========================= */
     .heroTop{
       margin-top:16px;
       border-radius:30px;
@@ -358,9 +342,6 @@
       display:block;
     }
 
-    /* =========================
-       Photos mosaic
-       ========================= */
     .photos{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
@@ -394,9 +375,6 @@
     }
     .photoSmall img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* =========================
-       Sections + Cards
-       ========================= */
     section{scroll-margin-top:92px}
 
     .sectionTitle{
@@ -452,7 +430,6 @@
     .list{margin:12px 0 0;padding-left:18px;color:var(--muted)}
     .list li{margin:8px 0}
 
-    /* video */
     .videoWrap{
       position:relative;
       width:100%;
@@ -470,7 +447,31 @@
       border:0;
     }
 
-    /* campaigns / blocks */
+    .videoWrapSmall{
+      position:relative;
+      width:65%;
+      margin:0 auto;
+      aspect-ratio: 16 / 9;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      background:#000;
+    }
+    @media (max-width:700px){ .videoWrapSmall{ width:100%; } }
+    .videoWrapSmall iframe{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      border:0;
+    }
+    .videoCaption{
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+      margin-top:8px;
+    }
+
     .campaigns{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -497,7 +498,6 @@
 
     .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
-    /* footer */
     footer{
       margin-top:26px;
       border-top:1px solid var(--line);
@@ -515,7 +515,6 @@
     }
     .footerLink:hover{opacity:.85}
 
-    /* bottom bar */
     .donateBar{
       position:fixed;left:0;right:0;bottom:0;z-index:60;
       background:rgba(11,18,32,.94);
@@ -548,7 +547,6 @@
     }
     .btnBar:hover,.btnBarGhost:hover{opacity:.92}
 
-    /* Optional / existing styles kept */
     .metaGrid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -624,7 +622,6 @@
       font-size:13px;
     }
 
-    /* Toast */
     .toast{
       position:fixed;
       left:50%;
@@ -642,11 +639,6 @@
     }
     .toast b{font-weight:900}
 
-    /* ═══════════════════════════════════════════════
-       STYLES SECTION DONS — VERSION FINALE
-              ═══════════════════════════════════════════════ */
-
-    /* Carte principale */
     .donCard{
       background:#fff;
       border:1px solid var(--line);
@@ -655,14 +647,12 @@
       overflow:hidden;
     }
 
-    /* Grille 2 colonnes */
     .donGrid{
       display:grid;
       grid-template-columns:1.5fr 1fr;
     }
     @media(max-width:780px){.donGrid{grid-template-columns:1fr}}
 
-    /* ── GAUCHE ── */
     .donLeft{
       padding:36px 40px 28px;
       display:flex;
@@ -672,7 +662,6 @@
     }
     @media(max-width:780px){.donLeft{border-right:none;border-bottom:1px solid var(--line);}}
 
-    /* Bloc photo + jauge */
     .donHeroTop{
       width:100%;
       background:linear-gradient(160deg,rgba(11,46,107,.92),rgba(11,46,107,.75));
@@ -719,7 +708,6 @@
     }
     .donProgNums b{color:#fff;}
 
-    /* Tabs */
     .donTabRow{
       display:flex;background:rgba(11,46,107,.06);
       border-radius:999px;padding:3px;
@@ -735,7 +723,6 @@
       box-shadow:0 3px 10px rgba(11,46,107,.12);
     }
 
-    /* Montants */
     .donAmtsRow{display:flex;gap:8px;margin-bottom:12px;width:100%;}
     .donAmt{
       flex:1;padding:11px 6px;border-radius:999px;
@@ -749,9 +736,6 @@
       color:var(--blue);font-weight:900;
     }
 
-
-   
-    /* CTA */
     .donCtaWrap{width:85%;margin-bottom:12px;}
     .donCtaBtn{
       width:100%;padding:16px 32px;border:none;border-radius:999px;
@@ -775,7 +759,6 @@
 
     .donLock{font-size:12px;color:var(--muted);text-align:center;margin:0;}
 
-    /* ── DROITE ── */
     .donRight{padding:36px 28px 28px;display:flex;flex-direction:column;}
     .donRightTitle{
       font-size:19px;font-weight:900;color:var(--blue);
@@ -799,7 +782,6 @@
     .donAltLeft{display:flex;align-items:center;gap:10px;}
     .donAltArrow{color:#ccc;font-size:15px;transition:transform .2s;}
 
-    /* Accordéon virement */
     .donVirBox{
       display:none;margin-top:-4px;margin-bottom:10px;
       background:rgba(11,46,107,.04);
@@ -817,13 +799,11 @@
       margin-top:auto;padding-top:10px;
     }
 
-    /* Footer carte */
     .donFooter{
       padding:13px 40px;border-top:1px solid var(--line);
       text-align:center;font-size:12px;color:#9ca3af;
       background:rgba(242,251,247,.5);
     }
-    /* Light image protection */
     img{
       -webkit-user-drag: none;
       user-drag: none;
@@ -985,7 +965,7 @@
             ➡️ Funding for the <b>initial phase</b> of the research program (three children included in this first stage)
           </p>
 
-          <p class="heroSub" style="margin:0;">
+          <p class="heroSub" style="marg:0;">
             The scientific protocol is defined.<br>
             The partner laboratory is ready.<br>
             The research can begin.
@@ -1006,17 +986,17 @@
   </section>
 
   <section id="video">
-    <h2 class="sectionTitle">Giulia’s fight against PKS</h2>
+    <h2 class="sectionTitle">Giulia's fight against PKS</h2>
     <p class="sectionSub" style="margin-top:18px; max-width:100%;">
-      This video explains our fight and the urgency of launching scientific research dedicated to PKS.
+      These videos explain our fight and present the scientific research program dedicated to PKS.
     </p>
 
     <div class="grid2">
       <div class="card">
         <div class="cardInner">
-          <h3>Watch the video</h3>
+          <h3>Watch the videos</h3>
 
-          <div class="videoWrap">
+          <div class="videoWrapSmall">
             <iframe
               src="https://www.youtube.com/embed/6I8RimwjgRw?rel=0"
               title="Giulia campaign video"
@@ -1025,8 +1005,20 @@
               allowfullscreen>
             </iframe>
           </div>
+          <p class="videoCaption">Giulia's fight</p>
 
-          <div class="row">
+          <div class="videoWrapSmall" style="margin-top:18px;">
+            <iframe
+              src="https://www.youtube.com/embed/RnBPTD9_1SA?si=3aWn4XJ_zSZzmAsr"
+              title="Dr. Alysson Muotri — PKS Research Program"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="videoCaption">Dr. Alysson Muotri — PKS Research Program</p>
+
+          <div class="row" style="justify-content:center;">
             <a href="#donations" class="btn btnPrimary">Donate</a>
             <button class="btn" onclick="shareWhatsApp()">Share</button>
           </div>
@@ -1455,7 +1447,7 @@
     <p class="sectionSub" style="margin:18px 0 24px; max-width:100%;">
       This project aims to advance research on Pallister-Killian syndrome
       and open new perspectives for all affected children.
-      It was born from a personal story — Giulia’s story —
+      It was born from a personal story — Giulia's story —
       but is part of a collective and scientific effort.
       If you are a family affected by PKS and would like to participate or contribute,
       we would be happy to get in touch with you.
@@ -1520,10 +1512,6 @@
 
 <script>
   const SHARE_TEXT = "For Giulia — and for all children affected by PKS — support the research. Link:";
-
-  /* ═══════════════════════════════════════════════
-     JS SECTION DONS — VERSION FINALE
-         ═══════════════════════════════════════════════ */
 
 const DON_CONFIG = {
   collected: DON_SHARED.collected,
@@ -1704,8 +1692,6 @@ function donSwitchTab(t) {
     const text = SHARE_TEXT + " " + location.href;
     window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
   }
-
- 
 
   const EMAIL_CONTACT_USER = "contact";
   const EMAIL_FAMILIES_USER = "families";
