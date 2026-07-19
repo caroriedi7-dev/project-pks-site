@@ -72,10 +72,6 @@ a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:18px}
 .muted{color:var(--muted)}
 
-/* =========================
-   Header Premium (PC) + Hamburger (Mobile) + Dropdown Lang
-   ========================= */
-
 header{
   position:sticky; top:0; z-index:50;
   background:rgba(242,251,247,.82);
@@ -90,12 +86,10 @@ header{
   gap:14px;
 }
 
-/* Brand */
 .brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
 .brand b{color:var(--blue);font-size:15px;letter-spacing:.25px}
 .brand small{color:var(--muted);font-weight:900;opacity:.95}
 
-/* Nav (PC) */
 nav{
   justify-self:center;
   display:flex;
@@ -122,7 +116,6 @@ nav a:hover{
   color:var(--blue);
 }
 
-/* Right block */
 .headerRight{
   justify-self:end;
   display:flex;
@@ -130,7 +123,6 @@ nav a:hover{
   gap:10px;
 }
 
-/* Lang dropdown */
 .langDrop{position:relative}
 
 .langBtn{
@@ -188,7 +180,6 @@ nav a:hover{
 }
 .langDrop[data-open="true"] .langMenu{display:block}
 
-/* Hamburger button */
 .navToggle{
   display:none;
   border:1px solid rgba(210,230,223,.95);
@@ -202,7 +193,6 @@ nav a:hover{
 }
 .navToggle:hover{opacity:.95}
 
-/* Mobile */
 @media (max-width:900px){
   .topbar{
     display:flex;
@@ -226,9 +216,6 @@ nav a:hover{
   nav[data-open="true"]{display:flex}
 }
 
-/* =========================
-   Buttons
-   ========================= */
 .btn, a.btn{
   display:inline-flex;
   align-items:center;
@@ -270,9 +257,6 @@ nav a:hover{
   .row{gap:10px}
 }
 
-/* =========================
-   HERO
-   ========================= */
 .heroTop{
   margin-top:16px;
   border-radius:30px;
@@ -341,9 +325,6 @@ nav a:hover{
   display:block;
 }
 
-/* =========================
-   Photos mosaic
-   ========================= */
 .photos{
   display:grid;
   grid-template-columns: 1.1fr .9fr;
@@ -377,9 +358,6 @@ nav a:hover{
 }
 .photoSmall img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* =========================
-   Sections + Cards
-   ========================= */
 section{scroll-margin-top:92px}
 
 .sectionTitle{
@@ -435,7 +413,6 @@ section{scroll-margin-top:92px}
 .list{margin:12px 0 0;padding-left:18px;color:var(--muted)}
 .list li{margin:8px 0}
 
-/* video */
 .videoWrap{
   position:relative;
   width:100%;
@@ -453,7 +430,31 @@ section{scroll-margin-top:92px}
   border:0;
 }
 
-/* campaigns / blocks */
+.videoWrapSmall{
+  position:relative;
+  width:65%;
+  margin:0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow2);
+  background:#000;
+}
+@media (max-width:700px){ .videoWrapSmall{ width:100%; } }
+.videoWrapSmall iframe{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  border:0;
+}
+.videoCaption{
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+  margin-top:8px;
+}
+
 .campaigns{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -480,7 +481,6 @@ section{scroll-margin-top:92px}
 
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
-/* footer */
 footer{
   margin-top:26px;
   border-top:1px solid var(--line);
@@ -498,7 +498,6 @@ footer{
 }
 .footerLink:hover{opacity:.85}
 
-/* bottom bar */
 .donateBar{
   position:fixed;left:0;right:0;bottom:0;z-index:60;
   background:rgba(11,18,32,.94);
@@ -531,7 +530,6 @@ footer{
 }
 .btnBar:hover,.btnBarGhost:hover{opacity:.92}
 
-/* --- About / Association --- */
 .metaGrid{
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -607,7 +605,6 @@ footer{
   font-size:13px;
 }
 
-/* Toast */
 .toast{
   position:fixed;
   left:50%;
@@ -624,12 +621,7 @@ footer{
   font-size:13px;
 }
 .toast b{font-weight:900}
-/* ═══════════════════════════════════════════════
-       STYLES SECTION DONS — VERSION FINALE
-             ═══════════════════════════════════════════════ */
-
-    /* Carte principale */
-    .donCard{
+.donCard{
       background:#fff;
       border:1px solid var(--line);
       border-radius:26px;
@@ -637,14 +629,12 @@ footer{
       overflow:hidden;
     }
 
-    /* Grille 2 colonnes */
     .donGrid{
       display:grid;
       grid-template-columns:1.5fr 1fr;
     }
     @media(max-width:780px){.donGrid{grid-template-columns:1fr}}
 
-    /* ── GAUCHE ── */
     .donLeft{
       padding:36px 40px 28px;
       display:flex;
@@ -654,7 +644,6 @@ footer{
     }
     @media(max-width:780px){.donLeft{border-right:none;border-bottom:1px solid var(--line);}}
 
-    /* Bloc photo + jauge */
     .donHeroTop{
       width:100%;
       background:linear-gradient(160deg,rgba(11,46,107,.92),rgba(11,46,107,.75));
@@ -701,7 +690,6 @@ footer{
     }
     .donProgNums b{color:#fff;}
 
-    /* Tabs */
     .donTabRow{
       display:flex;background:rgba(11,46,107,.06);
       border-radius:999px;padding:3px;
@@ -717,7 +705,6 @@ footer{
       box-shadow:0 3px 10px rgba(11,46,107,.12);
     }
 
-    /* Montants */
     .donAmtsRow{display:flex;gap:8px;margin-bottom:12px;width:100%;}
     .donAmt{
       flex:1;padding:11px 6px;border-radius:999px;
@@ -731,9 +718,6 @@ footer{
       color:var(--blue);font-weight:900;
     }
 
-   
-
-    /* CTA */
     .donCtaWrap{width:85%;margin-bottom:12px;}
     .donCtaBtn{
       width:100%;padding:16px 32px;border:none;border-radius:999px;
@@ -757,7 +741,6 @@ footer{
 
     .donLock{font-size:12px;color:var(--muted);text-align:center;margin:0;}
 
-    /* ── DROITE ── */
     .donRight{padding:36px 28px 28px;display:flex;flex-direction:column;}
     .donRightTitle{
       font-size:19px;font-weight:900;color:var(--blue);
@@ -781,7 +764,6 @@ footer{
     .donAltLeft{display:flex;align-items:center;gap:10px;}
     .donAltArrow{color:#ccc;font-size:15px;transition:transform .2s;}
 
-    /* Accordéon virement */
     .donVirBox{
       display:none;margin-top:-4px;margin-bottom:10px;
       background:rgba(11,46,107,.04);
@@ -799,13 +781,11 @@ footer{
       margin-top:auto;padding-top:10px;
     }
 
-    /* Footer carte */
     .donFooter{
       padding:13px 40px;border-top:1px solid var(--line);
       text-align:center;font-size:12px;color:#9ca3af;
       background:rgba(242,251,247,.5);
     }
-/* Protection légère des images */
 img{
   -webkit-user-drag: none;
   user-drag: none;
@@ -960,15 +940,15 @@ img{
   <section id="video">
     <h2 class="sectionTitle">A luta da Giulia contra a PKS</h2>
     <p class="sectionSub" style="margin-top:18px; max-width:100%;">
-      Este vídeo explica a nossa luta e a urgência de iniciar uma pesquisa científica dedicada à PKS.
+      Estes vídeos explicam a nossa luta e apresentam o programa de pesquisa científica dedicado à PKS.
     </p>
 
     <div class="grid2">
       <div class="card">
         <div class="cardInner">
-          <h3>Assista ao vídeo</h3>
+          <h3>Assista aos vídeos</h3>
 
-          <div class="videoWrap">
+          <div class="videoWrapSmall">
             <iframe
               src="https://www.youtube.com/embed/JTQSU-kNcCI?si=_hdu_iTCHkz0Ilm7"
               title="Vídeo da campanha Giulia"
@@ -977,8 +957,20 @@ img{
               allowfullscreen>
             </iframe>
           </div>
+          <p class="videoCaption">A luta da Giulia</p>
 
-          <div class="row">
+          <div class="videoWrapSmall" style="margin-top:18px;">
+            <iframe
+              src="https://www.youtube.com/embed/RnBPTD9_1SA?si=3aWn4XJ_zSZzmAsr"
+              title="Dr. Alysson Muotri — Programa de pesquisa PKS"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="videoCaption">Dr. Alysson Muotri — Programa de pesquisa PKS</p>
+
+          <div class="row" style="justify-content:center;">
             <a href="#doacoes" class="btn btnPrimary">Fazer uma doação</a>
             <button class="btn" onclick="shareWhatsApp()">Compartilhar</button>
           </div>
