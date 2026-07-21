@@ -131,6 +131,7 @@
   .btn-rifa     { background: #f5a623; color: #1a1410; }
   .btn-paypal   { background: #003087; color: #fff; }
   .btn-pix      { background: #32bcad; color: #fff; }
+  .btn-donate   { background: #0B2E6B; color: #fff; }
 
   .pix-copied {
     display: none; font-size: 12px; color: #32bcad;
@@ -273,12 +274,12 @@ const content = {
     tag: '2 anos · Síndrome de Pallister-Killian · Project PKS',
     intro: 'Uma doença genética extremamente rara. <strong>Sem tratamento.</strong> Mas com uma chance real — uma pesquisa científica em parceria com o <strong>Dr. Alysson Muotri</strong>, na Universidade da Califórnia em San Diego. O que falta é financiamento.',
     labelDonate: 'Doe agora',
-    labelRifa: 'Concorra e ajude',
+    labelRifa: '',
     footer: 'Project PKS · Associação sem fins lucrativos · França',
     donate: [
       makeBtn('btn-pix','','📱','PIX','juntospelagiulia@gmail.com','copyPix()'),
           ],
-    rifa: [makeBtn('btn-rifa','https://vakinhadasorte.com.br/uma-chance-de-tratamento-para-a-giulia','🎁','Rifa Solidária','Concorra a prêmios e ajude a pesquisa','')]
+    rifa: []
   },
   fr: {
     region: '🇫🇷 FRANCE',
@@ -288,8 +289,7 @@ const content = {
     labelRifa: '',
     footer: 'Project PKS · Association à but non lucratif · France',
     donate: [
-      makeBtn('btn-gofundme','https://gofund.me/9a7b3dc14','💚','GoFundMe','Campagne internationale',''),
-      makeBtn('btn-paypal','https://www.paypal.com/donate/?hosted_button_id=4CVZ5F3EBZ4ZC','💳','PayPal','Don sécurisé',''),
+      makeBtn('btn-donate','https://www.project-pks.org/fr.html#donations','💙','Faire un don','Don sécurisé',''),
     ],
     rifa: []
   },
