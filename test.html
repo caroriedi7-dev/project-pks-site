@@ -928,33 +928,32 @@ footer{
   padding:0 20px;
 }
 
-.carousel{
-  position:relative;
-  max-width:420px;
-  margin:0 auto;
-  border-radius:22px;
+.photoRibbon{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+}
+.photoRibbonTrack{
+  display:inline-flex;
+  white-space:nowrap;
+  will-change:transform;
+  animation:photoScroll 45s linear infinite;
+}
+.photoRibbon:hover .photoRibbonTrack{animation-play-state:paused;}
+.photoRibbonItem{
+  width:220px;
+  height:150px;
+  margin-right:14px;
+  border-radius:18px;
   overflow:hidden;
   border:1px solid var(--line);
   box-shadow:var(--shadow2);
+  flex-shrink:0;
   background:#fff;
 }
-.carouselTrack{display:flex;transition:transform .5s ease;}
-.carouselSlide{min-width:100%;height:280px;}
-.carouselSlide img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
-.carBtn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:38px;height:38px;border-radius:50%;border:none;
-  background:rgba(11,46,107,.55);color:#fff;font-size:20px;font-weight:900;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  z-index:3;transition:background .15s;line-height:1;
-}
-.carBtn:hover{background:rgba(11,46,107,.82);}
-.carPrev{left:10px;}
-.carNext{right:10px;}
-.carDots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:3;}
-.carDot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);border:none;cursor:pointer;padding:0;transition:all .2s;}
-.carDot.active{background:#fff;width:22px;border-radius:999px;}
-@media(max-width:600px){ .carouselSlide{height:220px;} .carousel{max-width:100%;} }
+.photoRibbonItem img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+@keyframes photoScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+@media(max-width:600px){ .photoRibbonItem{width:170px;height:118px;} }
 @keyframes thanksScroll{
   from{transform:translateX(0);}
   to{transform:translateX(-50%);}
@@ -1163,7 +1162,7 @@ img{
 
             <div class="videoWrapSmall">
               <iframe
-                src="https://www.youtube.com/embed/6I8RimwjgRw?rel=0"
+                src="https://www.youtube.com/embed/L3sW-uTJ4OE?rel=0"
                 title="Vidéo de la campagne Giulia"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -1227,17 +1226,19 @@ img{
         Quelques images pour faire connaissance avec Giulia.
       </p>
 
-      <div class="carousel photoProtected" id="giuliaCarousel" aria-label="Photos de Giulia">
-        <div class="carouselTrack" id="carTrack">
-          <div class="carouselSlide"><img src="img/pic0.jpg" alt="Giulia"></div>
-          <div class="carouselSlide"><img src="img/photo2.jpg" alt="Giulia et son papa"></div>
-          <div class="carouselSlide"><img src="img/pic3.jpg" alt="Giulia et sa maman"></div>
-          <div class="carouselSlide"><img src="img/pic1.png" alt="Giulia"></div>
-          <div class="carouselSlide"><img src="img/pic5.jpg" alt="Giulia"></div>
+      <div class="photoRibbon photoProtected" aria-label="Photos de Giulia">
+        <div class="photoRibbonTrack">
+          <div class="photoRibbonItem"><img src="img/pic0.jpg" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/photo2.jpg" alt="Giulia et son papa"></div>
+          <div class="photoRibbonItem"><img src="img/pic3.jpg" alt="Giulia et sa maman"></div>
+          <div class="photoRibbonItem"><img src="img/pic1.png" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/pic5.jpg" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/pic0.jpg" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/photo2.jpg" alt="Giulia et son papa"></div>
+          <div class="photoRibbonItem"><img src="img/pic3.jpg" alt="Giulia et sa maman"></div>
+          <div class="photoRibbonItem"><img src="img/pic1.png" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/pic5.jpg" alt="Giulia"></div>
         </div>
-        <button class="carBtn carPrev" onclick="carMove(-1)" aria-label="Photo précédente">‹</button>
-        <button class="carBtn carNext" onclick="carMove(1)" aria-label="Photo suivante">›</button>
-        <div class="carDots" id="carDots"></div>
       </div>
     </section>
 
@@ -1598,32 +1599,25 @@ ou partager des informations utiles peuvent nous contacter directement.
     </section>
 <footer>
   <div class="footerGrid">
- 
-    <!-- TEXTO DE POSICIONAMENTO -->
-    <div class="muted" style="margin-top:18px; max-width:100%">
-      <p>
-        Project PKS est une association à but non lucratif régie par la loi du 1er juillet 1901.
-      </p>
 
-      
+    <!-- CONTACT (gauche) -->
+    <div class="muted">
+      Contact :
+      <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">Copier l'email de contact</a>
     </div>
 
-    <!-- CONTATO -->
-    <div class="muted" style="margin-top:10px;">
-  Contact :
-  <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">
-    Copier l'email de contact
-  </a>
-
-</div>
-    
-    <!-- COPYRIGHT -->
-    <div>
-    © <span id="year"></span> Fait par une mère et un père, par amour pour Giulia.
-&nbsp;·&nbsp;
-<a href="/legal.html" style="color:var(--muted);text-decoration:underline;">Mentions légales</a>
+    <!-- COPYRIGHT + MENTIONS (droite) -->
+    <div class="muted" style="text-align:right;">
+      © <span id="year"></span> Fait par une mère et un père, par amour pour Giulia.
+      &nbsp;·&nbsp;
+      <a href="/legal.html" style="color:var(--muted);text-decoration:underline;">Mentions légales</a>
     </div>
 
+  </div>
+
+  <!-- POSITIONNEMENT (dessous, pleine largeur) -->
+  <div class="muted" style="margin-top:12px;">
+    <p style="margin:0;">Project PKS est une association à but non lucratif régie par la loi du 1er juillet 1901.</p>
   </div>
 </footer>
 
@@ -1969,39 +1963,6 @@ document.addEventListener("click", (e) => {
   }
 });
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    (function(){
-      var track = document.getElementById('carTrack');
-      var dotsWrap = document.getElementById('carDots');
-      var car = document.getElementById('giuliaCarousel');
-      if(!track || !car || !dotsWrap) return;
-
-      var n = track.children.length;
-      var i = 0, timer = null;
-
-      for(var k=0;k<n;k++){
-        var d = document.createElement('button');
-        d.className = 'carDot' + (k===0 ? ' active' : '');
-        d.setAttribute('aria-label','Photo ' + (k+1));
-        (function(idx){ d.onclick = function(){ go(idx); reset(); }; })(k);
-        dotsWrap.appendChild(d);
-      }
-
-      function render(){
-        track.style.transform = 'translateX(-' + (i*100) + '%)';
-        var dots = dotsWrap.children;
-        for(var k=0;k<dots.length;k++){ dots[k].className = 'carDot' + (k===i ? ' active' : ''); }
-      }
-      function go(idx){ i = (idx + n) % n; render(); }
-      window.carMove = function(dir){ go(i + dir); reset(); };
-      function start(){ timer = setInterval(function(){ go(i+1); }, 4500); }
-      function reset(){ if(timer) clearInterval(timer); start(); }
-
-      car.addEventListener('mouseenter', function(){ if(timer) clearInterval(timer); });
-      car.addEventListener('mouseleave', start);
-
-      render(); start();
-    })();
 
     (function(){
       var track = document.getElementById('thanksTrack');
