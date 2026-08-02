@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
  <link rel="icon" href="/pks_favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/pks_favicon.svg">
-  <title>Ensemble pour Giulia | Project PKS</title>
+  <title>Project PKS — Financer la première recherche sur le syndrome de Pallister-Killian</title>
 
   <meta
     name="description"
-    content="Aidez à financer la première phase d'une recherche scientifique sur le syndrome de Pallister-Killian (PKS), la maladie génétique rare dont est atteinte Giulia. Objectif : 500 000 USD."
+    content="Aidez à financer la première phase d'une recherche scientifique sur le syndrome de Pallister-Killian (PKS), la maladie génétique rare dont est atteinte Giulia."
   />
 
   
- <meta property="og:title" content="Ensemble pour Giulia | Project PKS" />
+ <meta property="og:title" content="Project PKS — Financer la première recherche sur le syndrome de Pallister-Killian" />
 <meta
   property="og:description"
-  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux. Objectif : 500 000 USD."
+  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux."
 />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.project-pks.org/fr.html" />
 <meta property="og:locale" content="fr_FR" />
-<meta property="og:site_name" content="Ensemble pour Giulia | Project PKS" />
+<meta property="og:site_name" content="Project PKS" />
 <meta
   property="og:image"
 content="https://www.project-pks.org/img/pks-og-image.jpg"
@@ -36,10 +36,10 @@ content="https://www.project-pks.org/img/pks-og-image.jpg"
 />
 <meta property="fb:app_id" content="1223204589896031" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Ensemble pour Giulia | Project PKS" />
+<meta name="twitter:title" content="Project PKS — Financer la première recherche sur le syndrome de Pallister-Killian" />
 <meta
   name="twitter:description"
-  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux. Objectif : 500 000 USD."
+  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux."
 />
 <meta
   name="twitter:image"
@@ -94,6 +94,7 @@ html,body{height:100%}
 
 body{
   margin:0;
+  overflow-x:hidden;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color:var(--ink);
   line-height:1.65;
@@ -324,9 +325,9 @@ nav a:hover{
 .heroTitle{
   margin:0 0 10px;
   color:var(--blue);
-  font-size:46px;
-  line-height:1.05;
-  letter-spacing:-.9px;
+  font-size:clamp(26px, 4.2vw, 36px);
+  line-height:1.12;
+  letter-spacing:-.4px;
   font-weight:900;
 }
 
@@ -514,6 +515,79 @@ section{scroll-margin-top:92px}
 }
 .campTop b{color:var(--blue);font-weight:900}
 .campBody{padding:14px;color:var(--muted)}
+
+.stepsGrid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin:18px 0 20px;
+}
+@media (max-width:980px){ .stepsGrid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .stepsGrid{grid-template-columns:1fr;} }
+
+.stepCard{
+  background:rgba(255,255,255,.93);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px 16px;
+  box-shadow:var(--shadow2);
+}
+.stepNum{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--blue2),var(--green));
+  color:#fff;font-weight:900;font-size:15px;
+  margin-bottom:14px;
+}
+.stepTitle{
+  margin:0 0 8px;color:var(--blue);font-weight:900;font-size:16px;line-height:1.25;
+}
+.stepText{
+  margin:0;color:var(--muted);font-size:13.5px;line-height:1.55;
+}
+
+.outcomeGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:16px;
+}
+@media (max-width:980px){ .outcomeGrid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .outcomeGrid{grid-template-columns:1fr;} }
+
+.faqItem{
+  background:rgba(255,255,255,.93);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow2);
+  margin-bottom:14px;
+  overflow:hidden;
+}
+.faqItem summary{
+  list-style:none;
+  cursor:pointer;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--blue);
+  font-weight:900;
+  font-size:16px;
+}
+.faqItem summary::-webkit-details-marker{display:none;}
+.faqCaret{
+  color:var(--blue2);
+  font-size:13px;
+  transition:transform .2s ease;
+  flex-shrink:0;
+}
+.faqItem:not([open]) .faqCaret{transform:rotate(-90deg);}
+.faqBody{
+  padding:0 20px 18px;
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+}
 
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
@@ -830,6 +904,62 @@ footer{
 
 .donLock{font-size:12px;color:var(--muted);text-align:center;margin:0;}
 
+.thanksTicker{
+  margin:16px 0 4px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  box-shadow:var(--shadow2);
+  padding:10px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+}
+.thanksTrack{
+  display:inline-flex;
+  white-space:nowrap;
+  will-change:transform;
+  animation:thanksScroll 34s linear infinite;
+}
+.thanksTicker:hover .thanksTrack{animation-play-state:paused;}
+.thanksItem{
+  color:var(--blue);
+  font-weight:900;
+  font-size:14px;
+  padding:0 20px;
+}
+
+.photoRibbon{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+}
+.photoRibbonTrack{
+  display:inline-flex;
+  white-space:nowrap;
+  will-change:transform;
+  animation:photoScroll 45s linear infinite;
+}
+.photoRibbon:hover .photoRibbonTrack{animation-play-state:paused;}
+.photoRibbonItem{
+  width:220px;
+  height:150px;
+  margin-right:14px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow2);
+  flex-shrink:0;
+  background:#fff;
+}
+.photoRibbonItem img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+@keyframes photoScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+@media(max-width:600px){ .photoRibbonItem{width:170px;height:118px;} }
+@keyframes thanksScroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
 .donRight{padding:36px 28px 28px;display:flex;flex-direction:column;}
 .donRightTitle{
   font-size:19px;font-weight:900;color:var(--blue);
@@ -902,6 +1032,35 @@ img{
   z-index:2;
 }
 
+/* ===== Responsive mobile ===== */
+@media (max-width:768px){
+  .wrap{padding:14px;}
+  .heroTopInner{padding:14px;}
+  .heroText{padding:16px;}
+  .heroPhoto{min-height:260px;}
+  .heroPhoto img{min-height:260px;}
+  .sectionTitle{font-size:23px;}
+  .donLeft{padding:24px 18px 22px;}
+  .donRight{padding:22px 18px 24px;}
+  .donHeroTop{padding:16px 16px;}
+  footer{padding-bottom:160px;}
+}
+@media (max-width:480px){
+  .heroTitle{font-size:24px;}
+  .heroPhoto{min-height:220px;}
+  .heroPhoto img{min-height:220px;}
+  .donLeft{padding:20px 14px 18px;}
+  .donRight{padding:18px 14px 20px;}
+  .donCustomZone,.donTaxBox,.donCtaWrap{width:100%;}
+  .sectionTitle{font-size:21px;}
+  .taxBadge{width:82px !important;height:82px !important;top:-8px !important;right:-6px !important;}
+  .taxBadge div{font-size:11px !important;}
+  .taxBadge div:nth-child(3){font-size:19px !important;}
+  .labBanner{flex-direction:column !important;align-items:flex-start !important;gap:10px !important;padding:16px 18px !important;}
+  .labInner{align-items:flex-start !important;}
+  .labLink{padding-left:56px !important;}
+}
+
  </style>
 </head>
 
@@ -909,7 +1068,7 @@ img{
 <header>
   <div class="wrap topbar">
     <div class="brand" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;">
-  <svg width="160" height="42" viewBox="0 0 140 90" style="display:block;">
+  <svg width="210" height="58" viewBox="0 0 140 90" style="display:block;">
     <rect x="12" y="8" width="10" height="26" rx="5" fill="#0B2E6B"/>
     <rect x="26" y="8" width="10" height="26" rx="5" fill="#0B2E6B" opacity=".3"/>
     <rect x="8" y="33" width="32" height="18" rx="9" fill="none" stroke="#0B2E6B" stroke-width="1.5"/>
@@ -920,18 +1079,16 @@ img{
     <line x1="52" y1="44" x2="132" y2="44" stroke="#0B2E6B" stroke-width="1.5" stroke-linecap="round" opacity=".3"/>
     <text x="52" y="56" font-size="8.5" font-weight="400" fill="#0B2E6B" font-family="ui-sans-serif,sans-serif" letter-spacing="2.5">PROJECT</text>
   </svg>
-  <small style="color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.2px;padding-left:2px;">Ensemble pour Giulia</small>
 </div>
 
     <nav id="mainNav" aria-label="Navigation" data-open="false">
       <a href="#home">Accueil</a>
-      <a href="#video">Vidéo</a>
-      <a href="#photos">Photos</a>
-      <a href="#diagnosis">Diagnostic</a>
-      <a href="#research">Recherche</a>
+      <a href="#video">Le projet</a>
+      <a href="#phase1">La recherche</a>
       <a href="#donations">Dons</a>
       <a href="#association">Association</a>
       <a href="#families">Familles</a>
+      <a href="#faq">FAQ</a>
     </nav>
 
     <div class="headerRight">
@@ -965,9 +1122,9 @@ img{
     <div class="heroTopInner">
 
       <div class="heroText">
-        <p class="heroKicker">Une campagne réelle. Une course contre le temps.</p>
+        <p class="heroKicker">Une recherche prête à commencer. Une course contre le temps.</p>
 
-        <h1 class="heroTitle">Ensemble pour Giulia</h1>
+        <h1 class="heroTitle">Faire avancer la recherche sur le syndrome de Pallister-Killian afin d'identifier des pistes de traitement</h1>
 
         <p class="muted" style="
           margin:10px 0 14px;
@@ -975,46 +1132,31 @@ img{
           text-align:center;
           letter-spacing:.2px;
         ">
-          Et pour tous les enfants atteints du syndrome de Pallister-Killian.
+          Pour Giulia et pour tous les enfants atteints du syndrome de Pallister-Killian.
         </p>
 
-        <p class="muted" style="
-          margin:0 0 16px;
-          font-size:14px;
-          text-align:center;
-        ">
-          Project PKS — Recherche sur le syndrome de Pallister-Killian
+        <p class="heroSub" style="margin-top:8px; color:var(--ink); font-size:18px; line-height:1.55;">
+          Giulia est atteinte du syndrome de Pallister-Killian, une maladie génétique rare pour laquelle il n'existe aujourd'hui aucun traitement ciblé.
         </p>
 
-        <p class="heroSub" style="margin-top:8px;">
-          Notre fille est atteinte du syndrome de Pallister-Killian (PKS), <b>une maladie génétique rare.</b>
-          Aujourd'hui, il n'existe <b>aucun traitement curatif</b> — mais il existe une opportunité concrète :
-          lancer une <b>recherche scientifique</b> basée sur des <b>modèles cellulaires du cerveau humain</b>,
-          développés à partir de cellules de patients, afin de mieux comprendre la maladie et
-          <b>d'explorer des stratégies thérapeutiques</b> de manière rigoureuse et sécurisée.
+        <p class="heroSub" style="margin-top:12px; font-size:14.5px;">
+          Avec une équipe scientifique spécialisée, nous voulons créer des modèles du cerveau à partir de cellules d'enfants atteints du PKS, afin de comprendre la maladie et de rechercher des pistes thérapeutiques.
         </p>
-        <br>
-<p class="heroSub" style="margin-top:10px;">
-  Pour que cette <b>opportunité scientifique</b> puisse devenir une <b>recherche concrète</b>,
-  il est nécessaire de réunir le <b>financement de la phase initiale</b>.
-</p>
 
         <div class="heroMeta" style="margin-top:16px;">
-          <p class="heroSub" style="margin-bottom:8px;">
-            🎯 <b>Objectif de la campagne : 500&nbsp;000 USD</b><br>
-            ➡️ Financement de la <b>phase initiale</b> du programme de recherche (trois enfants inclus dans cette première étape)
-          </p>
-
-          <p class="heroSub" style="margin:0;">
-            Le protocole scientifique est défini.<br>
-            Le laboratoire partenaire est prêt.<br>
-            La recherche peut commencer.
-          </p>
+          <div style="background:linear-gradient(135deg,rgba(30,99,255,.06),rgba(25,182,122,.05));border:1px solid var(--line);border-radius:18px;padding:16px 18px;">
+            <p style="margin:0 0 6px;color:var(--blue);font-weight:900;font-size:16px;line-height:1.4;">
+              Le protocole scientifique est défini. Le laboratoire est prêt.
+            </p>
+            <p style="margin:0;color:var(--muted);font-size:15px;line-height:1.5;">
+              Il manque maintenant le financement nécessaire pour lancer la première phase du programme.
+            </p>
+          </div>
         </div>
 
         <div class="heroCTA" style="margin-top:18px;">
           <button class="btn btnPrimary" onclick="goTo('donations')">Faire un don</button>
-<button class="btn btnBlue" onclick="goTo('video')">Voir la vidéo</button>
+<button class="btn btnBlue" onclick="goTo('phase1')">Découvrir la recherche</button>
         </div>
       </div>
 
@@ -1030,9 +1172,9 @@ img{
         
 
     <section id="video">
-      <h2 class="sectionTitle">Le combat de Giulia contre le PKS</h2>
+      <h2 class="sectionTitle">Pourquoi Project PKS existe</h2>
               <p class="sectionSub" style="margin-top:18px; max-width:100%;">
-        Ces vidéos expliquent notre combat et présentent le programme de recherche scientifique dédié au PKS.
+        Une histoire familiale a déclenché le projet, mais la recherche est conçue pour l'ensemble des enfants concernés par le syndrome.
       </p>
 
       <div class="grid2">
@@ -1042,7 +1184,7 @@ img{
 
             <div class="videoWrapSmall">
               <iframe
-                src="https://www.youtube.com/embed/6I8RimwjgRw?rel=0"
+                src="https://www.youtube.com/embed/L3sW-uTJ4OE?rel=0"
                 title="Vidéo de la campagne Giulia"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -1071,46 +1213,27 @@ img{
 
         <div class="card">
   <div class="cardInner">
-    <h3>Pourquoi ce projet existe</h3>
+    <h3>Nous avons décidé de ne pas attendre</h3>
 
     <p>
-      On pourrait croire que les maladies rares concernent peu de personnes.
-      En réalité, <b>elles touchent des millions de patients dans le monde</b>.
+      Lorsque Giulia a reçu son diagnostic, nous avons découvert qu'il existait très peu de recherches consacrées aux mécanismes du syndrome de Pallister-Killian, et encore moins de programmes cherchant réellement des pistes de traitement.
     </p>
 
     <p style="margin-top:10px;">
-      Plus de <b>6 000 maladies rares</b> existent aujourd'hui, représentant
-      <b>plus de 300 millions de personnes</b> à l'échelle mondiale.
-      Dans de nombreux cas, elles ont un impact majeur sur la qualité de vie,
-      avec des troubles moteurs, sensoriels ou intellectuels.
+      Nous avons alors décidé de ne pas attendre qu'un projet apparaisse un jour.
     </p>
 
     <p style="margin-top:10px;">
-      Ces dernières années, la recherche biomédicale a permis
-      <b>des avancées importantes</b>.
-      Mais pour beaucoup de maladies rares, les connaissances restent limitées
-      et les options thérapeutiques demeurent insuffisantes.
+      Avec des chercheurs spécialisés, nous avons construit un programme scientifique destiné à créer les premiers modèles nécessaires pour comprendre ce qui se passe dans les cellules du cerveau des enfants atteints du PKS et tester des stratégies thérapeutiques.
     </p>
 
     <p style="margin-top:10px;">
-      Faire progresser la recherche demande du temps, de la méthode
-      et des projets ciblés, capables de transformer des situations
-      individuelles en avancées collectives.
-    </p>
-
-    <p style="margin-top:10px;">
-      C'est dans cet esprit que s'inscrit ce projet.
-    </p>
-
-    <p style="margin-top:10px;">
-      Pour Giulia — et pour des millions d'autres enfants —
-      <b>le temps compte</b>.
-      Chaque mois sans recherche est un mois sans réponse.
+      Ce projet est né pour Giulia, mais ses résultats pourraient bénéficier à tous les enfants et à toutes les familles concernés par le syndrome.
     </p>
 
     <div class="row" style="margin-top:14px;">
       <button class="btn btnPrimary" onclick="goTo('donations')">Soutenir la recherche</button>
-      <button class="btn" onclick="goTo('diagnosis')">En savoir plus</button>
+      <button class="btn" onclick="goTo('phase1')">En savoir plus</button>
     </div>
   </div>
 </div>
@@ -1125,241 +1248,115 @@ img{
         Quelques images pour faire connaissance avec Giulia.
       </p>
 
-      <div class="photos" aria-label="Photos">
-      <div class="photoBig photoProtected">
-          <img
-            src="img/pic0.jpg"
-            alt="Giulia sur la photo principale de la galerie"
-          >
+      <div class="photoRibbon photoProtected" aria-label="Photos de Giulia">
+        <div class="photoRibbonTrack">
+          <div class="photoRibbonItem"><img src="img/pic0.jpg" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/photo2.jpg" alt="Giulia et son papa"></div>
+          <div class="photoRibbonItem"><img src="img/pic3.jpg" alt="Giulia et sa maman"></div>
+          <div class="photoRibbonItem"><img src="img/pic1.png" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/pic5.jpg" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/pic0.jpg" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/photo2.jpg" alt="Giulia et son papa"></div>
+          <div class="photoRibbonItem"><img src="img/pic3.jpg" alt="Giulia et sa maman"></div>
+          <div class="photoRibbonItem"><img src="img/pic1.png" alt="Giulia"></div>
+          <div class="photoRibbonItem"><img src="img/pic5.jpg" alt="Giulia"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="phase1">
+      <h2 class="sectionTitle">Une première phase pour comprendre et tester</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        Les organoïdes cérébraux sont de petits modèles cellulaires développés en laboratoire à partir de cellules de patients. Ils permettent d'étudier certaines étapes du développement des cellules nerveuses et les effets biologiques du PKS.
+      </p>
+
+      <div class="stepsGrid">
+        <div class="stepCard">
+          <div class="stepNum">1</div>
+          <h4 class="stepTitle">Créer les modèles</h4>
+          <p class="stepText">Transformer les cellules de trois enfants en cellules souches, puis en organoïdes cérébraux.</p>
         </div>
 
-        <div class="photoGrid">
-          <div class="photoSmall photoProtected">
-            <img
-              src="img/photo2.jpg"
-              alt="Giulia et son papa"
-            >
-          </div>
+        <div class="stepCard">
+          <div class="stepNum">2</div>
+          <h4 class="stepTitle">Observer</h4>
+          <p class="stepText">Étudier le développement, l'organisation et le fonctionnement des cellules nerveuses.</p>
+        </div>
 
-          <div class="photoSmall photoProtected">
-            <img
-              src="img/pic3.jpg"
-              alt="Giulia et sa maman"
-            >
-          </div>
+        <div class="stepCard">
+          <div class="stepNum">3</div>
+          <h4 class="stepTitle">Comparer</h4>
+          <p class="stepText">Comparer les modèles PKS à des modèles témoins pour identifier les altérations liées à la maladie.</p>
+        </div>
 
-         <div class="photoSmall photoProtected">
-            <img
-              src="img/pic1.png"
-              alt="Giulia portrait robe"
-            >
-          </div>
+        <div class="stepCard">
+          <div class="stepNum">4</div>
+          <h4 class="stepTitle">Mesurer</h4>
+          <p class="stepText">Définir des marqueurs biologiques permettant d'évaluer objectivement les effets observés.</p>
+        </div>
 
-         <div class="photoSmall photoProtected">
-            <img
-              src="img/pic5.jpg"
-              alt="Giulia avec lunettes"
-            >
+        <div class="stepCard">
+          <div class="stepNum">5</div>
+          <h4 class="stepTitle">Tester</h4>
+          <p class="stepText">Évaluer des substances et différentes stratégies scientifiques afin de sélectionner les pistes les plus prometteuses.</p>
+        </div>
+      </div>
+
+      <a href="lab_fr.html" style="display:block;text-decoration:none;">
+        <div class="labBanner" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 24px;border-radius:18px;background:linear-gradient(135deg,rgba(11,46,107,.07),rgba(25,182,122,.07));border:1.5px solid rgba(30,99,255,.2);box-shadow:0 4px 16px rgba(11,46,107,.08);"
+        onmouseover="this.style.boxShadow='0 8px 24px rgba(11,46,107,.14)'"
+        onmouseout="this.style.boxShadow='0 4px 16px rgba(11,46,107,.08)'">
+          <div class="labInner" style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
+            <div style="width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#1E63FF,#19B67A);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;">AM</div>
+            <div style="min-width:0;">
+              <div style="font-weight:900;color:var(--blue);font-size:15px;">🔬 Programme développé avec le Dr Alysson R. Muotri et son équipe à UC San Diego</div>
+              <div style="color:var(--muted);font-size:13.5px;margin-top:2px;">Découvrez le laboratoire, son expérience et le cadre scientifique du projet.</div>
+            </div>
+          </div>
+          <div class="labLink" style="color:var(--blue2);font-weight:900;font-size:15px;white-space:nowrap;flex-shrink:0;padding-left:8px;">Voir le laboratoire ›</div>
+        </div>
+      </a>
+    </section>
+
+    <section id="phase-produire">
+      <h2 class="sectionTitle">Les résultats attendus</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        Cette première phase doit permettre de passer d'une connaissance encore limitée du PKS à des résultats directement exploitables pour orienter la recherche thérapeutique.
+      </p>
+
+      <div class="outcomeGrid">
+        <div class="card">
+          <div class="cardInner">
+            <h4>Les mécanismes les plus importants identifiés</h4>
+            <p>Déterminer quelles anomalies biologiques jouent un rôle majeur dans les effets du PKS sur les cellules nerveuses.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <h4>Des cibles et des pistes thérapeutiques repérées</h4>
+            <p>Identifier les gènes, protéines ou mécanismes sur lesquels il pourrait être possible d'agir.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <h4>Les approches les plus prometteuses sélectionnées</h4>
+            <p>Comparer les effets des différentes stratégies testées afin de déterminer lesquelles méritent d'être approfondies.</p>
           </div>
         </div>
       </div>
     </section>
 
-   <section id="diagnosis">
-  <h2 class="sectionTitle">Diagnostic : Pallister-Killian (PKS)</h2>
-  <p class="sectionSub" style="margin-top:18px; max-width:100%;">
-  <b>Mieux comprendre le PKS est une étape essentielle pour faire progresser la recherche</b>,
-  ouvrir de nouvelles perspectives et bénéficier à l'ensemble des enfants concernés par cette maladie.
-</p>
+    <section id="donations">
+      <h2 class="sectionTitle">Votre don aide à déclencher la première phase</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        La collecte auprès du public s'inscrit dans une recherche de financements plus large, menée également auprès des entreprises, des fondations et des grands mécènes. Chaque contribution renforce la capacité du projet à avancer.
+      </p>
 
-
-  <div class="grid2 equal">
-    
-  <!-- COLONNE 1 : DIAGNOSTIC -->
-<div class="card">
-  <div class="cardInner" style="line-height:1.75;">
-    <h3>🧬 Diagnostic — Syndrome de Pallister-Killian (PKS)</h3>
-
-    <p style="margin-top:12px;">
-      Le syndrome de Pallister-Killian (PKS) est une <b>maladie génétique rare</b> causée par une
-      <b>anomalie chromosomique mosaïque (tetrasomie 12p)</b>.
-    </p>
-
-    <p style="margin-top:14px;">
-      Il apparaît sous forme de <b>mosaïque</b>, ce qui signifie que seules certaines cellules présentent l'anomalie.
-      Cela rend le <b>diagnostic plus difficile</b> et explique pourquoi chaque enfant peut être touché différemment.
-    </p>
-
-    <p style="margin-top:14px;">
-      Giulia présente une <b>atteinte globale du développement</b>, incluant des retards moteurs,
-      une <b>hypotonie</b>, une absence de langage et des difficultés d'interaction sociale.
-    </p>
-
-    <p class="muted" style="margin-top:16px;">
-      Chez d'autres enfants, le syndrome peut s'accompagner de <b>manifestations plus complexes</b>,
-      telles que des malformations congénitales, des troubles neurologiques sévères.
-      À l'inverse, certaines formes peuvent être <b>plus modérées</b>, illustrant la
-      <b>grande variabilité</b> du syndrome de Pallister-Killian.
-    </p>
-  </div>
-</div>
-
-
-    <!-- COLONNE 2 : POURQUOI CETTE RECHERCHE -->
-    <div class="card">
-      <div class="cardInner" style="line-height:1.75;">
-        <h3>🧠 Pourquoi cette recherche est nécessaire</h3>
-
-        <p style="margin-top:12px;">
-          Bien que le syndrome de Pallister-Killian ait déjà fait l'objet de recherches scientifiques,
-          celles-ci restent majoritairement descriptives et rarement orientées vers l'évaluation de stratégies thérapeutiques.
-        </p>
-
-        <p style="margin-top:14px;">
-          À ce jour, la prise en charge repose essentiellement sur des soins de soutien,
-          sans action ciblée sur les mécanismes biologiques de la maladie.
-        </p>
-
-        <p style="margin-top:14px;">
-          Cette recherche vise à combler un vide scientifique, en développant un modèle fonctionnel de la maladie
-          permettant d'en étudier les mécanismes et d'explorer, de manière rigoureuse,
-          des <b>pistes thérapeutiques potentielles</b>.
-        </p>
-      </div>
+    <div class="thanksTicker" id="thanksTicker" aria-label="Remerciements aux donateurs">
+      <div class="thanksTrack" id="thanksTrack" data-word="Merci"></div>
     </div>
-
-  </div>
-</section>
-
-
-
-    <section id="research">
-      <h2 class="sectionTitle">Recherche avec des organoïdes cérébraux</h2>
-      <p class="sectionSub" style="margin:18px 0 16px; max-width:100%;">
-  Les organoïdes sont des modèles du cerveau humain développés à partir de cellules de patients,
-  qui reflètent de manière fidèle des caractéristiques cellulaires du cerveau de l'enfant,
-  permettant d'étudier les mécanismes de la maladie et d'évaluer des stratégies scientifiques
-  de façon rigoureuse et sécurisée.
-</p>
-
-    <!-- BANNIÈRE LABORATOIRE PARTENAIRE -->
-<a href="lab_fr.html" style="display:block;text-decoration:none;margin-bottom:20px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-radius:18px;background:linear-gradient(135deg,rgba(11,46,107,.07),rgba(25,182,122,.07));border:1.5px solid rgba(30,99,255,.2);box-shadow:0 4px 16px rgba(11,46,107,.08);"
-      onmouseover="this.style.boxShadow='0 8px 24px rgba(11,46,107,.14)'"
-      onmouseout="this.style.boxShadow='0 4px 16px rgba(11,46,107,.08)'">
-        <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
-          <div style="width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#1E63FF,#19B67A);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;">AM</div>
-          <div style="min-width:0;">
-            <div style="font-weight:900;color:var(--blue);font-size:14px;">🔬 Laboratoire partenaire · Dr. Alysson R. Muotri</div>
-            <div style="color:var(--muted);font-size:13px;">Muotri Lab · UC San Diego — pionnier mondial des organoïdes cérébraux</div>
-          </div>
-        </div>
-        <div style="color:var(--blue2);font-weight:900;font-size:15px;white-space:nowrap;flex-shrink:0;padding-left:8px;">En savoir plus ›</div>
-      </div>
-    </a>
-
-      <div class="grid2 equal">
-
-  <!-- COLONNE 1 : PROGRAMME DE RECHERCHE -->
-<div class="card">
-  <div class="cardInner" style="line-height:1.75;">
-    <h3>🔬 Le programme de recherche</h3>
-
-    <p>
-      Le développement d'une approche scientifique pour une maladie génétique rare est un processus progressif,
-      structuré en étapes successives et orienté par les résultats scientifiques obtenus à chaque phase.
-    </p>
-
-    <p style="margin-top:12px;">
-      Le programme débute par la création d'<b>organoïdes cérébraux</b>, des modèles du cerveau humain 
-      développés à partir de cellules de trois enfants atteints de PKS, <b>dont Giulia</b>. Ces modèles reproduisent 
-      l'anomalie génétique de la maladie et permettent d'étudier, en laboratoire, le fonctionnement 
-      cellulaire du cerveau affecté.
-    </p>
-
-    <p style="margin-top:12px;">
-      À partir de ces organoïdes, les chercheurs analysent les <b>mécanismes biologiques et neurologiques</b> du PKS,
-      afin de comprendre comment les cellules se développent, communiquent et où apparaissent les altérations
-      liées à la maladie.
-    </p>
-
-    <p style="margin-top:12px;">
-      Des <b>marqueurs mesurables</b> sont ensuite identifiés (activité cellulaire, expression de gènes,
-      organisation des neurones), permettant de comparer les effets observés de manière scientifique.
-    </p>
-
-    <p style="margin-top:12px;">
-      Le programme comprend enfin l'<b>évaluation de stratégies scientifiques directement sur ces organoïdes</b>,
-      notamment la modulation de processus biologiques altérés et l'évaluation de substances et d'approches déjà
-      décrites par la science, afin d'en analyser les effets biologiques et fonctionnels.
-    </p>
-    <div class="row" style="margin-top:18px;">
-  <button type="button" class="btn btnBlue" onclick="showInfo('progress')">
-    Suivi scientifique du programme
-  </button>
-</div>
-  </div>
-</div>
-
-
-  <!-- COLONNE 2 : BUDGET ET VISION -->
-  <div class="card">
-    <div class="cardInner" style="line-height:1.75;">
-      <h3>💰 Budget et vision à long terme</h3>
-
-      <p>
-        Le budget de <b>500&nbsp;000 USD</b> correspond à la <b>phase initiale</b> du programme de recherche.
-      </p>
-
-      <p style="margin-top:12px;">
-        Il permet de démarrer les travaux expérimentaux, de produire les premiers résultats scientifiques
-        et de déterminer les suites possibles du programme.
-      </p>
-
-      <p style="margin-top:12px;">
-        À ce jour, le coût global estimé pour mener ce programme jusqu'à une éventuelle application clinique
-        est évalué entre <b>5 et 6 millions de dollars</b>, structurés en étapes successives, en fonction des résultats scientifiques obtenus.
-      </p>
-
-      <p style="margin-top:12px;">
-        La poursuite du programme dépendra exclusivement des
-        <b>résultats scientifiques obtenus lors de la phase initiale</b>.
-      </p>
-   
-<!-- IMAGEM DO CAMINHO CIENTÍFICO -->
-    <div class="roadmapImg" style="margin:12px 0 6px; padding-top:8px; border-top:1px dashed var(--line);">
-
-      <img
-        src="img/roadmap_fr.png"
-        alt="Schéma des étapes successives du programme de recherche"
-        style="
-          width:100%;
-          height:auto;
-          border-radius:16px;
-          border:1px solid var(--line);
-          box-shadow: var(--shadow2);
-          background:#fff;
-        "
-        />
-    </div>
-    </div>
-
-  </div>
-</div>  <!-- FIN .grid2 -->
-</section> <!-- FIN #research -->
-
-
-  
-
-          <!-- ═══════════════════════════════════════════════
-       SECTION DONS — VERSION FINALE
-              ═══════════════════════════════════════════════ -->
-  <section id="donations">
-    <h2 class="sectionTitle">Dons</h2>
-    <p class="sectionSub">
-      Chaque don contribue directement à accélérer la recherche.<br>
-      Si vous ne pouvez pas donner aujourd'hui, partager fait déjà une grande différence.
-    </p>
 
     <div class="donCard">
       <div class="donGrid">
@@ -1369,7 +1366,16 @@ img{
 
           <!-- Photo + jauge -->
           <div class="donHeroTop">
-            <div class="donHeroTopInner">
+            <div class="taxBadge" style="position:absolute;top:-12px;right:-10px;z-index:2;width:106px;height:106px;border-radius:50%;background:#f3d37f;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);box-shadow:0 6px 18px rgba(0,0,0,.18);">
+              <div style="display:flex;align-items:center;gap:5px;color:#5a4708;font-size:14px;font-weight:900;line-height:1;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4708"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.4 2 5 5.3 5c2 0 3.4 1.1 4.2 2.3l.5.8.5-.8C11.3 6.1 12.7 5 14.7 5 18 5 19.6 8.4 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
+                1 don
+              </div>
+              <div style="color:#5a4708;font-size:13px;font-weight:900;line-height:1;margin:1px 0;">=</div>
+              <div style="color:#5a4708;font-size:24px;font-weight:900;line-height:1;">66 %</div>
+              <div style="color:#5a4708;font-size:9px;font-weight:800;line-height:1.15;margin-top:1px;">de déduction<br>fiscale</div>
+            </div>
+            <div class="donHeroTopInner" style="padding-right:84px;">
               <div class="donCircle">
                 <img src="img/hero.jpg" alt="Giulia">
               </div>
@@ -1379,14 +1385,13 @@ img{
               </div>
            
             </div>
-            <div class="donProgBar" style="position:relative;z-index:1;">
-              <div class="donProgFill" id="donProgFill"></div>
+            <div style="position:relative;z-index:1;margin-top:14px;padding-right:84px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <span style="color:#fff;font-size:14px;font-weight:700;line-height:1.45;">Aidez-nous à transformer un programme scientifique prêt en recherche réellement engagée.</span>
+              <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px;white-space:nowrap;">
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span>
+                <span style="color:#fff;font-weight:900;font-size:13px;">Collecte ouverte</span>
+              </span>
             </div>
-            <div class="donProgNums" style="position:relative;z-index:1;">
-              <span>$<span id="donAmtDisplay">0</span> collectés</span>
-              <span>Objectif : $500 000</span>
-            </div>
-            <p style="font-size:10px;color:rgba(255,255,255,.45);text-align:center;margin:8px 0 0;position:relative;z-index:1;line-height:1.4;">Total consolidé : dons reçus via Stripe et virement bancaire</p>
           </div>
 
           <!-- Tabs -->
@@ -1426,6 +1431,7 @@ img{
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Faire un don sécurisé</button>
           </div>
           <p class="donLock">🔒 Paiement sécurisé via Stripe · Carte · Apple Pay · Google Pay · SEPA selon éligibilité</p>
+          <p class="donLock" style="margin-top:8px;">Réduction d'impôt de 66 % dans la limite de 20 % du revenu imposable (art. 200 du CGI). Un reçu fiscal vous est adressé.</p>
 
         </div>
 
@@ -1438,6 +1444,8 @@ img{
             <h4>🤝 Don par virement bancaire</h4>
             <p>Pour un don important ou un partenariat de mécénat, contactez-nous. Nous vous transmettons :</p>
             <ul class="donCompanyList">
+              <li>Présentation détaillée du programme scientifique</li>
+              <li>Documents administratifs de l'association</li>
               <li>Notre RIB / IBAN</li>
               <li>Une convention de mécénat</li>
               <li>Votre reçu fiscal officiel (CERFA)</li>
@@ -1448,84 +1456,71 @@ img{
             ✉️ Nous contacter
           </button>
 
-          <div class="donAltSecure">🛡️ Réponse sous 48h</div>
+          <div class="donAltSecure">🛡️ Nous répondons personnellement à chaque demande de mécénat.</div>
 
         </div>
       </div>
 
       <!-- Footer -->
       <div class="donFooter">
-        Association française à but non lucratif · Projet scientifique validé · Transparence totale.
+        Association française à but non lucratif · Programme scientifique défini avec une équipe de recherche spécialisée · Informations financières publiées régulièrement.
       </div>
     </div>
 
-    <!-- Partage -->
+    <!-- Aider autrement + partage -->
     <div class="card" style="margin-top:16px;">
-      <div class="cardInner">
-        <h3>Vous ne pouvez pas faire un don aujourd'hui ?</h3>
-        <p style="margin-top:8px;">
-          Partager est déjà une manière d'aider. Envoyez ce projet à <b>5 personnes</b> — c'est ainsi qu'une campagne prend de la force.
-        </p>
-        <div class="row" style="margin-top:14px;">
-          <button class="btn btnBlue" onclick="shareWhatsApp()">Partager sur WhatsApp</button>
-          <button class="btn" onclick="copyLink()">Copier le lien</button>
-          
-          
+      <div class="cardInner" style="line-height:1.75;">
+        <h3>Vous pouvez aussi nous aider autrement</h3>
+        <p>Un don n'est pas la seule façon de faire avancer Project PKS. Vous pouvez :</p>
+        <ul class="list">
+          <li>présenter le projet à votre entreprise ou à une fondation ;</li>
+          <li>nous mettre en relation avec une personne susceptible de nous aider ;</li>
+          <li>organiser une collecte ou une action solidaire ;</li>
+          <li>partager le projet avec un décideur.</li>
+        </ul>
+        <p style="margin-top:14px;">Parfois, une simple mise en relation peut ouvrir une porte décisive.</p>
+        <div class="row" style="margin-top:16px;">
+          <button type="button" class="btn btnPrimary" onclick="openMail('Proposer mon aide — Project PKS')">Proposer mon aide</button>
+          <button class="btn btnBlue" onclick="shareWhatsApp()">Partager</button>
         </div>
-        <p class="muted" style="margin-top:10px;font-size:13px;">
-          Votre soutien ne se limite pas au don : partager et suivre le projet fait déjà une vraie différence.
-        </p>
       </div>
     </div>
-
-    
-  </section>
+    </section>
 
 
-
-
-
-
-
-   
-<section id="association">
-  <h2 class="sectionTitle">Association</h2>
-
-  <div class="card" style="margin-top:12px;">
-    <div class="cardInner" style="line-height:1.75;">
-
-      <p><b>Project PKS</b> est une association à but non lucratif enregistrée en France, régie par la loi 1901.</p>
-
-      <p style="margin-top:12px;">
-        Elle a pour mission de financer, structurer et accélérer des programmes
-        de recherche scientifique consacrés au syndrome de Pallister-Killian (PKS),
-        afin d'explorer des stratégies thérapeutiques potentielles.
+    <section id="confiance">
+      <h2 class="sectionTitle">Comprendre qui porte le projet</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        La confiance ne doit pas reposer uniquement sur notre parole. Les informations scientifiques, administratives et les actualités du programme doivent pouvoir être vérifiées.
       </p>
 
-      <p style="margin-top:12px;">
-        L'association concentre exclusivement son action sur le financement
-        et l'organisation de projets scientifiques dédiés au PKS.
-      </p>
+      <div class="outcomeGrid">
+        <div class="card">
+          <div class="cardInner">
+            <h4>Le laboratoire</h4>
+            <p>Le programme a été conçu avec une équipe spécialisée dans les organoïdes cérébraux et les maladies neurologiques rares.</p>
+            <a href="lab_fr.html" style="display:inline-block;margin-top:12px;color:var(--blue2);font-weight:900;font-size:14px;text-decoration:none;">Découvrir le laboratoire partenaire ›</a>
+          </div>
+        </div>
 
-      <p class="muted" style="margin-top:14px;">
-        Elle n'a pas vocation à proposer un accompagnement médical ou social, ni un service de mise en relation. En revanche, nous répondons volontiers aux familles concernées qui souhaitent contribuer au projet ou partager des informations utiles à la recherche.
-      </p>
+        <div class="card">
+          <div class="cardInner">
+            <h4>L'association</h4>
+            <p>Project PKS est une association française à but non lucratif. Ses informations administratives sont publiées sur le site.</p>
+            <a href="#association" style="display:inline-block;margin-top:12px;color:var(--blue2);font-weight:900;font-size:14px;text-decoration:none;">Voir les informations ›</a>
+          </div>
+        </div>
 
-      <div style="margin-top:18px; padding-top:14px; border-top:1px dashed var(--line);">
-        <div><b>RNA :</b> W951008089</div>
-        <div><b>Siège :</b> 14, Place Eugène Varlin - Taverny - France</div>
+        <div class="card">
+          <div class="cardInner">
+            <h4>Le suivi</h4>
+            <p>Les avancées, les sommes engagées et les étapes réalisées seront publiées sur cette page au fur et à mesure du programme.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="row" style="margin-top:18px;">
-        <button type="button" class="btn btnBlue" onclick="showInfo('accounts')">
-          Informations financières
-        </button>
-      </div>
 
-    </div>
-  </div>
-</section>
-   
 <section id="families">
   <h2 class="sectionTitle">Pour les familles concernées par le PKS</h2>
 
@@ -1534,8 +1529,8 @@ img{
 et à ouvrir des perspectives pour l'ensemble des enfants concernés.
 Il est né d'une histoire personnelle — celle de Giulia — mais s'inscrit
 dans une démarche collective et scientifique.
-Si vous êtes une famille concernée et souhaitez participer ou contribuer,
-nous serions heureux d'entrer en contact avec vous.
+Les familles souhaitant suivre le programme, contribuer à la recherche
+ou partager des informations utiles peuvent nous contacter directement.
   </p>
 
   <div class="card">
@@ -1557,38 +1552,98 @@ nous serions heureux d'entrer en contact avec vous.
   </div>
 </section>
 
-   
-<footer>
-  <div class="footerGrid">
- 
-    <!-- TEXTO DE POSICIONAMENTO -->
-    <div class="muted" style="margin-top:18px; max-width:100%">
-      <p>
-        <b>Ensemble pour Giulia</b> est une campagne de mobilisation publique dédiée au soutien de la
-        <b>recherche scientifique sur le syndrome de Pallister-Killian (PKS)</b>.
+    <section id="association">
+      <h2 class="sectionTitle">L'association Project PKS</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        Une association créée pour faire émerger et financer des recherches consacrées au syndrome de Pallister-Killian.
       </p>
 
-      
+      <div class="grid2 equal">
+        <div class="card">
+          <div class="cardInner" style="line-height:1.75;">
+            <h3>Notre mission</h3>
+            <p>Project PKS existe pour lancer et financer des recherches spécifiquement consacrées au syndrome de Pallister-Killian.</p>
+            <p style="margin-top:12px;">Notre objectif est de comprendre quels mécanismes biologiques sont responsables des difficultés causées par le PKS, d'identifier les cibles sur lesquelles il pourrait être possible d'agir et de tester des pistes thérapeutiques sur des modèles issus d'enfants atteints du syndrome.</p>
+            <p style="margin-top:12px;">Notre ambition est claire : transformer les connaissances sur le PKS en pistes concrètes capables d'ouvrir de nouvelles perspectives pour les enfants.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner" style="line-height:1.75;">
+            <h3>Informations administratives</h3>
+            <div style="margin-top:6px;"><b>RNA :</b> W951008089</div>
+            <div style="margin-top:6px;"><b>Siège :</b> 14, place Eugène Varlin, Taverny, France</div>
+            <div style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <b>Contact :</b>
+              <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">Copier l'adresse email</a>
+            </div>
+            <p class="muted" style="margin-top:14px;">L'association étant récente, aucun exercice annuel n'a encore été clôturé. Les informations financières seront publiées à partir de la première clôture comptable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+   
+   
+
+   
+    <section id="faq">
+      <h2 class="sectionTitle">Questions fréquentes</h2>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Comment le programme est-il financé ?</summary>
+        <div class="faqBody">Project PKS recherche des financements auprès de plusieurs sources : donateurs particuliers, entreprises, fondations et grands mécènes. Le dossier scientifique et budgétaire détaillé est transmis dans le cadre des demandes de mécénat et de financement.</div>
+      </details>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Un petit don peut-il réellement servir ?</summary>
+        <div class="faqBody">Oui. Aucun don isolé ne finance à lui seul une expérience complète, mais chaque contribution renforce la collecte, montre qu'une communauté soutient le programme et facilite la recherche de financements plus importants.</div>
+      </details>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Est-ce qu'un traitement est garanti ?</summary>
+        <div class="faqBody">Non. Cette première phase doit permettre de comprendre les mécanismes de la maladie et d'évaluer des pistes. Elle peut identifier des options prometteuses, mais aussi montrer que certaines stratégies ne fonctionnent pas.</div>
+      </details>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Comment suivre l'utilisation des dons ?</summary>
+        <div class="faqBody">Project PKS publiera les avancées du programme, les étapes engagées et les informations financières disponibles. Les entreprises et grands donateurs peuvent également demander les documents détaillés.</div>
+      </details>
+    </section>
+<footer>
+
+  <!-- POSITIONNEMENT (en premier, pleine largeur) -->
+  <div class="muted" style="margin-bottom:12px;">
+    <p style="margin:0;">Project PKS est une association à but non lucratif régie par la loi du 1er juillet 1901.</p>
+  </div>
+
+  <div class="footerGrid">
+
+    <!-- CONTACT (gauche) -->
+    <div class="muted">
+      Contact :
+      <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">Copier l'email de contact</a>
     </div>
 
-    <!-- CONTATO -->
-    <div class="muted" style="margin-top:10px;">
-  Contact :
-  <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">
-    Copier l'email de contact
-  </a>
-
-</div>
-    
-    <!-- COPYRIGHT -->
-    <div>
-    © <span id="year"></span> Fait par une mère et un père, par amour pour Giulia.
-&nbsp;·&nbsp;
-<a href="/legal.html" style="color:var(--muted);text-decoration:underline;">Mentions légales</a>
+    <!-- COPYRIGHT + MENTIONS (droite) -->
+    <div class="muted" style="text-align:right;">
+      © <span id="year"></span> Fait par une mère et un père, par amour pour Giulia.
+      &nbsp;·&nbsp;
+      <a href="/legal.html" style="color:var(--muted);text-decoration:underline;">Mentions légales</a>
     </div>
 
   </div>
 </footer>
+
 
 
   </main>
@@ -1596,8 +1651,8 @@ nous serions heureux d'entrer en contact avec vous.
   <div class="donateBar" role="region" aria-label="Barre de don">
     <div class="donateBarInner">
       <div>
-        <b>Objectif :</b> <span>500 000 $</span> · <b>PKS</b> ·
-        <span style="color:rgba(255,255,255,.78)">Recherche prête à démarrer</span>
+        <b>La recherche peut commencer.</b>
+        <span style="color:rgba(255,255,255,.78)">Aidez-nous à financer la première phase.</span>
       </div>
       <div class="donateBarBtns">
         <button class="btnBar" onclick="goTo('donations')">Faire un don</button>
@@ -1863,6 +1918,12 @@ function copyEmail(type){
   safeCopyText(email, "Email copié !");
 }
 
+function openMail(subject){
+  const email = buildEmail(EMAIL_CONTACT_USER);
+  const s = subject ? ("?subject=" + encodeURIComponent(subject)) : "";
+  window.location.href = "mailto:" + email + s;
+}
+
 
 
 
@@ -1925,6 +1986,45 @@ document.addEventListener("click", (e) => {
   }
 });
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function(){
+      var bar = document.querySelector('.donateBar');
+      var footer = document.querySelector('footer');
+      if(!bar || !footer) return;
+      function adjust(){ footer.style.paddingBottom = (bar.offsetHeight + 24) + 'px'; }
+      adjust();
+      window.addEventListener('resize', adjust);
+      window.addEventListener('load', adjust);
+    })();
+
+    (function(){
+      var track = document.getElementById('thanksTrack');
+      var wrap = document.getElementById('thanksTicker');
+      if(!track || !wrap) return;
+
+      var names = (typeof DON_THANKS !== 'undefined' && Array.isArray(DON_THANKS) && DON_THANKS.length)
+        ? DON_THANKS
+        : ["Valentine","Marc","Sofia","Un donateur","Lucas","Amélie"];
+
+      if(!names.length){ wrap.style.display = 'none'; return; }
+
+      var word = track.getAttribute('data-word') || 'Merci';
+
+      function escapeHtml(s){
+        return String(s).replace(/[&<>"]/g, function(c){
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+        });
+      }
+
+      var base = names.slice();
+      while(base.length < 12){ base = base.concat(names); }
+
+      var seq = base.map(function(n){
+        return '<span class="thanksItem">' + word + ' ' + escapeHtml(n) + ' \uD83D\uDC99</span>';
+      }).join('');
+
+      track.innerHTML = seq + seq;
+    })();
 
     document.addEventListener("contextmenu", function(e){
   if (e.target.closest("img, .photoProtected")) {
