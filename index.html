@@ -310,7 +310,7 @@ nav a:hover{
   padding:18px;
   align-items:stretch;
 }
-@media (max-width:980px){ .heroTopInner{grid-template-columns:1fr} }
+@media (max-width:980px){ .heroTopInner{grid-template-columns:1fr} .heroPhoto{min-height:300px;} }
 
 .heroText{
   background: rgba(255,255,255,.96);
@@ -347,14 +347,16 @@ nav a:hover{
 }
 
 .heroPhoto{
+  position:relative;
   border-radius:26px;
   overflow:hidden;
   border:1px solid var(--line);
   box-shadow: var(--shadow2);
   background:#fff;
-  height:100%;
 }
 .heroPhoto img{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
