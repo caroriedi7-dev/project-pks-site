@@ -3,4 +3,4 @@ const DON_SHARED = {
   goal: 500000
 };
 
-const DON_THANKS = ["Valentine", "Marc", "Sofia", "Fabrice","Alan", "Christiane"];
+const DON_THANKS = ["Valentine", "Marc", "Sofia", "Fabrice","Alain", "Christiane", "Claire"];
