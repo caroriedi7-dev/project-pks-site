@@ -94,6 +94,7 @@ html,body{height:100%}
 
 body{
   margin:0;
+  overflow-x:hidden;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color:var(--ink);
   line-height:1.65;
@@ -324,9 +325,9 @@ nav a:hover{
 .heroTitle{
   margin:0 0 10px;
   color:var(--blue);
-  font-size:46px;
-  line-height:1.05;
-  letter-spacing:-.9px;
+  font-size:clamp(26px, 4.2vw, 36px);
+  line-height:1.12;
+  letter-spacing:-.4px;
   font-weight:900;
 }
 
@@ -1031,6 +1032,32 @@ img{
   z-index:2;
 }
 
+/* ===== Responsive mobile ===== */
+@media (max-width:768px){
+  .wrap{padding:14px;}
+  .heroTopInner{padding:14px;}
+  .heroText{padding:16px;}
+  .heroPhoto{min-height:260px;}
+  .heroPhoto img{min-height:260px;}
+  .sectionTitle{font-size:23px;}
+  .donLeft{padding:24px 18px 22px;}
+  .donRight{padding:22px 18px 24px;}
+  .donHeroTop{padding:16px 16px;}
+  footer{padding-bottom:160px;}
+}
+@media (max-width:480px){
+  .heroTitle{font-size:24px;}
+  .heroPhoto{min-height:220px;}
+  .heroPhoto img{min-height:220px;}
+  .donLeft{padding:20px 14px 18px;}
+  .donRight{padding:18px 14px 20px;}
+  .donCustomZone,.donTaxBox,.donCtaWrap{width:100%;}
+  .sectionTitle{font-size:21px;}
+  .taxBadge{width:82px !important;height:82px !important;top:-8px !important;right:-6px !important;}
+  .taxBadge div{font-size:11px !important;}
+  .taxBadge div:nth-child(3){font-size:19px !important;}
+}
+
  </style>
 </head>
 
@@ -1344,7 +1371,7 @@ img{
 
           <!-- Photo + jauge -->
           <div class="donHeroTop">
-            <div style="position:absolute;top:-12px;right:-10px;z-index:2;width:106px;height:106px;border-radius:50%;background:#f3d37f;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);box-shadow:0 6px 18px rgba(0,0,0,.18);">
+            <div class="taxBadge" style="position:absolute;top:-12px;right:-10px;z-index:2;width:106px;height:106px;border-radius:50%;background:#f3d37f;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);box-shadow:0 6px 18px rgba(0,0,0,.18);">
               <div style="display:flex;align-items:center;gap:5px;color:#5a4708;font-size:14px;font-weight:900;line-height:1;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4708"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.4 2 5 5.3 5c2 0 3.4 1.1 4.2 2.3l.5.8.5-.8C11.3 6.1 12.7 5 14.7 5 18 5 19.6 8.4 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
                 1 don
@@ -1963,6 +1990,16 @@ document.addEventListener("click", (e) => {
   }
 });
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function(){
+      var bar = document.querySelector('.donateBar');
+      var footer = document.querySelector('footer');
+      if(!bar || !footer) return;
+      function adjust(){ footer.style.paddingBottom = (bar.offsetHeight + 24) + 'px'; }
+      adjust();
+      window.addEventListener('resize', adjust);
+      window.addEventListener('load', adjust);
+    })();
 
     (function(){
       var track = document.getElementById('thanksTrack');
