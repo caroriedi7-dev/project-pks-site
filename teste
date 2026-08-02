@@ -1,0 +1,2051 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <link rel="icon" href="/pks_favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/pks_favicon.svg">
+  <title>Project PKS — Financer la première recherche sur le syndrome de Pallister-Killian</title>
+
+  <meta
+    name="description"
+    content="Aidez à financer la première phase d'une recherche scientifique sur le syndrome de Pallister-Killian (PKS), la maladie génétique rare dont est atteinte Giulia."
+  />
+
+  
+ <meta property="og:title" content="Project PKS — Financer la première recherche sur le syndrome de Pallister-Killian" />
+<meta
+  property="og:description"
+  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.project-pks.org/fr.html" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Project PKS" />
+<meta
+  property="og:image"
+content="https://www.project-pks.org/img/pks-og-image.jpg"
+/>
+  <meta
+  property="og:image:secure_url"
+  content="https://www.project-pks.org/img/pks-og-image.jpg"
+/>
+<meta
+  property="og:image:alt"
+  content="Campagne pour financer la recherche sur le syndrome de Pallister-Killian"
+/>
+<meta property="fb:app_id" content="1223204589896031" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Project PKS — Financer la première recherche sur le syndrome de Pallister-Killian" />
+<meta
+  name="twitter:description"
+  content="Aidez à lancer la recherche sur le PKS avec des organoïdes cérébraux."
+/>
+<meta
+  name="twitter:image"
+  content="https://www.project-pks.org/img/pks-og-image.jpg"
+/>
+<meta
+  name="twitter:image:alt"
+  content="Campagne pour financer la recherche sur le syndrome de Pallister-Killian"
+/>
+
+<link rel="canonical" href="https://www.project-pks.org/fr.html" />
+<script src="config.js"></script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1059026633352724');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1059026633352724&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+ <style>
+    :root{
+  --bg:#F2FBF7;
+  --card:#FFFFFF;
+  --ink:#0F1F26;
+  --muted:#3F565E;
+
+  --blue:#0B2E6B;
+  --blue2:#1E63FF;
+  --green:#19B67A;
+  --gold:#D7AF4A;
+  --line:#D2E6DF;
+
+  --radius:22px;
+  --shadow: 0 18px 60px rgba(11,46,107,.16);
+  --shadow2: 0 12px 28px rgba(11,46,107,.10);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color:var(--ink);
+  line-height:1.65;
+  background:
+    radial-gradient(900px 520px at 12% 10%, rgba(30,99,255,.14), transparent 62%),
+    radial-gradient(900px 520px at 88% 12%, rgba(25,182,122,.12), transparent 62%),
+    linear-gradient(180deg, rgba(215,175,74,.06), transparent 30%),
+    var(--bg);
+}
+
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:18px}
+.muted{color:var(--muted)}
+
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(242,251,247,.82);
+  backdrop-filter: blur(14px) saturate(180%);
+  border-bottom:1px solid rgba(210,230,223,.95);
+}
+
+.topbar{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:14px;
+}
+
+.brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.brand b{color:var(--blue);font-size:15px;letter-spacing:.25px}
+.brand small{color:var(--muted);font-weight:900;opacity:.95}
+
+nav{
+  justify-self:center;
+  display:flex;
+  gap:6px;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+  overflow:auto;
+  scrollbar-width:none;
+  align-items:center;
+}
+nav::-webkit-scrollbar{display:none}
+
+nav a{
+  font-size:13.5px;
+  color:var(--muted);
+  padding:8px 10px;
+  border-radius:999px;
+  text-decoration:none;
+  border:1px solid transparent;
+}
+nav a:hover{
+  background:rgba(30,99,255,.08);
+  border-color:rgba(30,99,255,.12);
+  color:var(--blue);
+}
+
+.headerRight{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.langDrop{position:relative}
+
+.langBtn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(210,230,223,.95);
+  background:rgba(255,255,255,.82);
+  box-shadow: 0 10px 22px rgba(11,46,107,.08);
+  cursor:pointer;
+  font-weight:900;
+  color:var(--muted);
+}
+.langBtn:hover{opacity:.95}
+.langBtn:focus-visible{
+  outline:2px solid rgba(30,99,255,.25);
+  outline-offset:2px;
+}
+.langCurrent{color:var(--blue)}
+.langCaret{opacity:.7}
+.langIcon{opacity:.85}
+
+.langMenu{
+  position:absolute;
+  right:0;
+  top:calc(100% + 10px);
+  min-width:140px;
+  padding:8px;
+  border-radius:16px;
+  border:1px solid rgba(210,230,223,.95);
+  background:rgba(255,255,255,.96);
+  box-shadow: var(--shadow2);
+  display:none;
+}
+.langMenu a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 10px;
+  border-radius:12px;
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:900;
+  font-size:13px;
+}
+.langMenu a:hover{
+  background:rgba(30,99,255,.08);
+  color:var(--blue);
+}
+.langMenu a[aria-current="page"]{
+  color:var(--blue);
+  background:rgba(30,99,255,.08);
+}
+.langDrop[data-open="true"] .langMenu{display:block}
+
+.navToggle{
+  display:none;
+  border:1px solid rgba(210,230,223,.95);
+  background:rgba(255,255,255,.82);
+  color:var(--blue);
+  font-weight:900;
+  border-radius:999px;
+  padding:9px 11px;
+  cursor:pointer;
+  box-shadow: 0 10px 22px rgba(11,46,107,.08);
+}
+.navToggle:hover{opacity:.95}
+
+@media (max-width:900px){
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  .headerRight{margin-left:auto}
+  .navToggle{display:inline-flex}
+
+  nav{
+    display:none;
+    width:100%;
+    padding-top:10px;
+    overflow:visible;
+    white-space:normal;
+    flex-wrap:wrap;
+  }
+  nav[data-open="true"]{display:flex}
+}
+
+.btn, a.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(210,230,223,.95);
+  background:rgba(255,255,255,.90);
+  color:var(--blue);
+  cursor:pointer;
+  font-weight:900;
+  font-size:14px;
+  text-decoration:none;
+  box-shadow: 0 10px 22px rgba(11,46,107,.08);
+  transition: transform .08s ease, opacity .15s ease;
+}
+.btn:hover, a.btn:hover{opacity:.96}
+.btn:active, a.btn:active{transform: translateY(1px)}
+.btn:focus-visible, a.btn:focus-visible{
+  outline:2px solid rgba(30,99,255,.25);
+  outline-offset:2px;
+}
+
+.btnPrimary{
+  border:none;
+  color:#1b1402;
+  background: linear-gradient(135deg, #f3d37f, var(--gold));
+}
+
+.btnBlue{
+  border:none;
+  color:#fff;
+  background: linear-gradient(135deg, var(--blue2), var(--green));
+}
+
+@media (max-width:600px){
+  .row .btn, .row a.btn{width:100%}
+  .row{gap:10px}
+}
+
+.heroTop{
+  margin-top:16px;
+  border-radius:30px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.70);
+  box-shadow: var(--shadow);
+  background: rgba(255,255,255,.92);
+}
+
+.heroTopInner{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap:16px;
+  padding:18px;
+  align-items:stretch;
+}
+@media (max-width:980px){ .heroTopInner{grid-template-columns:1fr} }
+
+.heroText{
+  background: rgba(255,255,255,.96);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:18px;
+  box-shadow: var(--shadow2);
+}
+
+.heroKicker{margin:0 0 8px;color:var(--muted);font-size:13px;font-weight:900}
+
+.heroTitle{
+  margin:0 0 10px;
+  color:var(--blue);
+  font-size:46px;
+  line-height:1.05;
+  letter-spacing:-.9px;
+  font-weight:900;
+}
+
+.heroSub{margin:0 0 12px;color:var(--muted);font-size:16px}
+.heroSub b{color:var(--blue)}
+.heroCTA{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+.pills{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:999px;
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(11,46,107,.14);
+  box-shadow: var(--shadow2);
+  font-size:13px;font-weight:900;color:var(--blue);
+  white-space:nowrap;
+}
+
+.heroPhoto{
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow2);
+  background:#fff;
+  min-height:420px;
+}
+.heroPhoto img{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+  display:block;
+}
+
+.photos{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:12px;
+  margin-top:16px;
+}
+@media (max-width:980px){ .photos{grid-template-columns:1fr} }
+
+.photoBig{
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow2);
+  min-height:320px;
+  background:#fff;
+}
+.photoBig img{width:100%;height:100%;object-fit:cover;display:block}
+
+.photoGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.photoSmall{
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow2);
+  min-height:154px;
+  background:#fff;
+}
+.photoSmall img{width:100%;height:100%;object-fit:cover;display:block}
+
+section{scroll-margin-top:92px}
+
+.sectionTitle{
+  margin:24px 0 10px;
+  color:var(--blue);
+  font-size:28px;
+  letter-spacing:-.2px;
+  font-weight:900;
+}
+
+.sectionSub{
+  margin:0 0 14px;
+  color:var(--muted);
+  max-width:92ch;
+  font-size:15.5px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:16px;
+  align-items:stretch;
+}
+@media (max-width:980px){ .grid2{grid-template-columns:1fr} }
+
+.grid2.equal{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:24px;
+}
+@media (max-width:980px){
+  .grid2.equal{grid-template-columns:1fr}
+}
+
+.card{
+  background: rgba(255,255,255,.93);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:18px;
+  box-shadow: var(--shadow2);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;width:6px;
+  background: linear-gradient(180deg, var(--blue2), var(--green));
+  opacity:.9;
+}
+.cardInner{position:relative}
+.card h3,.card h4{margin:0 0 10px;color:var(--blue);font-weight:900}
+.card p{margin:0;color:var(--muted)}
+.list{margin:12px 0 0;padding-left:18px;color:var(--muted)}
+.list li{margin:8px 0}
+
+.videoWrap{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow2);
+  background:#000;
+  margin-top:10px;
+}
+.videoWrap iframe{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  border:0;
+}
+
+.videoWrapSmall{
+  position:relative;
+  width:65%;
+  margin:0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow2);
+  background:#000;
+}
+@media (max-width:700px){ .videoWrapSmall{ width:100%; } }
+.videoWrapSmall iframe{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  border:0;
+}
+.videoCaption{
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+  margin-top:8px;
+}
+
+.campaigns{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:10px;
+}
+@media (max-width:980px){ .campaigns{grid-template-columns:1fr} }
+
+.camp{
+  background: rgba(255,255,255,.93);
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow: var(--shadow2);
+}
+.campTop{
+  padding:14px 14px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background: linear-gradient(135deg, rgba(30,99,255,.14), rgba(25,182,122,.10), rgba(215,175,74,.16));
+  border-bottom:1px solid var(--line);
+}
+.campTop b{color:var(--blue);font-weight:900}
+.campBody{padding:14px;color:var(--muted)}
+
+.stepsGrid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin:18px 0 20px;
+}
+@media (max-width:980px){ .stepsGrid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .stepsGrid{grid-template-columns:1fr;} }
+
+.stepCard{
+  background:rgba(255,255,255,.93);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px 16px;
+  box-shadow:var(--shadow2);
+}
+.stepNum{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--blue2),var(--green));
+  color:#fff;font-weight:900;font-size:15px;
+  margin-bottom:14px;
+}
+.stepTitle{
+  margin:0 0 8px;color:var(--blue);font-weight:900;font-size:16px;line-height:1.25;
+}
+.stepText{
+  margin:0;color:var(--muted);font-size:13.5px;line-height:1.55;
+}
+
+.outcomeGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:16px;
+}
+@media (max-width:980px){ .outcomeGrid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .outcomeGrid{grid-template-columns:1fr;} }
+
+.faqItem{
+  background:rgba(255,255,255,.93);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow2);
+  margin-bottom:14px;
+  overflow:hidden;
+}
+.faqItem summary{
+  list-style:none;
+  cursor:pointer;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--blue);
+  font-weight:900;
+  font-size:16px;
+}
+.faqItem summary::-webkit-details-marker{display:none;}
+.faqCaret{
+  color:var(--blue2);
+  font-size:13px;
+  transition:transform .2s ease;
+  flex-shrink:0;
+}
+.faqItem:not([open]) .faqCaret{transform:rotate(-90deg);}
+.faqBody{
+  padding:0 20px 18px;
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+}
+
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+footer{
+  margin-top:26px;
+  border-top:1px solid var(--line);
+  padding:18px 0 86px;
+  color:var(--muted);
+  font-size:13px;
+}
+.footerGrid{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.footerLink{
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 700;
+}
+.footerLink:hover{opacity:.85}
+
+.donateBar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:rgba(11,18,32,.94);
+  border-top:1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+}
+.donateBarInner{
+  max-width:1120px;margin:0 auto;
+  padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  color:#fff;
+}
+.donateBarInner b{font-weight:900}
+.donateBarBtns{display:flex;gap:10px;flex-wrap:wrap}
+
+.btnBar{
+  border:none;
+  padding:10px 12px;border-radius:999px;
+  color:#1b1402;font-weight:900;
+  background: linear-gradient(135deg, #f3d37f, var(--gold));
+  cursor:pointer;
+}
+.btnBarGhost{
+  background: rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  font-weight:900;
+  padding:10px 12px;border-radius:999px;
+  cursor:pointer;
+}
+.btnBar:hover,.btnBarGhost:hover{opacity:.92}
+
+.metaGrid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:12px;
+  margin-top:10px;
+}
+@media (max-width:980px){ .metaGrid{grid-template-columns:1fr} }
+
+.kv{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 12px;
+  border:1px dashed rgba(11,46,107,.18);
+  border-radius:16px;
+  background: rgba(255,255,255,.88);
+}
+.kv b{color:var(--blue); font-weight:900;}
+.kv span{color:var(--muted); font-weight:900;}
+
+.progressBox{
+  margin-top:12px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.90);
+}
+.progressTop{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.progressTop b{color:var(--blue); font-weight:900}
+.progressTop .muted{font-size:13px}
+
+.progressTrack{
+  margin-top:10px;
+  height:12px;
+  border-radius:999px;
+  background: rgba(11,46,107,.10);
+  overflow:hidden;
+  border:1px solid rgba(11,46,107,.10);
+}
+.progressFill{
+  height:100%;
+  width:0%;
+  border-radius:999px;
+  background: linear-gradient(90deg, var(--blue2), var(--green));
+  transition: width .6s ease;
+}
+.progressNums{
+  margin-top:10px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  color:var(--muted);
+  font-size:13px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(11,46,107,.14);
+  background: rgba(255,255,255,.90);
+  box-shadow: var(--shadow2);
+  font-weight:900;
+  color:var(--blue);
+  font-size:13px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:84px;
+  transform:translateX(-50%);
+  background:rgba(11,18,32,.92);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow: var(--shadow2);
+  z-index:9999;
+  max-width:min(560px, 92vw);
+  font-size:13px;
+}
+.toast b{font-weight:900}
+
+.donCard{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.donGrid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+}
+@media(max-width:780px){.donGrid{grid-template-columns:1fr}}
+
+.donLeft{
+  padding:36px 40px 28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  border-right:1px solid var(--line);
+}
+@media(max-width:780px){.donLeft{border-right:none;border-bottom:1px solid var(--line);}}
+
+.donHeroTop{
+  width:100%;
+  background:linear-gradient(160deg,rgba(11,46,107,.92),rgba(11,46,107,.75));
+  border-radius:18px;
+  padding:20px 22px;
+  margin-bottom:22px;
+  position:relative;
+  overflow:hidden;
+}
+.donHeroTop::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(30,99,255,.18),rgba(25,182,122,.14));
+  pointer-events:none;
+}
+.donHeroTopInner{
+  position:relative;z-index:1;
+  display:flex;align-items:center;gap:14px;
+}
+.donCircle{
+  width:52px;height:52px;border-radius:50%;
+  border:2.5px solid rgba(255,255,255,.28);
+  overflow:hidden;flex-shrink:0;
+}
+.donCircle img{width:100%;height:100%;object-fit:cover;pointer-events:none;}
+.donHeroText{flex:1;}
+.donHeroQuote{font-size:14px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:3px;}
+.donHeroSub{font-size:11px;color:rgba(255,255,255,.65);line-height:1.4;}
+.donProgBar{
+  height:5px;border-radius:999px;
+  background:rgba(255,255,255,.18);
+  overflow:hidden;margin-top:12px;
+  position:relative;z-index:1;
+}
+.donProgFill{
+  height:100%;width:0%;border-radius:999px;
+  background:linear-gradient(90deg,#f3d37f,var(--gold));
+  transition:width 1.2s ease;
+}
+.donProgNums{
+  display:flex;justify-content:space-between;
+  font-size:11px;color:rgba(255,255,255,.65);font-weight:900;
+  margin-top:6px;position:relative;z-index:1;
+}
+.donProgNums b{color:#fff;}
+
+.donTabRow{
+  display:flex;background:rgba(11,46,107,.06);
+  border-radius:999px;padding:3px;
+  margin-bottom:18px;width:100%;
+}
+.donTab{
+  flex:1;padding:8px 6px;border-radius:999px;
+  font-size:13px;font-weight:900;color:var(--muted);
+  text-align:center;cursor:pointer;transition:all .15s;
+}
+.donTab.active{
+  background:#fff;color:var(--blue);
+  box-shadow:0 3px 10px rgba(11,46,107,.12);
+}
+
+.donAmtsRow{display:flex;gap:8px;margin-bottom:12px;width:100%;}
+.donAmt{
+  flex:1;padding:11px 6px;border-radius:999px;
+  border:1.5px solid #d1d5db;background:#fff;
+  color:var(--ink);font-weight:600;font-size:15px;
+  text-align:center;cursor:pointer;transition:all .12s;
+}
+.donAmt:hover{border-color:var(--blue);}
+.donAmt.active{
+  border:2.5px solid var(--blue);
+  color:var(--blue);font-weight:900;
+}
+
+.donCustomZone{
+  width:85%;
+  margin-bottom:8px;
+  background: rgba(11,46,107,.04);
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 6px 12px;
+  display:none;
+}
+.donCustomZone.open{ display:block; }
+.donCustomLabel{
+  font-size:10px;
+  color:var(--muted);
+  margin:0 0 2px;
+}
+.donCustomAmt{
+  text-align:center;
+  margin-bottom:2px;
+}
+.donCustomAmt span{
+  font-size:15px;
+  font-weight:900;
+  color:var(--blue);
+}
+.donCustomSlider{
+  width:100%;
+  margin:0;
+  display:block;
+  height:16px;
+}
+
+.donTaxBox{
+  width:85%;
+  margin-bottom:14px;
+  background: rgba(25,182,122,.08);
+  border: 1px solid rgba(25,182,122,.30);
+  border-radius: 16px;
+  padding: 10px 14px;
+  text-align: center;
+}
+.donTaxLabel{
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 3px;
+  font-weight: 700;
+}
+.donTaxAmt{
+  font-size: 20px;
+  font-weight: 900;
+  color: #0F7A52;
+}
+
+.donCtaWrap{width:85%;margin-bottom:12px;}
+.donCtaBtn{
+  width:100%;padding:16px 32px;border:none;border-radius:999px;
+  font-size:16px;font-weight:900;color:#fff;
+  background:linear-gradient(135deg,var(--blue2) 0%,var(--green) 100%);
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(30,99,255,.32),inset 0 1px 0 rgba(255,255,255,.15);
+  transition:all .15s;letter-spacing:.1px;
+  position:relative;overflow:hidden;
+}
+.donCtaBtn::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.12) 0%,transparent 55%);
+  border-radius:999px;pointer-events:none;
+}
+.donCtaBtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(30,99,255,.38),inset 0 1px 0 rgba(255,255,255,.15);
+}
+.donCtaBtn:active{transform:translateY(0);}
+
+.donLock{font-size:12px;color:var(--muted);text-align:center;margin:0;}
+
+.thanksTicker{
+  margin:16px 0 4px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  box-shadow:var(--shadow2);
+  padding:10px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+}
+.thanksTrack{
+  display:inline-flex;
+  white-space:nowrap;
+  will-change:transform;
+  animation:thanksScroll 34s linear infinite;
+}
+.thanksTicker:hover .thanksTrack{animation-play-state:paused;}
+.thanksItem{
+  color:var(--blue);
+  font-weight:900;
+  font-size:14px;
+  padding:0 20px;
+}
+
+.carousel{
+  position:relative;
+  max-width:420px;
+  margin:0 auto;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow2);
+  background:#fff;
+}
+.carouselTrack{display:flex;transition:transform .5s ease;}
+.carouselSlide{min-width:100%;height:280px;}
+.carouselSlide img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+.carBtn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:38px;height:38px;border-radius:50%;border:none;
+  background:rgba(11,46,107,.55);color:#fff;font-size:20px;font-weight:900;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  z-index:3;transition:background .15s;line-height:1;
+}
+.carBtn:hover{background:rgba(11,46,107,.82);}
+.carPrev{left:10px;}
+.carNext{right:10px;}
+.carDots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:3;}
+.carDot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);border:none;cursor:pointer;padding:0;transition:all .2s;}
+.carDot.active{background:#fff;width:22px;border-radius:999px;}
+@media(max-width:600px){ .carouselSlide{height:220px;} .carousel{max-width:100%;} }
+@keyframes thanksScroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+.donRight{padding:36px 28px 28px;display:flex;flex-direction:column;}
+.donRightTitle{
+  font-size:19px;font-weight:900;color:var(--blue);
+  margin-bottom:5px;line-height:1.3;
+}
+.donRightSub{font-size:13px;color:var(--muted);margin-bottom:18px;}
+
+.donCompanyBlock{
+  background: rgba(255,255,255,.90);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 18px;
+  margin-bottom:14px;
+  box-shadow:var(--shadow2);
+}
+.donCompanyBlock h4{
+  margin:0 0 6px;color:var(--blue);font-size:14px;font-weight:900;
+  display:flex;align-items:center;gap:7px;
+}
+.donCompanyBlock p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.6;}
+.donCompanyList{margin:8px 0 0;padding-left:16px;color:var(--muted);font-size:12.5px;line-height:1.7;}
+.donCompanyList li{margin:3px 0;}
+.donCompanyBtn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:0;
+  padding:13px 16px;border:none;border-radius:999px;
+  font-size:14px;font-weight:900;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,var(--blue2),var(--green));
+  box-shadow:0 8px 20px rgba(30,99,255,.22);
+  transition:transform .1s ease,opacity .15s ease;
+}
+.donCompanyBtn:hover{opacity:.95;transform:translateY(-1px);}
+
+.donAltSecure{
+  display:flex;align-items:center;gap:7px;
+  font-size:12px;color:var(--muted);
+  margin-top:10px;padding-top:0;
+}
+
+.donFooter{
+  padding:13px 40px;border-top:1px solid var(--line);
+  text-align:center;font-size:12px;color:#9ca3af;
+  background:rgba(242,251,247,.5);
+} 
+img{
+  -webkit-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.photoProtected{
+  position: relative;
+  overflow: hidden;
+}
+
+.photoProtected img{
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoProtected::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:transparent;
+  z-index:2;
+}
+
+ </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap topbar">
+    <div class="brand" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;">
+  <svg width="210" height="58" viewBox="0 0 140 90" style="display:block;">
+    <rect x="12" y="8" width="10" height="26" rx="5" fill="#0B2E6B"/>
+    <rect x="26" y="8" width="10" height="26" rx="5" fill="#0B2E6B" opacity=".3"/>
+    <rect x="8" y="33" width="32" height="18" rx="9" fill="none" stroke="#0B2E6B" stroke-width="1.5"/>
+   <rect x="9.5" y="34.5" width="29" height="15" rx="7.5" fill="#fff"/>
+    <rect x="12" y="50" width="10" height="26" rx="5" fill="#0B2E6B" opacity=".3"/>
+    <rect x="26" y="50" width="10" height="26" rx="5" fill="#0B2E6B"/>
+    <text x="52" y="38" font-size="22" font-weight="700" fill="#0B2E6B" font-family="ui-sans-serif,sans-serif" letter-spacing="-0.5">PKS</text>
+    <line x1="52" y1="44" x2="132" y2="44" stroke="#0B2E6B" stroke-width="1.5" stroke-linecap="round" opacity=".3"/>
+    <text x="52" y="56" font-size="8.5" font-weight="400" fill="#0B2E6B" font-family="ui-sans-serif,sans-serif" letter-spacing="2.5">PROJECT</text>
+  </svg>
+</div>
+
+    <nav id="mainNav" aria-label="Navigation" data-open="false">
+      <a href="#home">Accueil</a>
+      <a href="#video">Le projet</a>
+      <a href="#phase1">La recherche</a>
+      <a href="#donations">Dons</a>
+      <a href="#association">Association</a>
+      <a href="#families">Familles</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="headerRight">
+      <div class="langDrop" aria-label="Langue">
+  <button class="langBtn" type="button" onclick="toggleLang()"
+    aria-expanded="false" aria-controls="langMenu">
+    <span class="langIcon" aria-hidden="true">🌐</span>
+    <span class="langCurrent">FR</span>
+    <span class="langCaret" aria-hidden="true">▾</span>
+  </button>
+
+  <div id="langMenu" class="langMenu">
+  <a href="index.html" onclick="sessionStorage.setItem('langChosen','1')">EN</a>
+  <a href="fr.html" aria-current="page">FR</a>
+  <a href="pt.html" onclick="sessionStorage.setItem('langChosen','1')">PT</a>
+  <a href="es.html" onclick="sessionStorage.setItem('langChosen','1')">ES</a>
+</div>
+</div>
+      <button class="navToggle" type="button"
+        aria-expanded="false"
+        aria-controls="mainNav"
+        onclick="toggleNav()">
+        ☰
+      </button>
+    </div>
+  </div>
+</header>
+  
+ <main class="wrap">
+  <section id="home" class="heroTop" aria-label="Couverture">
+    <div class="heroTopInner">
+
+      <div class="heroText">
+        <p class="heroKicker">Une recherche prête à commencer. Une course contre le temps.</p>
+
+        <h1 class="heroTitle">Faire avancer la recherche sur le syndrome de Pallister-Killian afin d'identifier des pistes de traitement</h1>
+
+        <p class="muted" style="
+          margin:10px 0 14px;
+          font-size:12.5px;
+          text-align:center;
+          letter-spacing:.2px;
+        ">
+          Pour Giulia et pour tous les enfants atteints du syndrome de Pallister-Killian.
+        </p>
+
+        <p class="muted" style="
+          margin:0 0 16px;
+          font-size:14px;
+          text-align:center;
+        ">
+          Project PKS — Recherche sur le syndrome de Pallister-Killian
+        </p>
+
+        <p class="heroSub" style="margin-top:8px; color:var(--ink); font-size:18px; line-height:1.55;">
+          Giulia est atteinte du syndrome de Pallister-Killian, une maladie génétique rare pour laquelle il n'existe aujourd'hui aucun traitement ciblé.
+        </p>
+
+        <p class="heroSub" style="margin-top:12px; font-size:14.5px;">
+          Avec une équipe scientifique spécialisée, nous voulons créer des modèles du cerveau à partir de cellules d'enfants atteints du PKS, afin de comprendre la maladie et de rechercher des pistes thérapeutiques.
+        </p>
+
+        <div class="heroMeta" style="margin-top:16px;">
+          <div style="background:linear-gradient(135deg,rgba(30,99,255,.06),rgba(25,182,122,.05));border:1px solid var(--line);border-radius:18px;padding:16px 18px;">
+            <p style="margin:0 0 6px;color:var(--blue);font-weight:900;font-size:16px;line-height:1.4;">
+              Le protocole scientifique est défini. Le laboratoire est prêt.
+            </p>
+            <p style="margin:0;color:var(--muted);font-size:15px;line-height:1.5;">
+              Il manque maintenant le financement nécessaire pour lancer la première phase du programme.
+            </p>
+          </div>
+        </div>
+
+        <div class="heroCTA" style="margin-top:18px;">
+          <button class="btn btnPrimary" onclick="goTo('donations')">Faire un don</button>
+<button class="btn btnBlue" onclick="goTo('phase1')">Découvrir la recherche</button>
+        </div>
+      </div>
+
+      <div class="heroPhoto photoProtected">
+  <img src="img/hero.jpg" alt="Giulia dans la photo principale de la campagne">
+</div>
+
+    </div>
+  </section>
+
+
+
+        
+
+    <section id="video">
+      <h2 class="sectionTitle">Pourquoi Project PKS existe</h2>
+              <p class="sectionSub" style="margin-top:18px; max-width:100%;">
+        Une histoire familiale a déclenché le projet, mais la recherche est conçue pour l'ensemble des enfants concernés par le syndrome.
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="cardInner">
+            <h3>Regarder les vidéos</h3>
+
+            <div class="videoWrapSmall">
+              <iframe
+                src="https://www.youtube.com/embed/6I8RimwjgRw?rel=0"
+                title="Vidéo de la campagne Giulia"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="videoCaption">Le combat de Giulia</p>
+
+            <div class="videoWrapSmall" style="margin-top:18px;">
+              <iframe
+                src="https://www.youtube.com/embed/RnBPTD9_1SA?si=3aWn4XJ_zSZzmAsr"
+                title="Dr. Alysson Muotri — Programme de recherche PKS"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="videoCaption">Dr. Alysson Muotri — Programme de recherche PKS</p>
+
+            <div class="row" style="justify-content:center;">
+               <a href="#donations" class="btn btnPrimary">Faire un don</a>
+              <button class="btn" onclick="shareWhatsApp()">Partager</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+  <div class="cardInner">
+    <h3>Nous avons décidé de ne pas attendre</h3>
+
+    <p>
+      Lorsque Giulia a reçu son diagnostic, nous avons découvert qu'il existait très peu de recherches consacrées aux mécanismes du syndrome de Pallister-Killian, et encore moins de programmes cherchant réellement des pistes de traitement.
+    </p>
+
+    <p style="margin-top:10px;">
+      Nous avons alors décidé de ne pas attendre qu'un projet apparaisse un jour.
+    </p>
+
+    <p style="margin-top:10px;">
+      Avec des chercheurs spécialisés, nous avons construit un programme scientifique destiné à créer les premiers modèles nécessaires pour comprendre ce qui se passe dans les cellules du cerveau des enfants atteints du PKS et tester des stratégies thérapeutiques.
+    </p>
+
+    <p style="margin-top:10px;">
+      Ce projet est né pour Giulia, mais ses résultats pourraient bénéficier à tous les enfants et à toutes les familles concernés par le syndrome.
+    </p>
+
+    <div class="row" style="margin-top:14px;">
+      <button class="btn btnPrimary" onclick="goTo('donations')">Soutenir la recherche</button>
+      <button class="btn" onclick="goTo('phase1')">En savoir plus</button>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+    </section>
+
+    <section id="photos">
+      <h2 class="sectionTitle">Photos de Giulia</h2>
+      <p class="sectionSub">
+        Quelques images pour faire connaissance avec Giulia.
+      </p>
+
+      <div class="carousel photoProtected" id="giuliaCarousel" aria-label="Photos de Giulia">
+        <div class="carouselTrack" id="carTrack">
+          <div class="carouselSlide"><img src="img/pic0.jpg" alt="Giulia"></div>
+          <div class="carouselSlide"><img src="img/photo2.jpg" alt="Giulia et son papa"></div>
+          <div class="carouselSlide"><img src="img/pic3.jpg" alt="Giulia et sa maman"></div>
+          <div class="carouselSlide"><img src="img/pic1.png" alt="Giulia"></div>
+          <div class="carouselSlide"><img src="img/pic5.jpg" alt="Giulia"></div>
+        </div>
+        <button class="carBtn carPrev" onclick="carMove(-1)" aria-label="Photo précédente">‹</button>
+        <button class="carBtn carNext" onclick="carMove(1)" aria-label="Photo suivante">›</button>
+        <div class="carDots" id="carDots"></div>
+      </div>
+    </section>
+
+    <section id="phase1">
+      <h2 class="sectionTitle">Une première phase pour comprendre et tester</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        Les organoïdes cérébraux sont de petits modèles cellulaires développés en laboratoire à partir de cellules de patients. Ils permettent d'étudier certaines étapes du développement des cellules nerveuses et les effets biologiques du PKS.
+      </p>
+
+      <div class="stepsGrid">
+        <div class="stepCard">
+          <div class="stepNum">1</div>
+          <h4 class="stepTitle">Créer les modèles</h4>
+          <p class="stepText">Transformer les cellules de trois enfants en cellules souches, puis en organoïdes cérébraux.</p>
+        </div>
+
+        <div class="stepCard">
+          <div class="stepNum">2</div>
+          <h4 class="stepTitle">Observer</h4>
+          <p class="stepText">Étudier le développement, l'organisation et le fonctionnement des cellules nerveuses.</p>
+        </div>
+
+        <div class="stepCard">
+          <div class="stepNum">3</div>
+          <h4 class="stepTitle">Comparer</h4>
+          <p class="stepText">Comparer les modèles PKS à des modèles témoins pour identifier les altérations liées à la maladie.</p>
+        </div>
+
+        <div class="stepCard">
+          <div class="stepNum">4</div>
+          <h4 class="stepTitle">Mesurer</h4>
+          <p class="stepText">Définir des marqueurs biologiques permettant d'évaluer objectivement les effets observés.</p>
+        </div>
+
+        <div class="stepCard">
+          <div class="stepNum">5</div>
+          <h4 class="stepTitle">Tester</h4>
+          <p class="stepText">Évaluer des substances et différentes stratégies scientifiques afin de sélectionner les pistes les plus prometteuses.</p>
+        </div>
+      </div>
+
+      <a href="lab_fr.html" style="display:block;text-decoration:none;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 24px;border-radius:18px;background:linear-gradient(135deg,rgba(11,46,107,.07),rgba(25,182,122,.07));border:1.5px solid rgba(30,99,255,.2);box-shadow:0 4px 16px rgba(11,46,107,.08);"
+        onmouseover="this.style.boxShadow='0 8px 24px rgba(11,46,107,.14)'"
+        onmouseout="this.style.boxShadow='0 4px 16px rgba(11,46,107,.08)'">
+          <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
+            <div style="width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#1E63FF,#19B67A);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;">AM</div>
+            <div style="min-width:0;">
+              <div style="font-weight:900;color:var(--blue);font-size:15px;">🔬 Programme développé avec le Dr Alysson R. Muotri et son équipe à UC San Diego</div>
+              <div style="color:var(--muted);font-size:13.5px;margin-top:2px;">Découvrez le laboratoire, son expérience et le cadre scientifique du projet.</div>
+            </div>
+          </div>
+          <div style="color:var(--blue2);font-weight:900;font-size:15px;white-space:nowrap;flex-shrink:0;padding-left:8px;">Voir le laboratoire ›</div>
+        </div>
+      </a>
+    </section>
+
+    <section id="phase-produire">
+      <h2 class="sectionTitle">Les résultats attendus</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        Cette première phase doit permettre de passer d'une connaissance encore limitée du PKS à des résultats directement exploitables pour orienter la recherche thérapeutique.
+      </p>
+
+      <div class="outcomeGrid">
+        <div class="card">
+          <div class="cardInner">
+            <h4>Les mécanismes les plus importants identifiés</h4>
+            <p>Déterminer quelles anomalies biologiques jouent un rôle majeur dans les effets du PKS sur les cellules nerveuses.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <h4>Des cibles et des pistes thérapeutiques repérées</h4>
+            <p>Identifier les gènes, protéines ou mécanismes sur lesquels il pourrait être possible d'agir.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <h4>Les approches les plus prometteuses sélectionnées</h4>
+            <p>Comparer les effets des différentes stratégies testées afin de déterminer lesquelles méritent d'être approfondies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="donations">
+      <h2 class="sectionTitle">Votre don aide à déclencher la première phase</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        La collecte auprès du public s'inscrit dans une recherche de financements plus large, menée également auprès des entreprises, des fondations et des grands mécènes. Chaque contribution renforce la capacité du projet à avancer.
+      </p>
+
+    <div class="thanksTicker" id="thanksTicker" aria-label="Remerciements aux donateurs">
+      <div class="thanksTrack" id="thanksTrack" data-word="Merci"></div>
+    </div>
+
+    <div class="donCard">
+      <div class="donGrid">
+
+        <!-- ── GAUCHE ── -->
+        <div class="donLeft">
+
+          <!-- Photo + jauge -->
+          <div class="donHeroTop">
+            <div style="position:absolute;top:-12px;right:-10px;z-index:2;width:106px;height:106px;border-radius:50%;background:#f3d37f;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);box-shadow:0 6px 18px rgba(0,0,0,.18);">
+              <div style="display:flex;align-items:center;gap:5px;color:#5a4708;font-size:14px;font-weight:900;line-height:1;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4708"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.4 2 5 5.3 5c2 0 3.4 1.1 4.2 2.3l.5.8.5-.8C11.3 6.1 12.7 5 14.7 5 18 5 19.6 8.4 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
+                1 don
+              </div>
+              <div style="color:#5a4708;font-size:13px;font-weight:900;line-height:1;margin:1px 0;">=</div>
+              <div style="color:#5a4708;font-size:24px;font-weight:900;line-height:1;">66 %</div>
+              <div style="color:#5a4708;font-size:9px;font-weight:800;line-height:1.15;margin-top:1px;">de déduction<br>fiscale</div>
+            </div>
+            <div class="donHeroTopInner" style="padding-right:84px;">
+              <div class="donCircle">
+                <img src="img/hero.jpg" alt="Giulia">
+              </div>
+              <div class="donHeroText">
+                <div class="donHeroQuote">Pour Giulia et tous les enfants atteints du PKS</div>
+                <div class="donHeroSub">Le laboratoire est prêt. Il manque le financement.</div>
+              </div>
+           
+            </div>
+            <div style="position:relative;z-index:1;margin-top:14px;padding-right:84px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <span style="color:#fff;font-size:14px;font-weight:700;line-height:1.45;">Aidez-nous à transformer un programme scientifique prêt en recherche réellement engagée.</span>
+              <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px;white-space:nowrap;">
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span>
+                <span style="color:#fff;font-weight:900;font-size:13px;">Collecte ouverte</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="donTabRow">
+            <div class="donTab active" id="donTabOnce" onclick="donSwitchTab('once')">Don unique</div>
+            <div class="donTab" id="donTabMonthly" onclick="donSwitchTab('monthly')">Don mensuel</div>
+          </div>
+
+         
+  <div class="donAmtsRow" id="donGridOnce">
+    <div class="donAmt" onclick="donPick(this,25)">25 €</div>
+  <div class="donAmt active" onclick="donPick(this,50)">50 €</div>
+  <div class="donAmt" onclick="donPick(this,100)">100 €</div>
+ <div class="donAmt" onclick="donPickCustom(this)">Autre</div>
+</div>
+
+<div class="donCustomZone" id="donCustomZone">
+  <p class="donCustomLabel">Choisissez votre montant</p>
+  <div class="donCustomAmt"><span id="donCustomAmtOut">120 €</span></div>
+  <input type="range" min="5" max="1000" step="5" value="120" id="donCustomSlider" class="donCustomSlider" oninput="donCustomSliderChange(this.value)" />
+</div>
+
+<div class="donAmtsRow" id="donGridMonthly" style="display:none;">
+  <div class="donAmt" onclick="donPick(this,10)">10 €</div>
+  <div class="donAmt active" onclick="donPick(this,25)">25 €</div>
+  <div class="donAmt" onclick="donPick(this,50)">50 €</div>
+</div>
+
+          <!-- Réduction d'impôt (particuliers) -->
+          <div class="donTaxBox" id="donTaxBox">
+            <p class="donTaxLabel">Coût réel après réduction d'impôt de 66 %</p>
+            <div class="donTaxAmt" id="donTaxAmt">17 €</div>
+          </div>
+
+          <!-- CTA -->
+          <div class="donCtaWrap">
+            <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Faire un don sécurisé</button>
+          </div>
+          <p class="donLock">🔒 Paiement sécurisé via Stripe · Carte · Apple Pay · Google Pay · SEPA selon éligibilité</p>
+          <p class="donLock" style="margin-top:8px;">Réduction d'impôt de 66 % dans la limite de 20 % du revenu imposable (art. 200 du CGI). Un reçu fiscal vous est adressé.</p>
+
+        </div>
+
+        <!-- ── DROITE ── -->
+        <div class="donRight">
+          <div class="donRightTitle">Vous êtes une entreprise ?</div>
+          <div class="donRightSub">Le mécénat d'entreprise ouvre droit à une réduction d'impôt de <b>60 %</b> du montant du don.</div>
+
+          <div class="donCompanyBlock">
+            <h4>🤝 Don par virement bancaire</h4>
+            <p>Pour un don important ou un partenariat de mécénat, contactez-nous. Nous vous transmettons :</p>
+            <ul class="donCompanyList">
+              <li>Présentation détaillée du programme scientifique</li>
+              <li>Documents administratifs de l'association</li>
+              <li>Notre RIB / IBAN</li>
+              <li>Une convention de mécénat</li>
+              <li>Votre reçu fiscal officiel (CERFA)</li>
+            </ul>
+          </div>
+
+          <button type="button" class="donCompanyBtn" onclick="copyEmail('contact')">
+            ✉️ Nous contacter
+          </button>
+
+          <div class="donAltSecure">🛡️ Nous répondons personnellement à chaque demande de mécénat.</div>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="donFooter">
+        Association française à but non lucratif · Programme scientifique défini avec une équipe de recherche spécialisée · Informations financières publiées régulièrement.
+      </div>
+    </div>
+
+    <!-- Aider autrement + partage -->
+    <div class="card" style="margin-top:16px;">
+      <div class="cardInner" style="line-height:1.75;">
+        <h3>Vous pouvez aussi nous aider autrement</h3>
+        <p>Un don n'est pas la seule façon de faire avancer Project PKS. Vous pouvez :</p>
+        <ul class="list">
+          <li>présenter le projet à votre entreprise ou à une fondation ;</li>
+          <li>nous mettre en relation avec une personne susceptible de nous aider ;</li>
+          <li>organiser une collecte ou une action solidaire ;</li>
+          <li>partager le projet avec un décideur.</li>
+        </ul>
+        <p style="margin-top:14px;">Parfois, une simple mise en relation peut ouvrir une porte décisive.</p>
+        <div class="row" style="margin-top:16px;">
+          <button type="button" class="btn btnPrimary" onclick="openMail('Proposer mon aide — Project PKS')">Proposer mon aide</button>
+          <button class="btn btnBlue" onclick="shareWhatsApp()">Partager</button>
+        </div>
+      </div>
+    </div>
+    </section>
+
+
+    <section id="confiance">
+      <h2 class="sectionTitle">Comprendre qui porte le projet</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        La confiance ne doit pas reposer uniquement sur notre parole. Les informations scientifiques, administratives et les actualités du programme doivent pouvoir être vérifiées.
+      </p>
+
+      <div class="outcomeGrid">
+        <div class="card">
+          <div class="cardInner">
+            <h4>Le laboratoire</h4>
+            <p>Le programme a été conçu avec une équipe spécialisée dans les organoïdes cérébraux et les maladies neurologiques rares.</p>
+            <a href="lab_fr.html" style="display:inline-block;margin-top:12px;color:var(--blue2);font-weight:900;font-size:14px;text-decoration:none;">Découvrir le laboratoire partenaire ›</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <h4>L'association</h4>
+            <p>Project PKS est une association française à but non lucratif. Ses informations administratives sont publiées sur le site.</p>
+            <a href="#association" style="display:inline-block;margin-top:12px;color:var(--blue2);font-weight:900;font-size:14px;text-decoration:none;">Voir les informations ›</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <h4>Le suivi</h4>
+            <p>Les avancées, les sommes engagées et les étapes réalisées seront publiées sur cette page au fur et à mesure du programme.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<section id="families">
+  <h2 class="sectionTitle">Pour les familles concernées par le PKS</h2>
+
+  <p class="sectionSub" style="margin:18px 0 24px; max-width:100%;">
+    Ce projet vise à faire avancer la recherche sur le syndrome de Pallister-Killian
+et à ouvrir des perspectives pour l'ensemble des enfants concernés.
+Il est né d'une histoire personnelle — celle de Giulia — mais s'inscrit
+dans une démarche collective et scientifique.
+Les familles souhaitant suivre le programme, contribuer à la recherche
+ou partager des informations utiles peuvent nous contacter directement.
+  </p>
+
+  <div class="card">
+    <div class="cardInner" style="line-height:1.75;">
+
+      <p>
+        Vous pouvez nous écrire directement :
+      </p>
+
+     <div class="row" style="margin-top:14px;">
+  <button type="button" class="btn btnBlue" onclick="copyEmail('families')">
+  Copier l'email (familles PKS)
+</button>
+  
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+    <section id="association">
+      <h2 class="sectionTitle">L'association Project PKS</h2>
+      <p class="sectionSub" style="max-width:100%;">
+        Une association créée pour faire émerger et financer des recherches consacrées au syndrome de Pallister-Killian.
+      </p>
+
+      <div class="grid2 equal">
+        <div class="card">
+          <div class="cardInner" style="line-height:1.75;">
+            <h3>Notre mission</h3>
+            <p>Project PKS existe pour lancer et financer des recherches spécifiquement consacrées au syndrome de Pallister-Killian.</p>
+            <p style="margin-top:12px;">Notre objectif est de comprendre quels mécanismes biologiques sont responsables des difficultés causées par le PKS, d'identifier les cibles sur lesquelles il pourrait être possible d'agir et de tester des pistes thérapeutiques sur des modèles issus d'enfants atteints du syndrome.</p>
+            <p style="margin-top:12px;">Notre ambition est claire : transformer les connaissances sur le PKS en pistes concrètes capables d'ouvrir de nouvelles perspectives pour les enfants.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner" style="line-height:1.75;">
+            <h3>Informations administratives</h3>
+            <div style="margin-top:6px;"><b>RNA :</b> W951008089</div>
+            <div style="margin-top:6px;"><b>Siège :</b> 14, place Eugène Varlin, Taverny, France</div>
+            <div style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <b>Contact :</b>
+              <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">Copier l'adresse email</a>
+            </div>
+            <p class="muted" style="margin-top:14px;">L'association étant récente, aucun exercice annuel n'a encore été clôturé. Les informations financières seront publiées à partir de la première clôture comptable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+   
+   
+
+   
+    <section id="faq">
+      <h2 class="sectionTitle">Questions fréquentes</h2>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Comment le programme est-il financé ?</summary>
+        <div class="faqBody">Project PKS recherche des financements auprès de plusieurs sources : donateurs particuliers, entreprises, fondations et grands mécènes. Le dossier scientifique et budgétaire détaillé est transmis dans le cadre des demandes de mécénat et de financement.</div>
+      </details>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Un petit don peut-il réellement servir ?</summary>
+        <div class="faqBody">Oui. Aucun don isolé ne finance à lui seul une expérience complète, mais chaque contribution renforce la collecte, montre qu'une communauté soutient le programme et facilite la recherche de financements plus importants.</div>
+      </details>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Est-ce qu'un traitement est garanti ?</summary>
+        <div class="faqBody">Non. Cette première phase doit permettre de comprendre les mécanismes de la maladie et d'évaluer des pistes. Elle peut identifier des options prometteuses, mais aussi montrer que certaines stratégies ne fonctionnent pas.</div>
+      </details>
+
+      <details class="faqItem">
+        <summary><span class="faqCaret">▾</span> Comment suivre l'utilisation des dons ?</summary>
+        <div class="faqBody">Project PKS publiera les avancées du programme, les étapes engagées et les informations financières disponibles. Les entreprises et grands donateurs peuvent également demander les documents détaillés.</div>
+      </details>
+    </section>
+<footer>
+  <div class="footerGrid">
+ 
+    <!-- TEXTO DE POSICIONAMENTO -->
+    <div class="muted" style="margin-top:18px; max-width:100%">
+      <p>
+        Project PKS est une association à but non lucratif régie par la loi du 1er juillet 1901.
+      </p>
+
+      
+    </div>
+
+    <!-- CONTATO -->
+    <div class="muted" style="margin-top:10px;">
+  Contact :
+  <a href="#" onclick="copyEmail('contact'); return false;" class="footerLink">
+    Copier l'email de contact
+  </a>
+
+</div>
+    
+    <!-- COPYRIGHT -->
+    <div>
+    © <span id="year"></span> Fait par une mère et un père, par amour pour Giulia.
+&nbsp;·&nbsp;
+<a href="/legal.html" style="color:var(--muted);text-decoration:underline;">Mentions légales</a>
+    </div>
+
+  </div>
+</footer>
+
+
+
+  </main>
+
+  <div class="donateBar" role="region" aria-label="Barre de don">
+    <div class="donateBarInner">
+      <div>
+        <b>La recherche peut commencer.</b>
+        <span style="color:rgba(255,255,255,.78)">Aidez-nous à financer la première phase.</span>
+      </div>
+      <div class="donateBarBtns">
+        <button class="btnBar" onclick="goTo('donations')">Faire un don</button>
+        <button class="btnBarGhost" onclick="copyLink()">Copier le lien</button>
+        <button class="btnBarGhost" onclick="shareWhatsApp()">WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+   
+
+    const SHARE_TEXT = "Pour Giulia — et pour tous les enfants atteints du PKS — soutenez la recherche. Lien :";
+  if (typeof DON_SHARED === 'undefined') {
+    console.error('config.js introuvable ou DON_SHARED non défini : valeurs de secours utilisées.');
+  }
+  const DON_SHARED_SAFE = (typeof DON_SHARED !== 'undefined') ? DON_SHARED : { collected: 0, goal: 500000 };
+  const DON_CONFIG = {
+  collected: DON_SHARED_SAFE.collected,
+  goal: DON_SHARED_SAFE.goal,
+
+  stripe: {
+    onceCustom: 'https://buy.stripe.com/8x2cN78bt87yb2F2xcak001',
+
+    onceFixed: {
+      10: 'https://buy.stripe.com/bJebJ3fDVdrS5Ilgo2ak002',
+      25: 'https://buy.stripe.com/14A7sN2R9drS5Ilb3Iak003',
+      50: 'https://buy.stripe.com/7sY28t2R9gE4eeR3Bgak004',
+      100: 'https://buy.stripe.com/14AcN73Vd3Ri8Ux0p4ak005'
+    },
+
+   monthlyFixed: {
+  10: 'https://buy.stripe.com/aFa4gB2R90F6c6J0p4ak006',
+  25: 'https://buy.stripe.com/dRm00ldvNgE4fiV9ZEak007',
+  50: 'https://buy.stripe.com/8x2bJ34ZhgE49YBdbQak008'
+}
+  }
+};
+
+ let donTab = 'once';
+let donAmt = 50;
+let donCustomSelected = false;
+let donVirOpen = false;
+
+function fmtEuro(n){
+  return Math.round(n).toLocaleString('fr-FR') + ' €';
+}
+
+function updateDonTax(){
+  const box = document.getElementById('donTaxBox');
+  const amtEl = document.getElementById('donTaxAmt');
+  if (!box || !amtEl) return;
+  if (!donAmt || donAmt <= 0) {
+    box.style.display = 'none';
+    return;
+  }
+  box.style.display = 'block';
+  amtEl.textContent = fmtEuro(donAmt * 0.34);
+}
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const pct = Math.min((DON_CONFIG.collected / DON_CONFIG.goal) * 100, 100);
+    setTimeout(() => {
+      const f = document.getElementById('donProgFill');
+      if (f) f.style.width = pct.toFixed(1) + '%';
+    }, 500);
+    const a = document.getElementById('donAmtDisplay');
+if (a) {
+  a.textContent = '$' + DON_CONFIG.collected.toLocaleString('fr-FR');
+}
+    updateDonTax();
+  });
+
+  function donSwitchTab(t) {
+  donTab = t;
+  document.getElementById('donTabOnce').className = 'donTab' + (t === 'once' ? ' active' : '');
+  document.getElementById('donTabMonthly').className = 'donTab' + (t === 'monthly' ? ' active' : '');
+  document.getElementById('donGridOnce').style.display = t === 'once' ? 'flex' : 'none';
+  document.getElementById('donGridMonthly').style.display = t === 'monthly' ? 'flex' : 'none';
+
+  donAmt = t === 'once' ? 50 : 25;
+  donCustomSelected = false;
+  hideDonCustomZone();
+
+  const g = t === 'once' ? 'donGridOnce' : 'donGridMonthly';
+  document.querySelectorAll('#' + g + ' .donAmt')
+    .forEach((b, i) => b.classList.toggle('active', i === (t === 'once' ? 2 : 1)));
+
+  updateDonTax();
+}
+function donPick(el, a) {
+  const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
+  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  donAmt = a;
+  donCustomSelected = false;
+  hideDonCustomZone();
+  updateDonTax();
+}
+function donPickCustom(el) {
+  const g = 'donGridOnce';
+  document.querySelectorAll('#' + g + ' .donAmt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  donCustomSelected = true;
+  showDonCustomZone();
+}
+
+function showDonCustomZone(){
+  const zone = document.getElementById('donCustomZone');
+  const slider = document.getElementById('donCustomSlider');
+  if (zone) zone.classList.add('open');
+  if (slider) {
+    donAmt = parseFloat(slider.value);
+    donCustomSliderChange(slider.value);
+  }
+}
+function hideDonCustomZone(){
+  const zone = document.getElementById('donCustomZone');
+  if (zone) zone.classList.remove('open');
+}
+function donCustomSliderChange(val){
+  const amt = parseFloat(val);
+  donAmt = amt;
+  const out = document.getElementById('donCustomAmtOut');
+  if (out) out.textContent = fmtEuro(amt);
+  updateDonTax();
+}
+ 
+function donSubmit() {
+  let link = '';
+
+  if (donTab === 'monthly') {
+    link = DON_CONFIG.stripe.monthlyFixed[donAmt] || '';
+  } else {
+    if (donCustomSelected) {
+      link = DON_CONFIG.stripe.onceCustom || '';
+    } else {
+      link = DON_CONFIG.stripe.onceFixed[donAmt] || '';
+    }
+  }
+
+  if (!link || link.includes('STRIPE_')) {
+    showToast('⚠️ Lien de paiement non configuré.');
+    return;
+  }
+
+  // Meta Pixel : intention de don (InitiateCheckout)
+  if (typeof fbq === 'function') {
+    fbq('track', 'InitiateCheckout', {
+      value: donAmt,
+      currency: 'EUR',
+      content_name: donTab === 'monthly' ? 'Don mensuel' : 'Don unique'
+    });
+  }
+
+  const pageLang = (document.documentElement.lang || 'en').toLowerCase();
+  let locale = 'en';
+
+  if (pageLang.startsWith('fr')) locale = 'fr';
+  else if (pageLang.startsWith('pt')) locale = 'pt';
+  else if (pageLang.startsWith('es')) locale = 'es';
+
+  const sep = link.includes('?') ? '&' : '?';
+  const finalUrl = link + sep + 'locale=' + locale;
+
+  window.open(finalUrl, '_blank', 'noopener');
+}
+  function donToggleVir() {
+    donVirOpen = !donVirOpen;
+    document.getElementById('donVirBox').className = 'donVirBox' + (donVirOpen ? ' open' : '');
+    document.getElementById('donVirArrow').textContent = donVirOpen ? '▾' : '›';
+    document.getElementById('donVirLabel').textContent = donVirOpen
+      ? 'Masquer les coordonnées'
+      : 'Virement bancaire';
+  }
+
+  function donCopyVal(type) {
+    const el = document.getElementById(type === 'iban' ? 'donIbanVal' : 'donBicVal');
+    const val = el ? el.textContent.trim() : '';
+    if (!val || val.includes('VOTRE_') || val.includes('ICI')) {
+      showToast('ℹ️ Coordonnées bancaires disponibles prochainement.');
+      return;
+    }
+    safeCopyText(val, (type === 'iban' ? 'IBAN' : 'BIC') + ' copié !');
+  }
+function showToast(msg, ms=2600){
+    const t = document.createElement("div");
+    t.className = "toast";
+    t.innerHTML = msg;
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(), ms);
+  }
+
+  async function safeCopyText(text, okMsg="Copié !"){
+    try{
+      if(navigator.clipboard?.writeText){
+        await navigator.clipboard.writeText(text);
+        showToast("✅ <b>"+okMsg+"</b>");
+        return true;
+      }
+    }catch(e){}
+
+    try{
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(ta);
+
+      if(success){
+        showToast("✅ <b>"+okMsg+"</b>");
+        return true;
+      }
+    }catch(e){}
+
+    showToast("📋 Copie manuelle : <b>" + String(text).replace(/</g,"&lt;") + "</b>", 6000);
+    return false;
+  }
+ function goTo(id){
+  const el = document.getElementById(id);
+
+  if(!el){
+    location.hash = "#" + id;
+    return;
+  }
+
+  history.replaceState(null, "", "#" + id);
+
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+
+
+
+    function copyLink(){
+  safeCopyText(location.href, "Lien copié !");
+}
+
+
+    function shareWhatsApp(){
+      const text = SHARE_TEXT + " " + location.href;
+      window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
+    }
+
+
+  // --- Emails anti-bot
+const EMAIL_CONTACT_USER = "contact";
+const EMAIL_FAMILIES_USER = "families";
+const EMAIL_DOMAIN = "project-pks.org";
+
+function buildEmail(user){
+  return user + "@" + EMAIL_DOMAIN;
+}
+
+
+function copyEmail(type){
+  const user = type === "families" ? EMAIL_FAMILIES_USER : EMAIL_CONTACT_USER;
+  const email = buildEmail(user);
+  safeCopyText(email, "Email copié !");
+}
+
+function openMail(subject){
+  const email = buildEmail(EMAIL_CONTACT_USER);
+  const s = subject ? ("?subject=" + encodeURIComponent(subject)) : "";
+  window.location.href = "mailto:" + email + s;
+}
+
+
+
+
+function showInfo(type){
+  if(type === "accounts"){
+    showToast(
+      "📌 <b>Comptes</b> : l'association est récente. Aucun exercice annuel n'a encore été clôturé. Les comptes seront publiés annuellement dès la première clôture.",
+      6000
+    );
+    return;
+  }
+
+  if(type === "progress"){
+    showToast(
+      "🔬 <b>Suivi</b> : le programme de recherche débutera dès que le financement de la phase initiale sera atteint. Les mises à jour officielles seront publiées ici.",
+      6000
+    );
+    return;
+  }
+}
+
+    function toggleNav(force){
+  const nav = document.getElementById("mainNav");
+  const btn = document.querySelector(".navToggle");
+  if(!nav || !btn) return;
+
+  const isOpen = nav.getAttribute("data-open") === "true";
+  const next = (typeof force === "boolean") ? force : !isOpen;
+
+  nav.setAttribute("data-open", next ? "true" : "false");
+  btn.setAttribute("aria-expanded", next ? "true" : "false");
+}
+    document.addEventListener("click", (e) => {
+  const nav = document.getElementById("mainNav");
+  if(!nav) return;
+  const link = e.target.closest("nav a");
+  if(link) toggleNav(false);
+});
+    function toggleLang(force){
+  const wrap = document.querySelector(".langDrop");
+  const btn  = document.querySelector(".langBtn");
+  if(!wrap || !btn) return;
+
+  const isOpen = wrap.getAttribute("data-open") === "true";
+  const next = (typeof force === "boolean") ? force : !isOpen;
+
+  wrap.setAttribute("data-open", next ? "true" : "false");
+  btn.setAttribute("aria-expanded", next ? "true" : "false");
+}
+
+document.addEventListener("click", (e) => {
+  const wrap = document.querySelector(".langDrop");
+  if(!wrap) return;
+  if(!e.target.closest(".langDrop")) toggleLang(false);
+});
+    document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    toggleLang(false);
+    toggleNav(false);
+  }
+});
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function(){
+      var track = document.getElementById('carTrack');
+      var dotsWrap = document.getElementById('carDots');
+      var car = document.getElementById('giuliaCarousel');
+      if(!track || !car || !dotsWrap) return;
+
+      var n = track.children.length;
+      var i = 0, timer = null;
+
+      for(var k=0;k<n;k++){
+        var d = document.createElement('button');
+        d.className = 'carDot' + (k===0 ? ' active' : '');
+        d.setAttribute('aria-label','Photo ' + (k+1));
+        (function(idx){ d.onclick = function(){ go(idx); reset(); }; })(k);
+        dotsWrap.appendChild(d);
+      }
+
+      function render(){
+        track.style.transform = 'translateX(-' + (i*100) + '%)';
+        var dots = dotsWrap.children;
+        for(var k=0;k<dots.length;k++){ dots[k].className = 'carDot' + (k===i ? ' active' : ''); }
+      }
+      function go(idx){ i = (idx + n) % n; render(); }
+      window.carMove = function(dir){ go(i + dir); reset(); };
+      function start(){ timer = setInterval(function(){ go(i+1); }, 4500); }
+      function reset(){ if(timer) clearInterval(timer); start(); }
+
+      car.addEventListener('mouseenter', function(){ if(timer) clearInterval(timer); });
+      car.addEventListener('mouseleave', start);
+
+      render(); start();
+    })();
+
+    (function(){
+      var track = document.getElementById('thanksTrack');
+      var wrap = document.getElementById('thanksTicker');
+      if(!track || !wrap) return;
+
+      var names = (typeof DON_THANKS !== 'undefined' && Array.isArray(DON_THANKS) && DON_THANKS.length)
+        ? DON_THANKS
+        : ["Valentine","Marc","Sofia","Un donateur","Lucas","Amélie"];
+
+      if(!names.length){ wrap.style.display = 'none'; return; }
+
+      var word = track.getAttribute('data-word') || 'Merci';
+
+      function escapeHtml(s){
+        return String(s).replace(/[&<>"]/g, function(c){
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+        });
+      }
+
+      var base = names.slice();
+      while(base.length < 12){ base = base.concat(names); }
+
+      var seq = base.map(function(n){
+        return '<span class="thanksItem">' + word + ' ' + escapeHtml(n) + ' \uD83D\uDC99</span>';
+      }).join('');
+
+      track.innerHTML = seq + seq;
+    })();
+
+    document.addEventListener("contextmenu", function(e){
+  if (e.target.closest("img, .photoProtected")) {
+    e.preventDefault();
+    showToast("📷 La copie directe des photos est désactivée.");
+  }
+});
+
+    document.addEventListener("dragstart", function(e){
+  if (e.target.closest("img, .photoProtected")) {
+    e.preventDefault();
+  }
+});
+
+    
+      </script>
+</body>
+</html>
