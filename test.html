@@ -1056,6 +1056,9 @@ img{
   .taxBadge{width:82px !important;height:82px !important;top:-8px !important;right:-6px !important;}
   .taxBadge div{font-size:11px !important;}
   .taxBadge div:nth-child(3){font-size:19px !important;}
+  .labBanner{flex-direction:column !important;align-items:flex-start !important;gap:10px !important;padding:16px 18px !important;}
+  .labInner{align-items:flex-start !important;}
+  .labLink{padding-left:56px !important;}
 }
 
  </style>
@@ -1130,14 +1133,6 @@ img{
           letter-spacing:.2px;
         ">
           Pour Giulia et pour tous les enfants atteints du syndrome de Pallister-Killian.
-        </p>
-
-        <p class="muted" style="
-          margin:0 0 16px;
-          font-size:14px;
-          text-align:center;
-        ">
-          Project PKS — Recherche sur le syndrome de Pallister-Killian
         </p>
 
         <p class="heroSub" style="margin-top:8px; color:var(--ink); font-size:18px; line-height:1.55;">
@@ -1308,17 +1303,17 @@ img{
       </div>
 
       <a href="lab_fr.html" style="display:block;text-decoration:none;">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 24px;border-radius:18px;background:linear-gradient(135deg,rgba(11,46,107,.07),rgba(25,182,122,.07));border:1.5px solid rgba(30,99,255,.2);box-shadow:0 4px 16px rgba(11,46,107,.08);"
+        <div class="labBanner" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 24px;border-radius:18px;background:linear-gradient(135deg,rgba(11,46,107,.07),rgba(25,182,122,.07));border:1.5px solid rgba(30,99,255,.2);box-shadow:0 4px 16px rgba(11,46,107,.08);"
         onmouseover="this.style.boxShadow='0 8px 24px rgba(11,46,107,.14)'"
         onmouseout="this.style.boxShadow='0 4px 16px rgba(11,46,107,.08)'">
-          <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
+          <div class="labInner" style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
             <div style="width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#1E63FF,#19B67A);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;">AM</div>
             <div style="min-width:0;">
               <div style="font-weight:900;color:var(--blue);font-size:15px;">🔬 Programme développé avec le Dr Alysson R. Muotri et son équipe à UC San Diego</div>
               <div style="color:var(--muted);font-size:13.5px;margin-top:2px;">Découvrez le laboratoire, son expérience et le cadre scientifique du projet.</div>
             </div>
           </div>
-          <div style="color:var(--blue2);font-weight:900;font-size:15px;white-space:nowrap;flex-shrink:0;padding-left:8px;">Voir le laboratoire ›</div>
+          <div class="labLink" style="color:var(--blue2);font-weight:900;font-size:15px;white-space:nowrap;flex-shrink:0;padding-left:8px;">Voir le laboratoire ›</div>
         </div>
       </a>
     </section>
@@ -1625,6 +1620,12 @@ ou partager des informations utiles peuvent nous contacter directement.
       </details>
     </section>
 <footer>
+
+  <!-- POSITIONNEMENT (en premier, pleine largeur) -->
+  <div class="muted" style="margin-bottom:12px;">
+    <p style="margin:0;">Project PKS est une association à but non lucratif régie par la loi du 1er juillet 1901.</p>
+  </div>
+
   <div class="footerGrid">
 
     <!-- CONTACT (gauche) -->
@@ -1640,11 +1641,6 @@ ou partager des informations utiles peuvent nous contacter directement.
       <a href="/legal.html" style="color:var(--muted);text-decoration:underline;">Mentions légales</a>
     </div>
 
-  </div>
-
-  <!-- POSITIONNEMENT (dessous, pleine largeur) -->
-  <div class="muted" style="margin-top:12px;">
-    <p style="margin:0;">Project PKS est une association à but non lucratif régie par la loi du 1er juillet 1901.</p>
   </div>
 </footer>
 
