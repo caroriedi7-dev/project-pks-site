@@ -1366,16 +1366,7 @@ img{
 
           <!-- Photo + jauge -->
           <div class="donHeroTop">
-            <div class="taxBadge" style="position:absolute;top:-12px;right:-10px;z-index:2;width:106px;height:106px;border-radius:50%;background:#f3d37f;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);box-shadow:0 6px 18px rgba(0,0,0,.18);">
-              <div style="display:flex;align-items:center;gap:5px;color:#5a4708;font-size:14px;font-weight:900;line-height:1;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4708"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.4 2 5 5.3 5c2 0 3.4 1.1 4.2 2.3l.5.8.5-.8C11.3 6.1 12.7 5 14.7 5 18 5 19.6 8.4 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-                1 don
-              </div>
-              <div style="color:#5a4708;font-size:13px;font-weight:900;line-height:1;margin:1px 0;">=</div>
-              <div style="color:#5a4708;font-size:24px;font-weight:900;line-height:1;">66 %</div>
-              <div style="color:#5a4708;font-size:9px;font-weight:800;line-height:1.15;margin-top:1px;">de réduction<br>d'impôt</div>
-            </div>
-            <div class="donHeroTopInner" style="padding-right:84px;">
+            <div class="donHeroTopInner">
               <div class="donCircle">
                 <img src="img/hero.jpg" alt="Giulia">
               </div>
@@ -1385,7 +1376,7 @@ img{
               </div>
            
             </div>
-            <div style="position:relative;z-index:1;margin-top:14px;padding-right:84px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <div style="position:relative;z-index:1;margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
               <span style="color:#fff;font-size:14px;font-weight:700;line-height:1.45;">Aidez-nous à transformer un programme scientifique prêt en recherche réellement engagée.</span>
               <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px;white-space:nowrap;">
                 <span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span>
@@ -1420,25 +1411,17 @@ img{
   <div class="donAmt" onclick="donPick(this,50)">50 €</div>
 </div>
 
-          <!-- Réduction d'impôt (particuliers) -->
-          <div class="donTaxBox" id="donTaxBox">
-            <p class="donTaxLabel">Coût réel après réduction d'impôt de 66 %</p>
-            <div class="donTaxAmt" id="donTaxAmt">17 €</div>
-          </div>
-
           <!-- CTA -->
           <div class="donCtaWrap">
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Faire un don sécurisé</button>
           </div>
           <p class="donLock">🔒 Paiement sécurisé via Stripe · Carte · Apple Pay · Google Pay · SEPA selon éligibilité</p>
-          <p class="donLock" style="margin-top:8px;">Réduction d'impôt de 66 % dans la limite de 20 % du revenu imposable (art. 200 du CGI). Un reçu fiscal vous est adressé.</p>
 
         </div>
 
         <!-- ── DROITE ── -->
         <div class="donRight">
           <div class="donRightTitle">Vous êtes une entreprise ?</div>
-          <div class="donRightSub">Le mécénat d'entreprise ouvre droit à une réduction d'impôt de <b>60 %</b> du montant du don.</div>
 
           <div class="donCompanyBlock">
             <h4>🤝 Don par virement bancaire</h4>
@@ -1448,7 +1431,6 @@ img{
               <li>Documents administratifs de l'association</li>
               <li>Notre RIB / IBAN</li>
               <li>Une convention de mécénat</li>
-              <li>Votre reçu fiscal officiel (CERFA)</li>
             </ul>
           </div>
 
@@ -1701,17 +1683,6 @@ function fmtEuro(n){
   return Math.round(n).toLocaleString('fr-FR') + ' €';
 }
 
-function updateDonTax(){
-  const box = document.getElementById('donTaxBox');
-  const amtEl = document.getElementById('donTaxAmt');
-  if (!box || !amtEl) return;
-  if (!donAmt || donAmt <= 0) {
-    box.style.display = 'none';
-    return;
-  }
-  box.style.display = 'block';
-  amtEl.textContent = fmtEuro(donAmt * 0.34);
-}
 
   document.addEventListener('DOMContentLoaded', function() {
     const pct = Math.min((DON_CONFIG.collected / DON_CONFIG.goal) * 100, 100);
@@ -1723,7 +1694,6 @@ function updateDonTax(){
 if (a) {
   a.textContent = '$' + DON_CONFIG.collected.toLocaleString('fr-FR');
 }
-    updateDonTax();
   });
 
   function donSwitchTab(t) {
@@ -1741,7 +1711,6 @@ if (a) {
   document.querySelectorAll('#' + g + ' .donAmt')
     .forEach((b, i) => b.classList.toggle('active', i === 1));
 
-  updateDonTax();
 }
 function donPick(el, a) {
   const g = donTab === 'once' ? 'donGridOnce' : 'donGridMonthly';
@@ -1750,7 +1719,6 @@ function donPick(el, a) {
   donAmt = a;
   donCustomSelected = false;
   hideDonCustomZone();
-  updateDonTax();
 }
 function donPickCustom(el) {
   const g = 'donGridOnce';
@@ -1778,7 +1746,6 @@ function donCustomSliderChange(val){
   donAmt = amt;
   const out = document.getElementById('donCustomAmtOut');
   if (out) out.textContent = fmtEuro(amt);
-  updateDonTax();
 }
  
 function donSubmit() {
