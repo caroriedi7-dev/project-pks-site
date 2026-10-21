@@ -2044,14 +2044,29 @@ document.addEventListener("click", (e) => {
     document.getElementById("year").textContent = new Date().getFullYear();
 
     (function(){
-      var bar = document.querySelector('.donateBar');
-      var footer = document.querySelector('footer');
-      if(!bar || !footer) return;
-      function adjust(){ footer.style.paddingBottom = (bar.offsetHeight + 24) + 'px'; }
-      adjust();
-      window.addEventListener('resize', adjust);
-      window.addEventListener('load', adjust);
-    })();
+  const bar = document.querySelector('.donateBar');
+  const footer = document.querySelector('footer');
+  if (!bar || !footer) return;
+
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(entries => {
+      const box = entries[0].borderBoxSize;
+      const height = box
+        ? (Array.isArray(box) ? box[0].blockSize : box.blockSize)
+        : entries[0].contentRect.height;
+
+      footer.style.paddingBottom = (Math.ceil(height) + 24) + 'px';
+    });
+
+    observer.observe(bar);
+  } else {
+    function adjust() {
+      footer.style.paddingBottom = (bar.offsetHeight + 24) + 'px';
+    }
+    adjust();
+    window.addEventListener('resize', adjust);
+  }
+})();
 
     (function(){
       var track = document.getElementById('thanksTrack');
