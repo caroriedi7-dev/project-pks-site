@@ -1066,7 +1066,59 @@ img{
   .labLink{padding-left:56px !important;}
 }
 
- </style>
+/* Miniaturas de YouTube */
+.videoWrapSmall .youtubePoster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+
+.videoWrapSmall .youtubePoster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoWrapSmall .youtubePlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  border-radius: 13px;
+  background: rgba(33,33,33,.84);
+  transition: background .15s ease;
+}
+
+.videoWrapSmall .youtubePlay::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  border-left: 19px solid #fff;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+}
+
+.videoWrapSmall .youtubePoster:hover .youtubePlay,
+.videoWrapSmall .youtubePoster:focus-visible .youtubePlay {
+  background: #f00;
+}
+
+.videoWrapSmall .youtubePoster:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -4px;
+}
+
+</style>
 </head>
 
 <body>
@@ -1188,24 +1240,38 @@ img{
             <h3>Ver los vídeos</h3>
 
             <div class="videoWrapSmall">
-              <iframe loading="lazy"
-                src="https://www.youtube.com/embed/X9jsLS14ngQ?rel=0"
-                title="Vídeo de la campaña de Giulia"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen>
-              </iframe>
+             <a class="youtubePoster"
+   href="https://www.youtube.com/watch?v=X9jsLS14ngQ"
+   data-video-id="X9jsLS14ngQ"
+   data-video-title="Vídeo de la campaña de Giulia"
+   aria-label="Ver la historia de Giulia">
+  <img
+    src="https://i.ytimg.com/vi/X9jsLS14ngQ/hqdefault.jpg"
+    alt=""
+    loading="lazy"
+    decoding="async"
+    width="480"
+    height="360">
+  <span class="youtubePlay" aria-hidden="true"></span>
+</a>
             </div>
             <p class="videoCaption">La historia de Giulia</p>
 
             <div class="videoWrapSmall" style="margin-top:18px;">
-              <iframe loading="lazy"
-                src="https://www.youtube.com/embed/RnBPTD9_1SA?si=3aWn4XJ_zSZzmAsr"
-                title="Dr. Alysson Muotri — Programa de investigación PKS"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen>
-              </iframe>
+              <a class="youtubePoster"
+   href="https://www.youtube.com/watch?v=RnBPTD9_1SA"
+   data-video-id="RnBPTD9_1SA"
+   data-video-title="Dr. Alysson Muotri — Programa de investigación PKS"
+   aria-label="Ver el vídeo del Dr. Alysson Muotri">
+  <img
+    src="https://i.ytimg.com/vi/RnBPTD9_1SA/hqdefault.jpg"
+    alt=""
+    loading="lazy"
+    decoding="async"
+    width="480"
+    height="360">
+  <span class="youtubePlay" aria-hidden="true"></span>
+</a>
             </div>
             <p class="videoCaption">Dr. Alysson Muotri — Programa de investigación PKS</p>
 
@@ -2018,5 +2084,30 @@ document.addEventListener("click", (e) => {
 
     
       </script>
+<script>
+(function () {
+  document.querySelectorAll('.youtubePoster').forEach(function (poster) {
+    poster.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      var id = poster.getAttribute('data-video-id');
+      if (!id) return;
+
+      var iframe = document.createElement('iframe');
+
+      iframe.src = 'https://www.youtube.com/embed/' +
+        encodeURIComponent(id) +
+        '?autoplay=1&rel=0&playsinline=1';
+
+      iframe.title = poster.getAttribute('data-video-title') || 'Vídeo de YouTube';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+
+      poster.replaceWith(iframe);
+    });
+  });
+})();
+</script>
 </body>
 </html>
