@@ -881,6 +881,14 @@ footer{
   color: #0F7A52;
 }
 
+/* Case reçu fiscal — Fondation Maladies Rares */
+.donFmr{width:85%;display:flex;gap:10px;align-items:flex-start;margin:0 0 14px;padding:11px 14px;border-radius:14px;border:1.5px solid var(--line);background:rgba(242,251,247,.6);cursor:pointer;text-align:left;transition:border-color .15s,background .15s;}
+.donFmr:hover{border-color:rgba(25,182,122,.5);}
+.donFmr input{width:18px;height:18px;margin:2px 0 0;flex-shrink:0;accent-color:var(--green);cursor:pointer;}
+.donFmr b{display:block;color:var(--blue);font-size:14px;line-height:1.35;}
+.donFmr span{font-size:12.5px;color:var(--muted);line-height:1.45;}
+.donFmr.on{border-color:var(--green);background:rgba(25,182,122,.08);}
+@media(max-width:780px){.donFmr{width:100%;}}
 .donCtaWrap{width:85%;margin-bottom:12px;}
 .donCtaBtn{
   width:100%;padding:16px 32px;border:none;border-radius:999px;
@@ -1477,11 +1485,20 @@ img{
   <div class="donAmt" onclick="donPick(this,50)">50 €</div>
 </div>
 
+          <!-- Reçu fiscal via la Fondation Maladies Rares -->
+          <label class="donFmr" id="donFmr">
+            <input type="checkbox" id="donFmrCheck" onchange="donFmrToggle()" />
+            <div>
+              <b>Je souhaite un reçu fiscal (impôt en France)</b>
+              <span>Don via notre partenaire, la Fondation Maladies Rares : réduction d'impôt de 66 %.</span>
+            </div>
+          </label>
+
           <!-- CTA -->
           <div class="donCtaWrap">
             <button class="donCtaBtn" id="donCtaBtn" onclick="donSubmit()">Faire un don sécurisé</button>
           </div>
-          <p class="donLock">🔒 Paiement sécurisé via Stripe · Carte · Apple Pay · Google Pay · SEPA selon éligibilité</p>
+          <p class="donLock" id="donLock">🔒 Paiement sécurisé via Stripe · Carte · Apple Pay · Google Pay · SEPA selon éligibilité</p>
 
         </div>
 
@@ -1816,7 +1833,29 @@ function donCustomSliderChange(val){
   if (out) out.textContent = fmtEuro(amt);
 }
  
+// ── Reçu fiscal via la Fondation Maladies Rares ──
+const FMR_LINK = 'https://dons-fondationmaladiesrares.iraiser.eu/projectPKS/~mon-don';
+let donFmrDefaults = null;
+function donFmrToggle() {
+  const on = document.getElementById('donFmrCheck').checked;
+  const btn = document.getElementById('donCtaBtn');
+  const lock = document.getElementById('donLock');
+  if (!donFmrDefaults) donFmrDefaults = { btn: btn.textContent, lock: lock.textContent };
+  document.getElementById('donFmr').classList.toggle('on', on);
+  btn.textContent = on ? 'Continuer vers la Fondation ↗' : donFmrDefaults.btn;
+  lock.textContent = on ? '🔒 Don finalisé sur la page sécurisée de la Fondation Maladies Rares, dédiée à Project PKS.' : donFmrDefaults.lock;
+}
+
 function donSubmit() {
+  const fmr = document.getElementById('donFmrCheck');
+  if (fmr && fmr.checked) {
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', { value: donAmt, currency: 'EUR', content_name: 'Don Fondation Maladies Rares' });
+    }
+    window.open(FMR_LINK, '_blank', 'noopener');
+    return;
+  }
+
   let link = '';
 
   if (donTab === 'monthly') {
