@@ -1,98 +1,110 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mentions légales | Project PKS</title>
-  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mentions légales, hébergement, dons et informations sur la protection des données du site Project PKS.">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="/pks_favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/pks_favicon.svg">
+  <title>Mentions légales et confidentialité | Project PKS</title>
   <style>
-    :root{--blue:#0B2E6B;--muted:#3F565E;--line:#D2E6DF;--bg:#F2FBF7}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;color:#0F1F26;line-height:1.7;background:var(--bg)}
-    .wrap{max-width:780px;margin:0 auto;padding:40px 20px}
-    h1{color:var(--blue);font-size:32px;font-weight:900;margin:0 0 8px}
-    h2{color:var(--blue);font-size:18px;font-weight:900;margin:32px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
-    p,li{color:#2a3a40;font-size:15px;margin:0 0 10px}
-    ul{padding-left:20px;margin:0 0 10px}
-    .badge{display:inline-block;background:rgba(11,46,107,.08);color:var(--blue);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:20px}
-    a{color:var(--blue)}
-    footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
-    .btn{display:inline-flex;align-items:center;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--blue);font-weight:900;font-size:13px;text-decoration:none;margin-bottom:32px}
+    :root { --bg:#F2FBF7; --ink:#0F1F26; --blue:#0B2E6B; --muted:#3F565E; --line:#D2E6DF; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.65; }
+    a { color:var(--blue); }
+    a:focus-visible { outline:3px solid #1E63FF; outline-offset:3px; }
+    header { background:#fff; border-bottom:1px solid var(--line); }
+    .container { max-width:880px; margin:0 auto; padding:20px 22px; }
+    .headerline { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:19px; font-weight:850; letter-spacing:.3px; text-decoration:none; }
+    .langs { display:flex; gap:11px; font-size:13px; font-weight:700; white-space:nowrap; }
+    .langs a { text-decoration:none; }
+    main { padding-top:36px !important; padding-bottom:64px !important; }
+    h1 { color:var(--blue); line-height:1.2; font-size:clamp(26px,4vw,34px); margin:0 0 12px; }
+    h2 { color:var(--blue); line-height:1.3; margin:0 0 12px; font-size:20px; }
+    p { margin:0 0 12px; }
+    .lead { color:var(--muted); margin-bottom:24px; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:22px 24px; margin-bottom:16px; box-shadow:0 8px 25px rgba(11,46,107,.05); }
+    .card p:last-child { margin-bottom:0; }
+    .info { display:grid; grid-template-columns:minmax(120px,180px) 1fr; gap:7px 16px; margin:0; }
+    .info dt { font-weight:750; color:var(--blue); }
+    .info dd { margin:0; overflow-wrap:anywhere; }
+    ul { margin:4px 0 12px; padding-left:23px; }
+    li { margin:6px 0; }
+    footer { border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+    @media(max-width:580px){.container{padding:18px 16px}.card{padding:20px 17px}.info{grid-template-columns:1fr;gap:2px}.info dd{margin-bottom:10px}}
   </style>
 </head>
 <body>
-<div class="wrap">
-  <a class="btn" id="btnBack" href="/">←</a>
-  <span class="badge" id="badge"></span>
-  <h1 id="pageTitle"></h1>
-  <p>Project PKS — <a href="https://www.project-pks.org">www.project-pks.org</a></p>
-  <div id="content"></div>
-  <footer id="footer"></footer>
-</div>
-<script>
-const T = {
-  fr: {
-    title:"Mentions légales – Project PKS",
-    badge:"Avril 2026",
-    back:"← Retour au site",
-    footer:"© 2026 Project PKS — Fait par une mère et un père, par amour pour Giulia.",
-    s:[
-      {h:"1. Éditeur du site",b:'<p>Le présent site est édité par :</p><p><strong>Project PKS</strong><br>Association à but non lucratif régie par la loi du 1er juillet 1901<br>Email : <a href="mailto:contact@project-pks.org">contact@project-pks.org</a><br>Site : <a href="https://www.project-pks.org">www.project-pks.org</a></p><p>Directeur de la publication : Le représentant légal de l\'association Project PKS</p>'},
-      {h:"2. Hébergement",b:'<p>Le site est hébergé par :</p><p><strong>Vercel Inc.</strong><br>440 N Barranca Ave #4133<br>Covina, CA 91723 — États-Unis<br><a href="https://vercel.com">https://vercel.com</a></p>'},
-      {h:"3. Propriété intellectuelle",b:"<p>L'ensemble du contenu du site est la propriété de Project PKS, sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>"},
-      {h:"4. Responsabilité",b:"<p>Les informations présentées sur ce site visent à informer sur le syndrome de Pallister-Killian et les pistes de recherche en cours. Malgré notre vigilance, elles peuvent évoluer et ne constituent pas un avis médical.</p>"},
-      {h:"5. Données personnelles",b:'<p><a href="https://www.project-pks.org/privacy.html">→ Politique de confidentialité</a></p>'},
-      {h:"6. Contact",b:'<p><a href="mailto:contact@project-pks.org">contact@project-pks.org</a></p>'}
-    ]
-  },
-  en: {
-    title:"Legal Notice – Project PKS",
-    badge:"April 2026",
-    back:"← Back to site",
-    footer:"© 2026 Project PKS — Made by a mother and a father, out of love for Giulia.",
-    s:[
-      {h:"1. Website publisher",b:'<p>This website is published by:</p><p><strong>Project PKS</strong><br>Non-profit organization<br>Email: <a href="mailto:contact@project-pks.org">contact@project-pks.org</a><br>Website: <a href="https://www.project-pks.org">www.project-pks.org</a></p><p>Publication director: The legal representative of Project PKS</p>'},
-      {h:"2. Hosting",b:'<p>The website is hosted by:</p><p><strong>Vercel Inc.</strong><br>440 N Barranca Ave #4133<br>Covina, CA 91723 — USA<br><a href="https://vercel.com">https://vercel.com</a></p>'},
-      {h:"3. Intellectual property",b:"<p>All content on this website is the property of Project PKS unless stated otherwise. Any reproduction without prior authorization is prohibited.</p>"},
-      {h:"4. Liability",b:"<p>The information presented on this website aims to provide insight into Pallister-Killian syndrome and ongoing research efforts. Despite our care, this information may evolve and does not constitute medical advice.</p>"},
-      {h:"5. Personal data",b:'<p><a href="https://www.project-pks.org/privacy.html">→ Privacy Policy</a></p>'},
-      {h:"6. Contact",b:'<p><a href="mailto:contact@project-pks.org">contact@project-pks.org</a></p>'}
-    ]
-  },
-  pt: {
-    title:"Aviso Legal – Project PKS",
-    badge:"Abril de 2026",
-    back:"← Voltar ao site",
-    footer:"© 2026 Project PKS — Feito por uma mãe e um pai, por amor à Giulia.",
-    s:[
-      {h:"1. Editor do site",b:'<p>Este site é publicado por:</p><p><strong>Project PKS</strong><br>Associação sem fins lucrativos<br>Email: <a href="mailto:contact@project-pks.org">contact@project-pks.org</a><br>Site: <a href="https://www.project-pks.org">www.project-pks.org</a></p><p>Responsável pela publicação: Representante legal do Project PKS</p>'},
-      {h:"2. Hospedagem",b:'<p>O site é hospedado por:</p><p><strong>Vercel Inc.</strong><br>440 N Barranca Ave #4133<br>Covina, CA 91723 — Estados Unidos<br><a href="https://vercel.com">https://vercel.com</a></p>'},
-      {h:"3. Propriedade intelectual",b:"<p>Todo o conteúdo do site pertence ao Project PKS, salvo indicação em contrário. A reprodução sem autorização é proibida.</p>"},
-      {h:"4. Responsabilidade",b:"<p>As informações apresentadas neste site têm como objetivo informar sobre a síndrome de Pallister-Killian e as pesquisas em andamento. Apesar do nosso cuidado, elas podem evoluir e não constituem aconselhamento médico.</p>"},
-      {h:"5. Dados pessoais",b:'<p><a href="https://www.project-pks.org/privacy.html">→ Política de Privacidade</a></p>'},
-      {h:"6. Contato",b:'<p><a href="mailto:contact@project-pks.org">contact@project-pks.org</a></p>'}
-    ]
-  }
-};
+  <header>
+    <div class="container headerline">
+      <a class="brand" href="fr.html">PROJECT PKS</a>
+      <nav class="langs" aria-label="Retour au site">Accueil : <a href="fr.html">FR</a><a href="index.html">EN</a><a href="pt.html">PT</a><a href="es.html">ES</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Mentions légales et confidentialité</h1>
+    <p class="lead">Informations relatives à l'éditeur, à l'hébergement, aux dons et à l'utilisation des données sur <strong>www.project-pks.org</strong>.</p>
 
-function detectLang(){
-  const l=(navigator.language||"fr").toLowerCase();
-  if(l.startsWith("pt"))return"pt";
-  if(l.startsWith("fr"))return"fr";
-  return"en";
-}
+    <section class="card" aria-labelledby="editeur">
+      <h2 id="editeur">1. Éditeur du site</h2>
+      <dl class="info">
+        <dt>Association</dt><dd>Project PKS, association à but non lucratif régie par la loi du 1er juillet 1901.</dd>
+        <dt>N° RNA</dt><dd>W951008089</dd>
+        <dt>Siège social</dt><dd>14, place Eugène Varlin, 95150 Taverny, France.</dd>
+        <dt>Publication</dt><dd>Anthony Moulin, président de l'association.</dd>
+        <dt>Contact</dt><dd><a href="mailto:contact@project-pks.org">contact@project-pks.org</a></dd>
+        <dt>Site</dt><dd><a href="https://www.project-pks.org/">www.project-pks.org</a></dd>
+      </dl>
+      <p style="margin-top:16px">Project PKS a pour mission de mobiliser des ressources et de contribuer au développement de recherches consacrées au syndrome de Pallister-Killian, dans l'intérêt des personnes concernées et de leurs familles.</p>
+    </section>
 
-function render(lang){
-  const t=T[lang]||T.fr;
-  document.title=t.title;
-  document.getElementById("pageTitle").textContent=t.title;
-  document.getElementById("badge").textContent=t.badge;
-  document.getElementById("btnBack").textContent=t.back;
-  document.getElementById("footer").textContent=t.footer;
-  document.getElementById("content").innerHTML=t.s.map(s=>"<h2>"+s.h+"</h2>"+s.b).join("");
-}
+    <section class="card" aria-labelledby="hebergement">
+      <h2 id="hebergement">2. Hébergement du site</h2>
+      <p>Le site est hébergé par <strong>Vercel Inc.</strong>, 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis.</p>
+      <p>Site de l'hébergeur : <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">vercel.com</a>. Informations légales : <a href="https://vercel.com/legal" target="_blank" rel="noopener noreferrer">vercel.com/legal</a>. Vercel publie le numéro <a href="tel:+15592887060">+1 559 288 7060</a> dans ses coordonnées officielles pour les demandes relatives au droit d'auteur (DMCA).</p>
+      <p>Le code du site est géré via GitHub ; GitHub n'est pas l'hébergeur public de cette page.</p>
+    </section>
 
-render(detectLang());
-</script>
+    <section class="card" aria-labelledby="contenus">
+      <h2 id="contenus">3. Contenus et propriété intellectuelle</h2>
+      <p>Les textes, photographies, vidéos, illustrations et éléments graphiques présents sur ce site sont protégés par les droits de leurs titulaires respectifs. Toute réutilisation qui dépasse les exceptions prévues par la loi nécessite l'autorisation préalable du titulaire des droits concerné.</p>
+      <p>Les informations scientifiques sont communiquées à titre informatif. Le programme présenté relève de la recherche : aucun résultat thérapeutique ni accès futur à un traitement n'est garanti.</p>
+    </section>
+
+    <section class="card" aria-labelledby="dons">
+      <h2 id="dons">4. Dons et plateformes externes</h2>
+      <p>Les boutons de don du site peuvent orienter vers des services sécurisés gérés par des organismes tiers (notamment Stripe, PayPal, GoFundMe ou la page dédiée de la Fondation Maladies Rares, selon le parcours choisi).</p>
+      <p>Les paiements et les éventuels justificatifs fiscaux sont traités selon les conditions de l'organisme bénéficiaire et du prestataire utilisé. Un don effectué via la <a href="https://dons-fondationmaladiesrares.iraiser.eu/projectPKS" target="_blank" rel="noopener noreferrer">page dédiée de la Fondation Maladies Rares</a> est soumis à ses propres modalités ; il ne doit pas être confondu avec un don directement versé à Project PKS.</p>
+      <p>Le site Project PKS ne demande pas la saisie directe de données de carte bancaire sur cette page.</p>
+    </section>
+
+    <section class="card" aria-labelledby="donnees">
+      <h2 id="donnees">5. Données personnelles</h2>
+      <p>Lorsque vous contactez l'association par courriel, vous pouvez communiquer votre nom, votre adresse électronique et le contenu de votre message. Ces informations sont utilisées pour répondre à votre demande, gérer les échanges et assurer le suivi des démarches de l'association.</p>
+      <p>Les informations nécessaires à un paiement sont collectées et traitées directement par le service de don utilisé, conformément à sa propre politique de confidentialité. Certaines données techniques de connexion peuvent être traitées par les services d'hébergement.</p>
+      <p>Les messages reçus sont conservés pendant la durée utile à leur traitement et au suivi de la relation, sous réserve des obligations légales applicables. La durée précise et les éventuels transferts hors de l'Union européenne dépendent des services effectivement utilisés.</p>
+      <p>Vous pouvez demander l'accès, la rectification ou l'effacement de vos données, ainsi que l'exercice de vos autres droits lorsque ceux-ci sont applicables, à <a href="mailto:contact@project-pks.org">contact@project-pks.org</a>. Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr/" target="_blank" rel="noopener noreferrer">CNIL</a>.</p>
+    </section>
+
+    <section class="card" aria-labelledby="cookies">
+      <h2 id="cookies">6. Cookies et services externes</h2>
+      <p>Pour faciliter la navigation, le site peut mémoriser temporairement la langue choisie.</p>
+      <p>Le site utilise également <strong>Meta Pixel</strong> pour mesurer les visites et certaines interactions. Les vidéos YouTube sont présentées sous forme de miniatures : leur lecteur ne se charge que lorsque vous lancez une vidéo. Ces services peuvent recueillir des informations techniques de navigation.</p>
+      <p>Pour toute question concernant vos données personnelles, contactez-nous à <a href="mailto:contact@project-pks.org">contact@project-pks.org</a>.</p>
+      <p>En savoir plus : <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta</a> · <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener noreferrer">Google et YouTube</a>.</p>
+    </section>
+
+    <section class="card" aria-labelledby="liens">
+      <h2 id="liens">7. Liens externes et contact</h2>
+      <p>Le site propose des liens vers d'autres plateformes. Leurs contenus et conditions de traitement des données relèvent de leurs éditeurs respectifs.</p>
+      <p>Pour signaler un lien défectueux, poser une question sur l'association ou demander des informations relatives au site : <a href="mailto:contact@project-pks.org">contact@project-pks.org</a>.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="container">© 2026 Project PKS · Association loi 1901 · <a href="fr.html">Retour à l'accueil</a></div>
+  </footer>
 </body>
 </html>
