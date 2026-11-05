@@ -1845,7 +1845,11 @@ function donSubmit() {
   const sep = link.includes('?') ? '&' : '?';
   const finalUrl = link + sep + 'locale=' + locale;
 
-  window.open(finalUrl, '_blank', 'noopener');
+  if (window.PKSAnalytics) {
+     window.PKSAnalytics.trackDonationClick('stripe', donCustomSelected ? null : donAmt, donTab);
+   }
+
+   window.open(finalUrl, '_blank', 'noopener');
 }
   function donToggleVir() {
     donVirOpen = !donVirOpen;
