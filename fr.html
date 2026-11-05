@@ -1830,7 +1830,10 @@ function donSubmit() {
     if (typeof fbq === 'function') {
       fbq('track', 'InitiateCheckout', { value: donAmt, currency: 'EUR', content_name: 'Don Fondation Maladies Rares' });
     }
-    window.open(FMR_LINK, '_blank', 'noopener');
+       if (window.PKSAnalytics) {
+     window.PKSAnalytics.trackDonationClick('iraiser_fmr', null, null);
+   }
+   window.open(FMR_LINK, '_blank', 'noopener');
     return;
   }
 
