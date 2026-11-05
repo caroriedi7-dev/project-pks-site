@@ -309,7 +309,15 @@
    else{url=custom?stripe.onceCustom:(stripe.onceFixed[amount]||'');}
    if(!url){lock.textContent='Lien de paiement non disponible pour ce montant.';return;}
    if(!viaFoundation){url+=(url.includes('?')?'&':'?')+'locale=fr';}
-   window.open(url,'_blank','noopener');
+   if (window.PKSAnalytics) {
+  window.PKSAnalytics.trackDonationClick(
+    viaFoundation ? 'iraiser_fmr' : 'stripe',
+    viaFoundation || custom ? null : amount,
+    viaFoundation ? null : kind
+  );
+}
+
+window.open(url,'_blank','noopener');
  });
  updateSelection();
 })();
