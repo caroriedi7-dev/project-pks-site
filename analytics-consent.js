@@ -16,10 +16,10 @@
   var lang = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
   if (!['fr', 'en', 'pt', 'es'].includes(lang)) lang = 'en';
   var translations = {
-    fr: { title: 'Vos consentements', message: 'Aidez-nous à mesurer nos visites et nos campagnes, si vous l’acceptez.', analytics: 'Mesure d’audience (Google Analytics)', marketing: 'Publicité (Pixel Meta)', accept: 'Accepter', reject: 'Refuser', customize: 'Personnaliser', save: 'Enregistrer mes choix', privacy: 'Savoir plus', settings: 'Gérer les cookies' },
-    en: { title: 'Your choices', message: 'Help us measure visits and campaigns, if you agree.', analytics: 'Analytics (Google Analytics)', marketing: 'Advertising (Meta Pixel)', accept: 'Accept', reject: 'Reject', customize: 'Customize', save: 'Save choices', privacy: 'Learn more', settings: 'Cookie settings' },
-    pt: { title: 'Suas escolhas', message: 'Ajude-nos a medir as visitas e campanhas, se você concordar.', analytics: 'Estatísticas (Google Analytics)', marketing: 'Publicidade (Pixel da Meta)', accept: 'Aceitar', reject: 'Recusar', customize: 'Personalizar', save: 'Salvar escolhas', privacy: 'Saiba mais', settings: 'Preferências de cookies' },
-    es: { title: 'Tus elecciones', message: 'Ayúdanos a medir las visitas y campañas, si estás de acuerdo.', analytics: 'Estadísticas (Google Analytics)', marketing: 'Publicidad (Píxel de Meta)', accept: 'Aceptar', reject: 'Rechazar', customize: 'Personalizar', save: 'Guardar preferencias', privacy: 'Saber más', settings: 'Configurar cookies' }
+    fr: { title: 'Aidez-nous à mieux faire connaître le projet', message: 'En acceptant, vous nous aidez à savoir quelles campagnes font avancer la recherche.', analytics: 'Mesure d’audience (Google Analytics)', marketing: 'Publicité (Pixel Meta)', accept: 'Accepter', reject: 'Refuser', customize: 'Personnaliser', save: 'Enregistrer mes choix', privacy: 'En savoir plus', settings: 'Gérer les cookies' },
+    en: { title: 'Help us spread the word about the project', message: 'By accepting, you help us see which campaigns move the research forward.', analytics: 'Analytics (Google Analytics)', marketing: 'Advertising (Meta Pixel)', accept: 'Accept', reject: 'Decline', customize: 'Customize', save: 'Save choices', privacy: 'Learn more', settings: 'Cookie settings' },
+    pt: { title: 'Ajude-nos a divulgar o projeto', message: 'Ao aceitar, você nos ajuda a saber quais campanhas fazem a pesquisa avançar.', analytics: 'Estatísticas (Google Analytics)', marketing: 'Publicidade (Pixel da Meta)', accept: 'Aceitar', reject: 'Recusar', customize: 'Personalizar', save: 'Salvar escolhas', privacy: 'Saiba mais', settings: 'Preferências de cookies' },
+    es: { title: 'Ayúdanos a dar a conocer el proyecto', message: 'Al aceptar, nos ayudas a saber qué campañas hacen avanzar la investigación.', analytics: 'Estadísticas (Google Analytics)', marketing: 'Publicidad (Píxel de Meta)', accept: 'Aceptar', reject: 'Rechazar', customize: 'Personalizar', save: 'Guardar preferencias', privacy: 'Saber más', settings: 'Configurar cookies' }
   };
   var tx = translations[lang];
 
@@ -119,7 +119,10 @@
         '<div class="pks-consent-actions">' +
           '<button type="button" id="pks-accept">' + tx.accept + '</button>' +
           '<button type="button" id="pks-reject">' + tx.reject + '</button>' +
+        '</div>' +
+        '<div class="pks-consent-links">' +
           '<button type="button" id="pks-customize" aria-controls="pks-consent-options" aria-expanded="false">' + tx.customize + '</button>' +
+          '<span aria-hidden="true">·</span>' +
           '<a href="/privacy.html">' + tx.privacy + '</a>' +
         '</div>' +
       '</div>';
@@ -142,16 +145,18 @@
   function addStyles() {
     var style = document.createElement('style');
     style.textContent =
-      '#pks-consent-banner{box-sizing:border-box;position:fixed;left:5px;right:5px;bottom:calc(5px + var(--pks-donatebar-height, 0px));z-index:20000;max-width:480px;margin:0 auto;background:#fff;color:#0f1f26;border:1px solid #cbded8;border-radius:10px;box-shadow:0 3px 15px rgba(0,0,0,.17);font:11px/1.28 system-ui,Arial,sans-serif}' +
+      '#pks-consent-banner{box-sizing:border-box;position:fixed;left:8px;right:8px;bottom:calc(8px + var(--pks-donatebar-height, 0px));z-index:20000;max-width:440px;margin:0 auto;background:#fff;color:#0f1f26;border:1px solid #cbded8;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.16);font:12px/1.4 system-ui,-apple-system,Arial,sans-serif}' +
       '#pks-consent-banner *{box-sizing:border-box}' +
-      '.pks-consent-inner{padding:7px 9px 6px}.pks-consent-inner strong{display:inline;font-size:11.5px;line-height:1.28;color:#0b2e6b;margin-right:4px}.pks-consent-inner p{display:inline;font-size:11px;color:#455b65;margin:0}' +
-      '.pks-consent-actions{display:grid;grid-template-columns:1fr 1fr 1.12fr .86fr;align-items:center;gap:4px;margin-top:6px}.pks-consent-actions button,.pks-consent-actions a,#pks-save{font:inherit;font-size:10.5px;cursor:pointer;border-radius:6px;min-height:36px;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px 2px;line-height:1.2;white-space:normal}' +
-      '#pks-accept,#pks-reject{border:1px solid #0b2e6b;background:#fff;color:#0b2e6b;font-weight:700}' +
-      '#pks-customize,.pks-consent-actions a{background:none;border:0;color:#0b2e6b;text-decoration:underline;font-weight:600}' +
-      '#pks-consent-options{margin:7px 0 5px;padding:7px 9px;background:#f2fbf7;border-radius:9px}#pks-consent-options[hidden]{display:none}#pks-consent-options label{display:block;padding:4px 0;font-size:12px}#pks-save{margin-top:6px;width:100%;border:1px solid #0b2e6b;background:#fff;color:#0b2e6b;font-weight:700}' +
+      '.pks-consent-inner{padding:11px 12px 9px}.pks-consent-inner strong{display:block;font-size:13px;line-height:1.3;color:#0b2e6b;font-weight:700;margin:0 0 3px}.pks-consent-inner p{font-size:12px;line-height:1.4;color:#455b65;margin:0}' +
+      '.pks-consent-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}' +
+      '#pks-accept,#pks-reject,#pks-save{font:inherit;font-size:13px;font-weight:700;cursor:pointer;border:0;border-radius:999px;min-height:40px;padding:8px 10px;color:#fff;display:flex;align-items:center;justify-content:center}' +
+      '#pks-accept{background:#1e63ff}#pks-reject{background:#0b2e6b}' +
+      '.pks-consent-links{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:7px;font-size:11px;color:#0b2e6b}' +
+      '#pks-customize,.pks-consent-links a{font:inherit;font-size:11px;background:none;border:0;padding:4px 2px;color:#0b2e6b;text-decoration:underline;cursor:pointer}' +
+      '#pks-consent-options{margin:9px 0 2px;padding:8px 10px;background:#f2fbf7;border-radius:10px}#pks-consent-options[hidden]{display:none}#pks-consent-options label{display:block;padding:4px 0;font-size:12px}#pks-save{margin-top:6px;width:100%;background:#0b2e6b}' +
       '#pks-consent-banner button:focus-visible,#pks-consent-banner a:focus-visible{outline:2px solid #1e63ff;outline-offset:2px}' +
       '.pks-cookie-settings{background:none!important;border:0!important;cursor:pointer!important;text-decoration:underline!important;font:inherit!important;color:inherit!important;margin-left:10px!important;padding:0!important}' +
-      '@media(max-width:340px){.pks-consent-inner{padding:6px 7px}.pks-consent-actions{gap:3px}.pks-consent-actions button,.pks-consent-actions a{font-size:10px;padding:4px 1px;min-height:36px}}';
+      '@media(max-width:340px){.pks-consent-inner{padding:9px 9px 7px}.pks-consent-actions{gap:6px}#pks-accept,#pks-reject{font-size:12px}}';
     document.head.appendChild(style);
   }
 
